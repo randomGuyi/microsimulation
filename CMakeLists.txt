@@ -40,6 +40,10 @@ add_executable(microsimulation src/main.cpp
         src/ui/views/snippet_picker.cpp
         src/ui/views/snippet_picker.h
         src/ui/views/snippet_picker.ui
+        src/ui/drag_and_drop/drag_item_model.cpp
+        src/ui/drag_and_drop/drag_item_model.h
+        src/ui/drag_and_drop/drop_target.cpp
+        src/ui/drag_and_drop/drop_target.h
 )
 
 target_link_libraries(microsimulation
