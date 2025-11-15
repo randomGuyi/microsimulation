@@ -5,7 +5,7 @@
 #ifndef MICROSIMULATION_MICROCODELEXER_H
 #define MICROSIMULATION_MICROCODELEXER_H
 
-#include "core/parser/msim_scanner.h"
+#include "../../core/parser/msim_scanner.h"
 
 #include <Qsci/qscilexercustom.h>
 #include <map>

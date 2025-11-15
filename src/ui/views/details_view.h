@@ -6,7 +6,7 @@
 #define MICROSIMULATION_DETAILS_VIEW_H
 
 #include <QWidget>
-
+#include "details_tabs.h"
 
 QT_BEGIN_NAMESPACE
 

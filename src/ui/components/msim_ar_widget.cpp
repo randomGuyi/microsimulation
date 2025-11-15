@@ -1,0 +1,21 @@
+
+#include "msim_ar_widget.h"
+
+msim_ar_widget::msim_ar_widget(msim_ar * ar,
+                               shared::svg_loader * loader,
+                    QString const & element_id,
+                                 QWidget * parent)
+        : msim_component_svg_widget{loader, element_id, ar, parent}
+{}
+
+void msim_ar_widget::update_display(){
+    /* change appearance later on */
+    update();
+}
+void msim_ar_widget::show_tooltip(){
+
+}
+
+void msim_ar_widget::hide_tooltip(){
+
+}

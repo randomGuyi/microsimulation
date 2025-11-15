@@ -1,0 +1,6 @@
+#include "msim_line.h"
+
+
+msim_line::msim_line(std::string const & id, std::string const & label)
+    : msim_component{id, label}
+{}

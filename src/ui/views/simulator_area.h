@@ -5,9 +5,13 @@
 #ifndef MICROSIMULATION_SIMULATOR_AREA_H
 #define MICROSIMULATION_SIMULATOR_AREA_H
 
+#include <QGraphicsScene>
+#include <QSvgRenderer>
 #include <QWidget>
+#include <QGraphicsSvgItem>
 
 
+class drop_target;
 QT_BEGIN_NAMESPACE
 
 namespace Ui {

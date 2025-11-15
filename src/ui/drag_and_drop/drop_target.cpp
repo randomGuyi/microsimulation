@@ -14,7 +14,7 @@
 drop_target::drop_target(const QString & element_id)
     :QGraphicsSvgItem{}
 {
-    QSvgRenderer * r = &svg_loader::get_instance().get_renderer();
+    QSvgRenderer * r = &shared::svg_loader::get_instance().get_renderer();
     if(r){
         setElementId(element_id);
         setSharedRenderer(r);

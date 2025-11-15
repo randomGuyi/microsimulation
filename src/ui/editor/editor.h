@@ -9,7 +9,7 @@
 #include <Qsci/qsciscintilla.h>
 #include <Qsci/qscilexercpp.h>
 #include <Qsci/qscilexercustom.h>
-
+#include "../controller/editor_controller.h"
 
 QT_BEGIN_NAMESPACE
 

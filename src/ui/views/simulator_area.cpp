@@ -24,7 +24,7 @@ simulator_area::simulator_area(QWidget *parent)
     , ui(new Ui::simulator_area)
     , m_scene{new QGraphicsScene(this)}
     , m_background{nullptr}
-    , m_renderer{&svg_loader::get_instance().get_renderer()}
+    , m_renderer{&shared::svg_loader::get_instance().get_renderer()}
     , m_zoom_factor{1.0}
     , m_auto_fit_enabled{true}
 {

@@ -34,6 +34,5 @@ namespace shared {
     };
 
     };
-} // core
 
 #endif //MICROSIMULATION_SVG_LOADER_H

@@ -4,7 +4,7 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_editor.h" resolved
 
-#include "ui/editor/microcodelexer.h"
+#include "microcodelexer.h"
 #include "ui_editor.h"
 
 #include "../controller/editor_controller.h"

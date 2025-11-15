@@ -17,7 +17,7 @@ MicrocodeLexer::MicrocodeLexer(QObject * parent )
 
 }
 
-MicrocodeLexer::~MicrocodeLexer() {}
+MicrocodeLexer::~MicrocodeLexer() = default;
 
 const char * MicrocodeLexer::language() const {
     return LANGUAGE_HINT;

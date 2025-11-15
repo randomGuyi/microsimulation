@@ -2,11 +2,7 @@
 // Created by Arthur on 15.11.25.
 //
 
-// You may need to build the project (run Qt uic code generator) to get "ui_details_tabs.h" resolved
-
 #include "details_tabs.h"
-#include "ui_details_tabs.h"
-
 
 details_tabs::details_tabs(QWidget *parent)
     : QTabWidget{parent}

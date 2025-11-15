@@ -4,13 +4,12 @@
 
 #ifndef MICROSIMULATION_DETAILS_TABS_H
 #define MICROSIMULATION_DETAILS_TABS_H
-
 #include <QTabWidget>
 #include <QTextEdit>
 
 #include "../../core/parser/msim_parser.h"
-#include "core/components/msim_rom.h"
-#include "core/components/msim_ram.h"
+#include "../../core/components/msim_rom.h"
+#include "../../core/components/msim_ram.h"
 
 
 #define COMPILER_TAB_LABEL "Compiler Output"
@@ -31,7 +30,6 @@ private:
     int tab_index_for_label(std::string const &lbl);
     QTextEdit *get_or_make_compiler_log();
 };
-
 
 
 #endif //MICROSIMULATION_DETAILS_TABS_H
