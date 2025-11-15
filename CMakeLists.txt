@@ -7,17 +7,22 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt")
-
 find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
+        Svg
         REQUIRED)
 
-add_executable(microsimulation main.cpp)
+add_executable(microsimulation src/main.cpp
+        src/shared/svg_loader.cpp
+        src/shared/svg_loader.h
+        src/shared/constants.h)
+
 target_link_libraries(microsimulation
         Qt::Core
         Qt::Gui
         Qt::Widgets
+        Qt::Svg # Svg Renderer
 )
 
