@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>msim_main</class>
+    <widget class="QMainWindow" name="msim_main">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>900</width>
+                <height>800</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>msim_main</string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                    <widget class="QSplitter" name="splitter">
+                        <property name="orientation">
+                            <enum>Qt::Orientation::Horizontal</enum>
+                        </property>
+                        <widget class="QFrame" name="side_menu_frame">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>250</width>
+                                    <height>16777215</height>
+                                </size>
+                            </property>
+                            <property name="frameShape">
+                                <enum>QFrame::Shape::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>QFrame::Shadow::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout">
+                                <item>
+                                    <widget class="QTabWidget" name="tabWidget">
+                                        <property name="currentIndex">
+                                            <number>0</number>
+                                        </property>
+                                        <widget class="component_picker" name="components_tab">
+                                            <attribute name="title">
+                                                <string>components</string>
+                                            </attribute>
+                                        </widget>
+                                        <widget class="QWidget" name="code_pick_tab">
+                                            <attribute name="title">
+                                                <string>snippets</string>
+                                            </attribute>
+                                        </widget>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                        <widget class="QFrame" name="main_frame">
+                            <property name="frameShape">
+                                <enum>QFrame::Shape::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>QFrame::Shadow::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_2">
+                                <item>
+                                    <widget class="QSplitter" name="splitter_2">
+                                        <property name="orientation">
+                                            <enum>Qt::Orientation::Vertical</enum>
+                                        </property>
+                                        <widget class="simulator_area" name="sim_frame" native="true"/>
+                                        <widget class="QFrame" name="bottom_frame">
+                                            <property name="frameShape">
+                                                <enum>QFrame::Shape::StyledPanel</enum>
+                                            </property>
+                                            <property name="frameShadow">
+                                                <enum>QFrame::Shadow::Raised</enum>
+                                            </property>
+                                            <layout class="QVBoxLayout" name="verticalLayout_4">
+                                                <item>
+                                                    <widget class="QSplitter" name="splitter_3">
+                                                        <property name="orientation">
+                                                            <enum>Qt::Orientation::Horizontal</enum>
+                                                        </property>
+                                                        <widget class="editor" name="editor_frame">
+                                                            <property name="frameShape">
+                                                                <enum>QFrame::Shape::StyledPanel</enum>
+                                                            </property>
+                                                            <property name="frameShadow">
+                                                                <enum>QFrame::Shadow::Raised</enum>
+                                                            </property>
+                                                        </widget>
+                                                        <widget class="QFrame" name="details_frame">
+                                                            <property name="frameShape">
+                                                                <enum>QFrame::Shape::StyledPanel</enum>
+                                                            </property>
+                                                            <property name="frameShadow">
+                                                                <enum>QFrame::Shadow::Raised</enum>
+                                                            </property>
+                                                        </widget>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </widget>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </widget>
+                </item>
+            </layout>
+        </widget>
+        <widget class="QStatusBar" name="statusbar"/>
+    </widget>
+    <customwidgets>
+        <customwidget>
+            <class>component_picker</class>
+            <extends>QWidget</extends>
+            <header>ui/views/component_picker.h</header>
+            <container>1</container>
+        </customwidget>
+        <customwidget>
+            <class>editor</class>
+            <extends>QFrame</extends>
+            <header>ui/editor/editor.h</header>
+            <container>1</container>
+        </customwidget>
+        <customwidget>
+            <class>simulator_area</class>
+            <extends>QWidget</extends>
+            <header>ui/views/simulator_area.h</header>
+            <container>1</container>
+        </customwidget>
+    </customwidgets>
+    <resources/>
+    <connections/>
+</ui>

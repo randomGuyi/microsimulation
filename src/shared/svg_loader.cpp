@@ -9,12 +9,11 @@
 #include "constants.h"
 
 namespace shared {
-
-
     svg_loader::svg_loader()
         : m_renderer{new QSvgRenderer{}}{
         load_from_file(SVG_PATH);
     }
+
     void svg_loader::load_from_file(QString const & file_path) {
         if (!m_renderer->load(file_path)) {
             qWarning() << "SVG path not found or invalid:" << file_path;
@@ -37,8 +36,7 @@ namespace shared {
         return pixmap;
     }
 
-    QSvgRenderer & svg_loader::get_renderer(){
+    QSvgRenderer & svg_loader::get_renderer() const {
         return *m_renderer;
     }
-
 } // shared
