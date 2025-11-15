@@ -20,8 +20,24 @@ object_script.*.Debug
 *.pro.user.*
 *.qbs.user
 *.qbs.user.*
+# CMake build artifacts and temporary files
+/cmake-build-*
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# CLion specific files
+.idea/
+*.iml
+
+# Qt generated files (optional, but good practice)
+# Only include if you generate these in the build folder, not if you place them in source
 *.moc
 moc_*.cpp
+ui_*.h
 moc_*.h
 qrc_*.cpp
 ui_*.h
@@ -45,6 +61,8 @@ target_wrapper.*
 # QtCreator CMake
 CMakeLists.txt.user*
 
+# Operating system files
+.DS_Store
 # QtCreator 4.8< compilation database
 compile_commands.json
 
