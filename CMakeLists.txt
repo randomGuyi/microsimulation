@@ -23,7 +23,12 @@ add_executable(microsimulation src/main.cpp
         src/ui/views/msim_main.ui
         src/ui/editor/editor.cpp
         src/ui/editor/editor.h
-        src/ui/editor/editor.ui)
+        src/ui/editor/editor.ui
+        src/ui/editor/microcodelexer.cpp
+        src/ui/editor/microcodelexer.h
+        src/ui/views/component_picker.cpp
+        src/ui/views/component_picker.h
+        src/ui/views/component_picker.ui)
 
 target_link_libraries(microsimulation
         Qt::Core
