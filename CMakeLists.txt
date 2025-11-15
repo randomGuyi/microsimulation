@@ -37,6 +37,9 @@ add_executable(microsimulation src/main.cpp
         src/ui/views/simulator_area.cpp
         src/ui/views/simulator_area.h
         src/ui/views/simulator_area.ui
+        src/ui/views/snippet_picker.cpp
+        src/ui/views/snippet_picker.h
+        src/ui/views/snippet_picker.ui
 )
 
 target_link_libraries(microsimulation
