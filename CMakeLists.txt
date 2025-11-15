@@ -34,6 +34,9 @@ add_executable(microsimulation src/main.cpp
         src/ui/views/details_view.cpp
         src/ui/views/details_view.h
         src/ui/views/details_view.ui
+        src/ui/views/simulator_area.cpp
+        src/ui/views/simulator_area.h
+        src/ui/views/simulator_area.ui
 )
 
 target_link_libraries(microsimulation
