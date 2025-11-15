@@ -28,7 +28,10 @@ add_executable(microsimulation src/main.cpp
         src/ui/editor/microcodelexer.h
         src/ui/views/component_picker.cpp
         src/ui/views/component_picker.h
-        src/ui/views/component_picker.ui)
+        src/ui/views/component_picker.ui
+        src/ui/views/details_tabs.cpp
+        src/ui/views/details_tabs.h
+)
 
 target_link_libraries(microsimulation
         Qt::Core
