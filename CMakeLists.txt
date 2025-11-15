@@ -17,7 +17,10 @@ find_package(Qt6 COMPONENTS
 add_executable(microsimulation src/main.cpp
         src/shared/svg_loader.cpp
         src/shared/svg_loader.h
-        src/shared/constants.h)
+        src/shared/constants.h
+        src/ui/views/msim_main.cpp
+        src/ui/views/msim_main.h
+        src/ui/views/msim_main.ui)
 
 target_link_libraries(microsimulation
         Qt::Core

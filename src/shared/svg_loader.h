@@ -7,7 +7,7 @@
 #include <string>
 #include <QtCore/qstring.h>
 #include <QtGui/qpixmap.h>
-#include <QtGui/qsvgrenderer.h>
+#include <QtSvg/qsvgrenderer.h>
 
 namespace shared {
     class svg_loader {
@@ -19,7 +19,7 @@ namespace shared {
 
         void load_from_file(QString const &file_path);
         QPixmap get_pixmap_for_id(QString const & id, QSize const & size) const;
-        QSvgRenderer & get_renderer();
+        QSvgRenderer & get_renderer() const;
         static QRect get_bounds_for_id(const QString &);
 
     private:
