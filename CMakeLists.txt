@@ -20,7 +20,10 @@ add_executable(microsimulation src/main.cpp
         src/shared/constants.h
         src/ui/views/msim_main.cpp
         src/ui/views/msim_main.h
-        src/ui/views/msim_main.ui)
+        src/ui/views/msim_main.ui
+        src/ui/editor/editor.cpp
+        src/ui/editor/editor.h
+        src/ui/editor/editor.ui)
 
 target_link_libraries(microsimulation
         Qt::Core
@@ -29,3 +32,7 @@ target_link_libraries(microsimulation
         Qt::Svg # Svg Renderer
 )
 
+target_include_directories(microsimulation PUBLIC
+        /opt/homebrew/opt/qscintilla2/include
+        /opt/homebrew/opt/qscintilla2/include/Qsci
+)
