@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../svg/frames_architecture.svg</file>
+        <file>../svg/frames_architecture_ids.txt</file>
+    </qresource>
+</RCC>

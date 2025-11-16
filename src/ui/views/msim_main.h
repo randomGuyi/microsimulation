@@ -21,7 +21,6 @@ class msim_main : public QMainWindow {
 public:
     // QMainWindow destructor is not override, but it's safe to keep 'override' if you must
     explicit msim_main(QWidget *parent = nullptr);
-    msim_main();
     ~msim_main() override;
 
 private:

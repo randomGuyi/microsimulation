@@ -142,6 +142,7 @@ add_executable(microsimulation src/main.cpp
         src/ui/styles.h
         src/core/parser/msim_parser.cpp
         src/core/parser/msim_scanner.cpp
+        res/qrc/assets.qrc
 )
 
 target_link_libraries(microsimulation

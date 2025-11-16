@@ -6,9 +6,8 @@
 #define MICROSIMULATION_CONSTANTS_H
 
 /* file paths */
-#define SVG_PATH ":/svgs/frames_architecture.svg"			 // can be found
-#define SVG_IDS_PATH ":/svgs/frames_architecture_ids.txt"     // cannot be found
-
+#define SVG_PATH ":/svg/frames_architecture.svg"
+#define SVG_IDS_PATH ":/svg/frames_architecture_ids.txt"
 /* icons */
 #define SVG_ICON_SIZE 64
 
