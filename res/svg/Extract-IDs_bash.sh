@@ -1,26 +1,29 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Input- und Output-Dateien
 INPUT_FILE="./frames_architecture.svg"
 OUTPUT_FILE="./frames_architecture_ids.txt"
+OUTPUT_CONSTANTS="./architecture_ids.h"
 
-# IDs extrahieren, filtern und schreiben
-grep -o 'id="[^"]*"' "$INPUT_FILE" |
-    sed 's/id="\([^"]*\)"/\1/' |
-    grep -Ev '^(g[0-9]+)$' \
-        -e '^(path[0-9].*)$' \
-        -e '^(svg[0-9]+)$' \
-        -e '^true$' \
-        -e '^false$' \
-        -e '^(defs[0-9]+)$' \
-        -e '^(namedview[0-9]+)$' \
-        -e '^(grid[0-9]+)$' \
-        -e '^(swatch[0-9]+)$' \
-        -e '^(stop[0-9]+)$' \
-        -e '^(linearGradient[0-9]+)$' \
-        -e '^(layer[0-9]+)$' \
-        | sed '/^\s*$/d' \
-        > "$OUTPUT_FILE"
+IDS=$( grep -E "id=.*" frames_architecture.svg | \
+      grep -Ev "(path.*|.*[[:digit:]]?-[[:digit:]]|g[[:digit:]]+.*|linearG.*|swatch.*|stop.*|.*namedview.*|.*showgrid.*|.*[[:digit:]]{3}.*|.*layer.*|.*defs[[:digit:]].*|.*grid[[:digit:]].*)" \
+      | sed -E 's/.*id="([^"]+)".*/\1/'
+)
 
-echo "IDs gespeichert: $OUTPUT_FILE"
 
+echo $IDS | sed -e "s/[[:space:]]/ \n/g" > $OUTPUT_FILE
+
+(
+echo "// Auto-generated ID header"
+echo "#ifndef ARCHITECTURE_IDS_H"
+echo "#define ARCHITECTURE_IDS_H"
+echo
+
+while IFS= read -r id; do
+  macro=$(echo "$id" | tr '[:lower:]-' '[:upper:]_')
+  echo "#define $macro \"$id\""
+  done <<< "$IDS"
+
+echo
+echo "#endif // ARCHITECTURE_IDS_H"
+) > $OUTPUT_CONSTANTS
