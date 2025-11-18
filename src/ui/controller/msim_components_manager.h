@@ -9,6 +9,9 @@
 #include "ui/drag_and_drop/drop_target.h"
 
 #include <QGraphicsScene>
+
+#include "ui/components/msim_connector_widget.h"
+
 class msim_components_manager
 {
 public:
@@ -22,7 +25,21 @@ public:
     msim_rom * get_rom();
 
 private:
+
+    std::vector<std::string> placeable_connector_ids(QString id);
+
+    std::pair<msim_connector *, msim_connector_widget *> get_or_place_connector(QString conn_id);
+
+    std::vector<std::string> placeable_line_ids(QString id) ;
+
+    std::vector<std::string> placeable_connector_line_ids(QString id);
+
+    std::vector<std::string> placeable_ids_for(QStringList const &component_ids);
+
     void place_clock_lines(drop_target * target);
+
+    std::vector<std::string> get_placealble_lines_by_regex(std::string const &regex);
+
     msim_components_manager();
     ~msim_components_manager() = default;
     msim_components_manager(const msim_components_manager & other) = delete;

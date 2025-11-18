@@ -174,129 +174,9 @@ void msim_cpu::read_from_ram(){
 
 void msim_cpu::fetch(){
     /* TODO: Connectors */
-
-    auto transfer_register_to_bus = [=](
-                                 std::string const & bus_id,
-                                 std::string const & id_bit,
-                                 std::string const & id_register
-                              ){
-        auto  bus_comp = m_components.find(bus_id);
-        if(bus_comp == m_components.end()) return ;
-
-        auto  bit_comp = m_enable_bits.find(id_bit);
-        if(bit_comp == m_enable_bits.end()) return ;
-
-        auto  register_comp = m_components.find(id_register);
-        if(register_comp == m_components.end()) return ;
-
-        msim_enable_bit * bit = dynamic_cast<msim_enable_bit *>(bit_comp->second.get());
-        msim_register * reg = dynamic_cast<msim_register *> (register_comp->second.get());
-        msim_bus * bus = dynamic_cast<msim_bus *> (bus_comp->second.get());
-
-        if(! bit || !reg || !bus) return;
-
-        if(bit->value()){
-            bus->set_value( reg->getValue() );
-        }
-    };
-
-    auto transfer_bus_to_register = [=](
-                                 std::string const & bus_id,
-                                 std::string const & id_register
-                                        ){
-
-        auto  register_comp = dynamic_cast<msim_register *>(find_component(id_register));
-        if(! register_comp) return;
-
-        auto  bus_comp = dynamic_cast<msim_bus *>(find_component(bus_id));
-        if(! bus_comp) return;
-
-        register_comp->setValue(bus_comp->get_value());
-    };
-
-    /* fetch to x_bus */
-    transfer_register_to_bus(ID_COMP_XBUS, ID_ENBIT_REGISTER0_XBUS, ID_COMP_REGISTER0 );
-    transfer_register_to_bus(ID_COMP_XBUS, ID_ENBIT_REGISTER1_XBUS, ID_COMP_REGISTER1 );
-    transfer_register_to_bus(ID_COMP_XBUS, ID_ENBIT_REGISTER2_XBUS, ID_COMP_REGISTER2 );
-    transfer_register_to_bus(ID_COMP_XBUS, ID_ENBIT_REGISTER3_XBUS, ID_COMP_REGISTER3 );
-
-    /* fetch to y_bus */
-    transfer_register_to_bus(ID_COMP_YBUS, ID_ENBIT_REGISTER0_YBUS, ID_COMP_REGISTER0);
-    transfer_register_to_bus(ID_COMP_YBUS, ID_ENBIT_REGISTER1_YBUS, ID_COMP_REGISTER1);
-    transfer_register_to_bus(ID_COMP_YBUS, ID_ENBIT_REGISTER2_YBUS, ID_COMP_REGISTER2);
-    transfer_register_to_bus(ID_COMP_YBUS, ID_ENBIT_REGISTER3_YBUS, ID_COMP_REGISTER3);
-
-    /* mdr to y_bus */
-    transfer_register_to_bus(ID_COMP_YBUS, ID_ENBIT_REGISTERMDR_YBUS, ID_COMP_REGISTERMDR);
-
-    /* mdr to cop */
-    auto  mdr_comp = m_components.find(ID_COMP_REGISTERMDR);
-    if(mdr_comp == m_components.end()) return ;
-
-    auto  bit_comp = m_enable_bits.find(ID_ENBIT_REGISTERMDR_COP);
-    if(bit_comp == m_enable_bits.end()) return ;
-
-    auto cop_comp = m_components.find(ID_COMP_COP);
-    if(cop_comp == m_components.end()) return ;
-
-    msim_register * reg_mdr = dynamic_cast<msim_register *> (mdr_comp->second.get());
-    msim_enable_bit * bit = dynamic_cast<msim_enable_bit *>(bit_comp->second.get());
-    msim_cop * cop = dynamic_cast<msim_cop*>(cop_comp->second.get());
-
-    if(! bit || !reg_mdr || !cop) return;
-
-    if(bit->value()){
-        cop->setValue(reg_mdr->getValue() );
-    }
-
-    /* TODO: show somehow lines and connectors */
-
-    /* set x register, y register */
-    transfer_bus_to_register(ID_COMP_XBUS, ID_COMP_REGISTERX);
-    transfer_bus_to_register(ID_COMP_YBUS, ID_COMP_REGISTERY);
-
 }
 
 void msim_cpu::decode(){
-    /*
-    if(! m_curr_word) return;
-
-    auto decode_alu = [=](){
-        // transfer operation to the alu
-        auto * alu = dynamic_cast<msim_alu * >(find_component(ID_COMP_ALU));
-        if(! alu) return;
-
-        auto * op_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTEROP));
-        if(! op_reg) return;
-
-        alu->set_operation(op_reg->getValue());
-        alu->decode();
-
-        auto * z_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERZ));
-        if(! z_reg) return;
-
-        z_reg->setValue(alu->get_result());
-    };
-
-    auto decode_ar = [=](){
-        auto * ar = dynamic_cast<msim_ar *>(find_component(ID_COMP_AR));
-        if(! ar) return;
-
-        ar->set_mask(m_curr_word->get_ar_ops()->get_mask());
-        ar->set_cn(m_curr_word->get_ar_ops()->get_cn());
-
-        ar->decode();
-
-
-
-    };
-
-    decode_alu();
-
-*/
-
-
-
 }
 
 void msim_cpu::execute(){
@@ -327,7 +207,7 @@ void msim_cpu::set_fetch_instructions( fetch_word * fw){
         en_bit->set_value(true);
         return true;
     };
-
+/*
     if (set_bit_if(ID_ENBIT_REGISTER0_XBUS,  ((x_sel & FIRST_BIT) != 0)))
         goto Y_SEL;
 
@@ -354,6 +234,7 @@ void msim_cpu::set_fetch_instructions( fetch_word * fw){
     MDR_SEL :
         set_bit_if(ID_ENBIT_REGISTERMDR_YBUS, ((mdr_sel & FIRST_BIT ) != 0));
         set_bit_if(ID_ENBIT_REGISTERMDR_COP, ((mdr_sel & SECOND_BIT) != 0));
+    */
 }
 
 void msim_cpu::set_decode_instructions( decode_word * dw, addrr_word * aw){
@@ -369,10 +250,10 @@ void msim_cpu::set_decode_instructions( decode_word * dw, addrr_word * aw){
     };
 
     /* update operation bits */
-    set_bit(ID_OPBIT0_REGISTEROP, ((operation >> 0) & 0x1));
-    set_bit(ID_OPBIT1_REGISTEROP, ((operation >> 1) & 0x1));
-    set_bit(ID_OPBIT2_REGISTEROP, ((operation >> 2) & 0x1));
-    set_bit(ID_OPBIT3_REGISTEROP, ((operation >> 3) & 0x1));
+    set_bit(ID_ENBIT0_REGISTEROP, ((operation >> 0) & 0x1));
+    set_bit(ID_ENBIT1_REGISTEROP, ((operation >> 1) & 0x1));
+    set_bit(ID_ENBIT2_REGISTEROP, ((operation >> 2) & 0x1));
+    set_bit(ID_ENBIT3_REGISTEROP, ((operation >> 3) & 0x1));
 
     msim_register * op_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTEROP));
     if(! op_reg){
@@ -420,11 +301,12 @@ void msim_cpu::set_execute_instructions( exec_word * ew){
         en_bit->set_value(true);
         return true;
     };
-
+/*
     set_bit_if(ID_ENBIT_ZBUS_REGISTER0, ((z_sel & FIRST_BIT) != 0));
     set_bit_if(ID_ENBIT_ZBUS_REGISTER1, ((z_sel & SECOND_BIT) != 0));
     set_bit_if(ID_ENBIT_ZBUS_REGISTER2, ((z_sel & THIRD_BIT) != 0));
     set_bit_if(ID_ENBIT_ZBUS_REGISTER3, ((z_sel & FOURTH_BIT) != 0));
+    */
 }
 
 

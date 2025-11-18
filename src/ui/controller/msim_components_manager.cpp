@@ -5,6 +5,9 @@
 #include "shared/svg_loader.h"
 #include "ui/controller/connector_factory.h"
 #include <QRegularExpression>
+#include <ranges>
+
+#include "core/common/svg_loader.h"
 
 msim_components_manager::msim_components_manager()
     : m_clock_placed{false}
@@ -91,13 +94,90 @@ void msim_components_manager::place_clock_lines(drop_target * target){
     }
 }
 
+std::vector<std::string> msim_components_manager::get_placealble_lines_by_regex(std::string const & regex) {
+    /* lines from and to component */
+    QStringList lines = id_reader::get_instance().get_results_for(regex);
+    return placeable_ids_for(lines);
+}
+
+std::vector<std::string> msim_components_manager::placeable_line_ids(QString id){
+    return get_placealble_lines_by_regex("line_.*" + id.remove("comp_").toStdString() + ".*");
+}
+
+std::vector<std::string> msim_components_manager::placeable_connector_line_ids(QString id){
+    return get_placealble_lines_by_regex("line(Fetch|Execute|Out|In|En).*" + id.remove("comp_").toStdString() + ".*");
+}
+
+std::vector<std::string> msim_components_manager::placeable_ids_for(QStringList const & component_ids) {
+    std::vector<std::string> placeable_ids;
+    auto to_comp = [](const QString & q) {
+        /* register do not have a prefix */
+        if (q.contains("register")) return q;
+        return "comp_" + q;
+    };
+    /* filter components which are already placeable */
+    for (const auto & component_id : component_ids) {
+        /* all components required by the component*/
+        QStringList necessary_components =
+                id_reader::get_instance().get_postfix_components_for_id(component_id);
+        const bool all_present = std::all_of(
+            necessary_components.begin(), necessary_components.end(),
+            [this, to_comp](const QString &qs) {
+                return m_placed_components.contains(to_comp(qs));
+            });
+        if(all_present &! necessary_components.empty()) {
+            placeable_ids.push_back(component_id.toStdString());
+        }
+    }
+    return placeable_ids;
+}
+
+std::vector<std::string> msim_components_manager::placeable_connector_ids(QString id) {
+    QStringList conns = id_reader::get_instance().get_results_for("pcb.*");
+    return placeable_ids_for(conns);
+}
+
+std::pair<msim_connector*, msim_connector_widget* > msim_components_manager::get_or_place_connector(QString conn_id) {
+    auto connIt = m_placed_connectors.find(conn_id);
+    if(connIt == m_placed_connectors.end()) {
+        auto [connector, connector_widget]  =
+            connector_factory::create(QString::fromStdString(conn_id), QString::fromStdString(conn_id), m_loader);
+        m_placed_components[conn_id] = connector;
+        return {connector, connector_widget};
+    }
+    return wer hat die widgets ?
+}
+
 void msim_components_manager::place_component(drop_target * target, const QString & id, const QString & label){
     auto [comp, widget] = components_factory::create(id, label, m_loader);
     if(!comp || !widget) return;
 
     widget->attach_to_target(target);
-
     m_placed_components[id] = comp;
+    /* Register */
+    if (id.contains("register")) {
+        /* place Decoder according to connector */
+    }
+    /* place connectors */
+    for (auto const & conn_id: placeable_connector_ids(id)) {
+        auto [connector, connector_widget] = get_or_place_connector();
+        if (! m_placed_connectors.contains(QString::fromStdString(conn_id)))
+
+
+        if(! connector || !connector_widget) continue;
+        connector_widget->attach_to_target(target);
+        for (auto const & conn_line :  placeable_connector_line_ids(id)) {
+       }
+    }
+
+    for (auto const & line_id : placeable_line_ids(id)) {
+        msim_line_widget * line_widget =
+            line_factory::create(QString::fromStdString(line_id), QString::fromStdString(line_id), m_loader).second;
+        line_widget->attach_to_target(target);
+    }
+
+
+/*
     if(! m_clock_placed && id.contains("clock")){
         place_clock_lines(target);
         m_clock_placed = true;
@@ -118,6 +198,7 @@ void msim_components_manager::place_component(drop_target * target, const QStrin
 
     place_connector(target, comp);
     place_lines(target, comp);
+    */
 }
 
 void msim_components_manager::place_ar( drop_target * target){
@@ -239,10 +320,12 @@ void msim_components_manager::place_lines(drop_target * target , msim_component 
 void msim_components_manager::place_connector(drop_target * target, msim_component const * placed_component){
 
     QString placed_id = QString::fromStdString(placed_component->id());
+    /* there are no connectors for other components */
     if(! placed_id.contains(QRegularExpression{"(clock|register|Bus|cop)"})){
         return;
     }
     QStringList connectors{find_connectors(placed_component)};
+    /* no connectors for the target found */
     if(connectors.empty()) return;
 
     for(auto & connector_id : connectors){
