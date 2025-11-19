@@ -24,15 +24,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="2"
-     inkscape:cx="591.25"
-     inkscape:cy="295"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="752.3616"
+     inkscape:cy="135.41095"
      inkscape:window-width="1920"
      inkscape:window-height="1021"
      inkscape:window-x="0"
      inkscape:window-y="31"
      inkscape:window-maximized="0"
-     inkscape:current-layer="lineEn_register0_YBus"
+     inkscape:current-layer="layer1"
      showguides="true"
      showgrid="true">
     <inkscape:grid
@@ -1065,78 +1065,6 @@
          transform="scale(0.26458333)" />
     </g>
     <g
-       id="con_en_bit_Z_Bus_register_1-5"
-       transform="rotate(90,64.206007,-43.223166)"
-       inkscape:label="con_en_bit_Z_Bus_register_1">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-         id="path51-8-2-65" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 v 2.9999998 0 z"
-         id="path52-6-4-30" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-         id="path53-5-8-48"
-         transform="scale(0.26458333)" />
-    </g>
-    <g
-       id="con_en_bit_Z_Bus_register_1-5-0"
-       transform="rotate(90,71.706007,-35.723166)"
-       inkscape:label="con_en_bit_Z_Bus_register_1">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-         id="path51-8-2-65-2" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 v 2.9999998 0 z"
-         id="path52-6-4-30-1" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-         id="path53-5-8-48-8"
-         transform="scale(0.26458333)" />
-    </g>
-    <g
-       id="con_en_bit_Z_Bus_register_1-5-06"
-       transform="rotate(90,81.706007,-25.723166)"
-       inkscape:label="con_en_bit_Z_Bus_register_1">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-         id="path51-8-2-65-0" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 v 2.9999998 0 z"
-         id="path52-6-4-30-4" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-         id="path53-5-8-48-0"
-         transform="scale(0.26458333)" />
-    </g>
-    <g
-       id="con_en_bit_Z_Bus_register_1-5-0-5"
-       transform="rotate(90,89.206007,-18.223166)"
-       inkscape:label="con_en_bit_Z_Bus_register_1">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-         id="path51-8-2-65-2-6" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 v 2.9999998 0 z"
-         id="path52-6-4-30-1-8" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-         id="path53-5-8-48-8-5"
-         transform="scale(0.26458333)" />
-    </g>
-    <g
        id="con_register_0_Y_Bus"
        transform="translate(-35.241418,78.453949)"
        inkscape:label="con_register_0_Y_Bus">
@@ -1718,7 +1646,7 @@
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="enBit1_ZBus_registerA"
-       width="14.263821"
+       width="14.264"
        height="14.263821"
        x="5.3680902"
        y="17.538918"
@@ -2789,6 +2717,24 @@
          style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-dasharray:none;stroke-opacity:1"
          d="M 324.72746,109.73489 V 19.015881 H 254.99839 V 5.01157 H 212.49911 V -7.8331249 5.0105355 h 42.49721 V 19.014849 h 69.72823 z"
          id="path189" />
+      <g
+         id="con_en_bit_Z_Bus_register_1-5-6-0"
+         transform="rotate(90,185.10816,35.874743)"
+         inkscape:label="con_en_bit_Z_Bus_register_1">
+        <path
+           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+           id="path51-8-2-65-04-3" />
+        <path
+           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 139.99999,6.9999997 v 2.9999998 0 z"
+           id="path52-6-4-30-2-0" />
+        <path
+           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+           id="path53-5-8-48-3-1"
+           transform="scale(0.26458333)" />
+      </g>
     </g>
     <g
        id="lineIn_registerMdr_YBus"
@@ -2866,6 +2812,24 @@
          style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-dasharray:none;stroke-opacity:1"
          d="M 309.78366,110.62166 V 25.017583 H 248.99772 V 11.003181 H 182.49945 V -7.8343087 11.001901 h 66.49723 v 14.014648 h 60.78698 z"
          id="path186" />
+      <g
+         id="con_en_bit_Z_Bus_register_1-5-4-9"
+         transform="rotate(90,170.10816,20.874739)"
+         inkscape:label="con_en_bit_Z_Bus_register_1">
+        <path
+           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+           id="path51-8-2-65-8-2" />
+        <path
+           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 139.99999,6.9999997 v 2.9999998 0 z"
+           id="path52-6-4-30-7-9" />
+        <path
+           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+           id="path53-5-8-48-5-1"
+           transform="scale(0.26458333)" />
+      </g>
     </g>
     <g
        id="lineEn_ZBus_registerMdr"
@@ -2904,6 +2868,24 @@
          style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-dasharray:none;stroke-opacity:1"
          d="M 314.78802,110.56275 V 22.014147 H 252.00115 V 8.0097621 H 197.50009 V -7.8465607 8.0098362 h 54.50106 V 22.013115 h 62.78687 z"
          id="path188" />
+      <g
+         id="con_en_bit_Z_Bus_register_1-5-0-9-0"
+         transform="rotate(90,177.60816,28.374738)"
+         inkscape:label="con_en_bit_Z_Bus_register_1">
+        <path
+           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+           id="path51-8-2-65-2-5-9" />
+        <path
+           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 139.99999,6.9999997 v 2.9999998 0 z"
+           id="path52-6-4-30-1-3-3" />
+        <path
+           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+           id="path53-5-8-48-8-2-0"
+           transform="scale(0.26458333)" />
+      </g>
     </g>
     <g
        id="lineEn_registerMdr_cop"
@@ -2970,6 +2952,24 @@
          style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-dasharray:none;stroke-opacity:1"
          d="m 334.9997,111.01233 v -3.01537 -2.97393 h -6.98252 V 16.012447 H 257.99872 V 2.0009001 h -30.59968 v -9.8410553 9.8369199 h 30.60062 V 16.012447 h 70.01752 v 89.008633 h 6.98252 z"
          id="path208" />
+      <g
+         id="con_en_bit_Z_Bus_register_1-5-0-37-9"
+         transform="rotate(90,192.60816,43.374741)"
+         inkscape:label="con_en_bit_Z_Bus_register_1">
+        <path
+           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+           id="path51-8-2-65-2-0-8" />
+        <path
+           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 139.99999,6.9999997 v 2.9999998 0 z"
+           id="path52-6-4-30-1-0-6" />
+        <path
+           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+           id="path53-5-8-48-8-1-9"
+           transform="scale(0.26458333)" />
+      </g>
     </g>
     <g
        id="lineIn_registerMdr_cop"
@@ -3827,30 +3827,6 @@
          style="fill:#12b400;fill-opacity:1;stroke:#c155ff;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
          d="m 535.05983,78.40863 v -95.226229 h -5.09942 5.09942 z"
          id="path243" />
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="m 12.500529,-7.8352011 v 3.0321832 h 4.28811 v 1.2393903 -1.2402343 h -4.288777 z"
-         id="path244" />
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="m 27.502478,-7.8305151 v 3.0321832 h -4.28811 v 1.2393903 -1.2402343 h 4.288777 z"
-         id="path244-4" />
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="m 47.514529,-7.8449074 v 3.0321832 h 4.28811 v 1.2393903 -1.2402343 h -4.288777 z"
-         id="path244-1" />
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="m 62.516478,-7.8402214 v 3.0321832 h -4.28811 v 1.2393903 -1.2402343 h 4.288777 z"
-         id="path244-4-2" />
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="m 82.490546,-7.831287 v 3.0321832 h 4.28811 v 1.2393903 -1.2402343 h -4.288777 z"
-         id="path244-6" />
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="m 97.492495,-7.826601 v 3.0321832 h -4.28811 v 1.2393903 -1.2402343 h 4.288777 z"
-         id="path244-4-5" />
     </g>
     <g
        id="line_registerMode"
@@ -3937,6 +3913,147 @@
          style="fill:#96aee3;fill-opacity:0.0913349;stroke:#12b400;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
          d="M 474.99735,8.1979269 H 289.99913 V -7.8052291 8.1968951 Z"
          id="path222" />
+    </g>
+    <g
+       id="line_enBit1_ZBus_registerA"
+       transform="rotate(90,64.192718,-43.227324)"
+       inkscape:label="line_enBit1_ZBus_registerA">
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+         id="path51-8-2-65" />
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 v 2.9999998 0 z"
+         id="path52-6-4-30" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+         id="path53-5-8-48"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
+         d="m 12.500529,-7.8352011 v 3.0321832 h 4.28811 v 1.2393903 -1.2402343 h -4.288777 z"
+         id="pathXX6"
+         inkscape:label="line_enBit1_ZBus_registerA"
+         transform="rotate(-90,85.094811,-64.129418)" />
+    </g>
+    <g
+       id="line_enBit0_ZBus_registerA"
+       transform="rotate(90,71.733342,-35.719772)"
+       inkscape:label="line_enBit0_ZBus_registerA">
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+         id="path51-8-2-65-2" />
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 v 2.9999998 0 z"
+         id="path52-6-4-30-1" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+         id="path53-5-8-48-8"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
+         d="m 27.502478,-7.8305151 v 3.0321832 h -4.28811 v 1.2393903 -1.2402343 h 4.288777 z"
+         id="pathXX5"
+         transform="rotate(-90,92.635435,-56.621866)" />
+    </g>
+    <g
+       id="line_enBit1_XBus_registerA"
+       transform="rotate(90,81.706007,-25.723165)"
+       inkscape:label="line_enBit1_XBus_registerA">
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+         id="path51-8-2-65-0" />
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 v 2.9999998 0 z"
+         id="path52-6-4-30-4" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+         id="path53-5-8-48-0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
+         d="m 47.514529,-7.8449074 v 3.0321832 h 4.28811 v 1.2393903 -1.2402343 h -4.288777 z"
+         id="pathXX4"
+         transform="rotate(-90,102.6081,-46.625259)" />
+    </g>
+    <g
+       id="line_enBit0_XBus_registerA"
+       transform="rotate(90,89.228927,-18.207656)"
+       inkscape:label="line_enBit0_XBus_registerA">
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+         id="path51-8-2-65-2-6" />
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 v 2.9999998 0 z"
+         id="path52-6-4-30-1-8" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+         id="path53-5-8-48-8-5"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
+         d="m 62.516478,-7.8402214 v 3.0321832 h -4.28811 v 1.2393903 -1.2402343 h 4.288777 z"
+         id="pathXX3"
+         transform="rotate(-90,110.13102,-39.10975)" />
+    </g>
+    <g
+       id="line_enBit1_YBus_registerA"
+       transform="rotate(90,99.206068,-8.2231621)"
+       inkscape:label="line_enBit1_YBus_registerA">
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+         id="path51-8-2-65-7" />
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 v 2.9999998 0 z"
+         id="path52-6-4-30-18" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+         id="path53-5-8-48-9"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
+         d="m 82.490546,-7.831287 v 3.0321832 h 4.28811 v 1.2393903 -1.2402343 h -4.288777 z"
+         id="pathXX2"
+         inkscape:label="line_enBit1_YBus_registerA"
+         transform="rotate(-90,120.10816,-29.125257)" />
+    </g>
+    <g
+       id="line_enBit0_YBus_registerA"
+       transform="rotate(90,106.70608,-0.72315858)"
+       inkscape:label="line_enBit0_YBus_registerA">
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
+         id="path51-8-2-65-2-7" />
+      <path
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 139.99999,6.9999997 v 2.9999998 0 z"
+         id="path52-6-4-30-1-4" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
+         id="path53-5-8-48-8-8"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
+         d="m 97.492495,-7.826601 v 3.0321832 h -4.28811 v 1.2393903 -1.2402343 h 4.288777 z"
+         id="pathXX1"
+         inkscape:label="line_enBit0_YBus_registerA"
+         transform="rotate(-90,127.60817,-21.625253)" />
     </g>
     <path
        style="display:inline;fill:#96ed28;stroke:#c155ff;stroke-width:0.799999;stroke-miterlimit:2.1;paint-order:fill markers stroke"
@@ -4591,42 +4708,6 @@
       </g>
     </g>
     <g
-       id="con_en_bit_Z_Bus_register_1-5-3"
-       transform="rotate(90,99.206068,-8.2231619)"
-       inkscape:label="con_en_bit_Z_Bus_register_1">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-         id="path51-8-2-65-7" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 v 2.9999998 0 z"
-         id="path52-6-4-30-18" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-         id="path53-5-8-48-9"
-         transform="scale(0.26458333)" />
-    </g>
-    <g
-       id="con_en_bit_Z_Bus_register_1-5-0-3"
-       transform="rotate(90,106.70608,-0.72315814)"
-       inkscape:label="con_en_bit_Z_Bus_register_1">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-         id="path51-8-2-65-2-7" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 v 2.9999998 0 z"
-         id="path52-6-4-30-1-4" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-         id="path53-5-8-48-8-8"
-         transform="scale(0.26458333)" />
-    </g>
-    <g
        id="enBit_ZBus_registerMar"
        inkscape:label="enBit_ZBus_registerMar">
       <rect
@@ -4639,24 +4720,6 @@
          rx="1.4020785"
          ry="1.3564361"
          inkscape:label="enBit_ZBus_register0" />
-      <g
-         id="con_en_bit_Z_Bus_register_1-5-4-9"
-         transform="rotate(90,149.20607,41.776832)"
-         inkscape:label="con_en_bit_Z_Bus_register_1">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-2-65-8-2" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-4-30-7-9" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-8-48-5-1"
-           transform="scale(0.26458333)" />
-      </g>
     </g>
     <g
        id="enBit_ZBus_registerMdr"
@@ -4671,24 +4734,6 @@
          rx="1.4020933"
          ry="1.3564357"
          inkscape:label="enBit_ZBus_register1" />
-      <g
-         id="con_en_bit_Z_Bus_register_1-5-0-9-0"
-         transform="rotate(90,156.70607,49.276832)"
-         inkscape:label="con_en_bit_Z_Bus_register_1">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-2-65-2-5-9" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-4-30-1-3-3" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-8-48-8-2-0"
-           transform="scale(0.26458333)" />
-      </g>
     </g>
     <g
        id="enBit_registerMdr_YBus"
@@ -4703,24 +4748,6 @@
          rx="1.4020785"
          ry="1.3564361"
          inkscape:label="enBit_ZBus_register0" />
-      <g
-         id="con_en_bit_Z_Bus_register_1-5-6-0"
-         transform="rotate(90,164.20607,56.776833)"
-         inkscape:label="con_en_bit_Z_Bus_register_1">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-2-65-04-3" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-4-30-2-0" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-8-48-3-1"
-           transform="scale(0.26458333)" />
-      </g>
     </g>
     <g
        id="enBit_registerMdr_cop"
@@ -4735,24 +4762,6 @@
          rx="1.4020933"
          ry="1.3564357"
          inkscape:label="enBit_ZBus_register1" />
-      <g
-         id="con_en_bit_Z_Bus_register_1-5-0-37-9"
-         transform="rotate(90,171.70607,64.276833)"
-         inkscape:label="con_en_bit_Z_Bus_register_1">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-2-65-2-0-8" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-4-30-1-0-6" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-8-48-8-1-9"
-           transform="scale(0.26458333)" />
-      </g>
     </g>
   </g>
 </svg>

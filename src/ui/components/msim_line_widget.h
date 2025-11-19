@@ -22,8 +22,9 @@ public:
     virtual void update_display() override;
     virtual void show_tooltip() override;
     virtual void hide_tooltip() override;
-    virtual QString id() override;
-    virtual QString label() override;
+
+    virtual QString id() const override;
+    virtual QString label()const override;
 
 private:
     msim_line * m_line;

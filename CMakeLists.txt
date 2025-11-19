@@ -92,8 +92,6 @@ add_executable(microsimulation src/main.cpp
         src/core/common/architecture_ids.h
         src/core/common/id_reader.cpp
         src/core/common/id_reader.h
-        src/core/common/svg_loader.cpp
-        src/core/common/svg_loader.h
         src/core/components/msim_alu.cpp
         src/core/components/msim_alu.h
         src/core/components/msim_ar.cpp
@@ -143,6 +141,12 @@ add_executable(microsimulation src/main.cpp
         src/core/parser/msim_parser.cpp
         src/core/parser/msim_scanner.cpp
         res/qrc/assets.qrc
+        src/core/components/msim_decoder.cpp
+        src/core/components/msim_decoder.h
+        src/ui/controller/decoder_factory.cpp
+        src/ui/controller/decoder_factory.h
+        src/ui/components/msim_decoder_widget.cpp
+        src/ui/components/msim_decoder_widget.h
 )
 
 target_link_libraries(microsimulation

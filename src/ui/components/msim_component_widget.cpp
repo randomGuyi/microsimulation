@@ -32,7 +32,7 @@ QGraphicsProxyWidget *msim_component_widget::attach_to_target(drop_target * targ
     return proxy;
 }
 
-QString msim_component_widget::id(){
+QString msim_component_widget::id() const {
     if(! m_component){
         qWarning() << "m_component in component_widget not set !";
         return QString{};
@@ -40,7 +40,7 @@ QString msim_component_widget::id(){
     return QString::fromStdString(m_component->id());
 }
 
-QString msim_component_widget::label(){
+QString msim_component_widget::label() const {
     if(! m_component){
         qWarning() << "m_component in component_widget not set !";
         return QString{};

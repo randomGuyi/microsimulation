@@ -10,7 +10,10 @@
 
 #include <QGraphicsScene>
 
+#include "core/components/msim_bit.h"
+#include "ui/components/msim_bit_widget.h"
 #include "ui/components/msim_connector_widget.h"
+#include "ui/components/msim_decoder_widget.h"
 
 class msim_components_manager
 {
@@ -21,6 +24,8 @@ public:
         return instance;
     }
 
+    QString get_decoder_id_4_bit(QString bit_id);
+
     void place_component(drop_target * target, const QString & id, const QString & label);
     msim_rom * get_rom();
 
@@ -28,7 +33,19 @@ private:
 
     std::vector<std::string> placeable_connector_ids(QString id);
 
-    std::pair<msim_connector *, msim_connector_widget *> get_or_place_connector(QString conn_id);
+    std::vector<std::string> placeable_bit_ids(QString id);
+
+    std::pair<msim_connector *, msim_connector_widget *> get_or_create_connector(QString conn_id);
+
+    std::pair<msim_decoder *, msim_decoder_widget *> get_or_create_decoder(QString decoder_id);
+
+    std::pair<msim_component *, msim_component_widget *> get_or_create_component(QString const &comp_id, QString const &label);
+
+    std::pair<msim_bit *, msim_bit_widget *> get_or_create_bit(QString bit_id);
+
+    std::pair<msim_line *, msim_line_widget *> get_or_create_line(QString const &line_id);
+
+    QString get_lines_for_bit(QString bit_id);
 
     std::vector<std::string> placeable_line_ids(QString id) ;
 
@@ -45,16 +62,6 @@ private:
     msim_components_manager(const msim_components_manager & other) = delete;
     msim_components_manager & operator=(const msim_components_manager & other) = delete;
 
-    void place_connector(drop_target * target , msim_component const * placed_component);
-    void place_lines(drop_target * target , msim_component const * placed_component);
-
-    void place_ar( drop_target * target);
-    void place_op(drop_target * target);
-    void place_mode(drop_target * target);
-
-
-    QStringList find_connectors(msim_component const * placed_component);
-    QStringList find_lines_for_connector(QString const & connector_id);
 
     /* using bits to simplify line and bit placement for specific components */
     bool m_clock_placed;
@@ -64,9 +71,11 @@ private:
 
     QSvgRenderer * m_renderer;
     shared::svg_loader * m_loader;
-    QMap<QString, msim_component *> m_placed_components;
-    QMap<QString, msim_component *> m_placed_connectors;
-    QMap<QString, msim_line_widget *> m_placed_lines;
+    QMap<QString, std::pair<msim_component*, msim_component_widget*>> m_placed_components;
+    QMap<QString, std::pair<msim_connector*, msim_connector_widget *>> m_placed_connectors;
+    QMap<QString, std::pair<msim_line * , msim_line_widget *>> m_placed_lines;
+    QMap<QString, std::pair<msim_decoder* , msim_decoder_widget*>> m_placed_decoders;
+    QMap<QString, std::pair<msim_bit * , msim_bit_widget*>> m_placed_bits;
 
 };
 

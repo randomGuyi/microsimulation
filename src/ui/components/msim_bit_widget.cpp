@@ -31,6 +31,7 @@ void msim_bit_widget::resizeEvent(QResizeEvent* event) {
 }
 
 void msim_bit_widget::add_line(msim_line_widget * line){
+    if (m_lines.contains(line->id())) return;
     m_lines.insert(line->id(), line);
 }
 

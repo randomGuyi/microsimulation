@@ -17,8 +17,8 @@ public:
     virtual void show_tooltip() = 0;
     virtual void hide_tooltip() = 0;
 
-    virtual QString id() = 0;
-    virtual QString label() = 0;
+    virtual QString id() const = 0;
+    virtual QString label() const = 0;
 
 //    virtual QGraphicsItem * graphics_item() = 0;
 

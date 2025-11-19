@@ -64,9 +64,7 @@ void drop_target::dropEvent (QGraphicsSceneDragDropEvent * event) {
          QString dropped_id = QString::fromUtf8(event->mimeData()->data(CUSTOM_ID_DATA_STR));
          QString dropped_label = QString::fromUtf8(event->mimeData()->data(CUSTOM_LABEL_DATA_STR));
          place_component(dropped_id, dropped_label);
-
         event->acceptProposedAction();
-
      } else {
          event->ignore();
      }

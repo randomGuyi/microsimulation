@@ -170,6 +170,12 @@ line_ar
 line_ar_registerCar 
 line_clock_execute 
 line_cop_ar 
+line_enBit0_XBus_registerA 
+line_enBit0_YBus_registerA 
+line_enBit0_ZBus_registerA 
+line_enBit1_XBus_registerA 
+line_enBit1_YBus_registerA 
+line_enBit1_ZBus_registerA 
 line_registerCar_ar 
 line_registerCdr 
 line_registerFlags_ar 

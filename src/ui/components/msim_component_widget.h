@@ -16,8 +16,9 @@ public:
 
     virtual QGraphicsProxyWidget * attach_to_target(drop_target * target) override;
 
-    virtual QString id() override;
-    virtual QString label() override;
+
+    virtual QString id() const override;
+    virtual QString label() const override;
 
 protected:
     virtual void enterEvent(QEnterEvent* event) override;

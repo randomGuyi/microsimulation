@@ -45,7 +45,7 @@ void msim_line_widget::hide_tooltip(){
 
 }
 
-QString msim_line_widget::id(){
+QString msim_line_widget::id() const{
     if(! m_line){
         qWarning() << "m_line in component_widget not set !";
         return QString{};
@@ -53,7 +53,7 @@ QString msim_line_widget::id(){
     return QString::fromStdString(m_line->id());
 }
 
-QString msim_line_widget::label(){
+QString msim_line_widget::label() const{
     if(! m_line){
         qWarning() << "m_line in component_wlabelget not set !";
         return QString{};
