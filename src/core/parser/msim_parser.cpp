@@ -27,7 +27,6 @@ void msim_parser::parse(){
     program();
     if(m_lookahead.type != token_type::EOF_SY){
         syntax_error("Unexpected token after end of program");
-        return;
     }
 }
 
@@ -77,7 +76,8 @@ void msim_parser::segment(int & line, inst_word & iw){
     if(m_lookahead.type == token_type::SEMICOLON_SY){
         next_token();
     } else if (m_lookahead.type == token_type::EOF_SY){
-        //
+        // TODO: new shit
+        return;
     }
     else {
         syntax_error("new line after segment");
@@ -781,7 +781,6 @@ void msim_parser::number(int & nbr){
         next_token();
     }else{
         syntax_error("number --> [0-9]+");
-        return;
     }
 };
 void msim_parser::next_token(){

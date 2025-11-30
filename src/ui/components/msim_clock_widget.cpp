@@ -2,6 +2,7 @@
 #include "msim_clock_widget.h"
 #include "../../shared/constants.h"
 #include "ui/styles.h"
+#include "shared/architecture_ids.h"
 
 #include <QGraphicsOpacityEffect>
 #include <QGroupBox>
@@ -9,11 +10,11 @@
 #include <QTimer>
 #include <QVBoxLayout>
 
-#define ID_CLOCK_SEG_DISPLAY "cycleDisp_clock"
-#define ID_CLOCK_CONTROL_FRAME "controlDisp_clock"
-#define ID_CLOCK_FETCH_DISP "fetchFrame_clock"
-#define ID_CLOCK_DECODE_DISP "decodeFrame_clock"
-#define ID_CLOCK_EXECUTE_DISP "executeFrame_clock"
+  ////#define ID_CLOCK_SEG_DISPLAY "cycleDisp_clock"
+ //#define ID_CLOCK_CONTROL_FRAME "controlDisp_clock"
+ //#define ID_CLOCK_FETCH_DISP "fetchFrame_clock"
+ //#define ID_CLOCK_DECODE_DISP "decodeFrame_clock"
+ //#define ID_CLOCK_EXECUTE_DISP "executeFrame_clock"
 
 msim_clock_widget::msim_clock_widget(msim_clock * clock,
                                      shared::svg_loader * loader,
@@ -32,11 +33,13 @@ msim_clock_widget::msim_clock_widget(msim_clock * clock,
     setFixedSize(clock_bounds.size().toSize());
 
     /* adjust svg sub-elements to local coordinates */
-    QRectF seg_rect  = m_loader->get_renderer().boundsOnElement(ID_CLOCK_SEG_DISPLAY);
-    QRectF ctrl_rect = m_loader->get_renderer().boundsOnElement(ID_CLOCK_CONTROL_FRAME);
-
-    seg_rect.translate(-clock_bounds.topLeft());
-    ctrl_rect.translate(-clock_bounds.topLeft());
+    QRectF seg_rect  = m_loader->get_renderer().boundsOnElement(ID_CYCLEDISP_CLOCK);
+    QRectF ctrl_rect = m_loader->get_renderer().boundsOnElement(ID_CONTROLDISP_CLOCK);
+    /* TODO: fix offset in inkscape (trasform in xml...)
+     * TODO: Gruppeauflösen, Matrix anwenden, neu gruppieren
+     */
+    seg_rect.translate(-clock_bounds.topLeft() + QPointF{0, 41.804187});
+    ctrl_rect.translate(-clock_bounds.topLeft() + QPointF{0, 41.804187});
 
     /* Display to show the current segment */
     m_segment_label = new QLabel("# 0", this);
@@ -45,7 +48,7 @@ msim_clock_widget::msim_clock_widget(msim_clock * clock,
     m_segment_label->setGeometry(seg_rect.toRect());
 
     /* control area */
-    QWidget *ctrl_panel = new QWidget(this);
+    auto ctrl_panel = new QWidget(this);
     ctrl_panel->setGeometry(ctrl_rect.toRect());
     ctrl_panel->setContentsMargins(0, 0, 0, 0);
 

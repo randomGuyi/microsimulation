@@ -22,10 +22,10 @@ public:
                     QString const & element_id,
                     QWidget * parent = nullptr);
 
-    virtual void update_display() override;
+    void update_display() override;
 
-    virtual void show_tooltip() override;
-    virtual void hide_tooltip() override;
+    void show_tooltip() override;
+    void hide_tooltip() override;
 
 protected:
     void prev_phase();

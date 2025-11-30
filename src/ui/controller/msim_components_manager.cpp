@@ -20,18 +20,18 @@ msim_components_manager::msim_components_manager()
     , m_loader{&shared::svg_loader::get_instance()}
 {}
 
-std::vector<std::string> msim_components_manager::get_placealble_lines_by_regex(std::string const & regex) {
+std::vector<std::string> msim_components_manager::get_placeable_lines_by_regex(std::string const & regex) {
     /* lines from and to component */
     QStringList lines = id_reader::get_instance().get_results_for(regex);
     return placeable_ids_for(lines);
 }
 
 std::vector<std::string> msim_components_manager::placeable_line_ids(QString id){
-    return get_placealble_lines_by_regex("line_.*" + id.remove("comp_").toStdString() + ".*");
+    return get_placeable_lines_by_regex("line_.*" + id.remove("comp_").toStdString() + ".*");
 }
 
 std::vector<std::string> msim_components_manager::placeable_connector_line_ids(QString id){
-    return get_placealble_lines_by_regex("line(Fetch|Execute|Out|In|En).*" + id.remove("pcb_").toStdString() + ".*");
+    return get_placeable_lines_by_regex("line(Fetch|Execute|Out|In|En).*" + id.remove("pcb_").toStdString() + ".*");
 }
 
 std::vector<std::string> msim_components_manager::placeable_ids_for(QStringList const & component_ids) {
@@ -50,9 +50,12 @@ std::vector<std::string> msim_components_manager::placeable_ids_for(QStringList 
             necessary_components.begin(), necessary_components.end(),
             [this, to_comp](const QString &qs) {
                 if (qs.contains("registerA")) {
-                    return m_placed_components.keys().filter(QRegularExpression("register.*")).length() > 0;
+                    return m_placed_components
+                    .keys()
+                    .filter(QRegularExpression("register.*"))
+                    .length() > 0;
                 }
-                return m_placed_components.contains(to_comp(qs));
+                return m_placed_components.contains(to_comp(qs)) ? true : qs == "Dec";
             });
         if(all_present &! necessary_components.empty()) {
             placeable_ids.push_back(component_id.toStdString());
@@ -62,7 +65,8 @@ std::vector<std::string> msim_components_manager::placeable_ids_for(QStringList 
 }
 
 std::vector<std::string> msim_components_manager::placeable_connector_ids(QString id) {
-    QStringList conns = id_reader::get_instance().get_results_for("pcb.*" + id.remove("comp_").toStdString() + ".*");
+    QStringList conns =
+        id_reader::get_instance().get_results_for("pcb.*" + id.remove("comp_").toStdString() + ".*");
     return placeable_ids_for(conns);
 }
 
@@ -71,7 +75,8 @@ std::vector<std::string> msim_components_manager::placeable_bit_ids(QString id) 
     if (id.contains(QRegularExpression("register[0-3]"))) {
         id = "registerA";
     }
-    QStringList const bits = id_reader::get_instance().get_results_for(".*(B|b)it.*" + id.remove("comp_").toStdString() + ".*");
+    QStringList const bits =
+        id_reader::get_instance().get_results_for(".*(B|b)it.*" + id.remove("comp_").toStdString() + ".*");
     return placeable_ids_for(bits);
 }
 
@@ -94,7 +99,8 @@ std::pair<msim_decoder *, msim_decoder_widget *> msim_components_manager::get_or
     }
     return m_placed_decoders[decoder_id];
 }
-std::pair<msim_component*, msim_component_widget *> msim_components_manager::get_or_create_component(QString const & comp_id, QString const & label) {
+std::pair<msim_component*, msim_component_widget *>
+msim_components_manager::get_or_create_component(QString const & comp_id, QString const & label) {
     const auto comp_it= m_placed_components.find(comp_id);
     if(comp_it == m_placed_components.end()) {
         auto [comp, comp_widget]  =
@@ -108,9 +114,9 @@ std::pair<msim_component*, msim_component_widget *> msim_components_manager::get
 std::pair<msim_bit *, msim_bit_widget *> msim_components_manager::get_or_create_bit(QString bit_id) {
    const auto bit_it = m_placed_bits.find(bit_id);
     if (bit_it == m_placed_bits.end()) {
-        auto [bit, bit_wdgt]  =
+        auto [bit, bit_widget]  =
             connector_factory::create_enable_bit(bit_id, bit_id, m_loader);
-        m_placed_bits[bit_id] = {bit, bit_wdgt};
+        m_placed_bits[bit_id] = {bit, bit_widget};
     }
     return m_placed_bits[bit_id];
 }
@@ -153,12 +159,7 @@ QString msim_components_manager::get_decoder_id_4_bit(QString bit_id) {
     return "";
 }
 
-void msim_components_manager::place_component(drop_target *target, const QString &id, const QString &label) {
-    auto [component, widget] = get_or_create_component(id, label);
-    if(!component || !widget) return;
-    widget->attach_to_target(target);
-
-    /* place connectors */
+void msim_components_manager::place_connectors(QString const & id, drop_target * target) {
     for (auto const & conn_id: placeable_connector_ids(id)) {
         bool const is_new = m_placed_connectors.find(QString::fromStdString(conn_id)) == m_placed_connectors.end();
         auto [connector, connector_widget] = get_or_create_connector(QString::fromStdString(conn_id));
@@ -173,16 +174,19 @@ void msim_components_manager::place_component(drop_target *target, const QString
             if (is_new_line) {
                 line_widget->attach_to_target(target);
             }
-       }
+        }
     }
-    /* place all lines, which do not need connectors */
+}
+
+void msim_components_manager::place_lines(QString const & id, drop_target * target) {
     for (auto const & line_id : placeable_line_ids(id)) {
         bool const is_new_line = m_placed_lines.find(QString::fromStdString(line_id)) == m_placed_lines.end();
         auto [line, line_widget] = get_or_create_line(QString::fromStdString(line_id));
         if (is_new_line) line_widget->attach_to_target(target);
     }
+}
 
-    /* place bits */
+void msim_components_manager::place_bits(QString const & id, drop_target * target) {
     for (auto const & bit_id : placeable_bit_ids(id)) {
         bool const is_new_bit = m_placed_bits.find(QString::fromStdString(bit_id)) == m_placed_bits.end();
         auto [bit, bit_widget] = get_or_create_bit(QString::fromStdString(bit_id));
@@ -205,20 +209,28 @@ void msim_components_manager::place_component(drop_target *target, const QString
             }
         }
     }
+}
+
+void msim_components_manager::place_component(drop_target *target, const QString &id, const QString &label) {
+    auto [component, widget] = get_or_create_component(id, label);
+    if(!component || !widget) return;
+    widget->attach_to_target(target);
+
+    /* place connectors */
+    place_connectors(id, target);
+
+    /* place all lines, which do not need connectors */
+    place_lines(id, target);
+
+    /* place bits */
+    place_bits(id, target);
 
 }
 
 msim_rom * msim_components_manager::get_rom(){
-    auto it = m_placed_components.find("comp_rom");
+    const auto it = m_placed_components.find("comp_rom");
     if(it == m_placed_components.end()){
         return nullptr;
     }
     return dynamic_cast<msim_rom *>(it.value().first);
 }
-
-
-
-
-
-
-

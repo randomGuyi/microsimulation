@@ -89,7 +89,7 @@ add_executable(microsimulation src/main.cpp
         src/ui/controller/simulator_controller.cpp
         src/ui/controller/simulator_controller.h
         src/shared/component_info.h
-        src/core/common/architecture_ids.h
+        src/shared/architecture_ids.h
         src/core/common/id_reader.cpp
         src/core/common/id_reader.h
         src/core/components/msim_alu.cpp

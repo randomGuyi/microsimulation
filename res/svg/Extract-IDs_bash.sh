@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Input- und Output-Dateien
 INPUT_FILE="./frames_architecture.svg"
 OUTPUT_FILE="./frames_architecture_ids.txt"

@@ -12,9 +12,6 @@ cnBit3_ar
 cnBit4_ar 
 cnBit5_ar 
 cnBit6_ar 
-cnBit7_ar 
-cnBit8_ar 
-cnBit9_ar 
 comp_XBus 
 comp_YBus 
 comp_ZBus 
@@ -79,6 +76,9 @@ enBit1_ZBus_registerA
 enBit1_registerOp 
 enBit2_registerOp 
 enBit3_registerOp 
+enBit_Dec_XBus_registerA 
+enBit_Dec_YBus_registerA 
+enBit_Dec_ZBus_registerA 
 enBit_ZBus_registerMar 
 enBit_ZBus_registerMdr 
 enBit_registerMdr_YBus 
@@ -176,6 +176,9 @@ line_enBit0_ZBus_registerA
 line_enBit1_XBus_registerA 
 line_enBit1_YBus_registerA 
 line_enBit1_ZBus_registerA 
+line_enBit_Dec_XBus_registerA 
+line_enBit_Dec_YBus_registerA 
+line_enBit_Dec_ZBus_registerA 
 line_registerCar_ar 
 line_registerCdr 
 line_registerFlags_ar 
@@ -208,4 +211,5 @@ pcb_register3_YBus
 pcb_registerMdr_YBus 
 pcb_registerMdr_cop 
 ram 
-rom
+rom 
+title1

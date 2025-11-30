@@ -5,7 +5,7 @@
 #include "msim_cpu.h"
 #include "msim_ram.h"
 #include "msim_rom.h"
-#include "core/common/architecture_ids.h"
+#include "../../shared/architecture_ids.h"
 #include "core/components/msim_clock.h"
 #include "core/components/msim_register.h"
 

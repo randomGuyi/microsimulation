@@ -26,6 +26,12 @@ public:
 
     QString get_decoder_id_4_bit(QString bit_id);
 
+    void place_connectors(QString const &id, drop_target *target);
+
+    void place_lines(QString const &id, drop_target *target);
+
+    void place_bits(QString const &id, drop_target *target);
+
     void place_component(drop_target * target, const QString & id, const QString & label);
     msim_rom * get_rom();
 
@@ -55,7 +61,7 @@ private:
 
     void place_clock_lines(drop_target * target);
 
-    std::vector<std::string> get_placealble_lines_by_regex(std::string const &regex);
+    std::vector<std::string> get_placeable_lines_by_regex(std::string const &regex);
 
     msim_components_manager();
     ~msim_components_manager() = default;
