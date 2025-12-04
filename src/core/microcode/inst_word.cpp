@@ -4,8 +4,100 @@
 
 inst_word::inst_word()
     : msim_wrd{}
-    , m_ram_mode{ram_mode::WAIT}
-{}
+      , m_ram_mode{ram_mode::WAIT}
+      , m_ar_mode{ar_mode::CHAR_PLS_PLS}
+      , m_raw_word{0} {
+}
+
+
+uint32_t inst_word::get_raw_word() {return m_raw_word;}
+
+
+void inst_word::set_z_selection(uint8_t z_nbl) {
+}
+
+void inst_word::set_x_selection(uint8_t x_nbl) {
+}
+void inst_word::set_y_selection(uint8_t y_nbl) {
+}
+void inst_word::set_operation(uint8_t operation) {
+}
+void inst_word::set_z_mar(bool z_mar = false) {
+
+}
+void inst_word::set_z_mdr(bool z_mdr = false) {
+
+}
+void inst_word::set_mdr_y(bool mdr_y = false) {
+
+}
+void inst_word::set_mdr_cop(bool mdr_cop = false) {
+
+}
+void inst_word::set_ram_mode(ram_mode mode = ram_mode::WAIT) {
+
+}
+void inst_word::set_ar_mode(ar_mode mode = ar_mode::CHAR_PLS_PLS) {
+
+}
+void inst_word::set_mask(uint8_t mask) {
+
+}
+void inst_word::set_cn(int cn) {
+
+}
+
+uint8_t inst_word::get_x_selection() {
+
+}
+uint8_t inst_word::get_y_selection() {
+
+}
+uint8_t inst_word::get_z_selection() {
+
+}
+uint8_t inst_word::get_operation() {
+
+}
+bool inst_word::get_z_mar() {
+
+}
+bool inst_word::get_z_mdr() {
+
+}
+bool inst_word::get_mdr_y() {
+
+}
+ar_mode inst_word::get_mdr_cop() {
+
+}
+ram_mode inst_word::get_ram_mode() {
+
+}
+ar_mode inst_word::get_ar_mode() {
+
+}
+uint8_t inst_word::get_mask() {
+
+}
+int inst_word::get_cn() {
+
+}
+
+void inst_word::set_word(msim_wrd * wrd) {
+
+}
+void inst_word::set_or(msim_wrd * wrd) {
+
+}
+
+bool inst_word::ok() {
+
+}
+std::string inst_word::err_msg() {
+
+}
+
 
 void inst_word::set_read(bool read){
     if(read){

@@ -1,13 +1,14 @@
 #include "msim_parser.h"
 
+#include <iostream>
 #include <qDebug>
 
 msim_parser::msim_parser(msim_scanner * scanner_inst, msim_rom * rom_inst)
     :m_scanner{scanner_inst}
     , m_rom{rom_inst}
     , m_lookahead{}
-
 {}
+
 void msim_parser::set_rom_inst(msim_rom * inst){
     m_rom = inst;
 }
@@ -18,7 +19,7 @@ void msim_parser::set_scanner_inst(msim_scanner * inst){
     std::cout << " rename set_scanner to reset parser !!!" << std::endl;
 }
 
-bool msim_parser::has_error(){
+bool msim_parser::has_error() const {
     return ! m_errors.empty();
 }
 

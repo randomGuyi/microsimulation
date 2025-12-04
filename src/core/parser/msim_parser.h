@@ -284,7 +284,7 @@ class msim_parser
 public:
     msim_parser(msim_scanner * scanner_inst, msim_rom * rom_inst);
     void parse();
-    bool has_error();
+    bool has_error() const;
     std::vector<parser_error> get_errors();
     void set_rom_inst(msim_rom * inst);
     void set_scanner_inst(msim_scanner * inst);
@@ -301,7 +301,7 @@ private:
     void ram_write(bool & w_opt);
     void ram_write_opt(bool & write);
 
-    void fetch_sec(fetch_word & f_word);
+    void fetch_sec(inst_word & f_word);
     void fetch_cmd_list(fetch_word & fetch_wrd);
     void fetch_cmd (fetch_word & fetch_c);
 

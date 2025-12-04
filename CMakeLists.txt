@@ -123,14 +123,6 @@ add_executable(microsimulation src/main.cpp
         src/core/components/msim_register.h
         src/core/components/msim_rom.cpp
         src/core/components/msim_rom.h
-        src/core/microcode/addrr_word.cpp
-        src/core/microcode/addrr_word.h
-        src/core/microcode/decode_word.cpp
-        src/core/microcode/decode_word.h
-        src/core/microcode/exec_word.cpp
-        src/core/microcode/exec_word.h
-        src/core/microcode/fetch_word.cpp
-        src/core/microcode/fetch_word.h
         src/core/microcode/inst_word.cpp
         src/core/microcode/inst_word.h
         src/core/microcode/msim_wrd.cpp

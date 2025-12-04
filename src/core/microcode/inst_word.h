@@ -3,12 +3,7 @@
 
 #include <memory>
 
-#include "addrr_word.h"
-#include "decode_word.h"
-#include "exec_word.h"
 #include "msim_wrd.h"
-
-#include "fetch_word.h"
 
 enum class ram_mode{
     READ,
@@ -16,23 +11,46 @@ enum class ram_mode{
     WAIT
 };
 
+enum class ar_mode {
+   CHAR_PLS_PLS,
+   _4COP,
+   _4COP_CND,
+   _4CN
+};
+
 class inst_word: public msim_wrd{
 public:
     inst_word();
-    void set_read(bool read);
-    void set_fetch_ops(fetch_word & fw);
-    void set_decode_ops(decode_word & dw);
-    void set_ar_ops(addrr_word & aw);
-    void set_exec_ops(exec_word & ew);
-    void set_write(bool);
 
-    bool get_read() const ;
-    bool get_write() const;
-    fetch_word * get_fetch_ops() const;
-    decode_word * get_decode_ops() const;
-    addrr_word * get_ar_ops() const ;
-    exec_word * get_exec_ops()const;
+    void write_bits(uint8_t data, uint32_t offset_bits, uint32_t width_bits);
 
+    uint32_t get_raw_word();
+
+    void set_x_selection(uint8_t x_nbl);
+    void set_y_selection(uint8_t y_nbl);
+    void set_z_selection(uint8_t z_nbl);
+    void set_operation(uint8_t operation); // TODO: define Type 4 Operation
+    void set_z_mar(bool z_mar = false);
+    void set_z_mdr(bool z_mdr = false);
+    void set_mdr_y(bool mdr_y = false);
+    void set_mdr_cop(bool mdr_cop = false);
+    void set_ram_mode(ram_mode mode = ram_mode::WAIT);
+    void set_ar_mode(ar_mode mode = ar_mode::CHAR_PLS_PLS);
+    void set_mask(uint8_t mask);
+    void set_cn(int cn);
+
+    uint8_t get_x_selection();
+    uint8_t get_y_selection();
+    uint8_t get_z_selection();
+    uint8_t get_operation();
+    bool get_z_mar();
+    bool get_z_mdr();
+    bool get_mdr_y();
+    ar_mode get_mdr_cop();
+    ram_mode get_ram_mode();
+    ar_mode get_ar_mode();
+    uint8_t get_mask();
+    int get_cn();
 
     virtual void set_word(msim_wrd * wrd) override;
     virtual void set_or(msim_wrd * wrd) override;
@@ -41,13 +59,9 @@ public:
     virtual std::string err_msg() override;
 
 private:
-    std::unique_ptr<fetch_word> m_fetch_wrd;
-    std::unique_ptr<decode_word> m_decode_wrd;
-    std::unique_ptr<addrr_word> m_addrr_wrd;
-    std::unique_ptr<exec_word> m_exec_wrd;
-
     ram_mode m_ram_mode;
-
+    ar_mode m_ar_mode;
+    uint32_t m_raw_word;
 };
 
 #endif // INST_WORD_H
