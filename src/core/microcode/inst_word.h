@@ -34,11 +34,11 @@ public:
     exec_word * get_exec_ops()const;
 
 
-    virtual void set_word(msim_wrd * wrd) override;
-    virtual void set_or(msim_wrd * wrd) override;
+    void set_word(msim_wrd * wrd) override;
+    void set_or(msim_wrd * wrd) override;
 
-    virtual bool ok() const override;
-    virtual std::string err_msg() override;
+    bool ok() const override;
+    std::string err_msg() override;
 
 private:
     std::unique_ptr<fetch_word> m_fetch_wrd;

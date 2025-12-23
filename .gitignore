@@ -11,6 +11,10 @@
 *.dylib
 
 # Qt-es
+**/html/*
+**/latex/*
+latex/
+html/
 object_script.*.Release
 object_script.*.Debug
 *_plugin_import.cpp

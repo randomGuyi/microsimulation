@@ -1,5 +1,4 @@
 #include "msim_parser.h"
-
 #include <qDebug>
 
 msim_parser::msim_parser(msim_scanner * scanner_inst, msim_rom * rom_inst)
