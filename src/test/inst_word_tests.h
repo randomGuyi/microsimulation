@@ -1,0 +1,9 @@
+//
+// Created by Arthur on 26.12.25.
+//
+
+#ifndef MICROSIMULATION_INST_WORD_TESTS_H
+#define MICROSIMULATION_INST_WORD_TESTS_H
+int run_tests();
+
+#endif //MICROSIMULATION_INST_WORD_TESTS_H

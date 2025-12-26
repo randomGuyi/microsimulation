@@ -1,210 +1,277 @@
 #include "inst_word.h"
 
+#include <ostream>
+
 #define UNUSED(X) (void) X
+
+/*
+ * z->R0 z->R1 z->R_en */
+#define Z_OFFSET_BITS 29
+#define Z_WIDTH_BITS 3
+ /* R0->x R1->x R2->x_en */
+#define X_OFFSET_BITS 26
+#define X_WIDTH_BITS 3
+
+ /* R0->y R1->y R2->y_en */
+#define Y_OFFSET_BITS 23
+#define Y_WIDTH_BITS 3
+
+ /* Op0 Op1 Op2 Op3 */
+#define OP_OFFSET_BITS 19
+#define OP_WIDTH_BITS 4
+
+/* z->MAR z->MDR */
+#define Z_MAR_OFFSET_BITS 18
+#define Z_MAR_WIDTH_BITS 1
+
+#define Z_MDR_OFFSET_BITS 17
+#define Z_MDR_WIDTH_BITS 1
+
+/* MDR->y MDR->cop */
+#define MDR_Y_OFFSET_BITS 16
+#define MDR_WIDTH_BITS 1
+
+#define MDR_COP_OFFSET_BITS 15
+#define MDR_WIDTH_BITS 1
+
+ /* R_Mode0 R_Mode1 */
+#define R_MODE_OFFSET_BITS 13
+#define R_MODE_WIDTH_BITS 2
+
+ /* AR_Mode0 AR_Mode1 */
+#define AR_MODE_OFFSET_BITS 11
+#define AR_MODE_WIDTH_BITS 2
+
+/* Mask0 Mask1 Mask2 Mask3 */
+#define MASK_OFFSET_BITS 7
+#define MASK_WIDTH_BITS 4
+
+ /* CN0 CN1 CN2 CN3 CN4 CN5 CN6 */
+#define CN_OFFSET_BITS 0
+#define CN_WIDTH_BITS 7
+
+ /* = 32 bits total */
 
 inst_word::inst_word()
     : msim_wrd{}
       , m_ram_mode{ram_mode::WAIT}
       , m_ar_mode{ar_mode::CHAR_PLS_PLS}
-      , m_raw_word{0} {
+      , m_raw_word{0}
+      , m_const_nbr{0}
+{}
+
+
+void inst_word::write_bits(uint8_t data, uint32_t offset_bits, uint32_t width_bits) {
+    const uint32_t mask = ((1u << width_bits) - 1u) << offset_bits;
+    m_raw_word = (m_raw_word & ~mask) | ((static_cast<uint32_t>(data) << offset_bits) & mask);
 }
 
+uint8_t inst_word::read_bits(uint32_t offset_bits, uint32_t width_bits) {
+    const uint32_t mask = (1u << width_bits) - 1u;
+    return static_cast<uint8_t>((m_raw_word >> offset_bits) & mask);
+}
 
 uint32_t inst_word::get_raw_word() {return m_raw_word;}
 
 
+
+std::ostream & operator<<(std::ostream & os, const inst_word & iw) {
+    /* |b31|b30|b29|b28 | b27|b26|b25|b24 |b23|b22|b21|b20 | b19|b18|b17|b16 |b15|b14|b13|b12|b11|b10| b9| b8| b7| b6| b5| b4| b3| b2| b1| b0|*/
+    /* | Z -> REGISTER | X SELECTION  |   Y SELECTION      |  OPERATION      |Z->MAR|Z->MDR|MDR->Y|MDR->COP| RAM MODE | AR MODE  |   MASK   |     CN      |*/
+    std::string str{"|"};
+    for (int i = 0; i < 32; ++i) {
+        bool bit_set = (iw.m_raw_word >> (31 - i)) & 1u;
+        str += bit_set ? "1|" : "0|";
+    }
+    os << str << std::endl;
+    os << "|z->r0|r->x|r->y| op |z->mar|z->mdr|mdr->y|mdr->cop|ram mode|ar mode|  mask |     cn      |" << std::endl;
+    return os;
+}
+
 void inst_word::set_z_selection(uint8_t z_nbl) {
+    /* 0 0 0 0 0 s0 s1 en */
+    if (read_bits(Z_OFFSET_BITS, Z_MDR_OFFSET_BITS) != 0) {
+        add_error("Z selection already set!");
+        return;
+    }
+    write_bits(z_nbl, Z_OFFSET_BITS, Z_WIDTH_BITS);
 }
 
 void inst_word::set_x_selection(uint8_t x_nbl) {
+    /* 0 0 0 0 0 s0 s1 en */
+    write_bits(x_nbl, X_OFFSET_BITS, X_WIDTH_BITS);
 }
+
 void inst_word::set_y_selection(uint8_t y_nbl) {
+    /* 0 0 0 0 0 s0 s1 en */
+    write_bits(y_nbl, Y_OFFSET_BITS, Y_WIDTH_BITS);
+
 }
 void inst_word::set_operation(uint8_t operation) {
-}
-void inst_word::set_z_mar(bool z_mar = false) {
+    /* 0 0 0 0 Op3 Op2 Op1 Op0 */
+    write_bits(operation, OP_OFFSET_BITS, OP_WIDTH_BITS);
 
 }
-void inst_word::set_z_mdr(bool z_mdr = false) {
-
+void inst_word::set_z_mar(bool z_mar) {
+     write_bits(static_cast<uint8_t>(z_mar), Z_MAR_OFFSET_BITS, Z_MAR_WIDTH_BITS);
 }
-void inst_word::set_mdr_y(bool mdr_y = false) {
 
+void inst_word::set_z_mdr(bool z_mdr) {
+    write_bits(static_cast<uint8_t>(z_mdr),  Z_MDR_OFFSET_BITS, Z_MDR_WIDTH_BITS);
 }
-void inst_word::set_mdr_cop(bool mdr_cop = false) {
+void inst_word::set_mdr_y(bool mdr_y ) {
+    write_bits(static_cast<uint8_t>(mdr_y), MDR_Y_OFFSET_BITS, MDR_WIDTH_BITS);
+}
+void inst_word::set_mdr_cop(bool mdr_cop) {
+    write_bits(static_cast<uint8_t>(mdr_cop), MDR_COP_OFFSET_BITS, MDR_WIDTH_BITS);
+}
 
-}
-void inst_word::set_ram_mode(ram_mode mode = ram_mode::WAIT) {
+void inst_word::set_ram_mode(ram_mode mode) {
+    uint8_t mode_nbl = 0;
+    switch(mode){
+        case ram_mode::WAIT:
+            mode_nbl = 0b00;
+            break;
+        case ram_mode::READ:
+            mode_nbl = 0b01;
+            break;
+        case ram_mode::WRITE:
+            mode_nbl = 0b10;
+            break;
+        default:
+            add_error("invalid ram mode set in instruction word!");
+            return;
+    }
 
+    write_bits(mode_nbl,R_MODE_OFFSET_BITS, R_MODE_WIDTH_BITS);
 }
-void inst_word::set_ar_mode(ar_mode mode = ar_mode::CHAR_PLS_PLS) {
 
+void inst_word::set_ar_mode(ar_mode mode ) {
+    uint8_t mode_nbl = 0;
+    switch(mode){
+        case ar_mode::CHAR_PLS_PLS:
+            mode_nbl = 0b00;
+            break;
+        case ar_mode::_4COP:
+            mode_nbl = 0b01;
+            break;
+        case ar_mode::_4COP_CND:
+            mode_nbl = 0b10;
+            break;
+        case ar_mode::_4CN:
+            mode_nbl = 0b11;
+            break;
+        default:
+            add_error("invalid ar mode set in instruction word!");
+            return;
+    }
+    write_bits(mode_nbl,AR_MODE_OFFSET_BITS, AR_MODE_WIDTH_BITS);
 }
+
 void inst_word::set_mask(uint8_t mask) {
-
+    write_bits(mask, MASK_OFFSET_BITS, MASK_WIDTH_BITS);
 }
-void inst_word::set_cn(int cn) {
 
+void inst_word::set_cn(uint8_t cn) {
+    write_bits(cn, CN_OFFSET_BITS, CN_WIDTH_BITS);
 }
 
 uint8_t inst_word::get_x_selection() {
-
+    return read_bits(X_OFFSET_BITS, X_WIDTH_BITS);
 }
 uint8_t inst_word::get_y_selection() {
-
+    return read_bits(Y_OFFSET_BITS, Y_WIDTH_BITS);
 }
 uint8_t inst_word::get_z_selection() {
-
+    return read_bits(Z_OFFSET_BITS, Z_WIDTH_BITS);
 }
 uint8_t inst_word::get_operation() {
-
+    return read_bits(OP_OFFSET_BITS, OP_WIDTH_BITS);
 }
 bool inst_word::get_z_mar() {
+    return read_bits(Z_MAR_OFFSET_BITS, Z_MAR_WIDTH_BITS) == 1;
 
 }
 bool inst_word::get_z_mdr() {
-
+    return read_bits(Z_MDR_OFFSET_BITS, Z_MDR_WIDTH_BITS) == 1;
 }
 bool inst_word::get_mdr_y() {
+    return read_bits(MDR_Y_OFFSET_BITS, MDR_WIDTH_BITS) == 1;
 
 }
-ar_mode inst_word::get_mdr_cop() {
-
+bool inst_word::get_mdr_cop() {
+    return read_bits(MDR_COP_OFFSET_BITS, MDR_WIDTH_BITS) == 1;
 }
+
 ram_mode inst_word::get_ram_mode() {
-
+    uint8_t ram_mode_nbl = read_bits(R_MODE_OFFSET_BITS, R_MODE_WIDTH_BITS);
+    switch (ram_mode_nbl) {
+        case 0b00:
+            return ram_mode::WAIT;
+        case 0b01:
+            return ram_mode::READ;
+        case 0b10:
+            return ram_mode::WRITE;
+        default:
+            add_error("Invalid ram mode set in instruction word!");
+            return ram_mode::WAIT; // return a safe default
+    }
 }
-ar_mode inst_word::get_ar_mode() {
 
+ar_mode inst_word::get_ar_mode() {
+    uint8_t ar_mode_nbl = read_bits(AR_MODE_OFFSET_BITS, AR_MODE_WIDTH_BITS);
+    switch (ar_mode_nbl) {
+        case 0:
+            return ar_mode::CHAR_PLS_PLS;
+        case 1:
+            return ar_mode::_4COP;
+        case 2:
+            return ar_mode::_4COP_CND;
+        case 3:
+            return ar_mode::_4CN;
+        default:
+            add_error("Invalid ar mode set in instruction word!");
+            return ar_mode::CHAR_PLS_PLS; // safe default
+    }
 }
 uint8_t inst_word::get_mask() {
-
+    return read_bits(MASK_OFFSET_BITS, MASK_WIDTH_BITS);
 }
+
 int inst_word::get_cn() {
-
+    return read_bits(CN_OFFSET_BITS, CN_WIDTH_BITS);
 }
-
-void inst_word::set_word(msim_wrd * wrd) {
-
-}
-void inst_word::set_or(msim_wrd * wrd) {
-
-}
-
-bool inst_word::ok() {
-
-}
-std::string inst_word::err_msg() {
-
-}
-
-
-void inst_word::set_read(bool read){
-    if(read){
-        m_ram_mode = ram_mode::READ;
-    }
-}
-
-void inst_word::set_fetch_ops(fetch_word & fw){
-    if(m_fetch_wrd != nullptr){
-        add_error("fetch options for instruction word already set!");
-        return;
-    }
-    m_fetch_wrd = std::make_unique<fetch_word>(fw);
-}
-
-void inst_word::set_decode_ops(decode_word & dw){
-    if(m_decode_wrd != nullptr){
-        add_error("decode options for instruction word already set!");
-        return;
-    }
-    m_decode_wrd = std::make_unique<decode_word>(dw);
-}
-
-void inst_word::set_ar_ops(addrr_word & aw){
-    if(m_addrr_wrd != nullptr){
-        add_error("addrr options for instruction word already set!");
-        return;
-    }
-    m_addrr_wrd = std::make_unique<addrr_word>(aw);
-}
-
-void inst_word::set_exec_ops(exec_word & ew){
-    if(m_exec_wrd != nullptr){
-        add_error("exec options for instruction word already set!");
-        return;
-    }
-    m_exec_wrd = std::make_unique<exec_word>(ew);
-}
-
-void inst_word::set_write(bool write){
-    if(write){
-        m_ram_mode = ram_mode::WRITE;
-    }
-}
-
-bool inst_word::get_read()const{
-    return m_ram_mode == ram_mode::READ;
-}
-
-fetch_word * inst_word::get_fetch_ops() const{
-    return m_fetch_wrd.get();
-}
-
-decode_word * inst_word::get_decode_ops() const{
-    return m_decode_wrd.get();
-}
-
-addrr_word * inst_word::get_ar_ops() const{
-    return m_addrr_wrd.get();
-}
-
-exec_word * inst_word::get_exec_ops() const{
-    return m_exec_wrd.get();
-}
-
-bool inst_word::get_write() const{
-    return m_ram_mode == ram_mode::WRITE;
-}
-
-void inst_word::set_word(msim_wrd * wrd) {
-    inst_word* other = dynamic_cast<inst_word*>(wrd);
-    if(other == nullptr) throw std::runtime_error("instruction word can not be set to a different class !");
-
-    m_ram_mode = other->m_ram_mode;
-    m_fetch_wrd->set_word(other->m_fetch_wrd.get());
-    m_decode_wrd->set_word(other->m_decode_wrd.get());
-    m_addrr_wrd->set_word(other->m_addrr_wrd.get());
-    m_exec_wrd->set_word(other->m_exec_wrd.get());
-}
-
-void inst_word::set_or(msim_wrd * wrd) {
-    inst_word* other = dynamic_cast<inst_word*>(wrd);
-    if(other == nullptr) throw std::runtime_error("instruction word can not be set to a different class !");
-
-    m_ram_mode = m_ram_mode == ram_mode::WAIT
-               ? other->m_ram_mode
-               : ram_mode::WAIT;
-
-    m_fetch_wrd->set_or(other->m_fetch_wrd.get());
-    m_decode_wrd->set_or(other->m_decode_wrd.get());
-    m_addrr_wrd->set_or(other->m_addrr_wrd.get());
-    m_exec_wrd->set_or(other->m_exec_wrd.get());
-}
-
 
 bool inst_word::ok() const {
-    return m_ok &&
-           (m_fetch_wrd ? m_fetch_wrd->ok() : true) &&
-           (m_decode_wrd ? m_decode_wrd->ok() : true) &&
-           (m_addrr_wrd ? m_addrr_wrd->ok() : true) &&
-           (m_exec_wrd ? m_exec_wrd->ok() : true);
+    return true;
 }
 
 std::string inst_word::err_msg() {
-    return msim_wrd::err_msg() +
-           (m_fetch_wrd ? m_fetch_wrd->err_msg() : "") +
-           (m_decode_wrd ? m_decode_wrd->err_msg() : "") +
-           (m_addrr_wrd ? m_addrr_wrd->err_msg() : "") +
-           (m_exec_wrd ? m_exec_wrd->err_msg() : "");
+    if (m_error_msgs.empty()) {
+        return "";
+    }
+    std::string err_result = "{ ";
+    for (std::size_t i = 0; i < m_error_msgs.size(); ++i) {
+        err_result.append(m_error_msgs[i]);
+        if (i + 1 < m_error_msgs.size()) {
+            err_result.append(", ");
+        }
+    }
+    err_result.append(" }");
+    return err_result;
+}
+void inst_word::set_constant_nbr(int nbr) {
+    if (m_const_nbr != 0) {
+        add_error("Constant number already set in instruction word!");
+        return;
+    }
+    m_const_nbr = nbr;
+}
+
+void inst_word::set_default_operation() {
+    write_bits(Z_Z, OP_OFFSET_BITS, OP_WIDTH_BITS);
+}
+void inst_word::set_default_ar_opt() {
+    /* ar_mode::CHAR_PLS_PLS ==> 0b00; */
+    write_bits(0b00, AR_MODE_OFFSET_BITS, AR_MODE_WIDTH_BITS);
 }

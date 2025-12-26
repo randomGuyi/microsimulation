@@ -10,8 +10,6 @@ public:
     virtual bool ok() const;
     virtual std::string err_msg();
 
-    virtual void set_word(msim_wrd * wrd) = 0;
-    virtual void set_or(msim_wrd * wrd) = 0;
     virtual ~msim_wrd() = default;
 
 protected:

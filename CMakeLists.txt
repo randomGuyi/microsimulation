@@ -139,6 +139,8 @@ add_executable(microsimulation src/main.cpp
         src/ui/controller/decoder_factory.h
         src/ui/components/msim_decoder_widget.cpp
         src/ui/components/msim_decoder_widget.h
+        src/test/inst_word_tests.cpp
+        src/test/inst_word_tests.h
 )
 
 target_link_libraries(microsimulation

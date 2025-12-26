@@ -39,6 +39,7 @@ void msim_parser::program(){
         emit_instruction(w, line);
     }
 };
+
 void msim_parser::segment(int & line, inst_word & iw){
     bool seg_set = false;
     int seg = 0;
@@ -98,9 +99,8 @@ void msim_parser::instruction_block(inst_word & word){
         if( next == token_type::READ_SY  ||
             next == token_type::WAIT_SY){
 
-            bool r{};
-            ram_read(r);
-            word.set_read(r);
+            bool r {ram_read()};
+            word.set_ram_mode(r ? ram_mode::READ : ram_mode::WAIT);
             read_set = true;
         }
         if(m_lookahead.type == token_type::SEMICOLON_SY){
@@ -111,9 +111,7 @@ void msim_parser::instruction_block(inst_word & word){
     }
     /* [ FetchSec ] */
     if(m_lookahead.type == token_type::H_SY){
-        fetch_word fw{};
-        fetch_sec(fw);
-        word.set_fetch_ops(fw);
+        fetch_sec(word);
 
         if(m_lookahead.type == token_type::SEMICOLON_SY){
             next_token(); // ;
@@ -124,11 +122,7 @@ void msim_parser::instruction_block(inst_word & word){
 
     /* [ DecodeSec ] */
     if(m_lookahead.type == token_type::R_SY){
-        decode_word dw{};
-        addrr_word aw{};
-        decode_sec(dw, aw);
-        word.set_decode_ops(dw);
-        word.set_ar_ops(aw);
+        decode_sec(word);
 
         if(m_lookahead.type == token_type::SEMICOLON_SY){
             next_token(); // ;
@@ -139,9 +133,7 @@ void msim_parser::instruction_block(inst_word & word){
 
     /* [ ExecSec ] */
     if(m_lookahead.type == token_type::B_SY){
-        exec_word ew{};
-        exec_sec(ew);
-        word.set_exec_ops(ew);
+        exec_sec(word);
 
         if(m_lookahead.type == token_type::SEMICOLON_SY){
             next_token(); // ;
@@ -162,7 +154,7 @@ void msim_parser::instruction_block(inst_word & word){
             }
             bool write{};
             ram_write(write);
-            word.set_write(write);
+            word.set_ram_mode(write ? ram_mode::WRITE : ram_mode::WAIT);
 
             if(m_lookahead.type == token_type::SEMICOLON_SY){
                 next_token(); // ;
@@ -173,16 +165,16 @@ void msim_parser::instruction_block(inst_word & word){
     }
 }
 
-void msim_parser::ram_read( bool & r_opt){
+bool msim_parser::ram_read(){
     bool read {false};
     if(m_lookahead.type == token_type::RAM_SY){
         next_token();
         ram_read_op(read);
     }else{
         syntax_error("missing 'RAM:'");
-        return;
+        return false;
     }
-    r_opt = read;
+    return read;
 };
 
 void msim_parser::ram_read_op(bool & read){
@@ -224,7 +216,7 @@ void msim_parser::ram_write_opt(bool & write){
     next_token();
 };
 
-void msim_parser::fetch_sec(fetch_word & f_word){
+void msim_parser::fetch_sec(inst_word &f_word){
     if(m_lookahead.type == token_type::H_SY){
         next_token();
     }else{
@@ -232,7 +224,6 @@ void msim_parser::fetch_sec(fetch_word & f_word){
         return;
     }
 
-    fetch_word fw{};
     if( m_lookahead.type == token_type::R0_TO_X_SY ||
         m_lookahead.type == token_type::R1_TO_X_SY ||
         m_lookahead.type == token_type::R2_TO_X_SY ||
@@ -247,58 +238,45 @@ void msim_parser::fetch_sec(fetch_word & f_word){
         m_lookahead.type == token_type::MDR_TO_Y_SY
         )
     {
-        fetch_cmd_list(fw);
-        f_word = fw;
+        fetch_cmd_list(f_word);
     }
 }
 
-void msim_parser::fetch_cmd_list(fetch_word & fetch_wrd){
+void msim_parser::fetch_cmd_list(inst_word &fetch_wrd){
 
-//    fetch_word w{};
-    fetch_word fetch_cd{};
-    fetch_cmd(fetch_cd);
-    fetch_wrd.set_or(&fetch_cd);
+    fetch_cmd(fetch_wrd);
     if(! fetch_wrd.ok()){
         semantic_error(fetch_wrd.err_msg());
     }
 
     while(m_lookahead.type == token_type::COMMA_SY){
         next_token();
-        fetch_word fetch_cd{};
-        fetch_cmd(fetch_cd);
-        fetch_wrd.set_or(&fetch_cd);
+        fetch_cmd(fetch_wrd);
         if(! fetch_wrd.ok()){
             semantic_error(fetch_wrd.err_msg());
         }
     }
 };
 
-void msim_parser::fetch_cmd (fetch_word & fetch_c){
-    fetch_word w{};
+void msim_parser::fetch_cmd (inst_word &fetch_c){
     switch(m_lookahead.type){
         case token_type::R0_TO_X_SY:
         case token_type::R1_TO_X_SY:
         case token_type::R2_TO_X_SY:
         case token_type::R3_TO_X_SY:{
-            uint8_t x_nbl{0};
-            x_sel(x_nbl);
-            w.set_x_sel(x_nbl);
+            x_sel(fetch_c);
             break;
         }
         case token_type::R0_TO_Y_SY:
         case token_type::R1_TO_Y_SY:
         case token_type::R2_TO_Y_SY:
         case token_type::R3_TO_Y_SY:{
-            uint8_t y_nbl{0};
-            y_sel(y_nbl);
-            w.set_y_sel(y_nbl);
+            y_sel(fetch_c);
             break;
         }
         case token_type::MDR_TO_COP_SY:
         case token_type::MDR_TO_Y_SY:{
-            uint8_t mdr_nbl{0};
-            mdr_opt(mdr_nbl);
-            w.set_mdr_sel(mdr_nbl);
+            mdr_opt(fetch_c);
             break;
         }
         default: {
@@ -306,124 +284,99 @@ void msim_parser::fetch_cmd (fetch_word & fetch_c){
             return;
         }
     };
-        fetch_c = w;
 };
 
-void msim_parser::x_sel(uint8_t & x_nbl){
-    uint8_t bt{0};
+void msim_parser::x_sel(inst_word &wrd){
     switch(m_lookahead.type){
     case token_type::R0_TO_X_SY:{
-        set_bit(bt, 0);
-        next_token();
+        wrd.set_x_selection(REGISTER_0);
         break;
     }
     case token_type::R1_TO_X_SY:{
-        set_bit(bt, 1);
-        next_token();
+        wrd.set_x_selection(REGISTER_1);
         break;
     }
     case token_type::R2_TO_X_SY:{
-        set_bit(bt, 2);
-        next_token();
+        wrd.set_x_selection(REGISTER_2);
         break;
     }
     case token_type::R3_TO_X_SY:{
-        set_bit(bt, 3);
-        next_token();
+        wrd.set_x_selection(REGISTER_3);
         break;
     }
     default:
         syntax_error("XBus selection");
         return;
     }
-    x_nbl =  bt;
+    next_token();
 };
 
-void msim_parser::y_sel(uint8_t & y_nbl){
-    uint8_t bt{0};
+void msim_parser::y_sel(inst_word &y_nbl){
     switch(m_lookahead.type){
     case token_type::R0_TO_Y_SY:{
-        set_bit(bt, 0);
-        next_token();
+        y_nbl.set_y_selection(REGISTER_0);
         break;
     }
     case token_type::R1_TO_Y_SY:{
-        set_bit(bt, 1);
-        next_token();
+        y_nbl.set_y_selection(REGISTER_1);
         break;
     }
     case token_type::R2_TO_Y_SY:{
-        set_bit(bt, 2);
-        next_token();
+        y_nbl.set_y_selection(REGISTER_2);
         break;
     }
     case token_type::R3_TO_Y_SY:{
-        set_bit(bt, 3);
-        next_token();
+        y_nbl.set_y_selection(REGISTER_3);
         break;
     }
     default:
         syntax_error("YBus selection");
         return;
     }
-    y_nbl =  bt;
+    next_token();
 };
 
-void msim_parser::mdr_opt(uint8_t & mdr_nbl){
-    uint8_t bt{0};
+void msim_parser::mdr_opt(inst_word &mdr_nbl){
     switch (m_lookahead.type) {
     case token_type::MDR_TO_COP_SY:{
         next_token();
-        set_bit(bt, 1);
+        mdr_nbl.set_mdr_cop(true);
         break;
     }
     case token_type::MDR_TO_Y_SY:{
         next_token();
-        set_bit(bt, 0);
+        mdr_nbl.set_mdr_y(true);
         break;
     }
     default:
         syntax_error("MDR Selection");
-        return;
     }
-    mdr_nbl= bt;
 };
 
-void msim_parser::decode_sec(decode_word & dec_word, addrr_word & ar_wrd ){
+void msim_parser::decode_sec(inst_word &wrd){
     if(m_lookahead.type == token_type::R_SY){
         next_token();
     }else{
         syntax_error("Decode Sequence");
         return;
     }
-    decode_word dw{};
-    addrr_word aw{};
     if(m_lookahead.type == token_type::Z_ASSIGN_SY ||
        m_lookahead.type == token_type::CAR_PLS_PLS_SY ||
         m_lookahead.type == token_type::ASSIGN_CAR_SY){
 
-        decode_cmd_list(dw, aw);
+        decode_cmd_list(wrd);
     }
-    dec_word = dw;
-    ar_wrd = aw;
 };
 
-void msim_parser::decode_cmd_list( decode_word & dec_cmd, addrr_word & ar_cmd){
-    decode_word dw{};
-    addrr_word aw{};
+void msim_parser::decode_cmd_list(inst_word &wrd){
 
     if(m_lookahead.type == token_type::Z_ASSIGN_SY ||
        m_lookahead.type == token_type::CAR_PLS_PLS_SY||
         m_lookahead.type == token_type::ASSIGN_CAR_SY){
 
-        decode_cmd(dw, aw);
-        dec_cmd.set_word(&dw);
-        ar_cmd.set_or(&aw);
-        if(! dec_cmd.ok()){
-            semantic_error(dec_cmd.err_msg());
-        }
-        if(! ar_cmd.ok()){
-            semantic_error(ar_cmd.err_msg());
+        decode_cmd(wrd);
+        if(! wrd.ok()){
+            semantic_error(wrd.err_msg());
         }
     }else{
         syntax_error("Decode Sequence");
@@ -432,14 +385,9 @@ void msim_parser::decode_cmd_list( decode_word & dec_cmd, addrr_word & ar_cmd){
 
     while(m_lookahead.type == token_type::COMMA_SY){
         next_token();
-        decode_cmd(dw, aw);
-        dw.set_word(&dw);
-        aw.set_or(&aw);
-        if(! dw.ok()){
-            semantic_error(dw.err_msg());
-        }
-        if(! aw.ok()){
-            semantic_error(aw.err_msg());
+        decode_cmd(wrd);
+        if(! wrd.ok()){
+            semantic_error(wrd.err_msg());
         }
     }
 
@@ -447,30 +395,26 @@ void msim_parser::decode_cmd_list( decode_word & dec_cmd, addrr_word & ar_cmd){
 };
 
 
-void msim_parser::decode_cmd(decode_word & dec_word, addrr_word & ar_word){
-    decode_word dw{};
-    addrr_word aw{};
+void msim_parser::decode_cmd(inst_word &wrd){
 
     if(m_lookahead.type == token_type::Z_ASSIGN_SY){
-        decode_expr(dw);
-        if(! dw.ok()){
-            semantic_error(dw.err_msg());
+        decode_expr(wrd);
+        if(! wrd.ok()){
+            semantic_error(wrd.err_msg());
         }
     }else if(m_lookahead.type == token_type::CAR_PLS_PLS_SY ||
                m_lookahead.type == token_type::ASSIGN_CAR_SY){  /* do dada */
-        ar_sec(aw);
-        if(! aw.ok()){
-            semantic_error(aw.err_msg());
+        ar_sec(wrd);
+        if(! wrd.ok()){
+            semantic_error(wrd.err_msg());
         }
     }else{
         syntax_error("Z assign 'Z:=' or CAR Selection ");
         return;
     }
-    dec_word = dw;
-    ar_word = aw;
 };
 
-void msim_parser::decode_expr (decode_word & dec_cmd){
+void msim_parser::decode_expr (inst_word &wrd){
 
     if(m_lookahead.type == token_type::Z_ASSIGN_SY){
         next_token();
@@ -478,12 +422,11 @@ void msim_parser::decode_expr (decode_word & dec_cmd){
         syntax_error("Z assign 'Z:='");
         return;
     }
-    decode_word dw{};
     switch(m_lookahead.type){
         case token_type::NUMBER_SY:{
             int n{0};
             number(n);
-            dw.set_const_number(n);
+            wrd.set_constant_nbr(n);
             break;
         }
         case token_type::X_SY:{
@@ -499,25 +442,27 @@ void msim_parser::decode_expr (decode_word & dec_cmd){
             }
 
             if(tail == 0){
-                dw.set_operation(Z_X);
+                /* pass through */
+                wrd.set_operation(Z_X);
             }else{
-                dw.set_operation(tail);
+                /* actual operation */
+                wrd.set_operation(tail);
             }
             break;
         }
         case token_type::Y_SY:{
             next_token();
-            dw.set_operation(Z_Y);
+            wrd.set_operation(Z_Y);
             break;
         }
         case token_type::INC_SY:{
             next_token();
             if(m_lookahead.type == token_type::X_SY){
                 next_token();
-                dw.set_operation(Z_INC_X);
+                wrd.set_operation(Z_INC_X);
             }else if(m_lookahead.type == token_type::Y_SY){
                 next_token();
-                dw.set_operation(Z_INC_Y);
+                wrd.set_operation(Z_INC_Y);
             }else{
                 syntax_error("'X' or 'Y'");
                 return;
@@ -528,10 +473,10 @@ void msim_parser::decode_expr (decode_word & dec_cmd){
             next_token();
             if(m_lookahead.type == token_type::X_SY){
                 next_token();
-                dw.set_operation(Z_DEC_X);
+                wrd.set_operation(Z_DEC_X);
             }else if(m_lookahead.type == token_type::Y_SY){
                 next_token();
-                dw.set_operation(Z_DEC_Y);
+                wrd.set_operation(Z_DEC_Y);
             }else{
                 syntax_error("'X' or 'Y'");
                 return;
@@ -540,12 +485,12 @@ void msim_parser::decode_expr (decode_word & dec_cmd){
         }
         case token_type::MIN_X_SY:{
             next_token();
-            dw.set_operation(Z_MINUS_X);
+            wrd.set_operation(Z_MINUS_X);
             break;
         }
         case token_type::Z_SY:{
             next_token();
-            dw.set_default();
+            wrd.set_default_operation();
             break;
         }
         default: {
@@ -553,7 +498,6 @@ void msim_parser::decode_expr (decode_word & dec_cmd){
             return;
         }
     }
-    dec_cmd = dw;
 };
 
 void msim_parser::x_tail(uint8_t & t){
@@ -591,24 +535,20 @@ void msim_parser::x_tail(uint8_t & t){
     }
 };
 
-void msim_parser::ar_sec(addrr_word & ar_cmd){
-    addrr_word aw{};
+void msim_parser::ar_sec(inst_word &wrd){
     if(m_lookahead.type == token_type::ASSIGN_CAR_SY){
         next_token();
-        ar_assign(ar_cmd);
+        ar_assign(wrd);
     }else if(m_lookahead.type == token_type::CAR_PLS_PLS_SY){
         next_token();
-        aw.set_default();
+        wrd.set_default_ar_opt();
     }else{
         syntax_error("'CAR:=' or 'CAR++'");
         return;
     }
-
-    ar_cmd = aw;
-
 };
 
-void msim_parser::ar_assign (addrr_word & ar_ass){
+void msim_parser::ar_assign (inst_word & wrd){
     int cn = {-1};
     uint8_t mask = {0};
     bool mask_set {false};
@@ -630,11 +570,7 @@ void msim_parser::ar_assign (addrr_word & ar_ass){
                 return;
             }
         }
-        if(cn > 0){
-            ar_ass.set_cn(cn);
-        }else{
-            ar_ass.set_cn();
-        }
+        wrd.set_cn(cn);
     }else if(m_lookahead.type == token_type::_4COP_SY){
         next_token();
         if(m_lookahead.type == token_type::IF_SY){
@@ -669,25 +605,20 @@ void msim_parser::ar_assign (addrr_word & ar_ass){
                 syntax_error("number");
             }
         }
-        if(mask_set){
-            ar_ass.set_mask(mask);
-        }else{
-            ar_ass.set_mask();
-        }
+        wrd.set_mask(mask);
 
     }else{
         syntax_error("'4CN' '4COP'");
-        return;
     }
 };
-void msim_parser::exec_sec( exec_word & ex_wrd){
+
+void msim_parser::exec_sec(inst_word &wrd){
     if(m_lookahead.type == token_type::B_SY){
         next_token();
     }else{
         syntax_error("'B'");
         return;
     }
-    exec_word w{};
     if( m_lookahead.type == token_type::Z_R0_SY ||
         m_lookahead.type == token_type::Z_R1_SY ||
         m_lookahead.type == token_type::Z_R2_SY ||
@@ -695,14 +626,12 @@ void msim_parser::exec_sec( exec_word & ex_wrd){
         m_lookahead.type == token_type::Z_MAR_SY||
         m_lookahead.type == token_type::Z_MDR_SY )
     {
-        exec_list(w);
+        exec_list(wrd);
     }
 
-    ex_wrd = w;
 };
 
-void msim_parser::exec_list (exec_word & exec_opt){
-    exec_word ew{};
+void msim_parser::exec_list (inst_word & word){
 
     if( m_lookahead.type == token_type::Z_R0_SY ||
         m_lookahead.type == token_type::Z_R1_SY ||
@@ -711,20 +640,16 @@ void msim_parser::exec_list (exec_word & exec_opt){
         m_lookahead.type == token_type::Z_MAR_SY||
         m_lookahead.type == token_type::Z_MDR_SY )
     {
-        uint8_t exec_nibble{0};
-        exec_op(exec_nibble);
-        ew.set_nibble(exec_nibble);
-        if(! ew.ok()){
-            semantic_error(ew.err_msg());
+        exec_op(word);
+        if(! word.ok()){
+            semantic_error(word.err_msg());
             return;
         }
         while(m_lookahead.type == token_type::COMMA_SY){
             next_token();
-            uint8_t exec_nibble{0};
-            exec_op(exec_nibble);
-            ew.set_or_nibble(exec_nibble);
-            if(! ew.ok()){
-                semantic_error(ew.err_msg());
+            exec_op(word);
+            if(! word.ok()){
+                semantic_error(word.err_msg());
                 return;
             }
         }
@@ -732,48 +657,44 @@ void msim_parser::exec_list (exec_word & exec_opt){
         syntax_error("Z->[any register]");
         return;
     }
-    exec_opt = ew;
 };
 
-void msim_parser::exec_op (uint8_t & exec_nibble){
-    uint8_t bt{0};
+void msim_parser::exec_op (inst_word &word){
     switch(m_lookahead.type){
         case token_type::Z_R0_SY :{
             next_token();
-            set_bit(bt, 5);
+            word.set_z_selection(REGISTER_0);
             break;
         }
         case token_type::Z_R1_SY :{
             next_token();
-            set_bit(bt, 4);
+            word.set_z_selection(REGISTER_1);
             break;
         }
         case token_type::Z_R2_SY :{
             next_token();
-            set_bit(bt, 3);
+            word.set_z_selection(REGISTER_2);
             break;
         }
         case token_type::Z_R3_SY :{
             next_token();
-            set_bit(bt, 2);
+            word.set_z_selection(REGISTER_3);
             break;
         }
         case token_type::Z_MAR_SY:{
             next_token();
-            set_bit(bt, 1);
+            word.set_z_mar(true);
             break;
         }
         case token_type::Z_MDR_SY: {
             next_token();
-            set_bit(bt, 0);
+            word.set_z_mdr(true);
             break;
         }
         default: {
             syntax_error("Z->[any register]");
-            return;
         }
     }
-    exec_nibble = bt;
 };
 
 void msim_parser::number(int & nbr){
@@ -802,8 +723,6 @@ token msim_parser::peek_next_token(){
     return m_scanner->peek_next_token();
 }
 
-void msim_parser::expect(token_type expected){
-};
 void msim_parser::syntax_error(const std::string& expected){
     if(m_scanner == nullptr){
         throw std::runtime_error("scanner in parser not set");

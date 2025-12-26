@@ -49,9 +49,9 @@ private:
 
     void on_clock_changed(clock_event const & event);
 
-    void set_fetch_instructions( fetch_word * fw);
-    void set_decode_instructions( decode_word * dw, addrr_word * aw);
-    void set_execute_instructions( exec_word * ew);
+//    void set_fetch_instructions( fetch_word * fw);
+//    void set_decode_instructions( decode_word * dw, addrr_word * aw);
+//    void set_execute_instructions( exec_word * ew);
 
   //  void execute_cycle();
     void execute_phase(clock_phase const & phase);

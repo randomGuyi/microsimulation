@@ -1,10 +1,6 @@
 #ifndef MSIM_PARSER_H
 #define MSIM_PARSER_H
 
-#include "../microcode/addrr_word.h"
-#include "../microcode/decode_word.h"
-#include "../microcode/exec_word.h"
-#include "../microcode/fetch_word.h"
 #include "../microcode/inst_word.h"
 #include "msim_scanner.h"
 #include "../../core/components/msim_rom.h"
@@ -295,39 +291,38 @@ private:
     void segment(int & line, inst_word & iw);
     void instruction_block(inst_word & word);
 
-    void ram_read( bool & r_opt);
+    bool ram_read();
     void ram_read_op(bool & read);
 
     void ram_write(bool & w_opt);
     void ram_write_opt(bool & write);
 
     void fetch_sec(inst_word & f_word);
-    void fetch_cmd_list(fetch_word & fetch_wrd);
-    void fetch_cmd (fetch_word & fetch_c);
+    void fetch_cmd_list(inst_word &fetch_wrd);
+    void fetch_cmd (inst_word &fetch_c);
 
-    void x_sel(uint8_t & x_nbl);
-    void y_sel(uint8_t & y_nbl);
-    void mdr_opt(uint8_t & mdr_nbl);
+    void x_sel(inst_word &wrd);
+    void y_sel(inst_word &y_nbl);
+    void mdr_opt(inst_word &mdr_nbl);
 
-    void decode_sec(decode_word & dec_word, addrr_word & ar_wrd );
-    void decode_cmd_list( decode_word & dec_cmd, addrr_word & ar_cmd);
-    void decode_cmd(decode_word & dec_word, addrr_word & ar_word);
+    void decode_sec(inst_word &wrd);
+    void decode_cmd_list(inst_word &wrd);
+    void decode_cmd(inst_word &wrd);
 
-    void decode_expr (decode_word & dec_cmd);
+    void decode_expr (inst_word &wrd);
 
     void x_tail(uint8_t & t);
-    void ar_sec(addrr_word & ar_cmd);
-    void ar_assign (addrr_word & ar_ass);
+    void ar_sec(inst_word &wrd);
+    void ar_assign (inst_word &ar_ass);
 
-    void exec_sec( exec_word & ex_wrd);
-    void exec_list (exec_word & exec_opt);
-    void exec_op (uint8_t & exec_nibble);
+    void exec_sec(inst_word &wrd);
+    void exec_list (inst_word &exec_opt);
+    void exec_op (inst_word &word);
 
     void number(int & nbr);
     void binary_number(uint8_t & digit);
 
     void next_token();
-    void expect(token_type expected);
     token peek_next_token();
 
     void syntax_error(const std::string& expected);
@@ -335,9 +330,10 @@ private:
     void panic_mode_recovery();
 
     void emit_instruction(inst_word & w, int line);
-    bool check_segment(int seg, int line);
 
-    void set_bit(uint8_t &byte, int pos);
+    static bool check_segment(int seg, int line);
+
+    static void set_bit(uint8_t &byte, int pos);
 
     msim_scanner * m_scanner;
     msim_rom * m_rom;
