@@ -45,13 +45,10 @@ class inst_word: public msim_wrd{
 public:
     inst_word();
 
-    void write_bits(uint8_t data, uint32_t offset_bits, uint32_t width_bits);
-
-    uint8_t read_bits(uint32_t offset_bits, uint32_t width_bits);
 
     friend std::ostream &operator<<(std::ostream &os, const inst_word &iw);
 
-    uint32_t get_raw_word();
+    uint32_t get_raw_word() const;
 
     void set_x_selection(uint8_t x_nbl);
     void set_y_selection(uint8_t y_nbl);
@@ -71,18 +68,19 @@ public:
     void set_mask(uint8_t mask);
     void set_cn(uint8_t cn);
 
-    uint8_t get_x_selection();
-    uint8_t get_y_selection();
-    uint8_t get_z_selection();
-    uint8_t get_operation();
-    bool get_z_mar();
-    bool get_z_mdr();
-    bool get_mdr_y();
-    bool get_mdr_cop();
-    ram_mode get_ram_mode();
-    ar_mode get_ar_mode();
-    uint8_t get_mask();
-    int get_cn();
+    [[nodiscard]] uint8_t get_x_selection() const;
+    [[nodiscard]] uint8_t get_y_selection() const;
+    [[nodiscard]] uint8_t get_z_selection() const;
+    [[nodiscard]] uint8_t get_operation() const;
+    [[nodiscard]] bool get_z_mar() const;
+    [[nodiscard]] bool get_z_mdr() const;
+    [[nodiscard]] bool get_mdr_y() const;
+    [[nodiscard]] bool get_mdr_cop() const;
+    [[nodiscard]] ram_mode get_ram_mode() const;
+    [[nodiscard]] ar_mode get_ar_mode() const;
+    [[nodiscard]] uint8_t get_mask() const;
+    [[nodiscard]] int get_cn() const;
+    [[nodiscard]] int get_constant_nbr() const;
 
     virtual bool ok() const override;
     virtual std::string err_msg() override;
@@ -93,6 +91,9 @@ private:
     ar_mode m_ar_mode;
     uint32_t m_raw_word;
     int m_const_nbr; // i know, it's cheating
+    void write_bits(uint8_t data, uint32_t offset_bits, uint32_t width_bits);
+
+    uint8_t read_bits(uint32_t offset_bits, uint32_t width_bits) const ;
 };
 
 #endif // INST_WORD_H

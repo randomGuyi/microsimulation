@@ -66,12 +66,12 @@ void inst_word::write_bits(uint8_t data, uint32_t offset_bits, uint32_t width_bi
     m_raw_word = (m_raw_word & ~mask) | ((static_cast<uint32_t>(data) << offset_bits) & mask);
 }
 
-uint8_t inst_word::read_bits(uint32_t offset_bits, uint32_t width_bits) {
+uint8_t inst_word::read_bits(uint32_t offset_bits, uint32_t width_bits) const {
     const uint32_t mask = (1u << width_bits) - 1u;
     return static_cast<uint8_t>((m_raw_word >> offset_bits) & mask);
 }
 
-uint32_t inst_word::get_raw_word() {return m_raw_word;}
+uint32_t inst_word::get_raw_word() const {return m_raw_word;}
 
 
 
@@ -176,36 +176,35 @@ void inst_word::set_cn(uint8_t cn) {
     write_bits(cn, CN_OFFSET_BITS, CN_WIDTH_BITS);
 }
 
-uint8_t inst_word::get_x_selection() {
+uint8_t inst_word::get_x_selection() const {
     return read_bits(X_OFFSET_BITS, X_WIDTH_BITS);
 }
-uint8_t inst_word::get_y_selection() {
+uint8_t inst_word::get_y_selection() const {
     return read_bits(Y_OFFSET_BITS, Y_WIDTH_BITS);
 }
-uint8_t inst_word::get_z_selection() {
+uint8_t inst_word::get_z_selection() const {
     return read_bits(Z_OFFSET_BITS, Z_WIDTH_BITS);
 }
-uint8_t inst_word::get_operation() {
+uint8_t inst_word::get_operation() const {
     return read_bits(OP_OFFSET_BITS, OP_WIDTH_BITS);
 }
-bool inst_word::get_z_mar() {
+bool inst_word::get_z_mar() const {
     return read_bits(Z_MAR_OFFSET_BITS, Z_MAR_WIDTH_BITS) == 1;
 
 }
-bool inst_word::get_z_mdr() {
+bool inst_word::get_z_mdr() const {
     return read_bits(Z_MDR_OFFSET_BITS, Z_MDR_WIDTH_BITS) == 1;
 }
-bool inst_word::get_mdr_y() {
+bool inst_word::get_mdr_y() const {
     return read_bits(MDR_Y_OFFSET_BITS, MDR_WIDTH_BITS) == 1;
 
 }
-bool inst_word::get_mdr_cop() {
+bool inst_word::get_mdr_cop() const {
     return read_bits(MDR_COP_OFFSET_BITS, MDR_WIDTH_BITS) == 1;
 }
 
-ram_mode inst_word::get_ram_mode() {
-    uint8_t ram_mode_nbl = read_bits(R_MODE_OFFSET_BITS, R_MODE_WIDTH_BITS);
-    switch (ram_mode_nbl) {
+ram_mode inst_word::get_ram_mode() const{
+    switch (read_bits(R_MODE_OFFSET_BITS, R_MODE_WIDTH_BITS)) {
         case 0b00:
             return ram_mode::WAIT;
         case 0b01:
@@ -213,14 +212,12 @@ ram_mode inst_word::get_ram_mode() {
         case 0b10:
             return ram_mode::WRITE;
         default:
-            add_error("Invalid ram mode set in instruction word!");
-            return ram_mode::WAIT; // return a safe default
+            return ram_mode::WAIT; // return a safe default, never happens
     }
 }
 
-ar_mode inst_word::get_ar_mode() {
-    uint8_t ar_mode_nbl = read_bits(AR_MODE_OFFSET_BITS, AR_MODE_WIDTH_BITS);
-    switch (ar_mode_nbl) {
+ar_mode inst_word::get_ar_mode() const {
+    switch (read_bits(AR_MODE_OFFSET_BITS, AR_MODE_WIDTH_BITS)) {
         case 0:
             return ar_mode::CHAR_PLS_PLS;
         case 1:
@@ -230,16 +227,19 @@ ar_mode inst_word::get_ar_mode() {
         case 3:
             return ar_mode::_4CN;
         default:
-            add_error("Invalid ar mode set in instruction word!");
-            return ar_mode::CHAR_PLS_PLS; // safe default
+            return ar_mode::CHAR_PLS_PLS; // safe default, never happens
     }
 }
-uint8_t inst_word::get_mask() {
+uint8_t inst_word::get_mask() const {
     return read_bits(MASK_OFFSET_BITS, MASK_WIDTH_BITS);
 }
 
-int inst_word::get_cn() {
+int inst_word::get_cn() const {
     return read_bits(CN_OFFSET_BITS, CN_WIDTH_BITS);
+}
+
+int inst_word::get_constant_nbr() const {
+    return m_const_nbr;
 }
 
 bool inst_word::ok() const {

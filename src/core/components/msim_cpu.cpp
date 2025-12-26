@@ -7,6 +7,11 @@
 #include "core/components/msim_register.h"
 #include <iostream>
 
+#include "msim_alu.h"
+#include "msim_bus.h"
+#include "msim_cop.h"
+#include "ui/components/debug_proxy.h"
+
 #define DEBUG_CPU
 #define DEBUG(msg) \
 std::cout << "CPU: " << msg << std::endl
@@ -31,6 +36,7 @@ std::vector<std::string> const & msim_cpu::get_errors() const{
 /* ################################## CLOCK CONTROL  ##################################*/
 
 void msim_cpu::execute_phase(clock_phase const & phase){
+
     switch(phase){
         case clock_phase::FETCH:{
             fetch();
@@ -55,9 +61,6 @@ void msim_cpu::on_clock_changed(clock_event const & event){
     msim_clock * clock = dynamic_cast<msim_clock *>(m_components.at(ID_COMP_CLOCK).get());
     switch(event){
         case clock_event::NEXT_CYCLE: {
-            if(m_curr_word == nullptr){
-                load_instruction();
-            }
      //       execute_cycle();
             break;
         }
@@ -74,9 +77,6 @@ void msim_cpu::on_clock_changed(clock_event const & event){
             break;
         }
         case clock_event::NEXT_PHASE: {
-            if(m_curr_word == nullptr){
-                load_instruction();
-            }
             clock_phase curr_phase = clock->get_current_phase();
             execute_phase(clock->get_current_phase());
             break;
@@ -130,32 +130,25 @@ void msim_cpu::load_instruction(){
     }
     if(! rom_inst->has_next()){ return;}
 
-    int line_nr = car->getValue();
+    int line_nr = static_cast<int>(car->getValue());
     if(! rom_inst->is_valid_line(line_nr)){
-        // TODO: error mechanism !!!
+        qDebug("AAAAAAAAAAAA invalid line number requested from ROM: %d", line_nr);
     }
     rom_inst->reset_to_line(line_nr);
     m_curr_word = rom_inst->get_current_instruction();
 
-//    cdr->setValue(m_curr_word->raw_word());
+    /* set value in CDR, so the next to set are the bits */
+    cdr->setValue(m_curr_word->get_raw_word());
 
-    //fetch_word * fetch_command = m_curr_word->get_fetch_ops();
-
-    //decode_word * decode_command = m_curr_word->get_decode_ops();
-    //addrr_word * addr_command = m_curr_word->get_ar_ops();
-
-    //exec_word * execute_command = m_curr_word->get_exec_ops();
-
-    //set_fetch_instructions(fetch_command);
-    //set_decode_instructions(decode_command, addr_command);
-    //set_execute_instructions(execute_command);
-
-
+    /* todo: reset previous cycle */
+    set_fetch_instructions(m_curr_word);
+    set_decode_instructions(m_curr_word);
+    set_execute_instructions(m_curr_word);
 }
 
 void msim_cpu::read_from_ram(){
     if(! m_curr_word) return;
-//    if(! m_curr_word->get_read()) return;
+    if(! (m_curr_word->get_ram_mode() == ram_mode::READ)) return;
 
     auto * ram = dynamic_cast<msim_ram *>(find_component(ID_COMP_RAM));
     if(! ram) return;
@@ -166,145 +159,436 @@ void msim_cpu::read_from_ram(){
     auto * mdr = dynamic_cast<msim_register *> (find_component(ID_COMP_REGISTERMDR));
     if(! mdr) return;
 
-    mdr->setValue(ram->get_val_at(mar->getValue()));
+    mdr->setValue(ram->get_val_at(static_cast<int>(mar->getValue())));
+}
+
+void msim_cpu::trasfer_data_to_buses() {
+
+    auto transfer_if = [this] (std::string const & connector_id,std::string const & bus_id,
+                               uint32_t value,                  bool enable) {
+
+        /* set connectors */
+        auto * conn = get_connector(connector_id);
+        if(! conn) return;
+        enable ? conn->enable() : conn->disable();
+        /* transfer to bus */
+        if(! enable) return;
+        auto * bus = dynamic_cast<msim_bus *>(find_component(bus_id));
+        if(! bus) return;
+        bus->set_value(static_cast<int>(value));
+    };
+
+    /* transfer to x bus */
+    auto * xbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_XBUS));
+    if(! xbus) return;
+
+    transfer_if(ID_PCB_REGISTER0_XBUS, ID_COMP_XBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER0))->getValue(),
+                m_curr_word->get_x_selection() == REGISTER_0);
+
+    transfer_if(ID_PCB_REGISTER1_XBUS, ID_COMP_XBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER1))->getValue(),
+                m_curr_word->get_x_selection() == REGISTER_1);
+
+    transfer_if(ID_PCB_REGISTER2_XBUS, ID_COMP_XBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER2))->getValue(),
+                m_curr_word->get_x_selection() == REGISTER_2);
+
+    transfer_if(ID_PCB_REGISTER3_XBUS, ID_COMP_XBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER3))->getValue(),
+                m_curr_word->get_x_selection() == REGISTER_3);
+
+
+    /* transfer to y bus */
+    auto * ybus = dynamic_cast<msim_bus *>(find_component(ID_COMP_YBUS));
+    if(! ybus) return;
+
+    transfer_if(ID_PCB_REGISTER0_YBUS, ID_COMP_YBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER0))->getValue(),
+                m_curr_word->get_y_selection() == REGISTER_0);
+
+    transfer_if(ID_PCB_REGISTER1_YBUS, ID_COMP_YBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER1))->getValue(),
+                m_curr_word->get_y_selection() == REGISTER_1);
+
+    transfer_if(ID_PCB_REGISTER2_YBUS, ID_COMP_YBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER2))->getValue(),
+                m_curr_word->get_y_selection() == REGISTER_2);
+
+    transfer_if(ID_PCB_REGISTER3_YBUS, ID_COMP_YBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER3))->getValue(),
+                m_curr_word->get_y_selection() == REGISTER_3);
+
+    transfer_if(ID_PCB_REGISTERMDR_YBUS, ID_COMP_YBUS,
+                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERMDR))->getValue(),
+                m_curr_word->get_mdr_y());
+}
+
+void msim_cpu::transfer_data_to_registers() {
+    /* transfer operation */
+    auto * op_register = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTEROP));
+    if(op_register) {
+        op_register->setValue(static_cast<uint32_t>(m_curr_word->get_operation()));
+    }
+
+    /* x-bus to Register x */
+    auto * xbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_XBUS));
+    auto * register_x = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERX));
+    if (xbus && register_x) {
+        register_x->setValue(static_cast<uint32_t>(xbus->get_value()));
+    }
+
+
+    /* y-bus to Register y */
+    auto * ybus = dynamic_cast<msim_bus *>(find_component(ID_COMP_YBUS));
+    auto * register_y = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERY));
+    if ((ybus != nullptr) && (register_y != nullptr)) {
+        register_y->setValue(static_cast<uint32_t>(ybus->get_value()));
+    }
+
+    /* mdr to cop */
+    auto * cop = dynamic_cast<msim_cop *>(find_component(ID_COMP_COP));
+    if (! cop) return;
+
+    auto * mdr = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERMDR));
+    if (! mdr) return;
+
+    auto * pcb_mdr_cop = get_connector(ID_PCB_REGISTERMDR_COP);
+    if (! pcb_mdr_cop) return;
+
+    m_curr_word->get_mdr_cop() ? pcb_mdr_cop->enable() : pcb_mdr_cop->disable();
+    cop->setValue(mdr->getValue());
 }
 
 void msim_cpu::fetch(){
-    /* TODO: Connectors */
+    qDebug("[msim_cpu] fetch phase called");
+    /* update all bits */
+    for (auto & [bit_id, bit_ptr] : m_enable_bits) bit_ptr->set_value(false);
+    load_instruction();
+    if (m_curr_word == nullptr) return;
+
+    read_from_ram();
+    trasfer_data_to_buses();
+    transfer_data_to_registers();
+
+}
+
+std::pair<bool, int> msim_cpu::execute_alu() {
+
+    /* alu is the central part */
+    auto * alu = dynamic_cast<msim_alu*>(find_component(ID_COMP_ALU));
+    if (! alu) return {false, 0};
+    auto * opreg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTEROP));
+    if (! opreg) return {false, 0}; // no operation, nothing to do
+
+    int const_val = m_curr_word->get_constant_nbr(); // cheating
+    alu->set_operation(static_cast<uint8_t>(opreg->getValue()));
+    alu->set_constant_value(const_val);
+
+    auto * x_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERX));
+    auto * y_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERY));
+
+    if (x_reg != nullptr && y_reg != nullptr) {
+        alu->set_x_value(static_cast<int>(x_reg->getValue()));
+        alu->set_y_value(static_cast<int>(y_reg->getValue()));
+        alu->execute();
+    }else if (x_reg != nullptr) {
+        alu->set_x_value(static_cast<int>(x_reg->getValue()));
+        switch (opreg->getValue()) {
+            case Z_Z:
+            case Z_CONST:
+            case Z_X:
+            case Z_INC_X:
+            case Z_DEC_X:
+            case Z_MINUS_X: {
+                alu->execute();
+            }
+            default: return {false, 0};
+        }
+    } else if (y_reg != nullptr) {
+        alu->set_y_value(static_cast<int>(y_reg->getValue()));
+        switch (opreg->getValue()) {
+            case Z_Z:
+            case Z_CONST:
+            case Z_Y:
+            case Z_INC_Y:
+            case Z_DEC_Y: {
+                alu->execute();
+            }
+            default: return {false, 0};
+        }
+    } else {
+        switch (opreg->getValue()) {
+            case Z_Z:
+            case Z_CONST:{
+                alu->execute();
+            }
+            default: return {false, 0};
+        }
+    }
+    return {true, alu->get_result()};
 }
 
 void msim_cpu::decode(){
+    if (m_curr_word == nullptr) return;
+    qDebug("[msim_cpu] decode phase called");
+    auto [result_ok, result_value] = execute_alu();
+    if (! result_ok) {
+        qDebug("ALU execution failed or no operation to perform");
+        return;
+    }
+    /* transfer alu result to z bus */
+    auto * zbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_ZBUS));
+    if (zbus) {
+        zbus->set_value(result_value);
+    }
+
+    /* set z register */
+    auto * z_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERZ));
+    if (z_reg) {
+        z_reg->setValue(static_cast<uint32_t>(result_value));
+    }
+
+    /* set flags */
+    auto * flags_register = dynamic_cast<msim_register*>(find_component(ID_COMP_REGISTERFLAGS));
+    auto * alu = dynamic_cast<msim_alu*>(find_component(ID_COMP_ALU)); // must exist
+    if (flags_register) {
+        flags_register->setValue(alu->get_flags());
+    };
+
+
+    /* ar logic */
+    auto * ar = dynamic_cast<msim_ar *>(find_component(ID_COMP_AR));
+    if (! ar) return;
+    auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
+    if (! car) return; // car must exist
+
+    switch (m_curr_word->get_ar_mode()) {
+        case ar_mode::CHAR_PLS_PLS: {
+            car->setValue(car->getValue() + 1);
+            break;
+
+        }case ar_mode::_4CN: {
+            int cn_value = m_curr_word->get_cn();
+            car->setValue(4 * cn_value);
+            break;
+
+        }case ar_mode::_4COP:{
+            auto cop = dynamic_cast<msim_cop *>(find_component(ID_COMP_COP));
+            if(! cop) return;
+            int cop_value = static_cast<int>(cop->getValue());
+            car->setValue(4 * cop_value);
+            break;
+
+        }case ar_mode::_4COP_CND: {
+            uint8_t mask = m_curr_word->get_mask();
+            uint8_t flags = alu->get_flags();
+            if (mask & flags) {
+                auto cop = dynamic_cast<msim_cop *>(find_component(ID_COMP_COP));
+                if(! cop) return;
+                int cop_value = static_cast<int>(cop->getValue());
+                car->setValue(4 * cop_value);
+            }else {
+                car->setValue(car->getValue() + 1);
+            }
+            break;
+        }
+    }
 }
 
 void msim_cpu::execute(){
+    if (m_curr_word == nullptr) return;
+    qDebug("[msim_cpu] execute phase called");
+    auto trasfer_if = [this] (std::string register_id, std::string connector_id, int value, bool enable) {
+        auto * reg = dynamic_cast<msim_register *>(find_component(register_id));
+        if(! reg) return;
+        auto * conn = get_connector(connector_id);
+        if(! conn) return;
+        enable ? conn->enable() : conn->disable();
+        if(! enable) return;
+        reg->setValue(static_cast<uint32_t>(value));
+    };
+
+    /* write z bus to selected register */
+    auto * zbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_ZBUS));
+    if (zbus) {
+        uint8_t z_selection = m_curr_word->get_z_selection();
+       trasfer_if(ID_COMP_REGISTER0, ID_PCB_ZBUS_REGISTER0,
+           zbus->get_value(), (z_selection == REGISTER_0));
+
+        trasfer_if(ID_COMP_REGISTER1, ID_PCB_ZBUS_REGISTER1,
+            zbus->get_value(),z_selection == REGISTER_1);
+
+        trasfer_if(ID_COMP_REGISTER2, ID_PCB_ZBUS_REGISTER2,
+            zbus->get_value(),z_selection == REGISTER_2);
+
+        trasfer_if(ID_COMP_REGISTER3, ID_PCB_ZBUS_REGISTER3,
+            zbus->get_value(),z_selection == REGISTER_3);
+
+        trasfer_if(ID_COMP_REGISTERMDR, ID_PCB_ZBUS_REGISTERMDR,
+            zbus->get_value(),m_curr_word->get_z_mdr());
+
+        trasfer_if(ID_COMP_REGISTERMAR, ID_PCB_ZBUS_REGISTERMAR,
+            zbus->get_value(),m_curr_word->get_z_mar());
+    }
+
+    write_to_ram();
+
+
     /* reset word in order to load next cycle */
     m_curr_word = nullptr;
 
 }
 
 void msim_cpu::write_to_ram(){
+    if(! m_curr_word) return;
+    if(! (m_curr_word->get_ram_mode() == ram_mode::WRITE)) return;
 
+    auto * ram = dynamic_cast<msim_ram *>(find_component(ID_COMP_RAM));
+    if(! ram) return;
+
+    auto * mar = dynamic_cast<msim_register *> (find_component(ID_COMP_REGISTERMAR));
+    if(! mar) return;
+
+    auto * mdr = dynamic_cast<msim_register *> (find_component(ID_COMP_REGISTERMDR));
+    if(! mdr) return;
+
+    ram->set_val_at(static_cast<int>(mar->getValue()), static_cast<int>(mdr->getValue()));
 }
 
 /* ################################## SET INSTRUCTIONS ##################################*/
- //void msim_cpu::set_fetch_instructions( fetch_word * fw){
- //
-     //uint8_t x_sel = fw->get_x_sel();
-     //uint8_t y_sel = fw->get_y_sel();
-     //uint8_t mdr_sel = fw->get_mdr_sel();
- //
-     //auto set_bit_if = [=](  std::string const & bit_id
-                           //, bool set){
-         //if(! set){
-             //return false;
-         //}
-         //msim_bit * en_bit = m_enable_bits.at(bit_id).get();
-         //if(! en_bit){ return false; }
- //
-         //en_bit->set_value(true);
-         //return true;
-     //};
- ///*
-     //if (set_bit_if(ID_ENBIT_REGISTER0_XBUS,  ((x_sel & FIRST_BIT) != 0)))
-         //goto Y_SEL;
- //
-     //if(set_bit_if( ID_ENBIT_REGISTER1_XBUS, ((x_sel & SECOND_BIT) != 0)))
-         //goto Y_SEL;
- //
-     //if(set_bit_if ( ID_ENBIT_REGISTER2_XBUS,   ((x_sel & THIRD_BIT) != 0)))
-         //goto Y_SEL;
- //
-     //set_bit_if ( ID_ENBIT_REGISTER3_XBUS,  ((x_sel & FOURTH_BIT) != 0));
- //
-     //Y_SEL :
-     //if (set_bit_if(ID_ENBIT_REGISTER0_YBUS, ((y_sel & FIRST_BIT) != 0)))
-         //goto MDR_SEL;
- //
-     //if(set_bit_if( ID_ENBIT_REGISTER1_YBUS,  ((y_sel & SECOND_BIT) != 0)))
-         //goto MDR_SEL;
- //
-     //if(set_bit_if ( ID_ENBIT_REGISTER2_YBUS,  ((y_sel & THIRD_BIT) != 0)))
-         //goto MDR_SEL;
- //
-     //set_bit_if ( ID_ENBIT_REGISTER3_YBUS,  ((y_sel & FOURTH_BIT) != 0));
- //
-     //MDR_SEL :
-         //set_bit_if(ID_ENBIT_REGISTERMDR_YBUS, ((mdr_sel & FIRST_BIT ) != 0));
-         //set_bit_if(ID_ENBIT_REGISTERMDR_COP, ((mdr_sel & SECOND_BIT) != 0));
-     //*/
- //}
- //
- //void msim_cpu::set_decode_instructions( decode_word * dw, addrr_word * aw){
-     //uint8_t operation = dw->get_operation();
-     //int cop_cn = aw->get_cn();
-     //int cop_mask = aw->get_mask();
- //
-     //auto set_bit = [=](std::string const & bit_id, bool value){
-         //auto it = m_enable_bits.find(bit_id);
-         //if (it != m_enable_bits.end()){
-             //it->second.get()->set_value(value);
-         //}
-     //};
- //
-     ///* update operation bits */
-     //set_bit(ID_ENBIT0_REGISTEROP, ((operation >> 0) & 0x1));
-     //set_bit(ID_ENBIT1_REGISTEROP, ((operation >> 1) & 0x1));
-     //set_bit(ID_ENBIT2_REGISTEROP, ((operation >> 2) & 0x1));
-     //set_bit(ID_ENBIT3_REGISTEROP, ((operation >> 3) & 0x1));
- //
-     //msim_register * op_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTEROP));
-     //if(! op_reg){
-         //component_error("OP REGISTER");
-         //return;
-     //}
- //
-     //op_reg->setValue(operation);
- //
-     //msim_cop * cop = dynamic_cast<msim_cop *>(find_component(ID_COMP_COP));
-     //if(! cop){
-         //component_error("cop REGISTER");
-         //return;
-     //}
- //
-     ///* update mask bits */
-     //set_bit(ID_MASKBIT0_AR, ((cop_mask & (int)1) != 0));
-     //set_bit(ID_MASKBIT1_AR, ((cop_mask & (int)10) != 0));
-     //set_bit(ID_MASKBIT2_AR, ((cop_mask & (int)100) != 0));
-     //set_bit(ID_MASKBIT3_AR, ((cop_mask & (int)1000) != 0));
- //
- //
-     //cop->set_mask(cop_mask);
- //
-     ///* update cn bits */
-     //set_bit(ID_CNBIT0_AR, (cop_cn >> 0) & 0x1);
-     //set_bit(ID_CNBIT1_AR, (cop_cn >> 1) & 0x1);
-     //set_bit(ID_CNBIT2_AR, (cop_cn >> 2) & 0x1);
-     //set_bit(ID_CNBIT3_AR, (cop_cn >> 3) & 0x1);
- //
-     //cop->set_cn(cop_cn);
- //}
- //
- //void msim_cpu::set_execute_instructions( exec_word * ew){
-     //uint8_t z_sel = ew->get_nibble();
- //
-     //auto set_bit_if = [=](  std::string const & bit_id
-                           //, bool set){
-         //if(! set){
-             //return false;
-         //}
-         //msim_bit * en_bit = m_enable_bits.at(bit_id).get();
-         //if(! en_bit){ return false; }
- //
-         //en_bit->set_value(true);
-         //return true;
-     //};
-/*
-    set_bit_if(ID_ENBIT_ZBUS_REGISTER0, ((z_sel & FIRST_BIT) != 0));
-    set_bit_if(ID_ENBIT_ZBUS_REGISTER1, ((z_sel & SECOND_BIT) != 0));
-    set_bit_if(ID_ENBIT_ZBUS_REGISTER2, ((z_sel & THIRD_BIT) != 0));
-    set_bit_if(ID_ENBIT_ZBUS_REGISTER3, ((z_sel & FOURTH_BIT) != 0));
-    */
-//}
+void msim_cpu::set_fetch_instructions( const inst_word * word){
+
+    /* 0 0 0 0 0 s1 s0 en */
+     uint8_t x_sel = word->get_x_selection();
+    qDebug("x_sel: %02x", x_sel);
+    /* 0 0 0 0 0 s1 s0 en */
+     uint8_t y_sel = word->get_y_selection();
+
+
+     auto set_bit_if = [this]( std::string const & bit_id, bool set){
+         if(! set){
+             return false;
+         }
+         msim_bit * en_bit = m_enable_bits.at(bit_id).get();
+         if(! en_bit){ return false; }
+
+         en_bit->set_value(true);
+         return true;
+     };
+
+    /* set x bus bits */
+    set_bit_if(ID_ENBIT_DEC_XBUS_REGISTERA, (x_sel & 0b00000001) > 0); // enable
+    set_bit_if(ID_ENBIT0_XBUS_REGISTERA, (x_sel & 0b00000010) > 0);
+    set_bit_if(ID_ENBIT1_XBUS_REGISTERA, (x_sel & 0b00000100) > 0 );
+
+    /* set y bus bits */
+    set_bit_if(ID_ENBIT_DEC_YBUS_REGISTERA, (y_sel & 0b00000001) > 0); // enable
+    set_bit_if(ID_ENBIT0_YBUS_REGISTERA, (y_sel & 0b00000010) > 0);
+    set_bit_if(ID_ENBIT1_YBUS_REGISTERA, (y_sel & 0b00000100) > 0 );
+
+
+    /* set mdr to y bus */
+    set_bit_if(ID_ENBIT_REGISTERMDR_YBUS, word->get_mdr_y());
+    set_bit_if(ID_ENBIT_REGISTERMDR_COP, word->get_mdr_cop());
+
+ }
+
+ void msim_cpu::set_decode_instructions( const inst_word * word){
+     uint8_t operation = word->get_operation();
+     int cn = word->get_cn();
+      uint8_t mask = word->get_mask();
+
+    auto set_bit_if = [this]( std::string const & bit_id, bool set){
+        if(! set){
+            return false;
+        }
+        msim_bit * en_bit = m_enable_bits.at(bit_id).get();
+        if(! en_bit){ return false; }
+
+        en_bit->set_value(true);
+        return true;
+    };
+
+     /* update operation bits */
+     set_bit_if(ID_ENBIT0_REGISTEROP, ((operation >> 0) & 0x1));
+     set_bit_if(ID_ENBIT1_REGISTEROP, ((operation >> 1) & 0x1));
+     set_bit_if(ID_ENBIT2_REGISTEROP, ((operation >> 2) & 0x1));
+     set_bit_if(ID_ENBIT3_REGISTEROP, ((operation >> 3) & 0x1));
+
+     /* update mask bits */
+     set_bit_if(ID_MASKBIT0_AR, (mask & 0b00000001) > 0);
+     set_bit_if(ID_MASKBIT1_AR, (mask & 0b00000010) > 0);
+     set_bit_if(ID_MASKBIT2_AR, (mask & 0b00000100) > 0);
+     set_bit_if(ID_MASKBIT3_AR, (mask & 0b00001000) > 0);
+
+    /* update ram mode */
+     switch (m_curr_word->get_ram_mode()) {
+         case ram_mode::READ: {
+             set_bit_if(ID_MODEBIT0_REGISTERMODE, true);
+             break;
+         }
+         case ram_mode::WRITE: {
+             set_bit_if(ID_MODEBIT1_REGISTERMODE, true);
+             break;
+         }
+         default: /* nothing to do, WAIT */
+             break;
+     }
+
+    /* update ar mode */
+    switch (m_curr_word->get_ar_mode()) {
+         case ar_mode::CHAR_PLS_PLS: {
+             break; // nothing to do
+             }
+         case ar_mode::_4CN: {
+             set_bit_if(ID_MODEBIT0_AR, true);
+             break;
+         }
+         case ar_mode::_4COP: {
+             set_bit_if(ID_MODEBIT1_AR, true);
+             break;
+         }
+         case ar_mode::_4COP_CND: {
+              set_bit_if(ID_MODEBIT0_AR, true);
+              set_bit_if(ID_MODEBIT1_AR, true);
+             break;
+         }
+    }
+
+
+    /* update cn bits */
+     set_bit_if(ID_CNBIT0_AR, (cn >> 0) & 0x1);
+     set_bit_if(ID_CNBIT1_AR, (cn >> 1) & 0x1);
+     set_bit_if(ID_CNBIT2_AR, (cn >> 2) & 0x1);
+     set_bit_if(ID_CNBIT3_AR, (cn >> 3) & 0x1);
+
+
+ }
+
+ void msim_cpu::set_execute_instructions( const inst_word * wrd){
+     uint8_t z_sel = wrd->get_z_selection();
+
+    auto set_bit_if = [this]( std::string const & bit_id, bool set){
+        if(! set){
+            return false;
+        }
+        msim_bit * en_bit = m_enable_bits.at(bit_id).get();
+        if(! en_bit){ return false; }
+
+        en_bit->set_value(true);
+        return true;
+    };
+
+    /* set z bus bits */
+    set_bit_if(ID_ENBIT_DEC_ZBUS_REGISTERA, (z_sel & 0b00000001) > 0); // enable
+    set_bit_if(ID_ENBIT0_ZBUS_REGISTERA, (z_sel & 0b00000010) > 0);
+    set_bit_if(ID_ENBIT1_ZBUS_REGISTERA, (z_sel & 0b00000100) > 0);
+
+    set_bit_if(ID_ENBIT_ZBUS_REGISTERMAR, wrd->get_z_mar());
+    set_bit_if(ID_ENBIT_ZBUS_REGISTERMDR, wrd->get_z_mdr());
+
+}
 
 
 /* ################################## COMPONENT MANAGEMENT ##################################*/

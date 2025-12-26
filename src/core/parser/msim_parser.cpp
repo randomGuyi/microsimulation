@@ -427,6 +427,7 @@ void msim_parser::decode_expr (inst_word &wrd){
             int n{0};
             number(n);
             wrd.set_constant_nbr(n);
+            wrd.set_operation(Z_CONST);
             break;
         }
         case token_type::X_SY:{
@@ -553,11 +554,11 @@ void msim_parser::ar_assign (inst_word & wrd){
     uint8_t mask = {0};
     bool mask_set {false};
     if(m_lookahead.type == token_type::_4_CN_SY){
-        next_token();
+        next_token(); // consume 4CN
         if(m_lookahead.type == token_type::COMMA_SY){
-            next_token();
+            next_token(); // consume ,
             if(m_lookahead.type == token_type::CN_ASSIGN_SY){
-                next_token();
+                next_token(); // consume CN=
             }else{
                 syntax_error("'CN='");
             }
@@ -569,10 +570,12 @@ void msim_parser::ar_assign (inst_word & wrd){
                 syntax_error("number '[0-n]'");
                 return;
             }
-        }
+        }else{ syntax_error("expected ',' found " + m_lookahead.value); return; }
         wrd.set_cn(cn);
+        wrd.set_ar_mode(ar_mode::_4CN);
+
     }else if(m_lookahead.type == token_type::_4COP_SY){
-        next_token();
+        next_token(); // consume 4COP
         if(m_lookahead.type == token_type::IF_SY){
             next_token();
             if(m_lookahead.type == token_type::COND_NE0_SY){
@@ -605,7 +608,12 @@ void msim_parser::ar_assign (inst_word & wrd){
                 syntax_error("number");
             }
         }
-        wrd.set_mask(mask);
+        if (mask_set) {
+            wrd.set_mask(mask);
+            wrd.set_ar_mode(ar_mode::_4COP_CND);
+        }else {
+            wrd.set_ar_mode(ar_mode::_4COP);
+        }
 
     }else{
         syntax_error("'4CN' '4COP'");
@@ -614,7 +622,7 @@ void msim_parser::ar_assign (inst_word & wrd){
 
 void msim_parser::exec_sec(inst_word &wrd){
     if(m_lookahead.type == token_type::B_SY){
-        next_token();
+        next_token(); // consume B
     }else{
         syntax_error("'B'");
         return;
