@@ -5,11 +5,11 @@ msim_register::msim_register(std::string const & id, std::string const & label)
     , m_value{0}
 {}
 
-void msim_register::setValue(uint32_t value) {
+void msim_register::setValue(int value) {
     m_value = value;
     notify(value);
 }
 
-uint32_t msim_register::getValue() const{
+int msim_register::getValue() const{
     return m_value;
 }

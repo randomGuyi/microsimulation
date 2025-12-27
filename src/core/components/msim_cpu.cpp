@@ -128,11 +128,14 @@ void msim_cpu::load_instruction(){
         component_error("Rom");
         return;
     }
-    if(! rom_inst->has_next()){ return;}
+    /*if(! rom_inst->has_next()) {
+        return;
+    } */
 
-    int line_nr = static_cast<int>(car->getValue());
+    int line_nr = car->getValue();
     if(! rom_inst->is_valid_line(line_nr)){
-        qDebug("AAAAAAAAAAAA invalid line number requested from ROM: %d", line_nr);
+        qDebug("invalid line number requested from ROM: %d", line_nr);
+        return;
     }
     rom_inst->reset_to_line(line_nr);
     m_curr_word = rom_inst->get_current_instruction();
@@ -165,7 +168,7 @@ void msim_cpu::read_from_ram(){
 void msim_cpu::trasfer_data_to_buses() {
 
     auto transfer_if = [this] (std::string const & connector_id,std::string const & bus_id,
-                               uint32_t value,                  bool enable) {
+                               int value,                  bool enable) {
 
         /* set connectors */
         auto * conn = get_connector(connector_id);
@@ -175,7 +178,7 @@ void msim_cpu::trasfer_data_to_buses() {
         if(! enable) return;
         auto * bus = dynamic_cast<msim_bus *>(find_component(bus_id));
         if(! bus) return;
-        bus->set_value(static_cast<int>(value));
+        bus->set_value(value);
     };
 
     /* transfer to x bus */
@@ -228,14 +231,14 @@ void msim_cpu::transfer_data_to_registers() {
     /* transfer operation */
     auto * op_register = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTEROP));
     if(op_register) {
-        op_register->setValue(static_cast<uint32_t>(m_curr_word->get_operation()));
+        op_register->setValue(m_curr_word->get_operation());
     }
 
     /* x-bus to Register x */
     auto * xbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_XBUS));
     auto * register_x = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERX));
     if (xbus && register_x) {
-        register_x->setValue(static_cast<uint32_t>(xbus->get_value()));
+        register_x->setValue(xbus->get_value());
     }
 
 
@@ -243,7 +246,7 @@ void msim_cpu::transfer_data_to_registers() {
     auto * ybus = dynamic_cast<msim_bus *>(find_component(ID_COMP_YBUS));
     auto * register_y = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERY));
     if ((ybus != nullptr) && (register_y != nullptr)) {
-        register_y->setValue(static_cast<uint32_t>(ybus->get_value()));
+        register_y->setValue(ybus->get_value());
     }
 
     /* mdr to cop */
@@ -256,8 +259,12 @@ void msim_cpu::transfer_data_to_registers() {
     auto * pcb_mdr_cop = get_connector(ID_PCB_REGISTERMDR_COP);
     if (! pcb_mdr_cop) return;
 
-    m_curr_word->get_mdr_cop() ? pcb_mdr_cop->enable() : pcb_mdr_cop->disable();
-    cop->setValue(mdr->getValue());
+    if (m_curr_word->get_mdr_cop()) {
+        pcb_mdr_cop->enable() ;
+        cop->setValue(mdr->getValue());
+    }else {
+        pcb_mdr_cop->disable();
+    }
 }
 
 void msim_cpu::fetch(){
@@ -265,7 +272,9 @@ void msim_cpu::fetch(){
     /* update all bits */
     for (auto & [bit_id, bit_ptr] : m_enable_bits) bit_ptr->set_value(false);
     load_instruction();
-    if (m_curr_word == nullptr) return;
+    if (m_curr_word == nullptr) {
+        return;
+    }
 
     read_from_ram();
     trasfer_data_to_buses();
@@ -346,7 +355,7 @@ void msim_cpu::decode(){
     /* set z register */
     auto * z_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERZ));
     if (z_reg) {
-        z_reg->setValue(static_cast<uint32_t>(result_value));
+        z_reg->setValue(result_value);
     }
 
     /* set flags */
@@ -376,7 +385,7 @@ void msim_cpu::decode(){
         }case ar_mode::_4COP:{
             auto cop = dynamic_cast<msim_cop *>(find_component(ID_COMP_COP));
             if(! cop) return;
-            int cop_value = static_cast<int>(cop->getValue());
+            int cop_value = cop->getValue();
             car->setValue(4 * cop_value);
             break;
 
@@ -386,7 +395,7 @@ void msim_cpu::decode(){
             if (mask & flags) {
                 auto cop = dynamic_cast<msim_cop *>(find_component(ID_COMP_COP));
                 if(! cop) return;
-                int cop_value = static_cast<int>(cop->getValue());
+                int cop_value = cop->getValue();
                 car->setValue(4 * cop_value);
             }else {
                 car->setValue(car->getValue() + 1);
@@ -399,14 +408,14 @@ void msim_cpu::decode(){
 void msim_cpu::execute(){
     if (m_curr_word == nullptr) return;
     qDebug("[msim_cpu] execute phase called");
-    auto trasfer_if = [this] (std::string register_id, std::string connector_id, int value, bool enable) {
+    auto trasfer_if = [this] (std::string const & register_id, std::string const & connector_id, int value, bool enable) {
         auto * reg = dynamic_cast<msim_register *>(find_component(register_id));
         if(! reg) return;
         auto * conn = get_connector(connector_id);
         if(! conn) return;
         enable ? conn->enable() : conn->disable();
         if(! enable) return;
-        reg->setValue(static_cast<uint32_t>(value));
+        reg->setValue(value);
     };
 
     /* write z bus to selected register */

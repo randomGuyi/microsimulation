@@ -8,6 +8,7 @@ msim_connector_widget::msim_connector_widget( msim_connector * con,
 : msim_component_svg_widget{loader, element_id, con, parent}
 , m_connections{}
 {
+
 }
 
 void msim_connector_widget::add_line(msim_line_widget * line){

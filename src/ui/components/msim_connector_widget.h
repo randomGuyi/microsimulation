@@ -20,10 +20,10 @@ public:
 
     void add_line(msim_line_widget * line);
 
-    virtual void update_display() override;
+    void update_display() override;
 
-    virtual void show_tooltip() override;
-    virtual void hide_tooltip() override;
+    void show_tooltip() override;
+    void hide_tooltip() override;
 protected:
     msim_connector * m_connector;
     QList<msim_line_widget *> m_connections;
