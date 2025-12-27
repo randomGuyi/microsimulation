@@ -271,6 +271,8 @@ void msim_cpu::fetch(){
     qDebug("[msim_cpu] fetch phase called");
     /* update all bits */
     for (auto & [bit_id, bit_ptr] : m_enable_bits) bit_ptr->set_value(false);
+    /* reset all the connectors from execute */
+    for (auto & [con_id, con_ptr] : m_connectors)  con_ptr->disable();
     load_instruction();
     if (m_curr_word == nullptr) {
         return;
@@ -339,6 +341,8 @@ std::pair<bool, int> msim_cpu::execute_alu() {
 }
 
 void msim_cpu::decode(){
+    /* reset all the connectors from fetch */
+    for (auto & [con_id, con_ptr] : m_connectors)  con_ptr->disable();
     if (m_curr_word == nullptr) return;
     qDebug("[msim_cpu] decode phase called");
     auto [result_ok, result_value] = execute_alu();

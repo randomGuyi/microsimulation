@@ -71,7 +71,6 @@ editor::editor(QWidget *parent)
 }
 
 void editor::run_parser(){
-    qDebug() << "run parser !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     m_controller->parse_and_highlight();
 }
 

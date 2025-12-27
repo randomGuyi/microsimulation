@@ -55,7 +55,5 @@ void msim_bit_widget::mousePressEvent(QMouseEvent * event){
 
     bool new_value = !m_current_value;
     m_bit->set_value(new_value);
-
-    qDebug() << "UI clicked in msim_bit_widget";
 }
 

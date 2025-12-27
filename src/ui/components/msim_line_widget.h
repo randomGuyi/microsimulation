@@ -17,6 +17,9 @@ public:
         QString const & element_id,
          QGraphicsItem * parent = nullptr);
 
+    void activate();
+    void deactivate();
+
     virtual QGraphicsProxyWidget * attach_to_target(drop_target * target) override;
 
     virtual void update_display() override;
@@ -30,6 +33,9 @@ private:
     msim_line * m_line;
     QString m_element_id;
     QSvgRenderer * m_renderer;
+
+    QGraphicsEffect * m_highlight_effect{nullptr};
+    qreal m_original_scale = 1.0;
 };
 
 #endif // MSIM_LINE_WIDGET_H

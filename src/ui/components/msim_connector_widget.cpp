@@ -7,15 +7,27 @@ msim_connector_widget::msim_connector_widget( msim_connector * con,
                                    QWidget * parent )
 : msim_component_svg_widget{loader, element_id, con, parent}
 , m_connections{}
+, m_connector{con}
 {
+    m_connector->subscibe([this](bool new_val){
+        QMetaObject::invokeMethod(this, [this, new_val]{
+            on_core_value_changed(new_val);
+        });
+    }) ;
+}
 
+void msim_connector_widget::on_core_value_changed(bool value) {
+    for (auto & con : m_connections) {
+        value ? con->activate() : con->deactivate();
+    }
 }
 
 void msim_connector_widget::add_line(msim_line_widget * line){
     /* return if the id was already added */
-    if (std::find_if(m_connections.begin(), m_connections.end(),[=](auto & l) {
-        return l->id() == line->id();
-    }) != m_connections.end()) {
+    if (std::find_if(m_connections.begin(), m_connections.end(),
+        [=](auto & l) {
+         return l->id() == line->id();
+        }) != m_connections.end()) {
         return;
     }
     m_connections.append(line);

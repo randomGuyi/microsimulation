@@ -16,6 +16,7 @@ public:
                                    QString const & element_id,
                                    QWidget * parent = nullptr);
 
+    void on_core_value_changed(bool value);
 
 
     void add_line(msim_line_widget * line);
