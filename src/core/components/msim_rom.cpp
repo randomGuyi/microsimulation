@@ -27,6 +27,7 @@ void msim_rom::next(){
         ++ m_index;
     }while(static_cast<std::size_t>(m_index) < m_instructions.size() &&
              m_instructions[m_index] == nullptr);
+    notify(m_index);
 }
 
 bool msim_rom::has_next() const {
@@ -46,6 +47,7 @@ void msim_rom::back(){
         --m_index;
     }while(m_index > 0 &&
              m_instructions[m_index] == nullptr);
+    notify(m_index);
 
 }
 
@@ -67,6 +69,7 @@ bool msim_rom::is_valid_line(int line) const {
 void msim_rom::reset_to_line(int line){
     if(is_valid_line(line)){
         m_index = line ;
+        notify(line);
     }else{
         throw std::runtime_error("line index out of bounds for rom instructions");
     }

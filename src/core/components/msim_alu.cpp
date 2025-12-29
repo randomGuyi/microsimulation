@@ -78,7 +78,10 @@ void msim_alu::execute() {
             m_result = -m_x_value;
             break;
         }
+        default: /* noting to do */ ;
+            break;
     }
+    notify({get_mux_selection(), m_result});
 }
 
 
@@ -93,7 +96,34 @@ int msim_alu::get_result() const {
 uint8_t msim_alu::get_flags() const {
     /*      Z + - Of */
     if (m_result == 0 ) return 0b00001000;
-    else if (m_result > 0 ) return 0b00000100;
-    else return 0b00000010; // < 0
+    if (m_result > 0 ) return 0b00000100;
+    return 0b00000010; // < 0
     // todo: implement logic for 16 bit max
+}
+
+
+uint8_t msim_alu::get_operation() const {
+    return m_operation;
+}
+
+mux_selection msim_alu::get_mux_selection() const {
+    switch (m_operation) {
+        case Z_X:
+        case Z_Y:
+        case Z_X_PLS_Y:
+        case Z_INC_X:
+        case Z_INC_Y:
+        case Z_X_TIMES_Y:
+        case Z_X_MINUS_Y:
+        case Z_DEC_X:
+        case Z_DEC_Y:
+        case Z_X_DIV_Y:
+        case Z_MINUS_X:
+            return mux_selection::AU_RESULT;
+        case Z_CONST:
+            return mux_selection::CONSTANT;
+        default:
+            return mux_selection::LU_RESULT;
+    }
+
 }

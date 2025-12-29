@@ -6,10 +6,13 @@
 #include <vector>
 #include <memory>
 
+#include "msim_observable_component.h"
 #include "../microcode/inst_word.h"
 
 
-class msim_rom : public msim_component{
+class msim_rom : public msim_component
+                                /* instructions, current index */
+    ,  public msim_observable_component<int>{
 public:
     msim_rom(std::string const & id, std::string const & label);
     msim_rom & operator=(const msim_rom & other) = delete;
@@ -17,21 +20,17 @@ public:
 
     void add_inst(inst_word && i_word, int line);
     void next();
-    bool has_next() const;
-
     void back();
-    bool has_prev() const;
-
-    bool is_valid_line(int line) const;
     void reset_to_line(int line);
 
-    inst_word const * get_current_instruction() const ;
-    std::vector<std::unique_ptr<inst_word>> const & get_all_instructions() const;
-
-    int get_current_line() const;
-
-    bool is_at_first_instruction() const;
-    bool is_at_last_instruction() const;
+    [[nodiscard]] bool has_next() const;
+    [[nodiscard]] bool has_prev() const;
+    [[nodiscard]] bool is_valid_line(int line) const;
+    [[nodiscard]] inst_word const *get_current_instruction() const;
+    [[nodiscard]] std::vector<std::unique_ptr<inst_word> > const &get_all_instructions() const;
+    [[nodiscard]] int get_current_line() const;
+    [[nodiscard]] bool is_at_first_instruction() const;
+    [[nodiscard]] bool is_at_last_instruction() const;
 
    // virtual ~msim_rom() override;
 

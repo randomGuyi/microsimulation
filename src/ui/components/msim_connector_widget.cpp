@@ -9,6 +9,7 @@ msim_connector_widget::msim_connector_widget( msim_connector * con,
 , m_connections{}
 , m_connector{con}
 {
+
     m_connector->subscibe([this](bool new_val){
         QMetaObject::invokeMethod(this, [this, new_val]{
             on_core_value_changed(new_val);

@@ -141,6 +141,7 @@ add_executable(microsimulation src/main.cpp
         src/ui/components/msim_decoder_widget.h
         src/test/inst_word_tests.cpp
         src/test/inst_word_tests.h
+        src/ui/highlight_label.h
 )
 
 target_link_libraries(microsimulation
