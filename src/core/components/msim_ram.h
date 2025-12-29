@@ -4,24 +4,23 @@
 #include <map>
 
 #include "msim_component.h"
+#include "msim_observable_component.h"
 
 
-class msim_ram : public msim_component{
+class msim_ram : public msim_component,
+                 public msim_observable_component<int> {
 public:
     msim_ram(std::string const & id, std::string const & label);
-    int get_val_at(int adress){
-        if (m_ram_data.find(adress) != m_ram_data.end()){
-            return m_ram_data.at(adress);
-        }
-            return 0;
-    }
 
-    void set_val_at(int value, int address) {
-        m_ram_data[address] = value;
-    }
+    int get_val_at(int adress);
+
+    void set_val_at(int value, int address);
+
+    [[nodiscard]] const std::map<int, int> & get_ram_data() const ;
 
 private:
     std::map<int, int> m_ram_data;
+    int m_last_address{0};
 };
 
 #endif // MSIM_RAM_H

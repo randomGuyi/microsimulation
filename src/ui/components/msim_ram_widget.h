@@ -1,6 +1,8 @@
 #ifndef MSIM_RAM_WIDGET_H
 #define MSIM_RAM_WIDGET_H
 
+#include <QLabel>
+
 #include "msim_component_svg_widget.h"
 
 #include <shared/svg_loader.h>
@@ -15,12 +17,17 @@ public:
                     QString const & element_id,
                     QWidget * parent = nullptr);
 
-    virtual void update_display() override;
+    void on_core_value_changed(int address_accessed);
 
-    virtual void show_tooltip() override;
-    virtual void hide_tooltip() override;
+    void update_display() override;
+
+    void show_tooltip() override;
+    void hide_tooltip() override;
 protected:
     msim_ram * m_ram;
+
+    std::vector<QLabel*> m_value_labels;
+    std::vector<QLabel*> m_addr_labels;
 
 };
 

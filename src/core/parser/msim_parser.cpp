@@ -765,7 +765,7 @@ void msim_parser::panic_mode_recovery(){
 
 void msim_parser::emit_instruction(inst_word & w, int line){
     if(m_rom == nullptr){
-        throw std::runtime_error("no rom instance in parser set");
+        throw std::runtime_error("no rom placed");
     }
     m_rom->add_inst(std::move(w), line);
 };

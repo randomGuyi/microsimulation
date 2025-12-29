@@ -1,15 +1,20 @@
 #include "msim_ram.h"
 
 msim_ram::msim_ram(std::string const & id, std::string const & label)
-    : msim_component{id, label} {
-    m_ram_data[0] =  17;
-    m_ram_data[1] =  static_cast<int>('k');
-    m_ram_data[2] =  static_cast<int>('c');
+    : msim_component{id, label} {}
 
+int msim_ram::get_val_at(int adress){
+    if (m_ram_data.find(adress) != m_ram_data.end()){
+        return m_ram_data.at(adress);
+    }
+    return 0;
+}
 
-    m_ram_data[17] = static_cast<int>('m');
-    m_ram_data[18] = static_cast<int>('i');
-    m_ram_data[19] = static_cast<int>('k');
-    m_ram_data[20] = static_cast<int>('r');
-    m_ram_data[21] = static_cast<int>('o');
+void msim_ram::set_val_at(int value, int address) {
+    m_ram_data[address] = value;
+    notify(address);
+}
+
+[[nodiscard]] const std::map<int, int> & msim_ram::get_ram_data() const {
+    return m_ram_data;
 }

@@ -466,7 +466,7 @@ void msim_cpu::write_to_ram(){
     auto * mdr = dynamic_cast<msim_register *> (find_component(ID_COMP_REGISTERMDR));
     if(! mdr) return;
 
-    ram->set_val_at(static_cast<int>(mar->getValue()), static_cast<int>(mdr->getValue()));
+    ram->set_val_at(mdr->getValue(), mar->getValue());
 }
 
 /* ################################## SET INSTRUCTIONS ##################################*/

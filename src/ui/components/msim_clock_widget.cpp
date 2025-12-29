@@ -35,9 +35,6 @@ msim_clock_widget::msim_clock_widget(msim_clock * clock,
     /* adjust svg sub-elements to local coordinates */
     QRectF seg_rect  = m_loader->get_renderer().boundsOnElement(ID_CYCLEDISP_CLOCK);
     QRectF ctrl_rect = m_loader->get_renderer().boundsOnElement(ID_CONTROLDISP_CLOCK);
-    /* TODO: fix offset in inkscape (trasform in xml...)
-     * TODO: Gruppeauflösen, Matrix anwenden, neu gruppieren
-     */
     seg_rect.translate(-clock_bounds.topLeft() + QPointF{0, 41.804187});
     ctrl_rect.translate(-clock_bounds.topLeft() + QPointF{0, 41.804187});
 

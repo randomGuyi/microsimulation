@@ -88,7 +88,7 @@ void msim_register_widget::show_tooltip() {
                           .arg(QString::number(m_register->getValue(), 16).toUpper())
                           .arg(QString::number(m_register->getValue(), 2))
                           .arg((m_register->getValue() >= 32 && m_register->getValue() <= 126 ) ? QChar(m_register->getValue()) : '.');
-    QToolTip::showText(cursor().pos(), tooltip, this, QRect(), 5000); /* show tooltip for 5 sec */
+    QToolTip::showText(cursor().pos(), tooltip, this, QRect(), 500000); /* show tooltip for 5 sec */
 }
 
 void msim_register_widget::hide_tooltip() {
