@@ -18,6 +18,7 @@
 
 #include <ui/drag_and_drop/drop_target.h>
 
+using namespace gui::views;
 
 component_picker::component_picker(QWidget *parent)
     : QWidget(parent)

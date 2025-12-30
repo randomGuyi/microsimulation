@@ -6,6 +6,7 @@
 
 #include <QMimeData>
 
+using namespace gui;
 
 QMimeData * drag_item_model::mimeData(const QModelIndexList & indexes) const {
     if(indexes.isEmpty()){

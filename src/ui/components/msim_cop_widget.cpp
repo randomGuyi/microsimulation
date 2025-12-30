@@ -1,10 +1,10 @@
 
 #include "msim_cop_widget.h"
 
-
-msim_cop_widget::msim_cop_widget(msim_cop * cop,
+using namespace gui::components;
+msim_cop_widget::msim_cop_widget(core::components::msim_cop * cop,
                                  shared::svg_loader * loader,
-                    QString const & element_id,
+                                 QString const & element_id,
                                  QWidget * parent)
         : msim_component_svg_widget{loader, element_id, cop, parent}
 {}

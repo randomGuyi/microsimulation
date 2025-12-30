@@ -1,5 +1,7 @@
 #include "msim_register.h"
 
+using namespace core::components;
+
 msim_register::msim_register(std::string const & id, std::string const & label)
     : msim_component{id, label}
     , m_value{0}

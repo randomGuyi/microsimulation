@@ -4,8 +4,8 @@
 #include <QGraphicsProxyWidget>
 
 #include <shared/svg_loader.h>
-
-msim_component_widget::msim_component_widget(msim_component * comp, QWidget * parent)
+using namespace gui::components;
+msim_component_widget::msim_component_widget(core::components::msim_component * comp, QWidget * parent)
 : QPushButton{parent}
 , m_component{comp}
 {}

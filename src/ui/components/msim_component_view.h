@@ -5,23 +5,23 @@
 #include <QGraphicsProxyWidget>
 #include <QString>
 
+namespace gui::components {
+    class msim_component_view{
+    public:
+        virtual ~msim_component_view() = default;
 
-class msim_component_view{
-public:
-    virtual ~msim_component_view() = default;
+        virtual QGraphicsProxyWidget * attach_to_target(drop_target * target) = 0;
 
-    virtual QGraphicsProxyWidget * attach_to_target(drop_target * target) = 0;
+        virtual void update_display() = 0;
 
-    virtual void update_display() = 0;
+        virtual void show_tooltip() = 0;
+        virtual void hide_tooltip() = 0;
 
-    virtual void show_tooltip() = 0;
-    virtual void hide_tooltip() = 0;
+        virtual QString id() const = 0;
+        virtual QString label() const = 0;
 
-    virtual QString id() const = 0;
-    virtual QString label() const = 0;
+        //    virtual QGraphicsItem * graphics_item() = 0;
 
-//    virtual QGraphicsItem * graphics_item() = 0;
-
-};
-
+    };
+}
 #endif // MSIM_COMPONENT_VIEW_H

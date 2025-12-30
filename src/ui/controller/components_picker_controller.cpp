@@ -4,6 +4,8 @@
 
 #include "shared/svg_loader.h"
 
+using namespace gui::views;
+using namespace shared;
 components_picker_controller::components_picker_controller() {}
 
 QVector<component_info> components_picker_controller::get_all_components() const{

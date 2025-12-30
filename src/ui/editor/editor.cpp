@@ -14,7 +14,7 @@
 #include <QVBoxLayout>
 #include <QsciScintilla.h>
 
-
+using namespace gui::views;
 editor::editor(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::editor)

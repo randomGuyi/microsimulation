@@ -9,22 +9,20 @@
 
 QT_BEGIN_NAMESPACE
 
-namespace Ui {
-    class msim_main;
-}
+
+namespace Ui {class msim_main;}
 
 QT_END_NAMESPACE
 
-// CHANGE: Inherit from QMainWindow
-class msim_main : public QMainWindow {
-    Q_OBJECT
-public:
-    // QMainWindow destructor is not override, but it's safe to keep 'override' if you must
-    explicit msim_main(QWidget *parent = nullptr);
-    ~msim_main() override;
+namespace gui::views {
+    class msim_main : public QMainWindow {
+        Q_OBJECT
+    public:
+        explicit msim_main(QWidget *parent = nullptr);
+        ~msim_main() override;
 
-private:
-    Ui::msim_main *ui;
-
-};
+    private:
+        Ui::msim_main *ui;
+    };
+}
 #endif

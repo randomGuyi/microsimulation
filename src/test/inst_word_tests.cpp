@@ -10,11 +10,14 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+
+#include "../core/components/msim_component.h"
 #include "../core/microcode/inst_word.h"
+#include "../core/parser/msim_parser.h"
 
 static int g_tests = 0;
 static int g_fails = 0;
-
+using namespace core;
 template<typename T, typename U>
 bool expect_eq(const char* name, const T& expected, const U& actual) {
     ++g_tests;
@@ -29,7 +32,7 @@ bool expect_eq(const char* name, const T& expected, const U& actual) {
 }
 
 bool test_defaults() {
-    inst_word iw;
+    core::inst_word iw;
     bool ok = true;
     ok &= expect_eq("default raw word == 0", uint32_t(0), iw.get_raw_word());
     ok &= expect_eq("default ram mode == WAIT", ram_mode::WAIT, iw.get_ram_mode());

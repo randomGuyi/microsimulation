@@ -9,7 +9,7 @@
 
 #include <QRegularExpression>
 #include <QsciScintilla.h>
-
+using namespace gui::views;
 MicrocodeLexer::MicrocodeLexer(QObject * parent )
     : QsciLexerCustom{parent}
     , m_source{}
@@ -42,7 +42,7 @@ void MicrocodeLexer::styleText(int start, int end) {
 
     // get the slice
     QString slice = sci->text().mid(start, end - start);
-    msim_scanner scanner{slice.toStdString(), false};
+    core::parser::msim_scanner scanner{slice.toStdString(), false};
     auto tokens = scanner.get_tokens();
 
     // startStyling at the beginning of the requested range
@@ -84,7 +84,7 @@ void MicrocodeLexer::styleText(int start, int end) {
     }
 }
 
-int MicrocodeLexer::setStyleForToken(const token_type & token){
+int MicrocodeLexer::setStyleForToken(const core::parser::token_type & token){
     auto it = token_to_syle.find(token);
     if(it == token_to_syle.end()) return Styles::Error;
     return it->second;

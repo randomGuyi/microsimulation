@@ -4,8 +4,8 @@
 
 #include "shared/architecture_ids.h"
 
-
-msim_alu_widget::msim_alu_widget(msim_alu * alu,
+using namespace gui::components;
+msim_alu_widget::msim_alu_widget(core::components::msim_alu * alu,
                                  shared::svg_loader * loader,
                                  QString const & element_id,
                                  QWidget * parent)
@@ -125,7 +125,7 @@ msim_alu_widget::msim_alu_widget(msim_alu * alu,
 
     /* setup ALU subscription */
 
-    m_alu->subscibe([this](std::pair<mux_selection, int> new_result){
+    m_alu->subscibe([this](std::pair<core::components::mux_selection, int> new_result){
         QMetaObject::invokeMethod(this, [this, new_result]{
             on_core_value_changed(new_result);
         });
@@ -133,26 +133,26 @@ msim_alu_widget::msim_alu_widget(msim_alu * alu,
 
 }
 
-void msim_alu_widget::on_core_value_changed(std::pair<mux_selection, int> new_result) {
+void msim_alu_widget::on_core_value_changed(std::pair<core::components::mux_selection, int> new_result) {
     auto activate = [](HighlightLabel &on, HighlightLabel &off, int value) {
         off.bg->hide();
         on.bg->show();
         on.text->setText(QString::number(value));
     };
     switch (new_result.first) {
-        case mux_selection::AU_RESULT:
+        case core::components::mux_selection::AU_RESULT:
             activate(m_au_label, m_lu_label, new_result.second);
             m_mux_label.text->setText("AU: " + QString::number(new_result.second));
             m_mux_label.bg->hide();
             break;
 
-        case mux_selection::LU_RESULT:
+        case core::components::mux_selection::LU_RESULT:
             activate(m_lu_label, m_au_label, new_result.second);
             m_mux_label.text->setText("LU: " + QString::number(new_result.second));
             m_mux_label.bg->hide();
             break;
 
-        case mux_selection::CONSTANT: {
+        case core::components::mux_selection::CONSTANT: {
             m_au_label.bg->hide();
             m_lu_label.bg->hide();
             m_mux_label.bg->show();

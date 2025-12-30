@@ -3,17 +3,17 @@
 
 #include <string>
 
+namespace core::components {
+    class msim_component{
+    public:
+        msim_component(std::string const & id, std::string const & label);
+        virtual ~msim_component() = default;
+        virtual std::string id() const;
+        virtual std::string label() const;
 
-class msim_component{
-public:
-    msim_component(std::string const & id, std::string const & label);
-    virtual ~msim_component() = default;
-    virtual std::string id() const;
-    virtual std::string label() const;
-
-protected:
-    std::string m_id;
-    std::string m_label;
-};
-
+    protected:
+        std::string m_id;
+        std::string m_label;
+    };
+}
 #endif // MSIM_COMPONENT_H

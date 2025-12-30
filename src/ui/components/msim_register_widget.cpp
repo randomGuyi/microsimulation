@@ -6,8 +6,8 @@
 #include <QMouseEvent>
 #include <QVBoxLayout>
 #include <QGraphicsProxyWidget>
-
-msim_register_widget::msim_register_widget(msim_register * reg, QString const & label, QWidget * parent)
+using namespace gui::components;
+msim_register_widget::msim_register_widget(core::components::msim_register * reg, QString const & label, QWidget * parent)
     :msim_component_widget{reg, parent}
     , m_register{reg}
     , m_format{int_fmt}
@@ -51,7 +51,7 @@ void msim_register_widget::on_core_value_canged(int new_value){
 }
 
 
-QGraphicsProxyWidget * msim_register_widget::attach_to_target(drop_target * target){
+QGraphicsProxyWidget * msim_register_widget::attach_to_target(gui::drop_target * target){
     auto proxy = msim_component_widget::attach_to_target(target);
     if(this->width() < this->height()){
         proxy->setRotation(90);

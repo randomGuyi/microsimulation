@@ -2,7 +2,7 @@
 
 #include "msim_observable_component.h"
 
-
+using namespace core::components;
 msim_connector::msim_connector(std::string const & id, std::string const & label)
     : msim_component{id, label}
     , m_enabled{false}

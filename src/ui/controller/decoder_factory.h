@@ -10,16 +10,18 @@
 #include "ui/components/msim_decoder_widget.h"
 #include "ui/components/msim_line_widget.h"
 
-
-class decoder_factory {
-public:
-    static std::pair<msim_decoder *, msim_decoder_widget *>
-    create(const QString & id, const QString & label, shared::svg_loader * loader) {
-        msim_decoder * decoder = new msim_decoder{id.toStdString(), label.toStdString()};
-        msim_decoder_widget * decoder_widget = new msim_decoder_widget (decoder, loader, id);
-        return {decoder, decoder_widget};
-    }
-};
-
+namespace fac {
+    class decoder_factory {
+    public:
+        static std::pair<core::components::msim_decoder *, gui::components::msim_decoder_widget *>
+        create(const QString & id, const QString & label, shared::svg_loader * loader) {
+            using namespace core::components;
+            using namespace gui::components;
+            msim_decoder * decoder = new msim_decoder{id.toStdString(), label.toStdString()};
+            msim_decoder_widget * decoder_widget = new msim_decoder_widget (decoder, loader, id);
+            return {decoder, decoder_widget};
+        }
+    };
+}
 
 #endif //MICROSIMULATION_DECODER_FACTORY_H

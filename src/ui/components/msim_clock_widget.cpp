@@ -10,13 +10,8 @@
 #include <QTimer>
 #include <QVBoxLayout>
 
-  ////#define ID_CLOCK_SEG_DISPLAY "cycleDisp_clock"
- //#define ID_CLOCK_CONTROL_FRAME "controlDisp_clock"
- //#define ID_CLOCK_FETCH_DISP "fetchFrame_clock"
- //#define ID_CLOCK_DECODE_DISP "decodeFrame_clock"
- //#define ID_CLOCK_EXECUTE_DISP "executeFrame_clock"
-
-msim_clock_widget::msim_clock_widget(msim_clock * clock,
+using namespace gui::components;
+msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
                                      shared::svg_loader * loader,
                     QString const & element_id,
                                  QWidget * parent)
@@ -234,38 +229,38 @@ msim_clock_widget::msim_clock_widget(msim_clock * clock,
 }
 
 void msim_clock_widget::prev_phase(){
-    m_clock->set_command(clock_event::PREV_PHASE);
+    m_clock->set_command(core::components::clock_event::PREV_PHASE);
 }
 
 void msim_clock_widget::next_phase(){
-    m_clock->set_command(clock_event::NEXT_PHASE);
+    m_clock->set_command(core::components::clock_event::NEXT_PHASE);
 }
 
 void msim_clock_widget::prev_cycle(){
-    m_clock->set_command(clock_event::PREV_CYCLE);
+    m_clock->set_command(core::components::clock_event::PREV_CYCLE);
 }
 
 void msim_clock_widget::next_cycle(){
-    m_clock->set_command(clock_event::NEXT_CYCLE);
+    m_clock->set_command(core::components::clock_event::NEXT_CYCLE);
 }
 
 void msim_clock_widget::set_manual_mode(){
     m_auto_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_DISABLE_STYLE);
     m_manual_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_ENABLE_STYLE);
-    m_clock->set_command(clock_event::MANUAL_MODE);
+    m_clock->set_command(core::components::clock_event::MANUAL_MODE);
 }
 
 void msim_clock_widget::set_auto_mode(){
-    m_clock->set_command(clock_event::AUTO_MODE);
+    m_clock->set_command(core::components::clock_event::AUTO_MODE);
     m_manual_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_DISABLE_STYLE);
     m_auto_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_ENABLE_STYLE);
 }
 
 void msim_clock_widget::start_stop(){
     if(m_clock->is_running()){
-        m_clock->set_command(clock_event::STOP);
+        m_clock->set_command(core::components::clock_event::STOP);
     }else{
-        m_clock->set_command(clock_event::START);
+        m_clock->set_command(core::components::clock_event::START);
     }
 }
 

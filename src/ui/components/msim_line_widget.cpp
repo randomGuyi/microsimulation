@@ -5,12 +5,12 @@
 #include "qgraphicsproxywidget.h"
 #include "qgraphicsscene.h"
 
+using namespace gui::components;
 
-
-msim_line_widget::msim_line_widget(msim_line * line,
+msim_line_widget::msim_line_widget(core::components::msim_line * line,
                                    shared::svg_loader * loader,
-                    QString const & element_id,
-                    QGraphicsItem * parent)
+                                   QString const & element_id,
+                                   QGraphicsItem * parent)
     : QGraphicsSvgItem{parent}
     , m_line{line}
     , m_element_id{element_id}
@@ -29,7 +29,7 @@ msim_line_widget::msim_line_widget(msim_line * line,
     m_original_scale = scale();
 }
 
-QGraphicsProxyWidget * msim_line_widget::attach_to_target(drop_target * target){
+QGraphicsProxyWidget * msim_line_widget::attach_to_target(gui::drop_target * target){
     if (! target) {
         qWarning() << "attack_to_target called with null target!";
         return nullptr;

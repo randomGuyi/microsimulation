@@ -6,8 +6,10 @@
 
 #include <QGraphicsScene>
 
+using namespace gui::components;
+
 msim_decoder_widget::msim_decoder_widget(
-    msim_decoder *decoder,
+    core::components::msim_decoder *decoder,
     shared::svg_loader *loader,
     QString const &element_id,
     QGraphicsSvgItem *parent)
@@ -30,7 +32,7 @@ msim_decoder_widget::msim_decoder_widget(
    // setZValue(-1);
 }
 
-QGraphicsProxyWidget * msim_decoder_widget::attach_to_target(drop_target * target){
+QGraphicsProxyWidget * msim_decoder_widget::attach_to_target(gui::drop_target * target){
     setParent(target);
     target->scene()->addItem(this);
     return nullptr;

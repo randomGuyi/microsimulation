@@ -7,6 +7,8 @@
 #include "details_view.h"
 #include "ui_details_view.h"
 
+using namespace gui::views;
+
 details_view::details_view(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::details_view)

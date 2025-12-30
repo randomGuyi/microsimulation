@@ -1,5 +1,6 @@
 #include "msim_cop.h"
 
+using namespace core::components;
 
 msim_cop::msim_cop(std::string const & id, std::string const & label)
     : msim_register{id, label}

@@ -1,7 +1,8 @@
 #include "msim_bit_widget.h"
 #include "ui/styles.h"
 
-msim_bit_widget::msim_bit_widget(msim_bit * bit, shared::svg_loader * loader, QString const & element_id, QWidget * parent)
+using namespace gui::components;
+msim_bit_widget::msim_bit_widget(core::components::msim_bit * bit, shared::svg_loader * loader, QString const & element_id, QWidget * parent)
 :msim_component_svg_widget{loader, element_id, bit, parent}
 , m_bit{bit}
 , m_current_value{bit->value()}

@@ -3,6 +3,9 @@
 #include <QFile>
 #include <QTextStream>
 #include <regex>
+
+using namespace shared;
+
 id_reader::id_reader()
     : m_lines{}, m_file_name{SVG_IDS_PATH} {
     QFile ids_file{QString::fromStdString(m_file_name)};

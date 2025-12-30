@@ -11,6 +11,11 @@
 #include "shared/svg_loader.h"
 #include "ui/views/simulator_area.h"
 
+using namespace core::components;
+using namespace gui::components;
+
+namespace fac {
+
 msim_components_manager::msim_components_manager()
     : m_clock_placed{false}
     , m_ar_placed{false}
@@ -22,7 +27,7 @@ msim_components_manager::msim_components_manager()
 
 std::vector<std::string> msim_components_manager::get_placeable_lines_by_regex(std::string const & regex) {
     /* lines from and to component */
-    QStringList lines = id_reader::get_instance().get_results_for(regex);
+    QStringList lines = shared::id_reader::get_instance().get_results_for(regex);
     return placeable_ids_for(lines);
 }
 
@@ -45,7 +50,7 @@ std::vector<std::string> msim_components_manager::placeable_ids_for(QStringList 
     for (const auto & component_id : component_ids) {
         /* all components required by the component*/
         QStringList necessary_components =
-                id_reader::get_instance().get_postfix_components_for_id(component_id);
+                shared::id_reader::get_instance().get_postfix_components_for_id(component_id);
         const bool all_present = std::all_of(
             necessary_components.begin(), necessary_components.end(),
             [this, to_comp](const QString &qs) {
@@ -66,7 +71,7 @@ std::vector<std::string> msim_components_manager::placeable_ids_for(QStringList 
 
 std::vector<std::string> msim_components_manager::placeable_connector_ids(QString id) {
     QStringList conns =
-        id_reader::get_instance().get_results_for("pcb.*" + id.remove("comp_").toStdString() + ".*");
+            shared::id_reader::get_instance().get_results_for("pcb.*" + id.remove("comp_").toStdString() + ".*");
     return placeable_ids_for(conns);
 }
 
@@ -76,7 +81,7 @@ std::vector<std::string> msim_components_manager::placeable_bit_ids(QString id) 
         id = "registerA";
     }
     QStringList const bits =
-        id_reader::get_instance().get_results_for(".*(B|b)it.*" + id.remove("comp_").toStdString() + ".*");
+            shared::id_reader::get_instance().get_results_for(".*(B|b)it.*" + id.remove("comp_").toStdString() + ".*");
     return placeable_ids_for(bits);
 }
 
@@ -159,7 +164,7 @@ QString msim_components_manager::get_decoder_id_4_bit(QString bit_id) {
     return "";
 }
 
-void msim_components_manager::place_connectors(QString const & id, drop_target * target) {
+void msim_components_manager::place_connectors(QString const & id, gui::drop_target * target) {
     for (auto const & conn_id: placeable_connector_ids(id)) {
         bool const is_new = m_placed_connectors.find(QString::fromStdString(conn_id)) == m_placed_connectors.end();
         auto [connector, connector_widget] = get_or_create_connector(QString::fromStdString(conn_id));
@@ -178,7 +183,7 @@ void msim_components_manager::place_connectors(QString const & id, drop_target *
     }
 }
 
-void msim_components_manager::place_lines(QString const & id, drop_target * target) {
+void msim_components_manager::place_lines(QString const & id, gui::drop_target * target) {
     for (auto const & line_id : placeable_line_ids(id)) {
         bool const is_new_line = m_placed_lines.find(QString::fromStdString(line_id)) == m_placed_lines.end();
         auto [line, line_widget] = get_or_create_line(QString::fromStdString(line_id));
@@ -186,7 +191,7 @@ void msim_components_manager::place_lines(QString const & id, drop_target * targ
     }
 }
 
-void msim_components_manager::place_bits(QString const & id, drop_target * target) {
+void msim_components_manager::place_bits(QString const & id, gui::drop_target * target) {
     for (auto const & bit_id : placeable_bit_ids(id)) {
         bool const is_new_bit = m_placed_bits.find(QString::fromStdString(bit_id)) == m_placed_bits.end();
         auto [bit, bit_widget] = get_or_create_bit(QString::fromStdString(bit_id));
@@ -211,7 +216,7 @@ void msim_components_manager::place_bits(QString const & id, drop_target * targe
     }
 }
 
-void msim_components_manager::place_component(drop_target *target, const QString &id, const QString &label) {
+void msim_components_manager::place_component(gui::drop_target *target, const QString &id, const QString &label) {
     auto [component, widget] = get_or_create_component(id, label);
     if(!component || !widget) return;
     widget->attach_to_target(target);
@@ -234,3 +239,4 @@ msim_rom * msim_components_manager::get_rom(){
     }
     return dynamic_cast<msim_rom *>(it.value().first);
 }
+};

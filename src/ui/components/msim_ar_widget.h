@@ -7,24 +7,24 @@
 #include "../../core/components/msim_ar.h"
 
 
+namespace gui::components {
+    class msim_ar_widget : public msim_component_svg_widget{
+        Q_OBJECT
+    public:
+        msim_ar_widget(core::components::msim_ar * ar,
+                       shared::svg_loader * loader,
+                       QString const & element_id,
+                       QWidget * parent = nullptr);
 
-class msim_ar_widget : public msim_component_svg_widget{
-    Q_OBJECT
-public:
-    msim_ar_widget(msim_ar * ar,
-                    shared::svg_loader * loader,
-                    QString const & element_id,
-                    QWidget * parent = nullptr);
+        virtual void update_display() override;
 
-    virtual void update_display() override;
-
-    virtual void show_tooltip() override;
-    virtual void hide_tooltip() override;
-protected:
-    msim_ar * m_ar;
+        virtual void show_tooltip() override;
+        virtual void hide_tooltip() override;
+    protected:
+        core::components::msim_ar * m_ar;
 
 
-};
-
+    };
+}
 
 #endif // MSIM_AR_WIDGET_H

@@ -1,6 +1,7 @@
 #include "msim_bit.h"
 #include <iostream>
 
+using namespace core::components;
 
 msim_bit::msim_bit(std::string const & id, std::string const & label, bool value)
     : msim_component{id, label}

@@ -5,10 +5,12 @@
 #include "core/components/msim_component.h"
 #include <string>
 
-class msim_ar : public msim_component{
-public:
-    msim_ar(std::string const & id, std::string const & label);
+ namespace core::components {
+     class msim_ar : public msim_component{
+     public:
+         msim_ar(std::string const & id, std::string const & label);
 
-private:
-};
+     private:
+     };
+ }
 #endif // MSIM_AR_H

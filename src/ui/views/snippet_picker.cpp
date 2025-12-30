@@ -7,7 +7,7 @@
 #include "snippet_picker.h"
 #include "ui_snippet_picker.h"
 
-
+using namespace gui::views;
 snippet_picker::snippet_picker(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::snippet_picker)

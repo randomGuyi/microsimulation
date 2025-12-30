@@ -4,10 +4,11 @@
 #include "qpainter.h"
 #include "ui/components/debug_proxy.h"
 
+using namespace gui::components;
 msim_component_svg_widget::msim_component_svg_widget(
                                          shared::svg_loader * loader,
                                          QString const & element_id,
-                                         msim_component * comp,
+                                         core::components::msim_component * comp,
                                          QWidget * parent )
     : msim_component_widget{comp, parent}
     , m_loader{loader}
@@ -30,7 +31,7 @@ QSize msim_component_svg_widget::sizeHint() const{
 
 }
 
-QGraphicsProxyWidget * msim_component_svg_widget::attach_to_target(drop_target * target){
+QGraphicsProxyWidget * msim_component_svg_widget::attach_to_target(gui::drop_target * target){
 
     QGraphicsProxyWidget * proxy =  target->scene()->addWidget(this);
     QRectF bounds = m_loader->get_renderer().boundsOnElement(id());

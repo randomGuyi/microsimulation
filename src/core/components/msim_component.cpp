@@ -1,5 +1,6 @@
 #include "msim_component.h"
 
+using namespace core::components;
 
 msim_component::msim_component(std::string const & id, std::string const & label)
     : m_id{id}

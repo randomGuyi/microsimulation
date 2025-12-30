@@ -18,6 +18,8 @@
 #include "core/common/id_reader.h"
 #include <shared/svg_loader.h>
 #include <ui/controller/msim_components_manager.h>
+using namespace gui::views;
+using namespace shared;
 
 simulator_area::simulator_area(QWidget *parent)
     : QWidget(parent)
@@ -47,7 +49,7 @@ simulator_area::simulator_area(QWidget *parent)
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 }
 
-QList<drop_target *> & simulator_area::get_drop_targets(){
+QList<gui::drop_target *> &simulator_area::get_drop_targets(){
     return m_drop_targets;
 }
 
@@ -81,7 +83,7 @@ void simulator_area::resetZoom(){
     resizeEvent(nullptr); // refit
 }
 
-
 simulator_area::~simulator_area(){
     delete ui;
 }
+

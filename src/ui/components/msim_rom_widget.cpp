@@ -3,8 +3,8 @@
 
 #include "shared/architecture_ids.h"
 
-
-msim_rom_widget::msim_rom_widget(msim_rom * rom,
+using namespace gui::components;
+msim_rom_widget::msim_rom_widget(core::components::msim_rom * rom,
                                  shared::svg_loader * loader,
                                  QString const & element_id,
                                  QWidget * parent)

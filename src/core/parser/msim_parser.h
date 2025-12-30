@@ -269,6 +269,7 @@ EOF          ::= <end-of-file> ;
 
 ```
 */
+namespace core::parser {
 
 struct parser_error{
     int line;
@@ -278,11 +279,11 @@ struct parser_error{
 class msim_parser
 {
 public:
-    msim_parser(msim_scanner * scanner_inst, msim_rom * rom_inst);
+    msim_parser(msim_scanner * scanner_inst, components::msim_rom * rom_inst);
     void parse();
     bool has_error() const;
     std::vector<parser_error> get_errors();
-    void set_rom_inst(msim_rom * inst);
+    void set_rom_inst(components::msim_rom * inst);
     void set_scanner_inst(msim_scanner * inst);
 
 private:
@@ -336,11 +337,12 @@ private:
     static void set_bit(uint8_t &byte, int pos);
 
     msim_scanner * m_scanner;
-    msim_rom * m_rom;
+    components::msim_rom * m_rom;
     token m_lookahead;
 
     std::vector<parser_error> m_errors;
 
 };
 
+}
 #endif // MSIM_PARSER_H

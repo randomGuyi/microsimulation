@@ -1,5 +1,7 @@
 #include "msim_alu.h"
 
+using namespace core::components;
+
 msim_alu::msim_alu(std::string const & id, std::string const & label)
     : msim_component{id, label}
 , m_operation{Z_Z}

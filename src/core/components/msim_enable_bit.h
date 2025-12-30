@@ -3,11 +3,11 @@
 
 #include "msim_bit.h"
 
-
-class msim_enable_bit : public msim_bit
-{
-public:
-    msim_enable_bit(std::string const & id, std::string const & label);
-};
-
+namespace core::components {
+    class msim_enable_bit : public msim_bit
+    {
+    public:
+        msim_enable_bit(std::string const & id, std::string const & label);
+    };
+}
 #endif // MSIM_ENABLE_BIT_H

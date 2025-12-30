@@ -1,11 +1,11 @@
 #include "msim_enable_bit_widget.h"
 
 
-
-msim_enable_bit_widget::msim_enable_bit_widget(msim_enable_bit * bit,
+using namespace gui::components;
+msim_enable_bit_widget::msim_enable_bit_widget(core::components::msim_enable_bit * bit,
                                                shared::svg_loader * loader,
-                    QString const & element_id,
-                    QWidget * parent)
+                                               QString const & element_id,
+                                               QWidget * parent)
     : msim_bit_widget{bit, loader, element_id, parent}
     , m_bit{bit}
 {}

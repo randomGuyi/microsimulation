@@ -10,6 +10,7 @@
 
 #include "ui/drag_and_drop/drag_item_model.h"
 #include "ui/controller/msim_components_manager.h"
+using namespace gui;
 
 drop_target::drop_target(const QString & element_id)
     :QGraphicsSvgItem{}
@@ -71,7 +72,7 @@ void drop_target::dropEvent (QGraphicsSceneDragDropEvent * event) {
 }
 
 void drop_target::place_component(QString const & id, QString const & label){
-    msim_components_manager::get_instance().place_component(this, id, label);
+    fac::msim_components_manager::get_instance().place_component(this, id, label);
 }
 
 void drop_target::hoverEnterEvent (QGraphicsSceneHoverEvent * event) {

@@ -1,5 +1,7 @@
 #include "msim_wrd.h"
 
+using namespace core;
+
 msim_wrd::msim_wrd()
 : m_ok{true}
 {}

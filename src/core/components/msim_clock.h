@@ -7,65 +7,68 @@
 #include <string>
 #include <thread>
 
-enum class clock_event{
+#include "msim_bus.h"
 
-    NEXT_CYCLE,
-    PREV_CYCLE,
-    NEXT_PHASE,
-    PREV_PHASE,
+namespace core::components {
+    enum class clock_event{
 
-    MANUAL_MODE,
-    AUTO_MODE,
+        NEXT_CYCLE,
+        PREV_CYCLE,
+        NEXT_PHASE,
+        PREV_PHASE,
 
-    START,
-    STOP
-};
+        MANUAL_MODE,
+        AUTO_MODE,
 
-enum class clock_phase {
-    FETCH = 0,
-    DECODE = 1,
-    EXECUTE = 2
-};
+        START,
+        STOP
+    };
 
-class msim_clock : public msim_component,
-                   public msim_observable_component<clock_event>{
-public:
-    msim_clock(std::string const & id, std::string const & label);
-    void set_command(clock_event event);
+    enum class clock_phase {
+        FETCH = 0,
+        DECODE = 1,
+        EXECUTE = 2
+    };
 
-    clock_phase get_current_phase() const;
+    class msim_clock : public msim_component,
+                       public msim_observable_component<clock_event>{
+    public:
+        msim_clock(std::string const & id, std::string const & label);
+        void set_command(clock_event event);
 
-    bool is_auto_mode();
-    bool is_manual_mode();
-    bool is_stop();
+        clock_phase get_current_phase() const;
 
-    bool is_running();
+        bool is_auto_mode();
+        bool is_manual_mode();
+        bool is_stop();
 
-    void set_frequency(int frequency);
-    ~msim_clock();
+        bool is_running();
 
-private:
-    bool m_auto_mode;
-    bool m_stop;
-    bool m_running;
-    int m_frequency; /* cycles per secound */
-    clock_phase m_phase_index; /* 0 = fetch, 1= decode, 2= execute */
+        void set_frequency(int frequency);
+        ~msim_clock();
 
-    void on_next_cycle();
-    void on_prev_cycle();
-    void on_next_phase();
-    void on_prev_phase();
-    void on_manual_mode();
-    void on_auto_mode();
-    void on_start();
-    void on_stop();
+    private:
+        bool m_auto_mode;
+        bool m_stop;
+        bool m_running;
+        int m_frequency; /* cycles per secound */
+        clock_phase m_phase_index; /* 0 = fetch, 1= decode, 2= execute */
 
-    int calc_interval_ms() const;
-    void on_timer_tick();
+        void on_next_cycle();
+        void on_prev_cycle();
+        void on_next_phase();
+        void on_prev_phase();
+        void on_manual_mode();
+        void on_auto_mode();
+        void on_start();
+        void on_stop();
 
-    std::thread m_worker;
-    std::atomic<bool> m_stop_flag;
+        int calc_interval_ms() const;
+        void on_timer_tick();
 
-};
+        std::thread m_worker;
+        std::atomic<bool> m_stop_flag;
 
+    };
+}
 #endif // MSIM_CLOCK_H

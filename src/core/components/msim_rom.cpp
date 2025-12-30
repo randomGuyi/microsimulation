@@ -2,6 +2,8 @@
 
 #define RESIZE_SIZE 16
 
+using namespace core::components;
+
 msim_rom::msim_rom(std::string const & id, std::string const & label)
     : msim_component{id, label}
     , m_index{-1}
@@ -75,13 +77,13 @@ void msim_rom::reset_to_line(int line){
     }
 }
 
-inst_word const * msim_rom::get_current_instruction() const {
+core::inst_word const * msim_rom::get_current_instruction() const {
     return  (static_cast<std::size_t>(m_index) < m_instructions.size() && m_instructions[m_index]) ?
                m_instructions[m_index].get() :
                nullptr;
 }
 
-std::vector<std::unique_ptr<inst_word>> const & msim_rom::get_all_instructions() const{
+std::vector<std::unique_ptr<core::inst_word>> const & msim_rom::get_all_instructions() const{
     return m_instructions;
 }
 

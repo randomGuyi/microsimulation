@@ -3,16 +3,16 @@
 
 
 #include "msim_register.h"
+namespace core::components {
+    class msim_cop : public msim_register{
+    public:
+        msim_cop(std::string const & id, std::string const & label);
 
-class msim_cop : public msim_register{
-public:
-    msim_cop(std::string const & id, std::string const & label);
-    
-    void set_mask(int msk);
-    void set_cn(int cn);
-private:
-    int m_mask;
-    int m_cn;
-};
-
+        void set_mask(int msk);
+        void set_cn(int cn);
+    private:
+        int m_mask;
+        int m_cn;
+    };
+}
 #endif // MSIM_COP_H

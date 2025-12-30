@@ -10,7 +10,7 @@
 #ifdef DEBUG_SCANNER
     #include <iostream>
 #endif
-
+using namespace core::parser;
 msim_scanner::msim_scanner(const std::string & source, bool ignore_comments)
     : m_pos{0}			   // position in current stream
     , m_source{}

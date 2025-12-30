@@ -3,7 +3,7 @@
 //
 
 #include "details_tabs.h"
-
+using namespace gui::views;
 details_tabs::details_tabs(QWidget *parent)
     : QTabWidget{parent}
 {
@@ -43,20 +43,20 @@ QTextEdit *details_tabs::get_or_make_compiler_log()
     return compiler_log;
 }
 
-void details_tabs::show_ram_details(msim_ram *instance)
+void details_tabs::show_ram_details(core::components::msim_ram *instance)
 {
     if (instance == nullptr) {
         throw std::runtime_error{"details tabs got emty ram instance!"};
     }
 }
-void details_tabs::show_rom_details(msim_rom *instance)
+void details_tabs::show_rom_details(core::components::msim_rom *instance)
 {
     if (instance == nullptr) {
         throw std::runtime_error{"details tabs got emty rom instance!"};
     }
 }
 
-void details_tabs::show_compile_errors(std::vector<parser_error> const &psr_e)
+void details_tabs::show_compile_errors(std::vector<core::parser::parser_error> const &psr_e)
 {
     QTextEdit *compiler_log = get_or_make_compiler_log();
     compiler_log->clear();

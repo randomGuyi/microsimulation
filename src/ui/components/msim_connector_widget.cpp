@@ -1,10 +1,11 @@
 #include "msim_connector_widget.h"
 
+using namespace gui::components;
 
-msim_connector_widget::msim_connector_widget( msim_connector * con,
-                                              shared::svg_loader * loader,
-                                   QString const & element_id,
-                                   QWidget * parent )
+msim_connector_widget::msim_connector_widget(core::components::msim_connector * con,
+                                             shared::svg_loader * loader,
+                                             QString const & element_id,
+                                             QWidget * parent )
 : msim_component_svg_widget{loader, element_id, con, parent}
 , m_connections{}
 , m_connector{con}

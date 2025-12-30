@@ -3,13 +3,15 @@
 #include <iostream>
 #include <qDebug>
 
-msim_parser::msim_parser(msim_scanner * scanner_inst, msim_rom * rom_inst)
+using namespace core::parser;
+
+msim_parser::msim_parser(msim_scanner * scanner_inst, components::msim_rom * rom_inst)
     :m_scanner{scanner_inst}
     , m_rom{rom_inst}
     , m_lookahead{}
 {}
 
-void msim_parser::set_rom_inst(msim_rom * inst){
+void msim_parser::set_rom_inst(components::msim_rom * inst){
     m_rom = inst;
 }
 

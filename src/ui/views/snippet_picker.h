@@ -10,23 +10,20 @@
 
 QT_BEGIN_NAMESPACE
 
-namespace Ui {
-    class snippet_picker;
-}
+namespace Ui {class snippet_picker;}
 
 QT_END_NAMESPACE
 
-class snippet_picker : public QWidget {
-    Q_OBJECT
+namespace gui::views {
+    class snippet_picker : public QWidget {
+        Q_OBJECT
 
-public:
-    explicit snippet_picker(QWidget *parent = nullptr);
+    public:
+        explicit snippet_picker(QWidget *parent = nullptr);
+        ~snippet_picker() override;
 
-    ~snippet_picker() override;
-
-private:
-    Ui::snippet_picker *ui;
-};
-
-
+    private:
+        Ui::snippet_picker *ui;
+    };
+}
 #endif //MICROSIMULATION_SNIPPET_PICKER_H

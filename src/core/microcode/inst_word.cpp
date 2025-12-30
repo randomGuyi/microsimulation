@@ -2,6 +2,8 @@
 
 #include <ostream>
 
+using namespace core;
+
 #define UNUSED(X) (void) X
 
 /*
@@ -74,18 +76,19 @@ uint8_t inst_word::read_bits(uint32_t offset_bits, uint32_t width_bits) const {
 uint32_t inst_word::get_raw_word() const {return m_raw_word;}
 
 
-
-std::ostream & operator<<(std::ostream & os, const inst_word & iw) {
-    /* |b31|b30|b29|b28 | b27|b26|b25|b24 |b23|b22|b21|b20 | b19|b18|b17|b16 |b15|b14|b13|b12|b11|b10| b9| b8| b7| b6| b5| b4| b3| b2| b1| b0|*/
-    /* | Z -> REGISTER | X SELECTION  |   Y SELECTION      |  OPERATION      |Z->MAR|Z->MDR|MDR->Y|MDR->COP| RAM MODE | AR MODE  |   MASK   |     CN      |*/
-    std::string str{"|"};
-    for (int i = 0; i < 32; ++i) {
-        bool bit_set = (iw.m_raw_word >> (31 - i)) & 1u;
-        str += bit_set ? "1|" : "0|";
+namespace core {
+    std::ostream & operator<<(std::ostream & os, const inst_word & iw) {
+        /* |b31|b30|b29|b28 | b27|b26|b25|b24 |b23|b22|b21|b20 | b19|b18|b17|b16 |b15|b14|b13|b12|b11|b10| b9| b8| b7| b6| b5| b4| b3| b2| b1| b0|*/
+        /* | Z -> REGISTER | X SELECTION  |   Y SELECTION      |  OPERATION      |Z->MAR|Z->MDR|MDR->Y|MDR->COP| RAM MODE | AR MODE  |   MASK   |     CN      |*/
+        std::string str{"|"};
+        for (int i = 0; i < 32; ++i) {
+            bool bit_set = (iw.m_raw_word >> (31 - i)) & 1u;
+            str += bit_set ? "1|" : "0|";
+        }
+        os << str << std::endl;
+        os << "|z->r0|r->x|r->y| op |z->mar|z->mdr|mdr->y|mdr->cop|ram mode|ar mode|  mask |     cn      |" << std::endl;
+        return os;
     }
-    os << str << std::endl;
-    os << "|z->r0|r->x|r->y| op |z->mar|z->mdr|mdr->y|mdr->cop|ram mode|ar mode|  mask |     cn      |" << std::endl;
-    return os;
 }
 
 void inst_word::set_z_selection(uint8_t z_nbl) {

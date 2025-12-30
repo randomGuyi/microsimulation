@@ -8,6 +8,7 @@
 #include <QMenuBar>
 #include "ui_msim_main.h"
 
+using namespace gui::views;
 
 msim_main::msim_main(QWidget *parent)
     : QMainWindow(parent)

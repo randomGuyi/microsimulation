@@ -12,9 +12,13 @@
 #include "msim_cop.h"
 #include "ui/components/debug_proxy.h"
 
+using namespace core::components;
+using namespace core::sim;
+
 #define DEBUG_CPU
 #define DEBUG(msg) \
 std::cout << "CPU: " << msg << std::endl
+
 
 msim_cpu::msim_cpu()
     : m_curr_word{nullptr}

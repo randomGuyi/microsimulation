@@ -5,7 +5,10 @@
 #include <QLabel>
 
 #include "shared/architecture_ids.h"
-msim_ram_widget::msim_ram_widget(msim_ram * ram,
+
+
+using namespace gui::components;
+msim_ram_widget::msim_ram_widget(core::components::msim_ram * ram,
                                  shared::svg_loader * loader,
                                  QString const & element_id,
                                  QWidget * parent)

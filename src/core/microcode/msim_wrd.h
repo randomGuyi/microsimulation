@@ -3,19 +3,20 @@
 
 #include <string>
 #include <vector>
-class msim_wrd
-{
-public:
-    msim_wrd();
-    virtual bool ok() const;
-    virtual std::string err_msg();
+namespace core {
+    class msim_wrd
+    {
+    public:
+        msim_wrd();
+        virtual bool ok() const;
+        virtual std::string err_msg();
 
-    virtual ~msim_wrd() = default;
+        virtual ~msim_wrd() = default;
 
-protected:
-    virtual void add_error(std::string const & error_msg);
-    std::vector<std::string> m_error_msgs;
-    bool m_ok;
-};
-
+    protected:
+        virtual void add_error(std::string const & error_msg);
+        std::vector<std::string> m_error_msgs;
+        bool m_ok;
+    };
+}
 #endif // MSIM_WRD_H

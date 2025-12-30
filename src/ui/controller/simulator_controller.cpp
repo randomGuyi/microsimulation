@@ -1,6 +1,6 @@
 #include "simulator_controller.h"
 
-
+using namespace gui::views;
 simulator_controller::simulator_controller(){
 
 }

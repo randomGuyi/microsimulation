@@ -1,7 +1,7 @@
 
 #include "msim_ar_widget.h"
-
-msim_ar_widget::msim_ar_widget(msim_ar * ar,
+using namespace gui::components;
+msim_ar_widget::msim_ar_widget(core::components::msim_ar * ar,
                                shared::svg_loader * loader,
                     QString const & element_id,
                                  QWidget * parent)

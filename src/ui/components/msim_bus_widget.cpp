@@ -1,11 +1,11 @@
 #include "msim_bus_widget.h"
 
+using namespace gui::components;
 
-
-msim_bus_widget::msim_bus_widget(msim_bus * bus,
-                    shared::svg_loader * loader,
-                    QString const & element_id,
-                    QWidget * parent)
+msim_bus_widget::msim_bus_widget(core::components::msim_bus * bus,
+                                 shared::svg_loader * loader,
+                                 QString const & element_id,
+                                 QWidget * parent)
 :msim_component_svg_widget{loader, element_id, bus, parent}
 {}
 

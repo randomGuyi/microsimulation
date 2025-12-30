@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     // ... rest of your code ...
-    msim_main w;
+   gui::views::msim_main w;
     w.show();
     return a.exec();
 }

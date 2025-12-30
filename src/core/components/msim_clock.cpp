@@ -10,6 +10,8 @@
 #include <qDebug>
 #endif
 
+using namespace core::components;
+
 msim_clock::msim_clock(std::string const & id, std::string const & label)
     : msim_component{id, label}
     , m_auto_mode{false}
