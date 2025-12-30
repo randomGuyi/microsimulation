@@ -27,7 +27,7 @@ QString MicrocodeLexer::description(int style) const {
     switch(style){
     case Styles::Default: return    "The default.";
     case Styles::Number: return  	"A number";
-    case Styles::Bus : return  	"A BUS identifier ";
+    case Styles::Bus : return  	    "A BUS identifier ";
     case Styles::Operation: return  	"An ALU operation";
     case Styles::Car: return  	"A CAR command";
     case Styles::Comment: return  	"A comment";
@@ -36,62 +36,6 @@ QString MicrocodeLexer::description(int style) const {
     }
 
 }
-/* ORIGINAL
-void MicrocodeLexer::styleText(int start, int end) {
-    QsciScintilla * sci = qobject_cast<QsciScintilla *>(editor());
-    if (!sci) return;
-
-    QString full_text = sci->text();
-    m_source = full_text.toStdString();
-
-    msim_scanner scanner{m_source, scanner_mode::raw};
-    std::vector<token> tokens = scanner.get_tokens();
-    if(tokens.empty()) return;
-
-    startStyling(start);
-
-    for (const token &tkn : tokens) {
-        if(tkn.type == token_type::UNKNOWN) return;
-        if(tkn.abs_pos + tkn.value.size() <= static_cast<size_t>(start)) continue;
-        if(static_cast<int>(tkn.abs_pos) >= end) break;
-        //int token_start = std::max(static_cast<int>(tkn.abs_pos), start);
-        int length = static_cast<int>(tkn.value.size());
-
-        if(static_cast<int>(tkn.abs_pos) + length > end){
-            length = end - tkn.abs_pos;
-        }
-        startStyling(static_cast<int>(tkn.abs_pos));
-        setStyling(length, setStyleForToken(tkn.type));
-    }
-}
-*/
-/*
-void MicrocodeLexer::styleText(int start, int end) {
-    QsciScintilla *sci = qobject_cast<QsciScintilla *>(editor());
-    if (!sci) return;
-
-    QString text = sci->text().mid(start, end - start);
-    msim_scanner scanner{text.toStdString(), scanner_mode::raw};
-    auto tokens = scanner.get_tokens();
-
-    int offset = start; // shift local positions into global buffer space
-    for (const auto &tkn : tokens) {
-        int token_start = offset + tkn.abs_pos;
-        int token_end   = token_start + static_cast<int>(tkn.value.size());
-
-        if (token_end <= start) continue;
-        if (token_start >= end) break;
-
-        int clipped_start = std::max(token_start, start);
-        int clipped_end   = std::min(token_end, end);
-        int length = clipped_end - clipped_start;
-        if (length <= 0) continue;
-
-        startStyling(clipped_start);
-        setStyling(length, setStyleForToken(tkn.type));
-    }
-}
-*/
 void MicrocodeLexer::styleText(int start, int end) {
     QsciScintilla *sci = qobject_cast<QsciScintilla *>(editor());
     if (!sci) return;

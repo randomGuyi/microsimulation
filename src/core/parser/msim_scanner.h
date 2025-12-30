@@ -188,10 +188,10 @@ public:
 
     token get_next_token();
     token peek_next_token();
-    bool has_more_tokens() const;
+    [[nodiscard]] bool has_more_tokens() const;
 
     void reset(std::string const & text);
-    size_t get_position() const;
+    [[nodiscard]] size_t get_position() const;
     void set_position(size_t pos);
 
     std::vector<token> get_tokens();
@@ -199,7 +199,7 @@ public:
 
     token get_token_at_position(int line, int col);
 
-    std::string get_last_error() const;
+    [[nodiscard]] std::string get_last_error() const;
     
     int get_curr_line();
 private:
@@ -218,8 +218,8 @@ private:
     bool match(const std::string & kw);
     token make_token(token_type tkt, const std::string & val, size_t start_pos, int start_line, int start_col);
     token number_token();
-    char peek_char() const;
-    char peek_next_char() const;
+    [[nodiscard]] char peek_char() const;
+    [[nodiscard]] char peek_next_char() const;
     char advance();
     bool is_at_end();
     std::string normalize_new_lines(const std::string & src);
