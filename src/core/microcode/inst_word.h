@@ -51,6 +51,8 @@ namespace core {
 
         uint32_t get_raw_word() const;
 
+        std::string to_string() const;
+
         void set_x_selection(uint8_t x_nbl);
         void set_y_selection(uint8_t y_nbl);
         void set_z_selection(uint8_t z_nbl);

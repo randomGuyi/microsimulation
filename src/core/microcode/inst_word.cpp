@@ -80,15 +80,31 @@ namespace core {
     std::ostream & operator<<(std::ostream & os, const inst_word & iw) {
         /* |b31|b30|b29|b28 | b27|b26|b25|b24 |b23|b22|b21|b20 | b19|b18|b17|b16 |b15|b14|b13|b12|b11|b10| b9| b8| b7| b6| b5| b4| b3| b2| b1| b0|*/
         /* | Z -> REGISTER | X SELECTION  |   Y SELECTION      |  OPERATION      |Z->MAR|Z->MDR|MDR->Y|MDR->COP| RAM MODE | AR MODE  |   MASK   |     CN      |*/
-        std::string str{"|"};
+        std::string str{};
         for (int i = 0; i < 32; ++i) {
             bool bit_set = (iw.m_raw_word >> (31 - i)) & 1u;
-            str += bit_set ? "1|" : "0|";
+            str += bit_set ? "1" : "0";
+            if (i == 3 || i == 6 || i == 9 || i == 13 || i == 18 || i == 20 || i == 22 || i == 26) {
+                str += " ";
+            }
         }
         os << str << std::endl;
-        os << "|z->r0|r->x|r->y| op |z->mar|z->mdr|mdr->y|mdr->cop|ram mode|ar mode|  mask |     cn      |" << std::endl;
         return os;
     }
+
+}
+
+std::string inst_word::to_string() const {
+    /* |b31|b30|b29|b28 | b27|b26|b25|b24 |b23|b22|b21|b20 | b19|b18|b17|b16 |b15|b14|b13|b12|b11|b10| b9| b8| b7| b6| b5| b4| b3| b2| b1| b0|*/
+    /* | Z -> REGISTER | X SELECTION  |   Y SELECTION      |  OPERATION      |Z->MAR|Z->MDR|MDR->Y|MDR->COP| RAM MODE | AR MODE  |   MASK   |     CN      |*/
+    std::string str{"|"};
+    for (int i = 0; i < 32; ++i) {
+        bool bit_set = (m_raw_word >> (31 - i)) & 1u;
+        str += bit_set ? "1|" : "0|";
+    }
+    str += '\n';
+    str += "|z->r0|r->x|r->y| op |z->mar|z->mdr|mdr->y|mdr->cop|ram mode|ar mode|  mask |     cn      |\n";
+    return str;
 }
 
 void inst_word::set_z_selection(uint8_t z_nbl) {
