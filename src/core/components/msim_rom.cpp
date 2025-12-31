@@ -19,6 +19,7 @@ void msim_rom::add_inst(inst_word && i_word, int line){
     if(! m_instructions[line]) ++m_size;
 
     m_instructions[line] = std::make_unique<inst_word>(std::move(i_word));
+    notify(0);
 }
 
 void msim_rom::next(){
