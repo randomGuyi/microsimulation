@@ -142,6 +142,7 @@ add_executable(microsimulation src/main.cpp
         src/test/inst_word_tests.cpp
         src/test/inst_word_tests.h
         src/ui/highlight_label.h
+        src/ui/controller/details_controller.cpp
 )
 
 target_link_libraries(microsimulation

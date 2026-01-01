@@ -31,6 +31,12 @@ namespace gui::components {
     private:
 
         void on_core_value_changed(int new_val);
+
+    signals:
+        void clicked(core::components::msim_rom * rom);
+
+    protected:
+        void mousePressEvent(QMouseEvent * event) override;
     };
 }
 #endif // MSIM_ROM_WIDGET_H

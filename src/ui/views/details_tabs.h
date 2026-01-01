@@ -29,7 +29,9 @@ namespace gui::views {
     private:
         int tab_index_for_label(std::string const &lbl);
         QTextEdit *get_or_make_compiler_log();
+        QTextEdit * m_ram_text_view{nullptr};
     };
 }
 
 #endif //MICROSIMULATION_DETAILS_TABS_H
+

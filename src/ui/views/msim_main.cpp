@@ -7,6 +7,8 @@
 #include "msim_main.h"
 #include <QMenuBar>
 #include "ui_msim_main.h"
+#include "details_view.h"
+#include "../controller/details_controller.h"
 
 using namespace gui::views;
 
@@ -25,6 +27,12 @@ msim_main::msim_main(QWidget *parent)
         ui->components_tab->place_all_components(drop_targets);
     });
 
+    // create and insert details view into the placeholder frame
+    auto * details = new details_view{ui->details_frame};
+    details->setParent(ui->details_frame);
+    details->show();
+    // register with controller
+    gui::views::details_controller::instance().set_details_view(details);
 
 }
 
@@ -32,4 +40,3 @@ msim_main::~msim_main()
 {
     delete ui;
 }
-

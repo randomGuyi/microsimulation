@@ -16,7 +16,6 @@ void msim_bit::set_value(bool val) {
     if(m_value != val){
         m_value = val;
         notify(m_value);
-        std::cout << "core changed" << std::endl;
     }
 }
 

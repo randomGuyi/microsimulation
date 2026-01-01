@@ -5,8 +5,10 @@
 #include <algorithm>
 #include <QSizePolicy>
 #include <QVBoxLayout>
+#include "ui/controller/details_controller.h"
 
 using namespace gui::components;
+using gui::views::details_controller;
 msim_rom_widget::msim_rom_widget(core::components::msim_rom * rom,
                                  shared::svg_loader * loader,
                                  QString const & element_id,
@@ -83,7 +85,7 @@ msim_rom_widget::msim_rom_widget(core::components::msim_rom * rom,
         // Fix label height to font line-height so it doesn't expand vertically
         QFontMetrics fm(instructionFont);
         int fixedLabelH = fm.height() + 2; // small padding
-        // make the label strictly fixed height so layout centers it vertically
+        // make the label strictly fixed height so the layout centers it vertically
         line_label->setFixedHeight(fixedLabelH);
         line_label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
         vlayout->addWidget(line_label, 0, Qt::AlignHCenter);
@@ -97,6 +99,14 @@ msim_rom_widget::msim_rom_widget(core::components::msim_rom * rom,
             on_core_value_changed(new_line);
         });
     }) ;
+
+    // connect clicks to details controller
+    connect(this, &msim_rom_widget::clicked, &details_controller::instance(), &details_controller::on_rom_clicked);
+}
+
+void msim_rom_widget::mousePressEvent(QMouseEvent * event){
+    emit clicked(m_rom);
+    msim_component_svg_widget::mousePressEvent(event);
 }
 
 void msim_rom_widget::on_core_value_changed(int line_number) {

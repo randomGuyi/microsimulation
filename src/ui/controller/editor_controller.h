@@ -12,12 +12,19 @@ namespace gui::views {
         Q_OBJECT
     public:
         explicit editor_controller(QsciScintilla * editor, QObject * parent = nullptr);
+
+        void highlight_line(int line);
+
         void parse_and_highlight();
+
+        void on_rom_changed(int line_number);
 
     private:
         QsciScintilla * m_editor;
         core::parser::msim_scanner * m_scanner;
         core::parser::msim_parser * m_parser;
+        bool m_on_rom_subscribed;
+        QString m_text;
         //components_manager * m_components_manager;
 
         void update_markers(const std::vector<core::parser::parser_error> & errors);

@@ -219,6 +219,11 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
     });
     connect(m_auto_start_stop_btn, &QPushButton::clicked, this, [=]{
         apply_btn_animation_fn(m_auto_start_stop_btn, auto_start_stop_anim);
+        if (m_auto_start_stop_btn->text() == "Start") {
+            m_auto_start_stop_btn->setText("Stop");
+        } else {
+            m_auto_start_stop_btn->setText("Start");
+        }
         start_stop();
     });
 

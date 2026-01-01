@@ -22,10 +22,8 @@ namespace gui::views {
 
         ~details_view() override;
     public slots:
-       /* void show_compile_errors(std::vector<parser_error> const & errors);
-        void show_compile_details(QString const & msg);
-        void show_ram_details(ram * inst);
-        void show_rom_details(rom * inst); */
+       void show_ram_details(core::components::msim_ram * instance);
+       void show_rom_details(core::components::msim_rom * instance);
 
     private:
         Ui::details_view *ui;

@@ -1,13 +1,14 @@
-
-
 #include "msim_ram_widget.h"
 
 #include <QLabel>
+#include <QMouseEvent>
 
 #include "shared/architecture_ids.h"
+#include "ui/controller/details_controller.h"
 
 
 using namespace gui::components;
+using gui::views::details_controller;
 msim_ram_widget::msim_ram_widget(core::components::msim_ram * ram,
                                  shared::svg_loader * loader,
                                  QString const & element_id,
@@ -101,6 +102,16 @@ msim_ram_widget::msim_ram_widget(core::components::msim_ram * ram,
             on_core_value_changed(address_accessed);
         });
     }) ;
+
+    // connect clicks to the global details controller (controller may not have a view yet)
+    connect(this, &msim_ram_widget::clicked, &details_controller::instance(), &details_controller::on_ram_clicked);
+}
+
+void msim_ram_widget::mousePressEvent(QMouseEvent *event){
+    // Emit clicked signal so other parts of the app can show details
+    emit clicked(m_ram);
+    // Forward to base class to preserve normal button behaviour
+    msim_component_svg_widget::mousePressEvent(event);
 }
 
 void msim_ram_widget::on_core_value_changed(int address_accessed) {
