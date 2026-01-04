@@ -17,6 +17,8 @@ namespace gui::components {
         virtual void show_tooltip() override;
         virtual void hide_tooltip() override;
 
+    private:
+        core::components::msim_bus * m_bus;
     };
 }
 #endif // MSIM_BUS_WIDGET_H

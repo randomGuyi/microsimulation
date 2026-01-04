@@ -1,6 +1,7 @@
 #include "msim_alu_widget.h"
 
 #include <QLabel>
+#include <QToolTip>
 
 #include "shared/architecture_ids.h"
 
@@ -131,6 +132,11 @@ msim_alu_widget::msim_alu_widget(core::components::msim_alu * alu,
         });
     }) ;
 
+    /* tooltip */
+    QFont tooltip_font{};
+    tooltip_font.setPointSize(14);
+    QToolTip::setFont(tooltip_font);
+
 }
 
 void msim_alu_widget::on_core_value_changed(std::pair<core::components::mux_selection, int> new_result) {
@@ -190,10 +196,32 @@ void msim_alu_widget::update_display(){
     update();
 }
 void msim_alu_widget::show_tooltip(){
+    QString mux_selection{};
+    switch(m_alu->get_mux_selection()){
+        case core::components::mux_selection::AU_RESULT: mux_selection = "Au-Result"; break;
+        case core::components::mux_selection::LU_RESULT: mux_selection = "Lu-Result"; break;
+        case core::components::mux_selection::CONSTANT:   mux_selection = "Constant";  break;
+    }
+    QString alu_flags = QString{"Flags: %1%2%3%4"}
+        .arg((m_alu->get_flags() & 0b00001000) ? "Z" : "0")
+        .arg((m_alu->get_flags() & 0b00000100) ? "+" : "0")
+        .arg((m_alu->get_flags() & 0b00000010) ? "-" : "0")
+        .arg((m_alu->get_flags() & 0b00000001) ? "Of" : "0");
 
+    QString operation_str = getOperation();
+
+    QString result_str = QString::number(m_alu->get_result());
+
+
+    QString tooltip = QString{"Mux Selection: %1\nFlags: %2\nOperation: %3\nResult: %4\n "}
+    .arg(mux_selection)
+    .arg(alu_flags)
+    .arg(operation_str)
+    .arg(result_str);
+    QToolTip::showText(cursor().pos(), tooltip, this, QRect(), 500000); /* show tooltip for 5 sec */
 }
 
 void msim_alu_widget::hide_tooltip(){
-
+    QToolTip::hideText();
 }
 

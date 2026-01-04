@@ -1,5 +1,7 @@
 #include "msim_connector_widget.h"
 
+#include <QToolTip>
+
 using namespace gui::components;
 
 msim_connector_widget::msim_connector_widget(core::components::msim_connector * con,
@@ -16,6 +18,10 @@ msim_connector_widget::msim_connector_widget(core::components::msim_connector * 
             on_core_value_changed(new_val);
         });
     }) ;
+    /* tooltip */
+    QFont tooltip_font{};
+    tooltip_font.setPointSize(14);
+    QToolTip::setFont(tooltip_font);
 }
 
 void msim_connector_widget::on_core_value_changed(bool value) {
@@ -44,9 +50,10 @@ void msim_connector_widget::update_display(){
     update();
 }
 void msim_connector_widget::show_tooltip(){
-
+    QString tooltip_text = m_connector->is_enabled() ? "Enabled" : "Disabled";
+    QToolTip::showText(mapToGlobal(QPoint{width()/2, 0}), tooltip_text, this);
 }
 
 void msim_connector_widget::hide_tooltip(){
-
+    QToolTip::hideText();
 }

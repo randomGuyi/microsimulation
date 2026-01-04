@@ -9,7 +9,7 @@ namespace core::components {
     public:
         msim_bus(std::string const & id, std::string const & label);
         void set_value(int value);
-        int get_value() const;
+        [[nodiscard]]int get_value() const;
         void reset() override {
             m_value = 0;
         }

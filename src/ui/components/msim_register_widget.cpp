@@ -1,9 +1,7 @@
 #include "msim_register_widget.h"
 #include "ui/styles.h"
 
-#include <QHBoxLayout>
 #include <QToolTip>
-#include <QMouseEvent>
 #include <QVBoxLayout>
 #include <QGraphicsProxyWidget>
 using namespace gui::components;
