@@ -37,16 +37,16 @@ msim_alu_widget::msim_alu_widget(core::components::msim_alu * alu,
     /* translate all rects to widget-local coordinates */
 
 
-    op_disp_rect.translate(- op_disp_rect.topLeft() + QPointF{op_disp_rect.x() - elem_bounds.x(), 27});
+    op_disp_rect.translate(- op_disp_rect.topLeft() + QPointF{op_disp_rect.x() - elem_bounds.x() + 14.0, 27});
 
-    lu_label_rect.translate(- lu_label_rect.topLeft() + QPointF{lu_label_rect.x() - elem_bounds.x(), 9.45});
-    lu_disp_rect.translate(- lu_disp_rect.topLeft() + QPointF{lu_disp_rect.x() - elem_bounds.x(), 14});
+    lu_label_rect.translate(- lu_label_rect.topLeft() + QPointF{lu_label_rect.x() - elem_bounds.x() + 14.0, 9.45});
+    lu_disp_rect.translate(- lu_disp_rect.topLeft() + QPointF{lu_disp_rect.x() - elem_bounds.x() + 14.0, 14});
 
-    au_label_rect.translate(- au_label_rect.topLeft() + QPointF{au_label_rect.x() - elem_bounds.x(), 9.45});
-    au_disp_rect.translate(- au_disp_rect.topLeft() + QPointF{au_disp_rect.x() - elem_bounds.x(), 14});
+    au_label_rect.translate(- au_label_rect.topLeft() + QPointF{au_label_rect.x() - elem_bounds.x() + 14.0, 9.45});
+    au_disp_rect.translate(- au_disp_rect.topLeft() + QPointF{au_disp_rect.x() - elem_bounds.x() + 14.0, 14});
 
-    mux_label_rect.translate(- mux_label_rect.topLeft() + QPointF{mux_label_rect.x() - elem_bounds.x(), 38.45});
-    mux_disp_rect.translate(- mux_disp_rect.topLeft() + QPointF{mux_disp_rect.x() - elem_bounds.x(), 41.8});
+    mux_label_rect.translate(- mux_label_rect.topLeft() + QPointF{mux_label_rect.x() - elem_bounds.x() + 14.0, 38.45});
+    mux_disp_rect.translate(- mux_disp_rect.topLeft() + QPointF{mux_disp_rect.x() - elem_bounds.x() + 14.0, 41.8});
 
 
     /* --- Operation display (centered big symbol) --- */

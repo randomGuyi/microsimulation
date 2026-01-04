@@ -5,6 +5,7 @@
 
 #include "ui/controller/msim_components_manager.h"
 #include "../../core/parser/msim_parser.h"
+#include "core/components/msim_cpu.h"
 using namespace gui::views;
 editor_controller::editor_controller(QsciScintilla * editor, QObject * parent)
 : QObject{parent}
@@ -17,14 +18,21 @@ editor_controller::editor_controller(QsciScintilla * editor, QObject * parent)
     m_editor->setMarkerBackgroundColor(QColor("#FFF59D"), 1); // light yellow
     m_editor->setMarkerForegroundColor(QColor("#000000"), 1); // optional text color for marker
 
-}
+    core::sim::msim_cpu::get_instance().subscibe([this](std::pair<core::sim::cpu_event_type, int> event){
+            QMetaObject::invokeMethod(this, [this, event]{
+                on_cpu_changed(event);
+            });
+        }) ;
+        m_on_rom_subscribed = true;
+    }
+
 void editor_controller::highlight_line(int line)
 {
     m_editor->markerDeleteAll();
     m_editor->markerAdd(line, 1);
 }
 
-void editor_controller::parse_and_highlight(){
+bool editor_controller::parse_and_highlight(){
     m_text = m_editor->text();
     m_scanner->reset(m_text.toStdString());
 
@@ -32,14 +40,6 @@ void editor_controller::parse_and_highlight(){
     m_parser->set_scanner_inst(m_scanner);
     m_parser->set_rom_inst(rom_inst);
 
-    if (rom_inst != nullptr && !m_on_rom_subscribed) {
-        rom_inst->subscibe([this](int new_line){
-            QMetaObject::invokeMethod(this, [this, new_line]{
-                on_rom_changed(new_line);
-            });
-        }) ;
-        m_on_rom_subscribed = true;
-    }
 
     try{
         m_parser->parse();
@@ -47,26 +47,47 @@ void editor_controller::parse_and_highlight(){
         update_markers(m_parser->get_errors());
     }catch(const std::runtime_error & err){
         m_editor->annotate(1, err.what(), QsciScintilla::AnnotationBoxed);
+        return false;
     }
+    return true;
 }
 
-void editor_controller::on_rom_changed(int line_number) {
+int editor_controller::line_to_editor_line(int line_number) const {
     QString pattern = QString(R"(^[[:space:]]*(?:#\d+/%1|%1)[[:space:]]*;)").arg(line_number);
 
     QRegularExpression re(pattern, QRegularExpression::MultilineOption);
 
-    // 2. Search the editor text
+    /* search in editor text for the correct segment */
     QString text = m_editor->text();
     QRegularExpressionMatch match = re.match(text);
 
     if (match.hasMatch()) {
         int charPosition = match.capturedStart();
 
-        int visualLine = m_editor->SendScintilla(QsciScintilla::SCI_LINEFROMPOSITION, charPosition) +1;
+        return  m_editor->SendScintilla(QsciScintilla::SCI_LINEFROMPOSITION, charPosition) +1;
+    }
+    return - 1;
+}
 
-        // 4. Update the UI
-        m_editor->markerDeleteAll();
-        m_editor->markerAdd(visualLine, 1);
+void editor_controller::on_cpu_changed(std::pair<core::sim::cpu_event_type, int> event) {
+    int visualLine = line_to_editor_line(event.second);
+    switch (event.first) {
+        case core::sim::cpu_event_type::NEXT_INSTRUCTION_LOADED: {
+            if (visualLine == -1) return;
+            /* mark line */
+            m_editor->markerDeleteAll();
+            m_editor->markerAdd(visualLine, 1);
+            break;
+        }
+        case core::sim::cpu_event_type::ERROR_OCCURRED: {
+            for (auto &err: core::sim::msim_cpu::get_instance().get_errors()) {
+                visualLine = line_to_editor_line(event.second);
+                m_editor->markerAdd(visualLine -1, 1);
+                m_editor->annotate(visualLine - 1, QString::fromStdString(err.message), 1);
+            }
+           break;
+        }
+            default: break;
     }
 }
 

@@ -12,6 +12,10 @@ namespace core::components {
         void setValue(int value);
 
         [[nodiscard]]int getValue() const ;
+        void reset() override {
+            m_value = 0;
+            notify(m_value);
+        }
 
 
     private:

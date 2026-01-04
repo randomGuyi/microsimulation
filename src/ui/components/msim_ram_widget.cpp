@@ -23,7 +23,7 @@ msim_ram_widget::msim_ram_widget(core::components::msim_ram * ram,
 
     /* translate to widget-local coordinates */
     ram_disp_rect.translate(-ram_disp_rect.topLeft()
-                            + QPointF{ram_disp_rect.x() - elem_bounds.x(), 11.0});
+                            + QPointF{ram_disp_rect.x() - elem_bounds.x()+ 14.0, 11.0});
 
     /* compute cell sizes for the 3x3 grid */
     int cols = 3, rows = 3;
@@ -89,7 +89,7 @@ msim_ram_widget::msim_ram_widget(core::components::msim_ram * ram,
             m_addr_labels.push_back(addr);
 
             /* dummy content */
-            val->setText(QString( QChar('A' + (idx % 26))) + "XX");
+            val->setText("NAN");
             addr->setText(QString::number(idx));
 
             ++idx;

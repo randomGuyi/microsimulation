@@ -18,6 +18,12 @@ namespace core::components {
 
         [[nodiscard]] const std::map<int, int> & get_ram_data() const ;
 
+        void reset() override {
+            m_ram_data.clear();
+            m_last_address = 0;
+            notify(0);
+        }
+
     private:
         std::map<int, int> m_ram_data;
         int m_last_address{0};

@@ -14,14 +14,30 @@
 #define THIRD_BIT   0b00000100
 #define FOURTH_BIT  0b00001000
 
+
+
 namespace core::sim{
-    class msim_cpu{
+
+    struct cpu_error {
+        int segment;
+        std::string message;
+    };
+
+
+    enum class cpu_event_type {
+        ERROR_OCCURRED = 1,
+        RESET_COMPLETED = 2,
+        NEXT_INSTRUCTION_LOADED = 3,
+    };
+
+    class msim_cpu: public components::msim_observable_component<std::pair<cpu_event_type, int>> {
     public:
         static msim_cpu & get_instance(){
             static msim_cpu instance{} ;
             return instance;
         }
 
+        void reset_all();
 
         void add_component(std::unique_ptr<components::msim_component> && component);
         components::msim_component * get_component(std::string const & id);
@@ -32,9 +48,9 @@ namespace core::sim{
         void add_enable_bit(std::unique_ptr<components::msim_enable_bit> && enable_bit);
         components::msim_enable_bit * get_enable_bit(std::string const & id);
 
-        std::vector<std::string> const & get_errors() const;
+        [[nodiscard]] bool has_errors() const;
 
-
+        [[nodiscard]] std::vector<cpu_error> const & get_errors() const;
 
     private:
         msim_cpu();
@@ -42,8 +58,6 @@ namespace core::sim{
         msim_cpu(msim_cpu const & other) = delete;
         msim_cpu& operator=(msim_cpu const & other) = delete;
 
-        inst_word const * m_curr_word;
-        std::vector<std::string> m_errors;
 
         void clear_errors();
         void component_error(std::string const & msg);
@@ -79,6 +93,8 @@ namespace core::sim{
         std::map<std::string, std::unique_ptr<components::msim_component>> m_components;
         std::map<std::string, std::unique_ptr<components::msim_connector>> m_connectors;
         std::map<std::string, std::unique_ptr<components::msim_enable_bit>> m_enable_bits;
+        inst_word const * m_curr_word;
+        std::vector<cpu_error> m_errors;
 
 
     };

@@ -9,6 +9,7 @@
      class msim_ar : public msim_component{
      public:
          msim_ar(std::string const & id, std::string const & label);
+         void reset() override{}
 
      private:
      };

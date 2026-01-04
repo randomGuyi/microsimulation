@@ -14,6 +14,8 @@
 #include <QVBoxLayout>
 #include <QsciScintilla.h>
 
+#include "core/components/msim_cpu.h"
+
 using namespace gui::views;
 editor::editor(QWidget *parent)
     : QWidget(parent)
@@ -32,13 +34,20 @@ editor::editor(QWidget *parent)
 
     QHBoxLayout *topLayout = new QHBoxLayout(topBar);
 
-    QPushButton *compileBtn = new QPushButton("Compile", topBar);
-    compileBtn->setFixedHeight(28);
-    compileBtn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_compile_btn = new QPushButton("Compile", topBar);
+    m_compile_btn->setFixedHeight(28);
+    m_compile_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
+    m_reset_btn = new QPushButton("Reset", topBar);
+    m_reset_btn->setFixedHeight(28);
+    m_reset_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
-    topLayout->addWidget(compileBtn);
+    // push following widgets to the right
     topLayout->addStretch();
+    // place compile and reset next to each other on the right
+    topLayout->addWidget(m_compile_btn);
+    topLayout->addWidget(m_reset_btn);
+    topLayout->setSpacing(8);
     layout->addWidget(topBar);
 
     /* editor */
@@ -62,16 +71,26 @@ editor::editor(QWidget *parent)
 
     m_editor->setLexer(m_lexer);
 
-    QFont font("Courier", 12);
+    QFont font("Courier", 18);
     m_editor->setFont(font);
     m_editor->setMarginsFont(font);
+    m_lexer->setFont(font);
 
     m_controller = new editor_controller{m_editor, this};
-    connect(compileBtn, &QPushButton::pressed, this, &editor::run_parser);
+    connect(m_compile_btn, &QPushButton::pressed, this, &editor::run_parser);
+    connect(m_reset_btn, &QPushButton::pressed, this, &editor::reset_all);
+}
+
+void editor::reset_all() {
+    m_compile_btn->setStyleSheet("");
+    core::sim::msim_cpu::get_instance().reset_all();
 }
 
 void editor::run_parser(){
-    m_controller->parse_and_highlight();
+    if (m_controller->parse_and_highlight()) {
+        /* set color of compile button to green for success */
+        m_compile_btn->setStyleSheet("background-color: #A5D6A7;"); // light green
+    }
 }
 
 editor::~editor()

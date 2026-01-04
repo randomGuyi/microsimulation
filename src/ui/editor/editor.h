@@ -5,6 +5,7 @@
 #ifndef MICROSIMULATION_EDITOR_H
 #define MICROSIMULATION_EDITOR_H
 
+#include <QPushButton>
 #include <QWidget>
 #include <Qsci/qsciscintilla.h>
 #include <Qsci/qscilexercpp.h>
@@ -25,6 +26,8 @@ namespace gui::views {
     public:
         explicit editor(QWidget *parent = nullptr);
 
+        void reset_all();
+
         ~editor() override;
     private slots:
         void run_parser();
@@ -34,6 +37,8 @@ namespace gui::views {
         QsciScintilla * m_editor;
         QsciLexerCustom* m_lexer;
         editor_controller * m_controller;
+        QPushButton * m_compile_btn;
+        QPushButton * m_reset_btn;
 
     };
 }

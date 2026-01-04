@@ -52,9 +52,12 @@ void details_tabs::show_ram_details(core::components::msim_ram *instance)
     if (instance == nullptr) {
         throw std::runtime_error{"details tabs got emty ram instance!"};
     }
+
+    QFont font("Courier", 18);
     // create text view if necessary
     if (!m_ram_text_view) {
         m_ram_text_view = new QTextEdit;
+        m_ram_text_view->setFont(font);
         m_ram_text_view->setReadOnly(true);
         addTab(m_ram_text_view, RAM_TAB_LABEL);
     }
@@ -84,7 +87,9 @@ void details_tabs::show_rom_details(core::components::msim_rom *instance)
     int idx = tab_index_for_label(ROM_TAB_LABEL);
     QTextEdit * rom_text = nullptr;
     if (idx == -1) {
+        QFont font("Courier", 18);
         rom_text = new QTextEdit;
+        rom_text->setFont(font);
         rom_text->setReadOnly(true);
         addTab(rom_text, ROM_TAB_LABEL);
     } else {

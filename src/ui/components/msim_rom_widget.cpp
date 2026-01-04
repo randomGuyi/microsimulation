@@ -24,7 +24,7 @@ msim_rom_widget::msim_rom_widget(core::components::msim_rom * rom,
     rom_label->setText("   ROM");
     /* translate to widget-local coordinates */
     rom_disp_bounds.translate(-rom_disp_bounds.topLeft()
-                            + QPointF{rom_disp_bounds.x() - elem_bounds.x(), 21.0});
+                            + QPointF{rom_disp_bounds.x() - elem_bounds.x() + 14, 21.0});
 
     int rows = 6;
     m_instruction_lines.reserve(rows);

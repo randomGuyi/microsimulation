@@ -77,8 +77,8 @@ std::vector<std::string> msim_components_manager::placeable_connector_ids(QStrin
 
 std::vector<std::string> msim_components_manager::placeable_bit_ids(QString id) {
     /*modeBit1_registerMode*/
-    if (id.contains(QRegularExpression("register[0-3]"))) {
-        id = "registerA";
+    if (id.contains(QRegularExpression(".*register[0-3]"))) {
+        id = "(registerA|" + id + ")";
     }
     QStringList const bits =
             shared::id_reader::get_instance().get_results_for(".*(B|b)it.*" + id.remove("comp_").toStdString() + ".*");

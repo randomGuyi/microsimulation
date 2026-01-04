@@ -24,16 +24,46 @@ msim_cpu::msim_cpu()
     : m_curr_word{nullptr}
 {}
 
+bool msim_cpu::has_errors() const{
+    return ! m_errors.empty();
+}
 /* errors */
 void msim_cpu::clear_errors(){
     m_errors.clear();
 }
 
-void msim_cpu::component_error(std::string const & msg){
-    m_errors.push_back("[cpu component error] " + msg);
+void msim_cpu::reset_all() {
+    for (auto & [id, comp] : m_components) {
+        comp->reset();
+    }
+    for (auto & [id, conn] : m_connectors) {
+        conn->reset();
+    }
+    for (auto & [id, bit] : m_enable_bits) {
+        bit->reset();
+    }
+    m_curr_word = nullptr;
+    m_errors.clear();
+    auto rom = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
+    int segment = rom ? rom->get_current_line() : 0;
+
+    notify({ cpu_event_type::RESET_COMPLETED,  segment});
 }
 
-std::vector<std::string> const & msim_cpu::get_errors() const{
+
+void msim_cpu::component_error(std::string const & msg){
+    auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
+    if(!car) {
+        m_errors.push_back({1, "[cpu component error] CAR is missing"});
+        return;
+    }
+    m_errors.push_back({car->getValue() / 4, "[cpu component error] " + msg});
+    auto rom = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
+    int segment = rom ? rom->get_current_line() : 0;
+    notify({cpu_event_type::ERROR_OCCURRED, segment});
+}
+
+std::vector<cpu_error> const & msim_cpu::get_errors() const{
     return m_errors;
 }
 
@@ -122,27 +152,32 @@ void msim_cpu::on_clock_changed(clock_event const & event){
 void msim_cpu::load_instruction(){
     /* [car] -> cdr */
     auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
-    if(!car) return;
+    if(!car) {
+        component_error("CAR is missing");
+        return;
+    }
 
     auto * cdr = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCDR));
-    if(! cdr) return;
+    if(! cdr) {
+        component_error("CDR is missing");
+        return;
+    }
 
     msim_rom * rom_inst = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
     if(! rom_inst){
-        component_error("Rom");
+        component_error("ROM is missing");
         return;
     }
-    /*if(! rom_inst->has_next()) {
-        return;
-    } */
 
     int line_nr = car->getValue();
     if(! rom_inst->is_valid_line(line_nr)){
-        qDebug("invalid line number requested from ROM: %d", line_nr);
+        m_errors.push_back({ cdr->getValue() / 4, "[cpu] invalid line number requested from ROM, CAR[" + std::to_string(line_nr) + "]"});
         return;
     }
     rom_inst->reset_to_line(line_nr);
     m_curr_word = rom_inst->get_current_instruction();
+
+    notify({cpu_event_type::NEXT_INSTRUCTION_LOADED, rom_inst->get_current_line()});
 
     /* set value in CDR, so the next to set are the bits */
     cdr->setValue(m_curr_word->get_raw_word());
@@ -158,15 +193,24 @@ void msim_cpu::read_from_ram(){
     if(! (m_curr_word->get_ram_mode() == ram_mode::READ)) return;
 
     auto * ram = dynamic_cast<msim_ram *>(find_component(ID_COMP_RAM));
-    if(! ram) return;
+    if(! ram) {
+        component_error("RAM is missing"); // ram mode is read, but no ram was placed
+        return;
+    }
 
     auto * mar = dynamic_cast<msim_register *> (find_component(ID_COMP_REGISTERMAR));
-    if(! mar) return;
+    if(! mar) {
+        component_error("MAR is missing");
+        return;
+    }
 
     auto * mdr = dynamic_cast<msim_register *> (find_component(ID_COMP_REGISTERMDR));
-    if(! mdr) return;
+    if(! mdr) {
+        component_error("MDR is missing");
+        return;
+    };
 
-    mdr->setValue(ram->get_val_at(static_cast<int>(mar->getValue())));
+    mdr->setValue(ram->get_val_at(mar->getValue()));
 }
 
 void msim_cpu::trasfer_data_to_buses() {
@@ -176,59 +220,80 @@ void msim_cpu::trasfer_data_to_buses() {
 
         /* set connectors */
         auto * conn = get_connector(connector_id);
-        if(! conn) return;
+        if(! conn) return ! enable;
         enable ? conn->enable() : conn->disable();
         /* transfer to bus */
-        if(! enable) return;
+        if(! enable) return true;
         auto * bus = dynamic_cast<msim_bus *>(find_component(bus_id));
-        if(! bus) return;
+        if(! bus) return false; /* bus must exist if its enabled */
         bus->set_value(value);
+        return true;
     };
 
     /* transfer to x bus */
     auto * xbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_XBUS));
     if(! xbus) return;
 
-    transfer_if(ID_PCB_REGISTER0_XBUS, ID_COMP_XBUS,
+    if (! transfer_if(ID_PCB_REGISTER0_XBUS, ID_COMP_XBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER0))->getValue(),
-                m_curr_word->get_x_selection() == REGISTER_0);
+                m_curr_word->get_x_selection() == REGISTER_0)) {
+        component_error("X BUS is missing");
 
-    transfer_if(ID_PCB_REGISTER1_XBUS, ID_COMP_XBUS,
+    }
+
+    if (! transfer_if(ID_PCB_REGISTER1_XBUS, ID_COMP_XBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER1))->getValue(),
-                m_curr_word->get_x_selection() == REGISTER_1);
+                m_curr_word->get_x_selection() == REGISTER_1)) {
+        component_error("X BUS is missing");
+    }
 
-    transfer_if(ID_PCB_REGISTER2_XBUS, ID_COMP_XBUS,
+    if ( ! transfer_if(ID_PCB_REGISTER2_XBUS, ID_COMP_XBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER2))->getValue(),
-                m_curr_word->get_x_selection() == REGISTER_2);
+                m_curr_word->get_x_selection() == REGISTER_2)) {
+        component_error("X BUS is missing");
+    }
 
-    transfer_if(ID_PCB_REGISTER3_XBUS, ID_COMP_XBUS,
+    if (! transfer_if(ID_PCB_REGISTER3_XBUS, ID_COMP_XBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER3))->getValue(),
-                m_curr_word->get_x_selection() == REGISTER_3);
+                m_curr_word->get_x_selection() == REGISTER_3)) {
+
+        component_error("X BUS is missing");
+    }
 
 
     /* transfer to y bus */
     auto * ybus = dynamic_cast<msim_bus *>(find_component(ID_COMP_YBUS));
     if(! ybus) return;
 
-    transfer_if(ID_PCB_REGISTER0_YBUS, ID_COMP_YBUS,
+    if (! transfer_if(ID_PCB_REGISTER0_YBUS, ID_COMP_YBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER0))->getValue(),
-                m_curr_word->get_y_selection() == REGISTER_0);
+                m_curr_word->get_y_selection() == REGISTER_0)) {
+        component_error("Y BUS is missing");
+    }
 
-    transfer_if(ID_PCB_REGISTER1_YBUS, ID_COMP_YBUS,
+    if (! transfer_if(ID_PCB_REGISTER1_YBUS, ID_COMP_YBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER1))->getValue(),
-                m_curr_word->get_y_selection() == REGISTER_1);
+                m_curr_word->get_y_selection() == REGISTER_1)) {
+        component_error("Y BUS is missing");
+    };
 
-    transfer_if(ID_PCB_REGISTER2_YBUS, ID_COMP_YBUS,
+    if (! transfer_if(ID_PCB_REGISTER2_YBUS, ID_COMP_YBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER2))->getValue(),
-                m_curr_word->get_y_selection() == REGISTER_2);
+                m_curr_word->get_y_selection() == REGISTER_2)) {
+        component_error("Y BUS is missing");
+    }
 
-    transfer_if(ID_PCB_REGISTER3_YBUS, ID_COMP_YBUS,
+    if (! transfer_if(ID_PCB_REGISTER3_YBUS, ID_COMP_YBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER3))->getValue(),
-                m_curr_word->get_y_selection() == REGISTER_3);
+                m_curr_word->get_y_selection() == REGISTER_3)) {
+        component_error("Y BUS is missing");
+    }
 
-    transfer_if(ID_PCB_REGISTERMDR_YBUS, ID_COMP_YBUS,
+    if (! transfer_if(ID_PCB_REGISTERMDR_YBUS, ID_COMP_YBUS,
                 dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERMDR))->getValue(),
-                m_curr_word->get_mdr_y());
+                m_curr_word->get_mdr_y())) {
+        component_error("Y BUS is missing");
+    }
 }
 
 void msim_cpu::transfer_data_to_registers() {
@@ -272,7 +337,6 @@ void msim_cpu::transfer_data_to_registers() {
 }
 
 void msim_cpu::fetch(){
-    qDebug("[msim_cpu] fetch phase called");
     /* update all bits */
     for (auto & [bit_id, bit_ptr] : m_enable_bits) bit_ptr->set_value(false);
     /* reset all the connectors from execute */
@@ -285,16 +349,21 @@ void msim_cpu::fetch(){
     read_from_ram();
     trasfer_data_to_buses();
     transfer_data_to_registers();
-
 }
 
 std::pair<bool, int> msim_cpu::execute_alu() {
 
     /* alu is the central part */
     auto * alu = dynamic_cast<msim_alu*>(find_component(ID_COMP_ALU));
-    if (! alu) return {false, 0};
+    if (! alu) {
+        component_error("ALU is missing");
+        return {false, 0};
+    }
     auto * opreg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTEROP));
-    if (! opreg) return {false, 0}; // no operation, nothing to do
+    if (! opreg) {
+        component_error("OP REGISTER is missing");
+        return {false, 0}; // no operation, nothing to do
+    }
 
     int const_val = m_curr_word->get_constant_nbr(); // cheating
     alu->set_operation(static_cast<uint8_t>(opreg->getValue()));
@@ -304,11 +373,11 @@ std::pair<bool, int> msim_cpu::execute_alu() {
     auto * y_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERY));
 
     if (x_reg != nullptr && y_reg != nullptr) {
-        alu->set_x_value(static_cast<int>(x_reg->getValue()));
-        alu->set_y_value(static_cast<int>(y_reg->getValue()));
+        alu->set_x_value(x_reg->getValue());
+        alu->set_y_value(y_reg->getValue());
         alu->execute();
     }else if (x_reg != nullptr) {
-        alu->set_x_value(static_cast<int>(x_reg->getValue()));
+        alu->set_x_value(x_reg->getValue());
         switch (opreg->getValue()) {
             case Z_Z:
             case Z_CONST:
@@ -317,8 +386,12 @@ std::pair<bool, int> msim_cpu::execute_alu() {
             case Z_DEC_X:
             case Z_MINUS_X: {
                 alu->execute();
+                break;
             }
-            default: return {false, 0};
+            default: {
+                component_error("Y Register is missing");
+                return {false, 0};
+            }
         }
     } else if (y_reg != nullptr) {
         alu->set_y_value(static_cast<int>(y_reg->getValue()));
@@ -329,16 +402,24 @@ std::pair<bool, int> msim_cpu::execute_alu() {
             case Z_INC_Y:
             case Z_DEC_Y: {
                 alu->execute();
+                break;
             }
-            default: return {false, 0};
+            default: {
+                component_error("X Register is missing");
+                return {false, 0};
+            }
         }
     } else {
         switch (opreg->getValue()) {
             case Z_Z:
             case Z_CONST:{
                 alu->execute();
+                break;
             }
-            default: return {false, 0};
+            default: {
+                component_error("X or Y Registers are missing");
+                return {false, 0};
+            }
         }
     }
     return {true, alu->get_result()};
@@ -348,7 +429,7 @@ void msim_cpu::decode(){
     /* reset all the connectors from fetch */
     for (auto & [con_id, con_ptr] : m_connectors)  con_ptr->disable();
     if (m_curr_word == nullptr) return;
-    qDebug("[msim_cpu] decode phase called");
+
     auto [result_ok, result_value] = execute_alu();
     if (! result_ok) {
         qDebug("ALU execution failed or no operation to perform");
@@ -358,12 +439,16 @@ void msim_cpu::decode(){
     auto * zbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_ZBUS));
     if (zbus) {
         zbus->set_value(result_value);
+    }else if (m_curr_word->get_z_selection() > 0 || m_curr_word->get_z_mar() || m_curr_word->get_z_mdr()) {
+        component_error("Z BUS is missing");
     }
 
     /* set z register */
     auto * z_reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERZ));
     if (z_reg) {
         z_reg->setValue(result_value);
+    }else if (m_curr_word->get_z_selection() > 0 || m_curr_word->get_z_mar() || m_curr_word->get_z_mdr()) {
+        component_error("Z REGISTER is missing");
     }
 
     /* set flags */
@@ -376,9 +461,15 @@ void msim_cpu::decode(){
 
     /* ar logic */
     auto * ar = dynamic_cast<msim_ar *>(find_component(ID_COMP_AR));
-    if (! ar) return;
+    if (! ar) {
+        component_error("AR is missing");
+        return;
+    }
     auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
-    if (! car) return; // car must exist
+    if (! car) {
+        component_error("CAR is missing");
+        return; // car must exist
+    }
 
     switch (m_curr_word->get_ar_mode()) {
         case ar_mode::CHAR_PLS_PLS: {
@@ -392,7 +483,10 @@ void msim_cpu::decode(){
 
         }case ar_mode::_4COP:{
             auto cop = dynamic_cast<msim_cop *>(find_component(ID_COMP_COP));
-            if(! cop) return;
+            if(! cop) {
+                component_error("COP is missing");
+                return;
+            }
             int cop_value = cop->getValue();
             car->setValue(4 * cop_value);
             break;
@@ -415,46 +509,59 @@ void msim_cpu::decode(){
 
 void msim_cpu::execute(){
     if (m_curr_word == nullptr) return;
-    qDebug("[msim_cpu] execute phase called");
     auto trasfer_if = [this] (std::string const & register_id, std::string const & connector_id, int value, bool enable) {
         auto * reg = dynamic_cast<msim_register *>(find_component(register_id));
-        if(! reg) return;
+        if(! reg) {
+            return ! enable;
+        }
         auto * conn = get_connector(connector_id);
-        if(! conn) return;
+        if(! conn) return ! enable;
         enable ? conn->enable() : conn->disable();
-        if(! enable) return;
+        if(! enable) return true;
         reg->setValue(value);
+        return true;
     };
 
     /* write z bus to selected register */
     auto * zbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_ZBUS));
     if (zbus) {
         uint8_t z_selection = m_curr_word->get_z_selection();
-       trasfer_if(ID_COMP_REGISTER0, ID_PCB_ZBUS_REGISTER0,
-           zbus->get_value(), (z_selection == REGISTER_0));
 
-        trasfer_if(ID_COMP_REGISTER1, ID_PCB_ZBUS_REGISTER1,
-            zbus->get_value(),z_selection == REGISTER_1);
+       if ( ! trasfer_if(ID_COMP_REGISTER0, ID_PCB_ZBUS_REGISTER0,
+           zbus->get_value(), (z_selection & 0b00001000) > 0)) {
+              component_error("Register 0 is missing");
+       }
 
-        trasfer_if(ID_COMP_REGISTER2, ID_PCB_ZBUS_REGISTER2,
-            zbus->get_value(),z_selection == REGISTER_2);
+        if ( ! trasfer_if(ID_COMP_REGISTER1, ID_PCB_ZBUS_REGISTER1,
+            zbus->get_value(),(z_selection & 0b00000100) > 0)) {
+                component_error("Register 1 is missing");
+        }
 
-        trasfer_if(ID_COMP_REGISTER3, ID_PCB_ZBUS_REGISTER3,
-            zbus->get_value(),z_selection == REGISTER_3);
+        if ( ! trasfer_if(ID_COMP_REGISTER2, ID_PCB_ZBUS_REGISTER2,
+            zbus->get_value(),(z_selection & 0b00000010) > 0)) {
+            component_error("Register 2 is missing");
+        }
 
-        trasfer_if(ID_COMP_REGISTERMDR, ID_PCB_ZBUS_REGISTERMDR,
-            zbus->get_value(),m_curr_word->get_z_mdr());
+        if ( ! trasfer_if(ID_COMP_REGISTER3, ID_PCB_ZBUS_REGISTER3,
+            zbus->get_value(),(z_selection == 0b00000001)> 0) ) {
+            component_error("Register 3 is missing");
+        }
 
-        trasfer_if(ID_COMP_REGISTERMAR, ID_PCB_ZBUS_REGISTERMAR,
-            zbus->get_value(),m_curr_word->get_z_mar());
+        if ( ! trasfer_if(ID_COMP_REGISTERMDR, ID_PCB_ZBUS_REGISTERMDR,
+            zbus->get_value(),m_curr_word->get_z_mdr())) {
+            component_error("Register mdr is missing");
+        }
+
+        if ( ! trasfer_if(ID_COMP_REGISTERMAR, ID_PCB_ZBUS_REGISTERMAR,
+            zbus->get_value(),m_curr_word->get_z_mar())) {
+            component_error("Register mar is missing");
+        }
     }
 
     write_to_ram();
 
-
     /* reset word in order to load next cycle */
     m_curr_word = nullptr;
-
 }
 
 void msim_cpu::write_to_ram(){
@@ -462,13 +569,22 @@ void msim_cpu::write_to_ram(){
     if(! (m_curr_word->get_ram_mode() == ram_mode::WRITE)) return;
 
     auto * ram = dynamic_cast<msim_ram *>(find_component(ID_COMP_RAM));
-    if(! ram) return;
+    if(! ram) {
+        component_error("RAM is missing"); // ram mode is write, but no ram was placed
+        return;
+    }
 
     auto * mar = dynamic_cast<msim_register *> (find_component(ID_COMP_REGISTERMAR));
-    if(! mar) return;
+    if(! mar) {
+        component_error("MAR is missing");
+        return;
+    }
 
     auto * mdr = dynamic_cast<msim_register *> (find_component(ID_COMP_REGISTERMDR));
-    if(! mdr) return;
+    if(! mdr) {
+        component_error("MDR is missing");
+        return;
+    }
 
     ram->set_val_at(mdr->getValue(), mar->getValue());
 }
@@ -477,18 +593,17 @@ void msim_cpu::write_to_ram(){
 void msim_cpu::set_fetch_instructions( const inst_word * word){
 
     /* 0 0 0 0 0 s1 s0 en */
-     uint8_t x_sel = word->get_x_selection();
-    qDebug("x_sel: %02x", x_sel);
+     uint8_t const x_sel = word->get_x_selection();
     /* 0 0 0 0 0 s1 s0 en */
-     uint8_t y_sel = word->get_y_selection();
+     uint8_t const y_sel = word->get_y_selection();
 
 
      auto set_bit_if = [this]( std::string const & bit_id, bool set){
          if(! set){
-             return false;
+             return true;
          }
-         msim_bit * en_bit = m_enable_bits.at(bit_id).get();
-         if(! en_bit){ return false; }
+         msim_bit * en_bit = get_enable_bit(bit_id);
+         if(! en_bit){ return  ! set; }
 
          en_bit->set_value(true);
          return true;
@@ -511,7 +626,7 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
 
  }
 
- void msim_cpu::set_decode_instructions( const inst_word * word){
+ void msim_cpu::set_decode_instructions( const inst_word * word) {
      uint8_t operation = word->get_operation();
      int cn = word->get_cn();
       uint8_t mask = word->get_mask();
@@ -520,7 +635,7 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
         if(! set){
             return false;
         }
-        msim_bit * en_bit = m_enable_bits.at(bit_id).get();
+        msim_bit * en_bit = get_enable_bit(bit_id);
         if(! en_bit){ return false; }
 
         en_bit->set_value(true);
@@ -579,8 +694,6 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
      set_bit_if(ID_CNBIT1_AR, (cn >> 1) & 0x1);
      set_bit_if(ID_CNBIT2_AR, (cn >> 2) & 0x1);
      set_bit_if(ID_CNBIT3_AR, (cn >> 3) & 0x1);
-
-
  }
 
  void msim_cpu::set_execute_instructions( const inst_word * wrd){
@@ -590,7 +703,7 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
         if(! set){
             return false;
         }
-        msim_bit * en_bit = m_enable_bits.at(bit_id).get();
+        msim_bit * en_bit = get_enable_bit(bit_id);
         if(! en_bit){ return false; }
 
         en_bit->set_value(true);
@@ -598,9 +711,10 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
     };
 
     /* set z bus bits */
-    set_bit_if(ID_ENBIT_DEC_ZBUS_REGISTERA, (z_sel & 0b00000001) > 0); // enable
-    set_bit_if(ID_ENBIT0_ZBUS_REGISTERA, (z_sel & 0b00000010) > 0);
-    set_bit_if(ID_ENBIT1_ZBUS_REGISTERA, (z_sel & 0b00000100) > 0);
+    set_bit_if(ID_ENBIT_ZBUS_REGISTER0, (z_sel & 0b00001000) > 0);
+    set_bit_if(ID_ENBIT_ZBUS_REGISTER1, (z_sel & 0b00000100) > 0);
+    set_bit_if(ID_ENBIT_ZBUS_REGISTER2, (z_sel & 0b00000010) > 0);
+    set_bit_if(ID_ENBIT_ZBUS_REGISTER3, (z_sel & 0b00000001) > 0);
 
     set_bit_if(ID_ENBIT_ZBUS_REGISTERMAR, wrd->get_z_mar());
     set_bit_if(ID_ENBIT_ZBUS_REGISTERMDR, wrd->get_z_mdr());

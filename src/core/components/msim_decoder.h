@@ -10,6 +10,7 @@ namespace core::components {
     class msim_decoder : public msim_component{
     public:
         msim_decoder(std::string const & id, std::string const & label);
+        void reset() override{}
     };
 }
 

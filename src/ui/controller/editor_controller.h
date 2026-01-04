@@ -7,6 +7,8 @@
 #include <QObject>
 #include <QsciScintilla.h>
 
+#include "core/components/msim_cpu.h"
+
 namespace gui::views {
     class editor_controller : public QObject{
         Q_OBJECT
@@ -15,9 +17,11 @@ namespace gui::views {
 
         void highlight_line(int line);
 
-        void parse_and_highlight();
+        bool parse_and_highlight();
 
-        void on_rom_changed(int line_number);
+        int line_to_editor_line(int line_number) const;
+
+        void on_cpu_changed(std::pair<core::sim::cpu_event_type, int> event);
 
     private:
         QsciScintilla * m_editor;

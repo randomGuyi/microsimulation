@@ -8,6 +8,7 @@ namespace core::components {
     public:
         msim_component(std::string const & id, std::string const & label);
         virtual ~msim_component() = default;
+        virtual void reset() = 0;
         virtual std::string id() const;
         virtual std::string label() const;
 

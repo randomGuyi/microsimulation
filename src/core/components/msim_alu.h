@@ -24,6 +24,16 @@
          void execute();
          void set_constant_value(int value);
 
+         void reset() override {
+             m_operation = Z_Z;
+             m_x_value = 0;
+             m_y_value = 0;
+             m_result = 0;
+             m_constant_value = 0;
+             m_flags = 0;
+             notify({get_mux_selection(), m_result});
+         }
+
          [[nodiscard]] int get_result() const;
          [[nodiscard]] uint8_t get_flags() const;
          [[nodiscard]] uint8_t get_operation() const;

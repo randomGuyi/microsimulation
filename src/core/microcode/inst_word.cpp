@@ -8,8 +8,8 @@ using namespace core;
 
 /*
  * z->R0 z->R1 z->R_en */
-#define Z_OFFSET_BITS 29
-#define Z_WIDTH_BITS 3
+#define Z_OFFSET_BITS 28
+#define Z_WIDTH_BITS 4
  /* R0->x R1->x R2->x_en */
 #define X_OFFSET_BITS 26
 #define X_WIDTH_BITS 3
@@ -108,12 +108,31 @@ std::string inst_word::to_string() const {
 }
 
 void inst_word::set_z_selection(uint8_t z_nbl) {
-    /* 0 0 0 0 0 s0 s1 en */
-    if (read_bits(Z_OFFSET_BITS, Z_MDR_OFFSET_BITS) != 0) {
-        add_error("Z selection already set!");
-        return;
+    /* 0 0 0 0 R3 R2 R1 R0 */
+    /* so Z->R0, Z->R1 etc.. is possible */
+    uint8_t selection_translated = get_z_selection();
+    switch (z_nbl) {
+        case REGISTER_0: {
+            selection_translated |= 0b00001000;
+            break;
+        }
+        case REGISTER_1: {
+            selection_translated |= 0b00000100;
+            break;
+        }
+        case REGISTER_2: {
+            selection_translated |= 0b00000010;
+            break;
+        }
+        case REGISTER_3: {
+            selection_translated |= 0b00000001;
+            break;
+        }
+        default:
+            add_error("invalid Z selection!");
+            return;
     }
-    write_bits(z_nbl, Z_OFFSET_BITS, Z_WIDTH_BITS);
+    write_bits(selection_translated, Z_OFFSET_BITS, Z_WIDTH_BITS);
 }
 
 void inst_word::set_x_selection(uint8_t x_nbl) {

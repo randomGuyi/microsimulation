@@ -13,6 +13,10 @@
          msim_bit(std::string const & id, std::string const & label, bool value = false);
          bool value() const;
          void set_value(bool val) ;
+         void reset() override {
+             set_value(false);
+             notify(false);
+         }
 
      private:
          bool m_value;

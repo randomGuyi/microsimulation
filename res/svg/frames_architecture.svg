@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="4"
-     inkscape:cx="1748.75"
-     inkscape:cy="721"
+     inkscape:zoom="1"
+     inkscape:cx="348"
+     inkscape:cy="268"
      inkscape:window-width="1440"
      inkscape:window-height="841"
      inkscape:window-x="0"
@@ -127,7 +127,7 @@
        x2="30.026394"
        y2="200.20818"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154264,0,0,0.98299156,68.726667,-276.22453)" />
+       gradientTransform="matrix(1.0154264,0,0,0.98299156,68.726667,-290.04714)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#swatch8"
@@ -137,7 +137,7 @@
        y1="200.20818"
        x2="30.026394"
        y2="200.20818"
-       gradientTransform="matrix(1.0154264,0,0,0.9829916,88.525968,-276.72714)" />
+       gradientTransform="matrix(1.0154264,0,0,0.9829916,88.525968,-290.54975)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#swatch8"
@@ -147,13 +147,13 @@
        y1="200.20818"
        x2="30.026394"
        y2="200.20818"
-       gradientTransform="matrix(1.0154264,0,0,0.98299161,108.73428,-276.24926)" />
+       gradientTransform="matrix(1.0154264,0,0,0.98299161,108.73428,-290.07187)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#swatch8"
        id="linearGradient11"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154069,0,0,0.98299173,128.52276,-276.24818)"
+       gradientTransform="matrix(1.0154069,0,0,0.98299173,128.52276,-290.07079)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -163,7 +163,7 @@
        xlink:href="#swatch8"
        id="linearGradient1"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154264,0,0,0.9829916,193.51077,-366.00769)"
+       gradientTransform="matrix(1.0154264,0,0,0.9829916,193.51077,-379.8303)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -173,7 +173,7 @@
        xlink:href="#swatch8"
        id="linearGradient2"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154264,0,0,0.9829916,193.51076,-470.47842)"
+       gradientTransform="matrix(1.0154264,0,0,0.9829916,193.51076,-484.30103)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -183,7 +183,7 @@
        xlink:href="#swatch8"
        id="linearGradient3"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154264,0,0,0.9829916,274.56926,-392.04342)"
+       gradientTransform="matrix(1.0154264,0,0,0.9829916,274.56926,-405.86603)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -193,7 +193,7 @@
        xlink:href="#swatch8"
        id="linearGradient4"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154264,0,0,0.9829916,274.56926,-446.66718)"
+       gradientTransform="matrix(1.0154264,0,0,0.9829916,274.56926,-460.48979)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -203,7 +203,7 @@
        xlink:href="#swatch8"
        id="linearGradient5"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154069,0,0,0.98299173,-335.31958,-460.88468)"
+       gradientTransform="matrix(1.0154069,0,0,0.98299173,-349.14219,-460.88468)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -213,7 +213,7 @@
        xlink:href="#swatch8"
        id="linearGradient6"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154069,0,0,0.98299173,-178.34505,181.74063)"
+       gradientTransform="matrix(1.0154069,0,0,0.98299173,-178.34505,195.56324)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -223,7 +223,7 @@
        xlink:href="#swatch8"
        id="linearGradient7"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154069,0,0,0.98299173,-436.64584,-316.78086)"
+       gradientTransform="matrix(1.0154069,0,0,0.98299173,-450.46845,-316.78086)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -233,7 +233,7 @@
        xlink:href="#swatch8"
        id="linearGradient12"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154069,0,0,0.98299173,-365.99423,-316.78086)"
+       gradientTransform="matrix(1.0154069,0,0,0.98299173,-379.81684,-316.78086)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -243,7 +243,7 @@
        xlink:href="#swatch8"
        id="linearGradient14"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154069,0,0,0.98299173,-335.1814,296.64884)"
+       gradientTransform="matrix(1.0154069,0,0,0.98299173,-335.1814,310.47145)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -253,7 +253,7 @@
        xlink:href="#swatch8"
        id="linearGradient15"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0154069,0,0,0.98299173,-480.90244,-474.14638)"
+       gradientTransform="matrix(1.0154069,0,0,0.98299173,-494.72505,-474.14638)"
        x1="15.241264"
        y1="200.20818"
        x2="30.026394"
@@ -312,18 +312,19 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#96aee3;fill-opacity:0.0913349;stroke:#b940ff;stroke-width:2.0875;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       style="fill:#96aee3;fill-opacity:0.0913349;stroke:#b940ff;stroke-width:2.08569;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="frame_cdr"
-       width="525.64514"
-       height="19.187401"
-       x="2.2212422"
-       y="15.860412"
-       rx="8.8958578"
-       ry="0.26944369"
+       width="524.68347"
+       height="19.189211"
+       x="2.5724607"
+       y="15.859507"
+       rx="8.8795834"
+       ry="0.26946911"
        inkscape:label="frame_cdr" />
     <g
        id="line_enBit_Dec_YBus_registerA"
-       inkscape:label="line_enBit_Dec_YBus_registerA">
+       inkscape:label="line_enBit_Dec_YBus_registerA"
+       transform="translate(13.822519)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 142.45368,32.566999 -1,1 h -1 l -1,-1 1,1 h 1 z"
@@ -359,7 +360,8 @@
     </g>
     <g
        id="line_enBit_Dec_XBus_registerA"
-       inkscape:label="line_enBit0_XBus_registerA">
+       inkscape:label="line_enBit0_XBus_registerA"
+       transform="translate(13.822519)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 93.305842,32.566999 -1,1 h -1 l -1,-1 1,1 h 1 z"
@@ -399,7 +401,7 @@
        width="14.201"
        height="49.200737"
        x="84.60923"
-       y="-104.02215"
+       y="-117.84467"
        rx="1.5231396"
        ry="1.4744873"
        transform="rotate(90)"
@@ -410,7 +412,7 @@
        width="14.200738"
        height="49.200737"
        x="104.4081"
-       y="-104.52525"
+       y="-118.34771"
        rx="1.5231395"
        ry="1.4744874"
        transform="rotate(90)"
@@ -421,7 +423,7 @@
        width="14.200738"
        height="49.200741"
        x="124.61588"
-       y="-104.04748"
+       y="-117.86998"
        rx="1.5231395"
        ry="1.4744874"
        transform="rotate(90)"
@@ -432,7 +434,7 @@
        width="14.200465"
        height="49.200745"
        x="144.40398"
-       y="-104.04748"
+       y="-117.86998"
        rx="1.5231103"
        ry="1.4744877"
        transform="rotate(90)"
@@ -442,7 +444,7 @@
        id="dropTarget_registerOp"
        width="14.200465"
        height="49.200745"
-       x="-319.43787"
+       x="-333.26059"
        y="-288.68365"
        rx="1.5231103"
        ry="1.4744877"
@@ -454,7 +456,7 @@
        width="14.200465"
        height="49.200745"
        x="-162.46252"
-       y="353.94089"
+       y="367.76361"
        rx="1.5231103"
        ry="1.4744877"
        transform="rotate(-90)"
@@ -464,7 +466,7 @@
        id="dropTarget_registerMode"
        width="14.200465"
        height="49.200745"
-       x="-420.76404"
+       x="-434.58676"
        y="-144.5797"
        rx="1.5231103"
        ry="1.4744877"
@@ -475,7 +477,7 @@
        id="dropTarget_registerMar"
        width="15"
        height="50"
-       x="-350.11234"
+       x="-363.93506"
        y="-144.5797"
        rx="1.523"
        ry="1.4744877"
@@ -487,7 +489,7 @@
        width="14.200738"
        height="49.200737"
        x="209.39136"
-       y="-193.80588"
+       y="-207.6282"
        rx="1.5231395"
        ry="1.4744874"
        transform="rotate(90)"
@@ -498,7 +500,7 @@
        width="14.201"
        height="49.200737"
        x="290.45068"
-       y="-219.84143"
+       y="-233.66376"
        rx="1.5231395"
        ry="1.4744874"
        transform="rotate(90)"
@@ -509,7 +511,7 @@
        width="14.200738"
        height="49.200737"
        x="290.45068"
-       y="-274.46423"
+       y="-288.28696"
        rx="1.5231395"
        ry="1.4744874"
        transform="rotate(90)"
@@ -520,29 +522,29 @@
        width="14.201"
        height="49.200737"
        x="209.39136"
-       y="-298.27698"
+       y="-312.0997"
        rx="1.5231395"
        ry="1.4744874"
        transform="rotate(90)"
        inkscape:label="dropTarget_registerY" />
     <path
        style="fill:#ebffff;fill-opacity:1;stroke:#8efefe;stroke-width:0.794112;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.1;stroke-dasharray:0.794112, 0.794112;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       d="m 268.94416,84.698092 0.2603,113.279828 -5.20828,0.0116 9.89362,9.92236 10.15158,-9.93397 -5.33609,0.0641 V 84.730128 h 5.27102 l -10.08651,-9.869896 -9.89129,9.933987 z"
+       d="m 282.76677,84.698092 0.2603,113.279828 -5.20828,0.0116 9.89362,9.92236 10.15158,-9.93397 -5.33609,0.0641 V 84.730128 h 5.27102 l -10.08651,-9.869896 -9.89129,9.933987 z"
        id="dropTarget_YBus"
        inkscape:label="dropTarget_YBus" />
     <path
        style="fill:#ebffff;fill-opacity:1;stroke:#7affff;stroke-width:0.922277;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.1;stroke-dasharray:0.922277, 0.922277;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       d="m 416.29582,334.90115 -378.180926,0.54253 -0.09375,-4.48297 -33.0211442,8.54379 33.2719222,8.71001 -0.270689,-4.59285 378.290937,-0.31857 0.0557,4.53702 32.8439,-8.70968 -33.26918,-8.48595 z"
+       d="m 430.11843,334.90115 -378.181011,0.54253 -0.09375,-4.48297 -33.021147,8.54379 33.271925,8.71001 -0.270689,-4.59285 378.291022,-0.31857 0.0557,4.53702 32.8439,-8.70968 -33.26918,-8.48595 z"
        id="dropTarget_ZBus"
        inkscape:label="dropTarget_ZBus" />
     <path
        style="fill:#ebffff;fill-opacity:1;stroke:#7affff;stroke-width:0.792686;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.1;stroke-dasharray:0.792686, 0.792686;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       d="m 164.16494,84.657841 0.26032,112.866949 -5.20855,0.0116 9.89412,9.88621 10.15213,-9.89777 -5.33639,0.0639 V 84.689761 h 5.27131 l -10.08705,-9.833926 -9.89179,9.897783 z"
+       d="m 177.98755,84.657841 0.26032,112.866949 -5.20855,0.0116 9.89412,9.88621 10.15213,-9.89777 -5.33639,0.0639 V 84.689761 h 5.27131 l -10.08705,-9.833926 -9.89179,9.897783 z"
        id="dropTarget_XBus"
        inkscape:label="dropTarget_XBus" />
     <path
        style="fill:#ebffff;stroke:#7affff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:0.799999, 0.799999;paint-order:fill markers stroke"
-       d="m 174.20655,287.00594 h 95.00015 l 25,-60 H 149.2064 Z"
+       d="m 188.02916,287.00594 h 95.00015 l 25,-60 h -145.0003 z"
        id="dropTarget_alu"
        inkscape:label="dropTarget_alu" />
     <rect
@@ -550,7 +552,7 @@
        id="dropTarget_ram"
        width="49.186001"
        height="49.185368"
-       x="353.54822"
+       x="367.37094"
        y="95.386116"
        rx="1.4983218"
        ry="1.5507747"
@@ -561,7 +563,7 @@
        width="14.2"
        height="49.200745"
        x="-319.30002"
-       y="468.84869"
+       y="482.67142"
        rx="1.5231103"
        ry="1.4744877"
        transform="rotate(-90)"
@@ -571,7 +573,7 @@
        id="dropTarget_registerCar"
        width="14.200465"
        height="49.200745"
-       x="-465.02011"
+       x="-478.84283"
        y="-301.94562"
        rx="1.5231103"
        ry="1.4744877"
@@ -582,7 +584,7 @@
        id="dropTarget_rom"
        width="49.186001"
        height="49.185368"
-       x="468.45605"
+       x="482.27878"
        y="252.75046"
        rx="1.4983218"
        ry="1.5507747"
@@ -592,7 +594,7 @@
        id="dropTarget_cop"
        width="24.999998"
        height="15"
-       x="445.02011"
+       x="458.84283"
        y="188.08337"
        rx="1.5231103"
        ry="1.4744877"
@@ -602,7 +604,7 @@
        id="comp_cop"
        width="25"
        height="15"
-       x="445.02011"
+       x="458.84283"
        y="188.08337"
        rx="1.5231103"
        ry="1.4744877"
@@ -612,7 +614,7 @@
        id="dropTarget_ar"
        width="25.402689"
        height="20.319704"
-       x="445.02011"
+       x="458.84283"
        y="217.34465"
        rx="1.5231103"
        ry="1.4744877"
@@ -622,14 +624,14 @@
        id="comp_ar"
        width="25.403"
        height="20.319704"
-       x="445.12729"
+       x="458.95001"
        y="217.37108"
        rx="1.5231103"
        ry="1.4744877"
        inkscape:label="comp_ar" />
     <g
        id="pcb_register0_XBus"
-       transform="matrix(0.65312682,0,0,0.62777778,40.290418,74.666704)"
+       transform="matrix(0.65312682,0,0,0.62777778,54.112943,74.666704)"
        inkscape:label="pcb_register0_XBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -654,7 +656,7 @@
     </g>
     <g
        id="pcb_register3_XBus"
-       transform="matrix(0.65312682,0,0,0.62777778,70.47374,134.23779)"
+       transform="matrix(0.65312682,0,0,0.62777778,84.296265,134.23779)"
        inkscape:label="pcb_register3_XBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -679,7 +681,7 @@
     </g>
     <g
        id="pcb_register2_XBus"
-       transform="matrix(0.65312682,0,0,0.62777778,60.419567,114.6585)"
+       transform="matrix(0.65312682,0,0,0.62777778,74.242092,114.6585)"
        inkscape:label="pcb_register2_XBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -704,7 +706,7 @@
     </g>
     <g
        id="pcb_register1_XBus"
-       transform="matrix(0.65312682,0,0,0.62777778,50.365394,94.550075)"
+       transform="matrix(0.65312682,0,0,0.62777778,64.187919,94.550075)"
        inkscape:label="pcb_register1_XBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -729,7 +731,7 @@
     </g>
     <g
        id="pcb_ZBus_register0"
-       transform="matrix(0.65312682,0,0,0.62777778,-46.947149,69.870832)"
+       transform="matrix(0.65312682,0,0,0.62777778,-33.124624,69.870832)"
        inkscape:label="pcb_ZBus_register0">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -754,7 +756,7 @@
     </g>
     <g
        id="pcb_ZBus_register3"
-       transform="matrix(0.65312682,0,0,0.62777778,-31.051336,129.97087)"
+       transform="matrix(0.65312682,0,0,0.62777778,-17.228811,129.97087)"
        inkscape:label="pcb_ZBus_register3">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -779,7 +781,7 @@
     </g>
     <g
        id="pcb_ZBus_register2"
-       transform="matrix(0.65312682,0,0,0.62777778,-36.343006,109.86252)"
+       transform="matrix(0.65312682,0,0,0.62777778,-22.520481,109.86252)"
        inkscape:label="pcb_ZBus_register2">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -804,7 +806,7 @@
     </g>
     <g
        id="pcb_ZBus_register1"
-       transform="matrix(0.65312682,0,0,0.62777778,-41.634676,89.754203)"
+       transform="matrix(0.65312682,0,0,0.62777778,-27.812151,89.754203)"
        inkscape:label="pcb_ZBus_register1">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -829,7 +831,7 @@
     </g>
     <g
        id="pcb_register0_YBus"
-       transform="matrix(0.65312682,0,0,0.62777778,132.52191,64.979179)"
+       transform="matrix(0.65312682,0,0,0.62777778,146.34452,64.979179)"
        inkscape:label="pcb_register0_YBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -854,7 +856,7 @@
     </g>
     <g
        id="pcb_register3_YBus"
-       transform="matrix(0.65312682,0,0,0.62777778,161.64706,124.55016)"
+       transform="matrix(0.65312682,0,0,0.62777778,175.46967,124.55016)"
        inkscape:label="pcb_register3_YBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -879,7 +881,7 @@
     </g>
     <g
        id="pcb_registerMdr_YBus"
-       transform="matrix(-0.65312682,0,0,0.62777778,399.83705,133.39075)"
+       transform="matrix(-0.65312682,0,0,0.62777778,413.65966,133.39075)"
        inkscape:label="pcb_registerMdr_YBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -904,7 +906,7 @@
     </g>
     <g
        id="pcb_ZBus_registerMdr"
-       transform="matrix(0,-0.65312682,-0.62777778,0,400.51047,332.3029)"
+       transform="matrix(0,-0.65312682,-0.62777778,0,414.33308,332.3029)"
        inkscape:label="pcb_ZBus_registerMdr">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -929,7 +931,7 @@
     </g>
     <g
        id="pcb_registerMdr_cop"
-       transform="matrix(0.65312682,0,0,-0.62777778,354.62135,217.55823)"
+       transform="matrix(0.65312682,0,0,-0.62777778,368.44396,217.55823)"
        inkscape:label="pcb_registerMdr_cop">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -954,7 +956,7 @@
     </g>
     <g
        id="pcb_ZBus_registerMar"
-       transform="matrix(0,-0.65312682,-0.62777778,0,364.22756,337.08364)"
+       transform="matrix(0,-0.65312682,-0.62777778,0,378.05017,337.08364)"
        inkscape:label="pcb_ZBus_registerMar">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -979,7 +981,7 @@
     </g>
     <g
        id="pcb_register2_YBus"
-       transform="matrix(0.65312682,0,0,0.62777778,152.65117,104.97092)"
+       transform="matrix(0.65312682,0,0,0.62777778,166.47378,104.97092)"
        inkscape:label="pcb_register2_YBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1004,7 +1006,7 @@
     </g>
     <g
        id="pcb_register1_YBus"
-       transform="matrix(0.65312682,0,0,0.62777778,142.59694,84.86255)"
+       transform="matrix(0.65312682,0,0,0.62777778,156.41955,84.86255)"
        inkscape:label="pcb_register1_YBus">
       <path
          style="fill:#ebffff;stroke:#000000;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1030,7 +1032,7 @@
     <g
        id="lineOut_register3_YBus"
        inkscape:label="lineOut_register3_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:1.04362;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 240.99999,104.71807 27.70213,8e-4 z"
@@ -1043,7 +1045,7 @@
     <g
        id="lineOut_register2_YBus"
        inkscape:label="lineOut_register2_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.869636;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 231.99999,85.138923 36.58339,-2.64e-4 z"
@@ -1056,7 +1058,7 @@
     <g
        id="lineOut_register1_YBus"
        inkscape:label="lineOut_register1_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.852595;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 221.99999,65.030577 46.36162,0.0013 h 0.22177 z"
@@ -1069,7 +1071,7 @@
     <g
        id="lineOut_register0_YBus"
        inkscape:label="lineOut_register0_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.842072;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 211.99999,45.147206 56.39973,-0.0031 z"
@@ -1082,7 +1084,7 @@
     <g
        id="lineOut_register3_XBus"
        inkscape:label="lineOut_register3_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.617807;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 149.99999,114.4057 h 13.84478 z"
@@ -1095,7 +1097,7 @@
     <g
        id="lineOut_register1_XBus"
        inkscape:label="lineOut_register1_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.671147;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 129.87098,74.700005 h 17.59531 16.35548 z"
@@ -1108,7 +1110,7 @@
     <g
        id="lineOut_register0_XBus"
        inkscape:label="lineOut_register0_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.693421;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 119.97086,54.835075 43.82966,0.250423 z"
@@ -1120,7 +1122,7 @@
     </g>
     <g
        id="con_z_register"
-       transform="rotate(90,19.336335,184.38728)"
+       transform="rotate(90,26.247584,191.29845)"
        inkscape:label="con_z_register">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1138,7 +1140,7 @@
     </g>
     <g
        id="con_register_0_Y_Bus"
-       transform="translate(-35.241418,78.453949)"
+       transform="translate(-21.418893,78.453949)"
        inkscape:label="con_register_0_Y_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1156,7 +1158,7 @@
     </g>
     <g
        id="con_register_0_X_Bus"
-       transform="translate(-35.354172,88.138924)"
+       transform="translate(-21.531647,88.138924)"
        inkscape:label="con_register_0_X_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1174,7 +1176,7 @@
     </g>
     <g
        id="con_register_1_Y_Bus"
-       transform="translate(-34.945587,98.33345)"
+       transform="translate(-21.123062,98.33345)"
        inkscape:label="con_register_1_Y_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1192,7 +1194,7 @@
     </g>
     <g
        id="con_register_1_X_Bus"
-       transform="translate(-35.058341,108.01847)"
+       transform="translate(-21.235816,108.01847)"
        inkscape:label="con_register_1_X_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1210,7 +1212,7 @@
     </g>
     <g
        id="con_register_2_Y_Bus"
-       transform="translate(-35.158342,118.38253)"
+       transform="translate(-21.335817,118.38253)"
        inkscape:label="con_register_2_Y_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1228,7 +1230,7 @@
     </g>
     <g
        id="con_register_2_X_Bus"
-       transform="translate(-35.271096,128.06756)"
+       transform="translate(-21.448571,128.06756)"
        inkscape:label="con_register_2_X_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1246,7 +1248,7 @@
     </g>
     <g
        id="con_register_3_Y_Bus"
-       transform="translate(-35.268816,138.08577)"
+       transform="translate(-21.446291,138.08577)"
        inkscape:label="con_register_3_Y_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1264,7 +1266,7 @@
     </g>
     <g
        id="con_register_3_X_Bus"
-       transform="translate(-35.38157,147.7708)"
+       transform="translate(-21.559045,147.7708)"
        inkscape:label="con_register_3_X_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1284,7 +1286,7 @@
        id="dropTarget_clock"
        inkscape:label="dropTarget_clock"
        style="display:inline"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <rect
          style="fill:#ebffff;fill-opacity:1;stroke:url(#linearGradient61);stroke-width:0.709657;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:2.1;stroke-dasharray:0.709657, 0.709657;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
          id="clock_fetch"
@@ -1350,7 +1352,7 @@
     <g
        id="lineIn_ZBus_register1"
        inkscape:label="lineIn_ZBus_register1"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="M 28.249888,69.922231 9.9999995,69.922355 V 292.70007 69.922831 Z"
@@ -1363,7 +1365,7 @@
     <g
        id="lineIn_ZBus_register2"
        inkscape:label="lineIn_ZBus_register2"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="M 33.541557,90.030492 H 15.013865 l -0.01387,202.669578 0.01407,-202.670416 z"
@@ -1376,7 +1378,7 @@
     <g
        id="lineIn_ZBus_register3"
        inkscape:label="lineIn_ZBus_register3"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="M 38.833226,110.13879 H 20.042187 l -0.0091,182.56128 0.0091,-182.56203 z"
@@ -1389,7 +1391,7 @@
     <g
        id="lineOut_ZBus_registerMar"
        inkscape:label="lineOut_ZBus_registerMar"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 340.61234,106.43908 1.99999,-3 2,3 -2,-3 z"
@@ -1402,7 +1404,7 @@
     <g
        id="lineIn_ZBus_registerMdr"
        inkscape:label="lineIn_ZBus_registerMdr"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 376.53826,223.61392 1.99999,-3.00001 2,3.00001 -2,-3.00001 z"
@@ -1415,7 +1417,7 @@
     <g
        id="line_registerZ_ZBus"
        inkscape:label="line_registerZ_ZBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 197.24105,289.29405 -1.99999,3 -2,-3 2,3 z"
@@ -1428,7 +1430,7 @@
     <g
        id="g185"
        clip-path="url(#clipPath185)"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          inkscape:label="Clip"
          id="g184">
@@ -1441,13 +1443,13 @@
     </g>
     <path
        style="fill:#0045ff;stroke:#c1840e;stroke-width:0.647543;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
-       d="m 109.22698,277.54248 h 5.23772 V 169.46625 277.54248 Z"
+       d="m 123.04959,277.54248 h 5.23772 V 169.46625 277.54248 Z"
        id="lineFetch_clock_registerANY_BusANY-1"
        inkscape:label="lineFetch_clock_registerANY_BusANY" />
     <g
        id="g187"
        clip-path="url(#clipPath187)"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          inkscape:label="Clip"
          id="g186">
@@ -1463,7 +1465,7 @@
        id="frame_registerOp"
        width="63.731441"
        height="16.710087"
-       x="152.58392"
+       x="166.40625"
        y="16.972294"
        rx="1.078572"
        ry="0.23465542"
@@ -1473,27 +1475,27 @@
        id="frame_arMask"
        width="63.731441"
        height="16.710087"
-       x="353.81302"
+       x="367.63574"
        y="16.959999"
        rx="1.078572"
        ry="0.23465542"
        inkscape:label="frame_arMask" />
     <rect
-       style="fill:#96aee3;fill-opacity:0.580392;stroke:#0045ff;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       style="fill:#96aee3;fill-opacity:0.580392;stroke:#0045ff;stroke-width:1.38974;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="rect_ar-2-4-9"
-       width="107.964"
-       height="16.69459"
-       x="419.39355"
-       y="16.967705"
-       rx="2.5717888"
-       ry="0.23443782"
+       width="92.066963"
+       height="16.804852"
+       x="433.16113"
+       y="16.912575"
+       rx="2.1931088"
+       ry="0.23598619"
        inkscape:label="rect_ar" />
     <rect
        style="fill:#96aee3;fill-opacity:0.580392;stroke:#12b400;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="frame_registerMode"
        width="32.337631"
        height="16.708254"
-       x="283.19476"
+       x="297.01749"
        y="16.965872"
        rx="0.5472725"
        ry="0.23462968"
@@ -1503,7 +1505,7 @@
        id="frame_arMode"
        width="32.337631"
        height="16.708254"
-       x="318.38269"
+       x="332.20541"
        y="16.959999"
        rx="0.5472725"
        ry="0.23462968"
@@ -1511,7 +1513,7 @@
     <g
        id="lineFetch_clock_register0_YBus"
        inkscape:label="lineFetch_clock_register0_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#c1840e;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 205.63149,51.653363 1.99999,-3 2,3 -2,-3 z"
@@ -1574,7 +1576,7 @@
     <g
        id="lineExecute_clock_ZBus_registerMar"
        inkscape:label="lineExecute_clock_ZBus_registerMar"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#c155ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 349.00365,218.16963 -3,2 3,2 -3,-2 z"
@@ -1654,7 +1656,7 @@
     <g
        id="lineExecute_clock_ZBus_registerMdr"
        inkscape:label="lineExecute_clock_ZBus_registerMdr"
-       transform="translate(0.07303521,41.96789)">
+       transform="translate(13.895554,41.96789)">
       <path
          style="fill:#ebffff;stroke:#c155ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 385.3991,213.27196 -3,2 3,2 -3,-2 z"
@@ -1717,50 +1719,60 @@
     </g>
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="enBit1_ZBus_registerA"
+       id="enBit_ZBus_register1"
        width="14.264"
        height="14.263821"
-       x="5.3680902"
+       x="19.190603"
        y="17.538918"
        rx="1.4020785"
        ry="1.3564361"
-       inkscape:label="enBit1_ZBus_registerA" />
+       inkscape:label="enBit_ZBus_register1" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.736185;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="enBit0_ZBus_registerA"
+       id="enBit_ZBus_register2"
        width="14.263816"
        height="14.263816"
-       x="20.368092"
+       x="34.19062"
        y="17.538919"
        rx="1.4020933"
        ry="1.3564357"
-       inkscape:label="enBit0_ZBus_registerA" />
+       inkscape:label="enBit_ZBus_register2" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="enBit1_XBus_registerA"
        width="14.263821"
        height="14.263821"
-       x="54.655605"
+       x="68.478134"
        y="17.535089"
        rx="1.4020785"
        ry="1.3564361"
        inkscape:label="enBit1_XBus_registerA" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="enBit_Dec_ZBus_registerA"
+       id="enBit_ZBus_register0"
+       width="14.264"
+       height="14.263821"
+       x="4.1910901"
+       y="17.539089"
+       rx="1.4020785"
+       ry="1.3564361"
+       inkscape:label="enBit_ZBus_register0" />
+    <rect
+       style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+       id="enBit_ZBus_register3"
        width="14.263821"
        height="14.263821"
-       x="35.386635"
+       x="49.209164"
        y="17.535284"
        rx="1.4020785"
        ry="1.3564361"
-       inkscape:label="enBit_Dec_ZBus_registerA" />
+       inkscape:label="enBit_ZBus_register3" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.736185;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="enBit0_XBus_registerA"
        width="14.263816"
        height="14.263816"
-       x="69.655602"
+       x="83.478134"
        y="17.535093"
        rx="1.4020933"
        ry="1.3564357"
@@ -1770,7 +1782,7 @@
        id="enBit1_YBus_registerA"
        width="14.264"
        height="14.263821"
-       x="103.78509"
+       x="117.60758"
        y="17.538918"
        rx="1.4020785"
        ry="1.3564361"
@@ -1780,7 +1792,7 @@
        id="enBit_Dec_YBus_registerA"
        width="14.264"
        height="14.263821"
-       x="133.69708"
+       x="147.51941"
        y="17.535089"
        rx="1.4020785"
        ry="1.3564361"
@@ -1790,7 +1802,7 @@
        id="enBit_Dec_XBus_registerA"
        width="14.264"
        height="14.263821"
-       x="84.660988"
+       x="98.483521"
        y="17.535261"
        rx="1.4020785"
        ry="1.3564361"
@@ -1800,7 +1812,7 @@
        id="enBit0_YBus_registerA"
        width="14.263816"
        height="14.263816"
-       x="118.7431"
+       x="132.56552"
        y="17.538919"
        rx="1.4020933"
        ry="1.3564357"
@@ -1810,7 +1822,7 @@
        id="modeBit1_registerMode"
        width="14.263821"
        height="14.263821"
-       x="284.81833"
+       x="298.64105"
        y="18.068085"
        rx="1.4020785"
        ry="1.3564361"
@@ -1820,7 +1832,7 @@
        id="modeBit0_registerMode"
        width="14.263816"
        height="14.263816"
-       x="299.81876"
+       x="313.64148"
        y="18.068089"
        rx="1.4020933"
        ry="1.3564357"
@@ -1830,7 +1842,7 @@
        id="modeBit1_ar"
        width="14.263821"
        height="14.263821"
-       x="319.81879"
+       x="333.64151"
        y="18.068085"
        rx="1.4020785"
        ry="1.3564361"
@@ -1840,7 +1852,7 @@
        id="modeBit0_ar"
        width="14.263816"
        height="14.263816"
-       x="334.81879"
+       x="348.64151"
        y="18.068087"
        rx="1.4020933"
        ry="1.3564357"
@@ -1850,7 +1862,7 @@
        id="enBit3_registerOp"
        width="14.263821"
        height="14.263821"
-       x="154.8177"
+       x="168.64003"
        y="18.068085"
        rx="1.4020785"
        ry="1.3564361"
@@ -1860,7 +1872,7 @@
        id="enBit2_registerOp"
        width="14.263816"
        height="14.263816"
-       x="169.81752"
+       x="183.63985"
        y="18.068087"
        rx="1.4020933"
        ry="1.3564357"
@@ -1870,7 +1882,7 @@
        id="enBit1_registerOp"
        width="14.263821"
        height="14.263821"
-       x="184.81749"
+       x="198.63982"
        y="18.091942"
        rx="1.4020785"
        ry="1.3564361"
@@ -1880,87 +1892,77 @@
        id="enBit0_registerOp"
        width="14.263816"
        height="14.263816"
-       x="199.81749"
+       x="213.63982"
        y="18.091942"
        rx="1.4020933"
        ry="1.3564357"
        inkscape:label="enBit0_registerOp" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="cnBit1_ar"
+       id="cnBit0_ar"
        width="14.263821"
        height="14.263821"
-       x="495.89725"
+       x="509.71997"
        y="18.068085"
        rx="1.4020785"
        ry="1.3564361"
-       inkscape:label="cnBit1_ar" />
-    <rect
-       style="fill:#0045ff;stroke:#c155ff;stroke-width:0.736185;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="cnBit0_ar"
-       width="14.263816"
-       height="14.263816"
-       x="510.89728"
-       y="18.068089"
-       rx="1.4020933"
-       ry="1.3564357"
        inkscape:label="cnBit0_ar" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.736185;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="cnBit6_ar"
+       id="cnBit5_ar"
        width="14.263816"
        height="14.263816"
-       x="420.89725"
+       x="434.71997"
        y="18.091942"
        rx="1.4020933"
        ry="1.3564357"
-       inkscape:label="cnBit6_ar" />
+       inkscape:label="cnBit5_ar" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="cnBit5_ar"
+       id="cnBit4_ar"
        width="14.263821"
        height="14.263821"
-       x="435.89728"
+       x="449.72"
        y="18.114857"
        rx="1.4020785"
        ry="1.3564361"
-       inkscape:label="cnBit5_ar" />
+       inkscape:label="cnBit4_ar" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.736185;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="cnBit4_ar"
+       id="cnBit3_ar"
        width="14.263816"
        height="14.263816"
-       x="450.89728"
+       x="464.72"
        y="18.114861"
        rx="1.4020933"
        ry="1.3564357"
-       inkscape:label="cnBit4_ar" />
+       inkscape:label="cnBit3_ar" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="cnBit3_ar"
+       id="cnBit2_ar"
        width="14.263821"
        height="14.263821"
-       x="465.89728"
+       x="479.72"
        y="18.138716"
        rx="1.4020785"
        ry="1.3564361"
-       inkscape:label="cnBit3_ar" />
+       inkscape:label="cnBit2_ar" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.736185;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="cnBit2_ar"
+       id="cnBit1_ar"
        width="14.263816"
        height="14.263816"
-       x="480.89728"
+       x="494.72"
        y="18.138716"
        rx="1.4020933"
        ry="1.3564357"
-       inkscape:label="cnBit2_ar" />
+       inkscape:label="cnBit1_ar" />
     <rect
        style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="maskBit3_ar"
        width="14.263821"
        height="14.263821"
-       x="355.87714"
+       x="369.69986"
        y="18.068085"
        rx="1.4020785"
        ry="1.3564361"
@@ -1970,7 +1972,7 @@
        id="maskBit2_ar"
        width="14.263816"
        height="14.263816"
-       x="370.87714"
+       x="384.69986"
        y="18.068087"
        rx="1.4020933"
        ry="1.3564357"
@@ -1980,7 +1982,7 @@
        id="maskBit1_ar"
        width="14.263821"
        height="14.263821"
-       x="385.87714"
+       x="399.69986"
        y="18.091942"
        rx="1.4020785"
        ry="1.3564361"
@@ -1990,7 +1992,7 @@
        id="maskBit0_ar"
        width="14.263816"
        height="14.263816"
-       x="400.87714"
+       x="414.69986"
        y="18.091942"
        rx="1.4020933"
        ry="1.3564357"
@@ -1998,7 +2000,7 @@
     <g
        id="lineEn_ZBus_register0"
        inkscape:label="lineEn_ZBus_register0"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2009,18 +2011,26 @@
          d="m 28.161588,45.516596 -0.0047,-4.499221 z"
          id="path149" />
       <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:0.8;stroke-dasharray:none;stroke-opacity:1"
-         d="m 8.5117767,22.247083 0.066146,18.806088 20.0752603,-0.06615 -20.0752603,0.06615 z"
-         id="path150" />
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m -1.2205671,-9.2359815 -0.9999998,1 H -3.220567 l -0.9999999,-1 0.9999999,1 h 1.0000001 z"
+         id="path51-8-2-65-3" />
       <path
-         style="fill:#9ba0a0;stroke:#97ed26;stroke-width:0.8;stroke-dasharray:none;fill-opacity:1;stroke-opacity:1"
-         d="M 8.4997395,22.251859 V 10.630465 Z"
-         id="path132" />
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m -1.2205671,-9.2359815 h -2.9999998 v 0 z"
+         id="path52-6-4-30-7" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.0347745;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m -2.7197541,-8.8268787 h 0.5170022 l -0.091468,0.092009 -0.091468,0.092006 h -0.3340667 -0.3340666 l -0.091468,-0.092006 -0.091468,-0.092009 z"
+         id="path53-5-8-48-88" />
+      <path
+         style="fill:#ff1414;stroke:#97ed26;stroke-width:0.799999;stroke-opacity:1"
+         d="M 28.555256,41.016597 H -2.3224125 -2.7224215 V -7.838302 41.015563 Z"
+         id="path51" />
     </g>
     <g
        id="lineEn_ZBus_register1"
        inkscape:label="lineEn_ZBus_register1"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#96ed28;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 35.474897,63.077433 -1.99999,3 -2,-3 2,3 z"
@@ -2038,18 +2048,26 @@
          d="M 33.477025,47.079291 V 38.047343"
          id="path152" />
       <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:0.797869;stroke-dasharray:none;stroke-opacity:1"
-         d="m 16.812983,22.290425 v 15.77288 H 33.882131 16.813895 Z"
-         id="path153" />
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 13.966785,-9.2329573 -1,1.000002 h -1 l -1,-1.000002 1,1.000002 h 1 z"
+         id="path51-8-2-65" />
       <path
-         style="fill:#9ba0a0;stroke:#97ed26;stroke-width:0.8;stroke-dasharray:none;fill-opacity:1;stroke-opacity:1"
-         d="M 16.804142,22.296302 V 10.642234 Z"
-         id="path133" />
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 13.966785,-9.2329573 h -3 v 0 z"
+         id="path52-6-4-30" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.0347745;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="M 12.467598,-8.8238525 H 12.9846 l -0.09147,0.092009 -0.09147,0.092006 h -0.334067 -0.334066 l -0.09147,-0.092006 -0.09147,-0.092009 z"
+         id="path53-5-8-48" />
+      <path
+         style="fill:#ff1414;stroke:#97ed26;stroke-width:0.799999;stroke-opacity:1"
+         d="M 33.87586,38.047268 H 12.478718 V -7.8352011 38.047268 Z"
+         id="path52" />
     </g>
     <g
        id="lineEn_register1_XBus"
        inkscape:label="lineEn_register1_XBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2072,15 +2090,15 @@
          d="m 125.4727,42.161595 v 2 h 2 v 2 h -2 v 2 -2 h 2 v -2 h -2 z"
          id="path78-8-2" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 125.4727,47.636079 v 4.727838 z"
          id="path1-6" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 125.46427,57.320656 0.008,1.087453 z"
          id="path3" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 125.47497,67.516988 v 4.483009 z"
          id="path4" />
       <path
@@ -2091,7 +2109,7 @@
     <g
        id="lineEn_register0_XBus"
        inkscape:label="lineEn_register0_XBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2106,7 +2124,7 @@
          d="M 115.39999,38.342557 V 42.56559 Z"
          id="path79-2" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 115.39999,47.638816 v 4.057026 z"
          id="path1" />
       <path
@@ -2120,7 +2138,7 @@
        inkscape:label="con_en_bit_register_2_Y_Bus" />
     <g
        id="con_cdr"
-       transform="translate(378.87993,303.69941)"
+       transform="translate(392.70254,303.69941)"
        inkscape:label="con_cdr">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2138,7 +2156,7 @@
     </g>
     <g
        id="con_car"
-       transform="matrix(-1,0,0,1,590.01651,268.84487)"
+       transform="matrix(-1,0,0,1,603.83912,268.84487)"
        inkscape:label="con_car">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2156,7 +2174,7 @@
     </g>
     <g
        id="con_mdr_Y_Bus"
-       transform="matrix(-1,0,0,1,493.15878,146.86309)"
+       transform="matrix(-1,0,0,1,506.98139,146.86309)"
        inkscape:label="con_mdr_Y_Bus">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2174,7 +2192,7 @@
     </g>
     <g
        id="con_mdr_cop"
-       transform="translate(263.92718,146.86301)"
+       transform="translate(277.74979,146.86301)"
        inkscape:label="con_mdr_cop">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2193,7 +2211,7 @@
     <g
        id="lineEn_ZBus_register2"
        inkscape:label="lineEn_ZBus_register2"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2204,11 +2222,11 @@
          d="m 38.740631,47.039265 v 2 h 1.999988 v 2 h -1.999988 v 2 -2 h 1.999988 v -2 h -1.999988 z"
          id="path78-37-6-1-9-7" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 38.740665,66.757497 -3e-5,-14.704896 z"
          id="path9-9-3-2" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 38.737972,72.525712 0.0286,13.621831 z"
          id="path13-6" />
       <path
@@ -2216,22 +2234,30 @@
          d="m 40.762963,83.152942 -1.99999,3 -2,-3 2,3 z"
          id="path50-34-0-1-1" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 38.741973,66.191662 -0.004,1.730569 z"
          id="path12-1" />
       <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:0.8;stroke-dasharray:none;stroke-opacity:1"
-         d="M 38.739048,47.039292 V 35.07731 H 23.222381 V 22.285124 35.07731 h 15.481588 z"
-         id="path166" />
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 28.834286,-9.2597326 -1,1 h -1 l -1,-1 1,1 h 1 z"
+         id="path51-8-2-65-39" />
       <path
-         style="fill:#9ba0a0;stroke:#97ed26;stroke-width:0.8;stroke-dasharray:none;fill-opacity:1;stroke-opacity:1"
-         d="M 23.21512,22.306636 V 10.659699 Z"
-         id="path134" />
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 28.834286,-9.2597326 h -3 v 0 z"
+         id="path52-6-4-30-0" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.0347745;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 27.335099,-8.8506298 h 0.517002 l -0.09147,0.092009 -0.09147,0.092006 h -0.334067 -0.334066 l -0.09147,-0.092006 -0.09147,-0.092009 z"
+         id="path53-5-8-48-5" />
+      <path
+         style="fill:#ff1414;stroke:#97ed26;stroke-width:0.799999;stroke-opacity:1"
+         d="M 38.738613,47.061704 V 35.196796 H 27.278848 V -7.8680571 35.195764 h 11.458731 z"
+         id="path53" />
     </g>
     <g
        id="lineEn_ZBus_register3"
        inkscape:label="lineEn_ZBus_register3"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2250,15 +2276,15 @@
          d="m 44.058242,72.613005 0.002,15.329578 z"
          id="path92-3-9" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 44.060854,67.274155 -3e-5,-14.704896 z"
          id="path9-9-7" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 44.059242,92.542435 -10e-4,13.763125 z"
          id="path10-6" />
       <path
-         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 44.060824,47.842931 1.6e-5,-7.859622 z"
          id="path130" />
       <path
@@ -2266,18 +2292,26 @@
          d="m 46.058237,103.30557 -1.99999,3 -2,-3 2,3 z"
          id="path50-34-0-1-3" />
       <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:0.8;stroke-dasharray:none;stroke-opacity:1"
-         d="M 44.053124,47.068957 V 32.037121 H 31.851846 v -9.728611 9.681839 l 12.201278,0.04677"
-         id="path184" />
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 43.799126,-9.2407772 -1,1 h -1 l -1,-1 1,1 h 1 z"
+         id="path51-8-2-65-00" />
       <path
-         style="fill:#9ba0a0;stroke:#97ed26;stroke-width:0.8;stroke-dasharray:none;fill-opacity:1;stroke-opacity:1"
-         d="M 31.850253,22.316973 V 10.692875 Z"
-         id="path135" />
+         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 43.799126,-9.2407772 h -3 v 0 z"
+         id="path52-6-4-30-9" />
+      <path
+         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.0347745;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 42.299939,-8.8316704 h 0.517002 l -0.09147,0.092009 -0.09147,0.092006 h -0.334067 -0.334066 l -0.09147,-0.092006 -0.09147,-0.092009 z"
+         id="path53-5-8-48-3" />
+      <path
+         style="fill:#ff1414;stroke:#97ed26;stroke-width:0.799999;stroke-opacity:1"
+         d="M 44.064387,39.988236 V 32.18938 H 42.27845 V -7.8713749 32.189229 h 1.793171 z"
+         id="path107" />
     </g>
     <g
        id="lineIn_ZBus_register0"
        inkscape:label="lineIn_ZBus_register0"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="M 22.937414,50.038859 5.0309311,50.038815 5.0280111,292.70007 5.0312211,50.037264 Z"
@@ -2290,7 +2324,7 @@
     <g
        id="lineOut_ZBus_register0"
        inkscape:label="lineOut_ZBus_register0"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 32.734316,50.038859 21.687464,0.0011 z"
@@ -2303,7 +2337,7 @@
     <g
        id="lineOut_ZBus_register1"
        inkscape:label="lineOut_ZBus_register1"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 38.046789,69.922231 16.826354,1.24e-4 z"
@@ -2316,7 +2350,7 @@
     <g
        id="lineIn_register0_XBus"
        inkscape:label="lineIn_register0_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 110.17504,54.834731 h -5.75322 z"
@@ -2329,7 +2363,7 @@
     <g
        id="lineIn_register1_XBus"
        inkscape:label="lineIn_register1_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 120.25006,74.718102 -15.37919,-0.0181 z"
@@ -2342,7 +2376,7 @@
     <g
        id="lineOut_register2_XBus"
        inkscape:label="lineOut_register2_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.632952;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 140.10199,94.826447 h 17.96281 l 5.76847,0.0016 z"
@@ -2355,7 +2389,7 @@
     <g
        id="lineIn_register2_XBus"
        inkscape:label="lineIn_register2_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 130.30426,94.826449 h -25.8571 z"
@@ -2368,7 +2402,7 @@
     <g
        id="lineIn_register3_XBus"
        inkscape:label="lineIn_register3_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.75839;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 140.99999,114.4057 h -10.93747 l -16.2477,-0.0144 -9.36767,-0.0201 z"
@@ -2381,7 +2415,7 @@
     <g
        id="lineIn_register0_YBus"
        inkscape:label="lineIn_register0_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 174.45998,47.147207 h 1 l 1,-2.000001 h 2 -2 l -1,2.000001 z"
@@ -2406,7 +2440,7 @@
     <g
        id="lineIn_register1_YBus"
        inkscape:label="lineIn_register1_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 174.50271,67.029278 h 1 l 1,-2.000001 h 2 -2 l -1,2.000001 z"
@@ -2431,7 +2465,7 @@
     <g
        id="lineIn_register2_YBus"
        inkscape:label="lineIn_register2_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 174.5413,87.078234 h 1 l 1,-2.000001 h 2 -2 l -1,2.000001 z"
@@ -2456,7 +2490,7 @@
     <g
        id="lineIn_register3_YBus"
        inkscape:label="lineIn_register3_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 174.41119,106.70004 h 1 l 1,-2.00001 h 2 -2 l -1,2.00001 z"
@@ -2481,7 +2515,7 @@
     <g
        id="lineOut_ZBus_register2"
        inkscape:label="lineOut_ZBus_register2"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 43.338458,90.030492 11.108648,1.96e-4 z"
@@ -2494,7 +2528,7 @@
     <g
        id="lineOut_ZBus_register3"
        inkscape:label="lineOut_ZBus_register3"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 48.630128,110.13879 h 5.816978 z"
@@ -2507,7 +2541,7 @@
     <g
        id="lineEn_register2_XBus"
        inkscape:label="lineEn_register2_XBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2542,19 +2576,19 @@
          d="m 135.52693,42.149905 v 2 h 2 v 2 h -2 v 2 -2 h 2 v -2 h -2 z"
          id="path78-8-2-2" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 135.5185,57.308966 0.008,1.087454 z"
          id="path3-5" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 135.5292,67.505298 v 4.846947 z"
          id="path4-4" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 135.5292,76.668965 v 2.190274 z"
          id="path5" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 135.52693,47.744054 -0.008,4.111326 z"
          id="path6" />
       <path
@@ -2569,7 +2603,7 @@
     <g
        id="lineEn_register3_XBus"
        inkscape:label="lineEn_register3_XBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2616,27 +2650,27 @@
          d="m 145.56292,42.153018 v 2 h 2 v 2 h -2 v 2 -2 h 2 v -2 h -2 z"
          id="path78-8-2-2-6" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 145.55449,57.312079 0.008,1.087454 z"
          id="path3-5-0" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 145.56519,67.508411 v 4.846947 z"
          id="path4-4-2" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 145.56519,76.672078 v 2.190274 z"
          id="path5-8" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 145.56292,47.747167 -0.008,4.111326 z"
          id="path6-6" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 145.58259,97.369322 v 4.469538 z"
          id="path7" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 145.58329,107.40434 v 3.86246 z"
          id="path8" />
       <path
@@ -2651,7 +2685,7 @@
     <g
        id="lineEn_register0_YBus"
        inkscape:label="lineEn_register0_YBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2665,14 +2699,14 @@
     <g
        id="lineEn_register1_YBus"
        inkscape:label="lineEn_register1_YBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 217.70596,42.147207 v 2 h 2 v 2 h -2 v 2 -2 h 2 v -2 h -2 z"
          id="path78-37-6" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 217.70651,61.891687 -3e-5,-14.704896 z"
          id="path9" />
       <path
@@ -2687,7 +2721,7 @@
     <g
        id="lineEn_register2_YBus"
        inkscape:label="lineEn_register2_YBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2698,15 +2732,15 @@
          d="m 227.73581,42.129955 v 2 h 2 v 2 h -2 v 2 -2 h 2 v -2 h -2 z"
          id="path78-37-6-1-9" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 227.73636,61.874435 -3e-5,-14.704896 z"
          id="path9-9-3" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 227.73634,61.300658 -0.004,1.730569 z"
          id="path12" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 227.73211,67.634122 0.0286,14.365912 z"
          id="path13" />
       <path
@@ -2721,7 +2755,7 @@
     <g
        id="lineEn_register3_YBus"
        inkscape:label="lineEn_register3_YBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2740,15 +2774,15 @@
          d="m 236.7556,67.792061 0.002,15.329609 z"
          id="path92-3" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 236.7556,61.874435 -3e-5,-14.704896 z"
          id="path9-9" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 236.75764,87.121671 -0.001,14.457499 z"
          id="path10" />
       <path
-         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 236.75558,60.676557 -0.004,2.35467 z"
          id="path11" />
       <path
@@ -2763,7 +2797,7 @@
     <g
        id="lineEn_registerMdr_YBus"
        inkscape:label="lineEn_registerMdr_YBus"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2795,7 +2829,7 @@
     <g
        id="lineIn_registerMdr_YBus"
        inkscape:label="lineIn_registerMdr_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 339.56735,113.55866 h 2 v -2.00001 h 2 v 2.00001 h 2 -2 v -2.00001 h -2 v 2.00001 z"
@@ -2816,7 +2850,7 @@
     <g
        id="lineOut_ZBus_registerMdr"
        inkscape:label="lineOut_ZBus_registerMdr"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 378.54125,120.65889 -0.003,90.04118 z"
@@ -2829,7 +2863,7 @@
     <g
        id="lineOut_registerMdr_YBus"
        inkscape:label="lineOut_registerMdr_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 320.15559,113.55866 -41.06772,0.003 z"
@@ -2842,7 +2876,7 @@
     <g
        id="lineEn_ZBus_registerMar"
        inkscape:label="lineEn_ZBus_registerMar"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2853,11 +2887,11 @@
          d="m 309.78591,110.56014 v 2.00001 h 2 v 2.00001 h -2 v 2.00001 -2.00001 h 2 v -2.00001 h -2 z"
          id="path78-34-6-32-5-2" />
       <path
-         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 309.78591,116.20996 v 9.27695 z"
          id="path159" />
       <path
-         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 309.78591,130.42419 0.004,24.5758 h 8.2104 7 v 65 0.24083 l 14.11647,-0.0712 -14.11647,0.0701 v -65.23979 h -15.21114 z"
          id="path161" />
       <path
@@ -2890,7 +2924,7 @@
     <g
        id="lineEn_ZBus_registerMdr"
        inkscape:label="lineEn_ZBus_registerMdr"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -2905,15 +2939,15 @@
          d="m 339.25532,215.55565 h 2.00002 v -2 h 2.00001 v 2 h 2 -2 v -2 h -2.00001 v 2 z"
          id="path78-34-6-32-9-1" />
       <path
-         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 314.79511,116.20996 -0.007,9.27695 z"
          id="path160" />
       <path
-         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 314.79511,130.13186 v 19.86813 h 15.2037 l 0.003,65.59901 10.25377,-0.0433 -10.25377,0.0433 -0.003,-65.59901 h -15.2037 z"
          id="path162" />
       <path
-         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 345.25534,215.55565 30.14401,-0.16676 z"
          id="path163" />
       <path
@@ -2946,7 +2980,7 @@
     <g
        id="lineEn_registerMdr_cop"
        inkscape:label="lineEn_registerMdr_cop"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:0.8;stroke-dasharray:none">
       <path
          style="fill:#ebffff;stroke:#96ed28;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -3030,7 +3064,7 @@
     <g
        id="lineIn_registerMdr_cop"
        inkscape:label="lineIn_registerMdr_cop"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#96ed28;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 403.14162,113.55858 6.92947,0.003 v 40.21992 h 14.43482 -14.40175 l -0.0372,-40.21992 z"
@@ -3043,7 +3077,7 @@
     <g
        id="lineOut_registerMdr_cop"
        inkscape:label="lineOut_registerMdr_cop"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 434.3028,153.78146 h 10.3174 z"
@@ -3056,7 +3090,7 @@
     <g
        id="line_registerFlags_ar"
        inkscape:label="line_registerFlags_ar"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 339.26023,255.74669 h 2 v -2 h 2 v 2 h 2 -2 v -2 h -2 v 2 z"
@@ -3089,7 +3123,7 @@
     <g
        id="line_cop_ar"
        inkscape:label="line_cop_ar"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.787576;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 457.52011,161.70748 v 13.43454 z"
@@ -3102,7 +3136,7 @@
     <g
        id="line_registerCar_ar"
        inkscape:label="line_registerCar_ar"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          id="path72"
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
@@ -3115,7 +3149,7 @@
     <g
        id="line_ar_registerCar"
        inkscape:label="line_ar_registerCar"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 457.72019,196.26172 -0.003,14.27964 z"
@@ -3127,7 +3161,7 @@
     </g>
     <g
        id="con_ar"
-       transform="rotate(90,183.88497,282.33372)"
+       transform="rotate(90,190.79614,289.24489)"
        inkscape:label="con_ar">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -3145,7 +3179,7 @@
     </g>
     <g
        id="con_cop"
-       transform="rotate(90,201.05449,264.96562)"
+       transform="rotate(90,207.96566,271.87679)"
        inkscape:label="con_cop">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -3164,7 +3198,7 @@
     <g
        id="lineIn_ZBus_registerMar"
        inkscape:label="lineIn_ZBus_registerMar"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 342.25534,225.39464 v 67.30543 z"
@@ -3177,7 +3211,7 @@
     <g
        id="line_registerOp"
        inkscape:label="line_registerOp"
-       transform="translate(0,41.804187)"
+       transform="translate(13.822519,41.804187)"
        style="stroke-width:1.5;stroke-dasharray:none">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#12b400;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
@@ -3204,14 +3238,14 @@
          d="M 300.09433,111.01751 V 30.39401 Z"
          id="path187" />
       <path
-         style="fill:#12b400;stroke:#12b200;stroke-width:1.5;fill-opacity:1;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#12b400;fill-opacity:1;stroke:#12b200;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
          d="M 300.10483,30.403268 V 14.19379 H 184.5014 V -8.0036666 14.19379 h 115.60534 z"
          id="path196" />
     </g>
     <g
        id="lineExecute_clock_ZBus_register3"
        inkscape:label="lineExecute_clock_ZBus_register3"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;stroke:#c155ff;stroke-width:0.8;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 42.058245,116.97246 1.999998,-2.99998 1.999996,2.99998 -1.999996,-2.99998 z"
@@ -3234,7 +3268,7 @@
     <g
        id="lineExecute_clock_ZBus_register2"
        inkscape:label="lineExecute_clock_ZBus_register2"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g234">
         <path
@@ -3272,7 +3306,7 @@
     <g
        id="lineExecute_clock_ZBus_register1"
        inkscape:label="lineExecute_clock_ZBus_register1"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g233">
         <path
@@ -3318,7 +3352,7 @@
     <g
        id="lineExecute_clock_ZBus_register0"
        inkscape:label="lineExecute_clock_ZBus_register0"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g232">
         <path
@@ -3374,7 +3408,7 @@
        id="lineFetch_clock_registerMdr_YBus"
        inkscape:label="lineFetch_clock_registerMdr_YBus"
        style="display:inline"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <title
          id="title183">lineFetch_clock_registerMdr_YBus</title>
       <path
@@ -3435,7 +3469,7 @@
     <g
        id="lineFetch_clock_register0_XBus"
        inkscape:label="lineFetch_clock_register0_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g239">
         <path
@@ -3508,7 +3542,7 @@
     <g
        id="lineFetch_clock_register1_XBus"
        inkscape:label="lineFetch_clock_register1_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g240">
         <path
@@ -3565,7 +3599,7 @@
     <g
        id="lineFetch_clock_register2_XBus"
        inkscape:label="lineFetch_clock_register2_XBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g241">
         <path
@@ -3606,7 +3640,7 @@
     <g
        id="lineFetch_clock_register3_XBus"
        inkscape:label="lineFetch_clock_register3_XBus"
-       transform="translate(-4.23336,94.804193)">
+       transform="translate(9.5891573,94.804193)">
       <g
          id="g242"
          transform="translate(4.2333312,-53)">
@@ -3632,7 +3666,7 @@
     <g
        id="lineFetch_clock_register1_YBus"
        inkscape:label="lineFetch_clock_register1_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g245">
         <path
@@ -3694,7 +3728,7 @@
     <g
        id="lineFetch_clock_register2_YBus"
        inkscape:label="lineFetch_clock_register2_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g246">
         <path
@@ -3748,7 +3782,7 @@
     <g
        id="lineFetch_clock_register3_YBus"
        inkscape:label="lineFetch_clock_register3_YBus"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <g
          id="g247">
         <path
@@ -3795,7 +3829,7 @@
        id="lineFetch_clock_cop_registerMdr"
        inkscape:label="lineFetch_clock_cop_registerMdr"
        style="display:inline"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#ebffff;fill-opacity:1;stroke:#c1840e;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 339.52521,127.70008 h 2 v -2 h 2 v 2 h 2 -2 v -2 h -2 v 2 z"
@@ -3870,32 +3904,36 @@
     <g
        id="line_registerCdr"
        inkscape:label="line_registerCdr"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          id="path193"
-         style="fill:#96ed28;stroke:#c155ff;stroke-width:1.5;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+         style="fill:#96ed28;stroke:#c155ff;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 535.05675,78.402946 -0.003,191.991894 h -15.11536 l 15.12156,0.001 z" />
       <path
-         style="fill:#ebffff;stroke:#c155ff;stroke-width:1.21863;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 533.79833,-19.62916 -5.03004,2.76785 5.03004,2.767863 -5.03004,-2.767863 z"
+         style="fill:#ebffff;stroke:#c257ff;stroke-width:1.21863;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 520.56908,-19.62916 -5.03004,2.76785 5.03004,2.767863 -5.03004,-2.767863 z"
          id="path50-34-0-6-1" />
       <path
          style="fill:#12b400;fill-opacity:1;stroke:#c155ff;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
          d="m 535.05983,78.40863 v -95.226229 h -5.09942 5.09942 z"
          id="path243" />
+      <path
+         style="fill:#ff1414;stroke:#c157ff;stroke-width:1.5;stroke-opacity:1;stroke-dasharray:none"
+         d="M 530.17941,-16.804163 H 516.15443 Z"
+         id="path113" />
     </g>
     <g
        id="line_registerMode"
        inkscape:label="line_registerMode"
-       transform="translate(0,41.804187)"
-       style="stroke-width:1.5;stroke-dasharray:none;fill:#12b400;fill-opacity:1;stroke:#12b400;stroke-opacity:1">
+       transform="translate(13.822519,41.804187)"
+       style="fill:#12b400;fill-opacity:1;stroke:#12b400;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1">
       <g
          id="g603"
          inkscape:label="g603"
          transform="rotate(-90,412.79863,60.877958)"
-         style="stroke-width:1.5;stroke-dasharray:none;fill:#12b400;fill-opacity:1;stroke:#12b400;stroke-opacity:1">
+         style="fill:#12b400;fill-opacity:1;stroke:#12b400;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1">
         <path
-           style="fill:#12b400;stroke:#12b400;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke;fill-opacity:1"
+           style="fill:#12b400;fill-opacity:1;stroke:#12b400;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
            d="m 423.99998,63.999998 -3.00001,-1.99999 3.00001,-2 -3.00001,2 z"
            id="path50-34-0-1-4-2-5-1-07" />
       </g>
@@ -3907,18 +3945,18 @@
     <g
        id="line_ar"
        inkscape:label="line_ar"
-       transform="translate(0,41.804187)"
-       style="stroke-width:1.5;stroke-dasharray:none;stroke:#96ed28;stroke-opacity:1;fill:#96ed28;fill-opacity:1">
+       transform="translate(13.822519,41.804187)"
+       style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1">
       <g
          id="g602"
          inkscape:label="g602"
-         style="stroke-width:1.5;stroke-dasharray:none;stroke:#96ed28;stroke-opacity:1;fill:#96ed28;fill-opacity:1">
+         style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1">
         <path
-           style="fill:#96ed28;stroke:#96ed28;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke;fill-opacity:1"
+           style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
            d="m 474.41659,178.74383 -3,1.99999 3,2 -3,-2 z"
            id="path50-34-0-12-0" />
         <path
-           style="fill:#96ed28;stroke:#96ed28;stroke-width:1.5;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none;fill-opacity:1"
+           style="fill:#96ed28;fill-opacity:1;stroke:#96ed28;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
            d="m 477.49997,148.02129 -0.003,32.72253 h -6.08038 6.08038 z"
            id="path220" />
       </g>
@@ -3934,8 +3972,8 @@
     <g
        id="lineMode_ar"
        inkscape:label="lineMode_ar"
-       transform="translate(0,41.804187)"
-       style="stroke-width:1.5;stroke-dasharray:none;stroke:#12b400;stroke-opacity:1">
+       transform="translate(13.822519,41.804187)"
+       style="stroke:#12b400;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1">
       <path
          style="fill:#96ed28;fill-opacity:1;stroke:#12b400;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 474.41659,188.9181 -3,1.99999 3,2 -3,-2 z"
@@ -3943,9 +3981,9 @@
       <g
          id="g601"
          inkscape:label="g601"
-         style="stroke-width:1.5;stroke-dasharray:none;stroke:#12b400;stroke-opacity:1">
+         style="stroke:#12b400;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1">
         <path
-           style="fill:#96ed28;fill-opacity:1;stroke:#12b400;stroke-width:1.5;stroke-miterlimit:2.1;stroke-opacity:1;paint-order:fill markers stroke;stroke-dasharray:none"
+           style="fill:#96ed28;fill-opacity:1;stroke:#12b400;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
            d="m 484.99998,146.39999 v 44.6 l -13.58339,-0.0819 13.58339,0.0819 z"
            id="path221" />
       </g>
@@ -3963,55 +4001,8 @@
          id="path211" />
     </g>
     <g
-       id="line_enBit1_ZBus_registerA"
-       transform="rotate(90,64.192718,-43.227324)"
-       inkscape:label="line_enBit1_ZBus_registerA">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-         id="path51-8-2-65" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 v 2.9999998 0 z"
-         id="path52-6-4-30" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-         id="path53-5-8-48"
-         transform="scale(0.26458333)" />
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="m 12.500529,-7.8352011 v 3.0321832 h 4.28811 v 1.2393903 -1.2402343 h -4.288777 z"
-         id="pathXX6"
-         inkscape:label="line_enBit1_ZBus_registerA"
-         transform="rotate(-90,85.094811,-64.129418)" />
-    </g>
-    <g
-       id="line_enBit0_ZBus_registerA"
-       transform="rotate(90,71.733342,-35.719772)"
-       inkscape:label="line_enBit0_ZBus_registerA">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-         id="path51-8-2-65-2" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 139.99999,6.9999997 v 2.9999998 0 z"
-         id="path52-6-4-30-1" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-         id="path53-5-8-48-8"
-         transform="scale(0.26458333)" />
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="m 27.502478,-7.8305151 v 3.0321832 h -4.28811 v 1.2393903 -1.2402343 h 4.288777 z"
-         id="pathXX5"
-         transform="rotate(-90,92.635435,-56.621866)" />
-    </g>
-    <g
        id="line_enBit1_XBus_registerA"
-       transform="rotate(90,88.849748,-18.579424)"
+       transform="rotate(90,95.760997,-11.668175)"
        inkscape:label="line_enBit1_XBus_registerA">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -4034,7 +4025,7 @@
     </g>
     <g
        id="line_enBit0_XBus_registerA"
-       transform="rotate(90,96.372668,-11.063915)"
+       transform="rotate(90,103.28388,-4.152659)"
        inkscape:label="line_enBit0_XBus_registerA">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -4057,7 +4048,7 @@
     </g>
     <g
        id="line_enBit1_YBus_registerA"
-       transform="rotate(90,113.4934,6.0643363)"
+       transform="rotate(90,120.40457,12.97559)"
        inkscape:label="line_enBit1_YBus_registerA">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -4081,7 +4072,7 @@
     </g>
     <g
        id="line_enBit0_YBus_registerA"
-       transform="rotate(90,120.9934,13.564336)"
+       transform="rotate(90,127.90457,20.475585)"
        inkscape:label="line_enBit0_YBus_registerA">
       <path
          style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -4105,24 +4096,24 @@
     </g>
     <path
        style="display:inline;fill:#96ed28;stroke:#c155ff;stroke-width:0.799999;stroke-miterlimit:2.1;paint-order:fill markers stroke"
-       d="m 164.16494,84.65784 -4.9459,0.09578 9.89179,-9.897785 10.08705,9.833927 h -5.27131 V 197.58873 l 5.33639,-0.0639 -10.15213,9.89777 -9.89412,-9.88621 5.20855,-0.0116 z"
+       d="m 177.98755,84.65784 -4.9459,0.09578 9.89179,-9.897785 10.08705,9.833927 h -5.27131 V 197.58873 l 5.33639,-0.0639 -10.15213,9.89777 -9.89412,-9.88621 5.20855,-0.0116 z"
        id="comp_XBus"
        inkscape:label="comp_XBus" />
     <path
        style="display:inline;fill:#96ed28;stroke:#c155ff;stroke-width:0.801461;stroke-miterlimit:2.1;paint-order:fill markers stroke"
-       d="m 268.94391,84.698075 -4.9459,0.09615 9.89179,-9.933993 10.08705,9.869899 h -5.27131 V 198.04204 l 5.33639,-0.0641 -10.15213,9.93397 -9.89412,-9.92237 5.20855,-0.0116 z"
+       d="m 282.76652,84.698075 -4.9459,0.09615 9.89179,-9.933993 10.08705,9.869899 h -5.27131 V 198.04204 l 5.33639,-0.0641 -10.15213,9.93397 -9.89412,-9.92237 5.20855,-0.0116 z"
        id="comp_YBus"
        inkscape:label="comp_YBus" />
     <path
        style="display:inline;fill:#96ed28;stroke:#c155ff;stroke-width:0.799999;stroke-miterlimit:2.1;paint-order:fill markers stroke"
-       d="m 38.001233,343.62165 0.270687,4.59285 -33.2719203,-8.71001 33.0211433,-8.54379 0.09375,4.48297 378.180917,-0.54253 -0.37322,-4.25667 33.26918,8.48595 -32.84392,8.70969 -0.0557,-4.53702 z"
+       d="m 51.823758,343.62165 0.270687,4.59285 -33.271923,-8.71001 33.021146,-8.54379 0.09375,4.48297 378.181002,-0.54253 -0.37322,-4.25667 33.26918,8.48595 -32.84392,8.70969 -0.0557,-4.53702 z"
        id="comp_ZBus"
        inkscape:label="comp_ZBus" />
     <g
        id="comp_ram"
        inkscape:label="comp_ram"
        style="display:inline"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <rect
          style="fill:#f0c045;fill-opacity:1;stroke:#d19253;stroke-width:0.81373;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          id="ram"
@@ -4148,7 +4139,7 @@
        id="comp_rom"
        inkscape:label="comp_rom"
        style="display:inline"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <rect
          style="fill:#f0c045;fill-opacity:1;stroke:#d19253;stroke-width:0.81373;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          id="rom"
@@ -4174,7 +4165,7 @@
        id="comp_clock"
        inkscape:label="comp_clock"
        style="display:inline"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <rect
          style="fill:#f0c045;fill-opacity:1;stroke:#d19253;stroke-width:0.803506;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          id="clock"
@@ -4243,7 +4234,7 @@
        id="comp_alu"
        style="display:inline"
        inkscape:label="comp_alu"
-       transform="translate(0,41.804187)">
+       transform="translate(13.822519,41.804187)">
       <path
          style="fill:#be64ff;fill-opacity:1;stroke:#7828ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          d="m 174.20655,245.20151 h 95.00015 l 25,-60 H 149.2064 Z"
@@ -4409,7 +4400,7 @@
     </g>
     <g
        id="Dec_XBus_registerA"
-       transform="translate(49.302575,15.350981)"
+       transform="translate(63.1251,15.350981)"
        inkscape:label="Dec_XBus_registerA">
       <g
          id="con_en_bit_Z_Bus_register_0-9-5"
@@ -4526,7 +4517,7 @@
     </g>
     <g
        id="Dec_YBus_registerA"
-       transform="translate(98.56855,15.350981)"
+       transform="translate(112.39115,15.350981)"
        inkscape:label="Dec_YBus_registerA">
       <g
          id="con_en_bit_Z_Bus_register_0-9-5-4"
@@ -4644,7 +4635,7 @@
     <g
        id="enBit_ZBus_registerMar"
        inkscape:label="enBit_ZBus_registerMar"
-       transform="translate(44.450022)">
+       transform="translate(58.272547)">
       <rect
          style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          id="enBit_ZBus_register0-5-5-0"
@@ -4659,7 +4650,7 @@
     <g
        id="enBit_ZBus_registerMdr"
        inkscape:label="enBit_ZBus_registerMdr"
-       transform="translate(44.450022)">
+       transform="translate(58.272547)">
       <rect
          style="fill:#0045ff;stroke:#c155ff;stroke-width:0.736185;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          id="enBit_ZBus_register1-1-7-4"
@@ -4674,7 +4665,7 @@
     <g
        id="enBit_registerMdr_YBus"
        inkscape:label="enBit_registerMdr_YBus"
-       transform="translate(44.450022)">
+       transform="translate(58.272547)">
       <rect
          style="fill:#0045ff;stroke:#c155ff;stroke-width:0.73618;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          id="enBit_ZBus_register0-5-5-8-0"
@@ -4689,7 +4680,7 @@
     <g
        id="enBit_registerMdr_cop"
        inkscape:label="enBit_registerMdr_cop"
-       transform="translate(44.450022)">
+       transform="translate(58.272547)">
       <rect
          style="fill:#0045ff;stroke:#c155ff;stroke-width:0.736185;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
          id="enBit_ZBus_register1-1-7-1-6"
@@ -4700,159 +4691,6 @@
          rx="1.4020933"
          ry="1.3564357"
          inkscape:label="enBit_ZBus_register1" />
-    </g>
-    <g
-       id="line_enBit_Dec_ZBus_registerA"
-       inkscape:label="line_enBit_Dec_ZBus_registerA">
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 44.028675,32.566999 -0.999999,1 h -1.000001 l -0.999999,-1 0.999999,1 h 1.000001 z"
-         id="path51-8-2-65-2-3" />
-      <path
-         style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 44.028675,32.566999 h -2.999999 v 0 z"
-         id="path52-6-4-30-1-0" />
-      <path
-         style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.0347745;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 42.529488,32.976099 h 0.517002 l -0.09147,0.09201 -0.09147,0.09201 h -0.334067 -0.334066 l -0.09147,-0.09201 -0.09147,-0.09201 z"
-         id="path53-5-8-48-8-9" />
-      <path
-         style="fill:#12b400;fill-opacity:1;stroke:#97ee25;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
-         d="M 42.501798,33.96485 V 45.003971 H 29.930989 42.50283 Z"
-         id="path215" />
-      <g
-         id="g219"
-         transform="rotate(-90,33.168212,48.625044)">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 38.472425,44.320831 -0.999999,1 h -1.000001 l -0.999999,-1 0.999999,1 h 1.000001 z"
-           id="path51-8-2-65-2-00" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 38.472425,44.320831 h -2.999999 v 0 z"
-           id="path52-6-4-30-1-81" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.0347745;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 36.973238,44.729936 h 0.517002 l -0.09147,0.09201 -0.09147,0.09201 h -0.334067 -0.334066 l -0.09147,-0.09201 -0.09147,-0.09201 z"
-           id="path53-5-8-48-8-7" />
-      </g>
-    </g>
-    <g
-       id="Dec_ZBus_registerA"
-       transform="translate(0.0240289,15.350981)"
-       inkscape:label="Dec_ZBus_registerA">
-      <g
-         id="con_en_bit_Z_Bus_register_0-9"
-         transform="rotate(90,60.514895,-43.801969)"
-         inkscape:label="con_en_bit_Z_Bus_register_0">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-8" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-2" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-0"
-           transform="scale(0.26458333)" />
-      </g>
-      <path
-         style="fill:#9ba0a0;fill-opacity:1;stroke:#97ed26;stroke-width:0.565;stroke-dasharray:none;stroke-opacity:1"
-         d="m 14.967093,24.976337 c 8.793168,-0.09354 10.102788,0 10.102788,0 l 9.9157,10.102788 -29.934187,-0.09354 z"
-         id="path148" />
-      <g
-         id="con_en_bit_Z_Bus_register_0-8"
-         transform="rotate(90,72.269716,-31.984836)"
-         inkscape:label="con_en_bit_Z_Bus_register_0">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-3" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-0" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-6"
-           transform="scale(0.26458333)" />
-      </g>
-      <g
-         id="con_en_bit_Z_Bus_register_0-2"
-         transform="rotate(90,68.002644,-36.283383)"
-         inkscape:label="con_en_bit_Z_Bus_register_0">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-7" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-15" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-2"
-           transform="scale(0.26458333)" />
-      </g>
-      <g
-         id="con_en_bit_Z_Bus_register_0-87"
-         transform="rotate(90,64.795251,-39.506371)"
-         inkscape:label="con_en_bit_Z_Bus_register_0">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-60" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-09" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-5"
-           transform="scale(0.26458333)" />
-      </g>
-      <g
-         id="con_en_bit_Z_Bus_register_0-94"
-         transform="rotate(-90,86.293338,77.993758)"
-         inkscape:label="con_en_bit_Z_Bus_register_0">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-39" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-05" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-63"
-           transform="scale(0.26458333)" />
-      </g>
-      <g
-         id="con_en_bit_Z_Bus_register_0-94-4"
-         transform="rotate(-90,89.496136,74.782043)"
-         inkscape:label="con_en_bit_Z_Bus_register_0">
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 1,0.9999998 v 1.0000001 l -1,0.9999999 1,-0.9999999 V 7.9999995 Z"
-           id="path51-8-39-0" />
-        <path
-           style="fill:#ebffff;stroke:#0045ff;stroke-width:0.799999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 139.99999,6.9999997 v 2.9999998 0 z"
-           id="path52-6-05-4" />
-        <path
-           style="fill:#0045ff;fill-opacity:1;stroke:#0045ff;stroke-width:0.131431;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-           d="m 530.68005,32.122911 v -1.954024 l 0.34775,0.345705 0.34774,0.345705 v 1.262614 1.262614 l -0.34774,0.345705 -0.34775,0.345705 z"
-           id="path53-5-63-6"
-           transform="scale(0.26458333)" />
-      </g>
     </g>
   </g>
 </svg>

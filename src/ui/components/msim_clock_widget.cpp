@@ -30,8 +30,8 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
     /* adjust svg sub-elements to local coordinates */
     QRectF seg_rect  = m_loader->get_renderer().boundsOnElement(ID_CYCLEDISP_CLOCK);
     QRectF ctrl_rect = m_loader->get_renderer().boundsOnElement(ID_CONTROLDISP_CLOCK);
-    seg_rect.translate(-clock_bounds.topLeft() + QPointF{0, 41.804187});
-    ctrl_rect.translate(-clock_bounds.topLeft() + QPointF{0, 41.804187});
+    seg_rect.translate(-clock_bounds.topLeft() + QPointF{14.0, 41.804187});
+    ctrl_rect.translate(-clock_bounds.topLeft() + QPointF{14.0, 41.804187});
 
     /* Display to show the current segment */
     m_segment_label = new QLabel("# 0", this);

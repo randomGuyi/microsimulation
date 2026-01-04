@@ -13,6 +13,10 @@ namespace core::components {
 
         void disable();
         bool is_enabled();
+        void reset() override {
+            m_enabled = false;
+            notify(m_enabled);
+        }
 
     private:
         bool m_enabled;

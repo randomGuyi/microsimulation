@@ -32,13 +32,16 @@ namespace core::components {
         [[nodiscard]] bool is_at_first_instruction() const;
         [[nodiscard]] bool is_at_last_instruction() const;
 
-        // virtual ~msim_rom() override;
+        void reset() override {
+            m_index = -1;
+            m_instructions.clear();
+            m_size =0 ;
+            notify(m_index);
+        }
+
 
 
     private:
-
-        /* TODO: change to static (in memory), so performace can be
-         * improved, if its slow.... */
 
         std::vector<std::unique_ptr<inst_word> > m_instructions;
         int m_index;

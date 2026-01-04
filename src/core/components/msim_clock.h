@@ -47,6 +47,15 @@ namespace core::components {
         void set_frequency(int frequency);
         ~msim_clock();
 
+        void reset() override {
+            m_auto_mode = false;
+            m_stop = true;
+            m_running = false;
+            m_frequency = 1;
+            m_phase_index = clock_phase::FETCH;
+            notify(clock_event::STOP);
+        }
+
     private:
         bool m_auto_mode;
         bool m_stop;
