@@ -34,8 +34,8 @@ void msim_parser::parse(){
 }
 
 void msim_parser::program(){
-    int line{0};
     while(m_lookahead.type != token_type::EOF_SY){
+        int line{0};
         inst_word w{};
         segment(line, w);
         emit_instruction(w, line);
@@ -68,7 +68,7 @@ void msim_parser::segment(int & line, inst_word & iw){
     if(m_lookahead.type == token_type::NUMBER_SY){
         number(line);
         if(seg_set && !check_segment(seg, line)) {
-            syntax_error("line does not match segment");
+            semantic_error("line does not match segment");
             return;
         }
     } else {
@@ -80,7 +80,6 @@ void msim_parser::segment(int & line, inst_word & iw){
     if(m_lookahead.type == token_type::SEMICOLON_SY){
         next_token();
     } else if (m_lookahead.type == token_type::EOF_SY){
-        // TODO: new shit
         return;
     }
     else {
@@ -552,8 +551,8 @@ void msim_parser::ar_sec(inst_word &wrd){
 };
 
 void msim_parser::ar_assign (inst_word & wrd){
-    int cn = {-1};
-    uint8_t mask = {0};
+    int cn  {-1};
+    uint8_t mask  {0};
     bool mask_set {false};
     if(m_lookahead.type == token_type::_4_CN_SY){
         next_token(); // consume 4CN
@@ -572,7 +571,10 @@ void msim_parser::ar_assign (inst_word & wrd){
                 syntax_error("number '[0-n]'");
                 return;
             }
-        }else{ syntax_error("expected ',' found " + m_lookahead.value); return; }
+        }else{
+            syntax_error("expected ',' found " + m_lookahead.value);
+            return;
+        }
         wrd.set_cn(cn);
         wrd.set_ar_mode(ar_mode::_4CN);
 
@@ -716,13 +718,12 @@ void msim_parser::number(int & nbr){
     }
 };
 void msim_parser::next_token(){
-//    qDebug() << "next token called! prev: " << m_lookahead.value;
     if(m_scanner == nullptr){
         throw std::runtime_error("scanner in parser not set");
     }
     m_lookahead = m_scanner->get_next_token();
- //   qDebug() << "                                     current: " << m_lookahead.value;
 };
+
 std::vector<parser_error> msim_parser::get_errors(){
     return m_errors;
 }
