@@ -10,47 +10,48 @@ using namespace core;
  * z->R0 z->R1 z->R_en */
 #define Z_OFFSET_BITS 28
 #define Z_WIDTH_BITS 4
+
  /* R0->x R1->x R2->x_en */
-#define X_OFFSET_BITS 26
+#define X_OFFSET_BITS 25
 #define X_WIDTH_BITS 3
 
  /* R0->y R1->y R2->y_en */
-#define Y_OFFSET_BITS 23
+#define Y_OFFSET_BITS 22
 #define Y_WIDTH_BITS 3
 
  /* Op0 Op1 Op2 Op3 */
-#define OP_OFFSET_BITS 19
+#define OP_OFFSET_BITS 18
 #define OP_WIDTH_BITS 4
 
 /* z->MAR z->MDR */
-#define Z_MAR_OFFSET_BITS 18
+#define Z_MAR_OFFSET_BITS 17
 #define Z_MAR_WIDTH_BITS 1
 
-#define Z_MDR_OFFSET_BITS 17
+#define Z_MDR_OFFSET_BITS 16
 #define Z_MDR_WIDTH_BITS 1
 
 /* MDR->y MDR->cop */
-#define MDR_Y_OFFSET_BITS 16
+#define MDR_Y_OFFSET_BITS 15
 #define MDR_WIDTH_BITS 1
 
-#define MDR_COP_OFFSET_BITS 15
+#define MDR_COP_OFFSET_BITS 14
 #define MDR_WIDTH_BITS 1
 
  /* R_Mode0 R_Mode1 */
-#define R_MODE_OFFSET_BITS 13
+#define R_MODE_OFFSET_BITS 12
 #define R_MODE_WIDTH_BITS 2
 
  /* AR_Mode0 AR_Mode1 */
-#define AR_MODE_OFFSET_BITS 11
+#define AR_MODE_OFFSET_BITS 10
 #define AR_MODE_WIDTH_BITS 2
 
 /* Mask0 Mask1 Mask2 Mask3 */
-#define MASK_OFFSET_BITS 7
+#define MASK_OFFSET_BITS 6
 #define MASK_WIDTH_BITS 4
 
  /* CN0 CN1 CN2 CN3 CN4 CN5 CN6 */
 #define CN_OFFSET_BITS 0
-#define CN_WIDTH_BITS 7
+#define CN_WIDTH_BITS 6
 
  /* = 32 bits total */
 

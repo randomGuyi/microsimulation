@@ -1,4 +1,3 @@
-
 #include "msim_clock_widget.h"
 #include "../../shared/constants.h"
 #include "ui/styles.h"
@@ -9,6 +8,11 @@
 #include <QPropertyAnimation>
 #include <QTimer>
 #include <QVBoxLayout>
+#include <QEvent>
+#include <QLabel>
+#include <QMouseEvent>
+#include <QCursor>
+#include <QFont>
 
 using namespace gui::components;
 msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
@@ -143,11 +147,13 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
     m_man_prev_cycle_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_ENABLE_STYLE);
     m_man_prev_cycle_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     m_man_prev_cycle_btn->setMinimumHeight(8);
+    m_man_prev_cycle_btn->setToolTip("Go to previous cycle");
 
     m_man_next_cycle_btn = new QPushButton("Next Cycle");
     m_man_next_cycle_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_ENABLE_STYLE);
     m_man_next_cycle_btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     m_man_next_cycle_btn->setMinimumHeight(8);
+    m_man_next_cycle_btn->setToolTip("Advance to next cycle");
 
 
     cycle_vbox->addWidget(m_man_prev_cycle_btn);
@@ -158,12 +164,12 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
     main_vbox->addWidget(manual_box);
 
     /* ########################## Mode-switching logic ########################## */
-    connect(m_manual_btn, &QPushButton::clicked, this, [=] {
+    connect(m_manual_btn, &QPushButton::clicked, this, [=, this] {
         manual_box->setVisible(true);
         auto_box->setVisible(false);
         set_manual_mode();
     });
-    connect(m_auto_btn, &QPushButton::clicked, this, [=] {
+    connect(m_auto_btn, &QPushButton::clicked, this, [=, this] {
         manual_box->setVisible(false);
         auto_box->setVisible(true);
         set_auto_mode();
@@ -201,23 +207,23 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
         });
     };
 
-    connect(m_man_next_phase_btn, &QPushButton::clicked, this, [=]{
+    connect(m_man_next_phase_btn, &QPushButton::clicked, this, [=, this]{
         apply_btn_animation_fn(m_man_next_phase_btn,  man_next_phase_anim);
         next_phase();
     });
-    connect(m_man_prev_phase_btn, &QPushButton::clicked, this, [=]{
+    connect(m_man_prev_phase_btn, &QPushButton::clicked, this, [=, this]{
         apply_btn_animation_fn(m_man_prev_phase_btn,  man_prev_phase_anim);
         prev_phase();
     });
-    connect(m_man_next_cycle_btn, &QPushButton::clicked, this, [=]{
+    connect(m_man_next_cycle_btn, &QPushButton::clicked, this, [=, this]{
         apply_btn_animation_fn(m_man_next_cycle_btn,  man_next_cycle_anim);
         next_cycle();
     });
-    connect(m_man_prev_cycle_btn, &QPushButton::clicked, this, [=]{
+    connect(m_man_prev_cycle_btn, &QPushButton::clicked, this, [=, this]{
         apply_btn_animation_fn(m_man_prev_cycle_btn, man_prev_cycle_anim);
         prev_cycle();
     });
-    connect(m_auto_start_stop_btn, &QPushButton::clicked, this, [=]{
+    connect(m_auto_start_stop_btn, &QPushButton::clicked, this, [=, this]{
         apply_btn_animation_fn(m_auto_start_stop_btn, auto_start_stop_anim);
         if (m_auto_start_stop_btn->text() == "Start") {
             m_auto_start_stop_btn->setText("Stop");

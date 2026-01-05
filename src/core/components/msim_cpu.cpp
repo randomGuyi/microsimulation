@@ -603,7 +603,7 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
              return true;
          }
          msim_bit * en_bit = get_enable_bit(bit_id);
-         if(! en_bit){ return  ! set; }
+         if(! en_bit){ return  !set; }
 
          en_bit->set_value(true);
          return true;

@@ -76,7 +76,7 @@ void drop_target::place_component(QString const & id, QString const & label){
 }
 
 void drop_target::hoverEnterEvent (QGraphicsSceneHoverEvent * event) {
-    QString tooltip = QString{"element id : " + elementId()};
+    QString tooltip = QString{ elementId().toUpper().remove("DROPTARGET_")};
     QToolTip::showText(cursor().pos(), tooltip, nullptr, QRect(), 5000); /* show tooltip for 5 sec */
      QGraphicsSvgItem::hoverEnterEvent(event);
 }

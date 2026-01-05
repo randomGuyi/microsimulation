@@ -74,6 +74,7 @@ namespace fac {
         QMap<QString, std::pair<core::components::msim_component*, gui::components::msim_component_widget*>> m_placed_components;
         QMap<QString, std::pair<core::components::msim_connector*, gui::components::msim_connector_widget *>> m_placed_connectors;
         QMap<QString, std::pair<core::components::msim_line * , gui::components::msim_line_widget *>> m_placed_lines;
+        QMap<QString, std::pair<core::components::msim_line * , gui::components::msim_line_widget *>> m_placed_frames;
         QMap<QString, std::pair<core::components::msim_decoder* , gui::components::msim_decoder_widget*>> m_placed_decoders;
         QMap<QString, std::pair<core::components::msim_bit * , gui::components::msim_bit_widget*>> m_placed_bits;
 

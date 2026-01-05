@@ -13,7 +13,7 @@ namespace gui::components {
         Q_OBJECT
 
     public:
-        msim_component_widget(core::components::msim_component * comp, QWidget * parent = nullptr);
+        explicit msim_component_widget(core::components::msim_component * comp, QWidget * parent = nullptr);
 
         virtual QGraphicsProxyWidget * attach_to_target(drop_target * target) override;
 

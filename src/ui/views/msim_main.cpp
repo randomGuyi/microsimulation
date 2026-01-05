@@ -18,10 +18,8 @@ msim_main::msim_main(QWidget *parent)
 {
     ui->setupUi(this);
     QMenu * menu = menuBar()->addMenu(tr("&Settings"));
-    QAction * auto_place_action = new QAction(tr("&auto place"), this);
 
-    menu->addAction(auto_place_action);
-    connect(auto_place_action, & QAction::triggered,
+    connect(ui->components_tab->get_auto_place_btn(), & QPushButton::clicked,
             this, [&](){
         auto drop_targets = ui->sim_frame->get_drop_targets();
         ui->components_tab->place_all_components(drop_targets);

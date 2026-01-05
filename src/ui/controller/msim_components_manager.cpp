@@ -8,6 +8,7 @@
 #include <ranges>
 
 #include "decoder_factory.h"
+#include "shared/architecture_ids.h"
 #include "shared/svg_loader.h"
 #include "ui/views/simulator_area.h"
 
@@ -32,7 +33,7 @@ std::vector<std::string> msim_components_manager::get_placeable_lines_by_regex(s
 }
 
 std::vector<std::string> msim_components_manager::placeable_line_ids(QString id){
-    return get_placeable_lines_by_regex("line_.*" + id.remove("comp_").toStdString() + ".*");
+    return get_placeable_lines_by_regex("line.*" + id.remove("comp_").toStdString() + ".*");
 }
 
 std::vector<std::string> msim_components_manager::placeable_connector_line_ids(QString id){
@@ -230,6 +231,33 @@ void msim_components_manager::place_component(gui::drop_target *target, const QS
     /* place bits */
     place_bits(id, target);
 
+    /* place frames */
+    if (id == ID_COMP_AR) {
+        auto [frame_comp, frame_widget] =
+            line_factory::create(ID_FRAME_ARMASK, "AR Frame", m_loader);
+        frame_widget->attach_to_target(target);
+        auto [frame_comp2, frame_widget2] =
+            line_factory::create(ID_FRAME_ARMODE, "AR Mode Frame", m_loader);
+        frame_widget2->attach_to_target(target);
+        m_placed_frames[ID_FRAME_ARMODE] = {frame_comp2, frame_widget2};
+        m_placed_frames[ID_FRAME_ARMASK] = {frame_comp, frame_widget};
+
+    }else if (id == ID_COMP_REGISTERMODE) {
+        auto [frame_comp, frame_widget] =
+            line_factory::create(ID_FRAME_REGISTERMODE, "AR Frame", m_loader);
+        frame_widget->attach_to_target(target);
+        m_placed_frames[ID_FRAME_ARMASK] = {frame_comp, frame_widget};
+    }else if (id == ID_COMP_REGISTEROP) {
+        auto [frame_comp, frame_widget] =
+            line_factory::create(ID_FRAME_REGISTEROP, "AR Frame", m_loader);
+        frame_widget->attach_to_target(target);
+        m_placed_frames[ID_FRAME_ARMASK] = {frame_comp, frame_widget};
+    }else if (id == ID_COMP_REGISTERCDR) {
+        auto [frame_comp, frame_widget] =
+            line_factory::create(ID_FRAME_CDR, "AR Frame", m_loader);
+        frame_widget->attach_to_target(target);
+        m_placed_frames[ID_FRAME_ARMASK] = {frame_comp, frame_widget};
+    }
 }
 
 msim_rom * msim_components_manager::get_rom(){
@@ -239,4 +267,5 @@ msim_rom * msim_components_manager::get_rom(){
     }
     return dynamic_cast<msim_rom *>(it.value().first);
 }
+
 };

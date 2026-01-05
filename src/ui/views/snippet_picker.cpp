@@ -20,8 +20,6 @@ snippet_picker::snippet_picker(QWidget *parent)
     , ui(new Ui::snippet_picker)
 {
     ui->setupUi(this);
-    QTextEdit *edit = new QTextEdit(this);
-    edit->setPlainText("// Snippet Picker\n// Select a code snippet from the list below:\n\n");
     connect(ui->load_to_rom_btn, &QPushButton::clicked, this, [this] {
         on_load_button_clicked();
     });

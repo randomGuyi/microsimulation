@@ -24,12 +24,12 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1"
-     inkscape:cx="348"
-     inkscape:cy="268"
-     inkscape:window-width="1440"
-     inkscape:window-height="841"
-     inkscape:window-x="0"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="1532.3004"
+     inkscape:cy="236.88077"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="1440"
      inkscape:window-y="31"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
@@ -1482,14 +1482,14 @@
        inkscape:label="frame_arMask" />
     <rect
        style="fill:#96aee3;fill-opacity:0.580392;stroke:#0045ff;stroke-width:1.38974;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       id="rect_ar-2-4-9"
+       id="frame_arCn"
        width="92.066963"
        height="16.804852"
        x="433.16113"
        y="16.912575"
        rx="2.1931088"
        ry="0.23598619"
-       inkscape:label="rect_ar" />
+       inkscape:label="frame_arCn" />
     <rect
        style="fill:#96aee3;fill-opacity:0.580392;stroke:#12b400;stroke-width:1.5;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="frame_registerMode"
@@ -4311,8 +4311,8 @@
          ry="1.6170471"
          inkscape:label="frameLabelAu_alu" />
       <g
-         id="linesAlu_alu"
-         inkscape:label="linesAlu_alu">
+         id="liesAlu_alu"
+         inkscape:label="liesAlu_alu">
         <path
            style="fill:#78c8ff;fill-opacity:1;stroke:#0043ff;stroke-width:0.943999;stroke-miterlimit:2.1;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
            d="m 248.95638,192.5395 -0.0232,-2.53951 h 25.06681 v -1.74895 1.74895 h -25.06681 z"

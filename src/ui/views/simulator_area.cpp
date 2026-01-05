@@ -47,6 +47,7 @@ simulator_area::simulator_area(QWidget *parent)
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
 }
 
 QList<gui::drop_target *> &simulator_area::get_drop_targets(){

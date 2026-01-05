@@ -6,6 +6,8 @@
 #define MICROSIMULATION_COMPONENT_PICKER_H
 
 #include <QWidget>
+#include <ui_component_picker.h>
+#include <QtWidgets/QPushButton>
 
 
 namespace gui {
@@ -26,6 +28,10 @@ namespace gui::views {
         explicit component_picker(QWidget *parent = nullptr);
         ~component_picker() override;
         void place_all_components(QList<gui::drop_target *> const  & targets);
+
+        QPushButton * get_auto_place_btn(){
+            return ui->pushButton_auto_place;
+        }
 
     private:
         Ui::component_picker *ui;
