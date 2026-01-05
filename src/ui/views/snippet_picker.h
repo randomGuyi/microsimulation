@@ -26,4 +26,5 @@ namespace gui::views {
         Ui::snippet_picker *ui;
     };
 }
+using snippet_picker = gui::views::snippet_picker;
 #endif //MICROSIMULATION_SNIPPET_PICKER_H
