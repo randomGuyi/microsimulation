@@ -21,6 +21,7 @@ public:
     std::vector<parser_error> get_errors();
     void set_rom_inst(components::msim_rom * inst);
     void set_scanner_inst(msim_scanner * inst);
+    static bool check_segment(int seg, int line);
 
 private:
 
@@ -68,7 +69,6 @@ private:
 
     void emit_instruction(inst_word & w, int line);
 
-    static bool check_segment(int seg, int line);
 
     static void set_bit(uint8_t &byte, int pos);
 

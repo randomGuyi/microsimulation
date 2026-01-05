@@ -76,7 +76,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QSpinBox" name="spinBox">
+              <widget class="QSpinBox" name="spinBox_segment">
                <property name="font">
                 <font>
                  <pointsize>14</pointsize>
@@ -120,7 +120,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QSpinBox" name="spinBox_2">
+              <widget class="QSpinBox" name="spinBox_line">
                <property name="font">
                 <font>
                  <pointsize>14</pointsize>
@@ -314,7 +314,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_2">
+           <widget class="QCheckBox" name="checkBox_mdr_cop">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -327,7 +327,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QCheckBox" name="checkBox_mdr_y">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
