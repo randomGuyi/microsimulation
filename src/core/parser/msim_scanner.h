@@ -5,8 +5,6 @@
 #include <string>
 #include <vector>
 
-
-
 /* end of source */
 #define EOS '\0'
 
@@ -96,7 +94,7 @@
 
             [[nodiscard]] std::string get_last_error() const;
 
-            int get_curr_line();
+            int get_curr_line() const;
         private:
             size_t m_pos;
             std::string m_source;
@@ -116,7 +114,7 @@
             [[nodiscard]] char peek_char() const;
             [[nodiscard]] char peek_next_char() const;
             char advance();
-            bool is_at_end();
+            bool is_at_end() const;
             std::string normalize_new_lines(const std::string & src);
         };
     }

@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_RAM_H
 #define MSIM_RAM_H
 
@@ -7,8 +11,8 @@
 #include "msim_observable_component.h"
 
 namespace core::components {
-    class msim_ram : public msim_component,
-                     public msim_observable_component<int> {
+    class msim_ram final : public msim_component,
+                           public msim_observable_component<int> {
     public:
         msim_ram(std::string const & id, std::string const & label);
 

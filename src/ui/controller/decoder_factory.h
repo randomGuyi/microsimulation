@@ -1,6 +1,7 @@
-//
-// Created by Arthur on 19.11.25.
-//
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 
 #ifndef MICROSIMULATION_DECODER_FACTORY_H
 #define MICROSIMULATION_DECODER_FACTORY_H

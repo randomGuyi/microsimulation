@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_clock_widget.h"
 #include "../../shared/constants.h"
 #include "ui/styles.h"
@@ -233,7 +237,7 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
         start_stop();
     });
 
-    connect(m_auto_freq_slider, &QSlider::valueChanged, this, [=](int value){
+    connect(m_auto_freq_slider, &QSlider::valueChanged, this, [=, this](int value){
         m_auto_freq_label->setText(QString{"Freq: %1 Hz"}.arg(value));
         adjust_frequency(value);
     });

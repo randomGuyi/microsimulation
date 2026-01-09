@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_PARSER_H
 #define MSIM_PARSER_H
 
@@ -17,7 +21,7 @@ class msim_parser
 public:
     msim_parser(msim_scanner * scanner_inst, components::msim_rom * rom_inst);
     void parse();
-    bool has_error() const;
+    [[nodiscard]] bool has_error() const;
     std::vector<parser_error> get_errors();
     void set_rom_inst(components::msim_rom * inst);
     void set_scanner_inst(msim_scanner * inst);
@@ -61,14 +65,13 @@ private:
     void binary_number(uint8_t & digit);
 
     void next_token();
-    token peek_next_token();
+    token peek_next_token() const;
 
     void syntax_error(const std::string& expected);
     void semantic_error(const std::string& msg);
     void panic_mode_recovery();
 
     void emit_instruction(inst_word & w, int line);
-
 
     static void set_bit(uint8_t &byte, int pos);
 
@@ -77,7 +80,6 @@ private:
     token m_lookahead;
 
     std::vector<parser_error> m_errors;
-
 };
 
 }

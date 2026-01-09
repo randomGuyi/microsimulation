@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_BIT_WIDGET_H
 #define MSIM_BIT_WIDGET_H
 
@@ -18,7 +22,6 @@ namespace gui::components {
         virtual void add_line(msim_line_widget * line);
         virtual void remove_line(QString id);
         virtual void remove_line(msim_line_widget * line);
-
         /* TODO: implement Bit-specific functions */
     protected slots:
         void on_core_value_changed(bool value);

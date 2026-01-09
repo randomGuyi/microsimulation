@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #include "msim_connector_widget.h"
 
 #include <QToolTip>
@@ -9,8 +14,8 @@ msim_connector_widget::msim_connector_widget(core::components::msim_connector * 
                                              QString const & element_id,
                                              QWidget * parent )
 : msim_component_svg_widget{loader, element_id, con, parent}
-, m_connections{}
 , m_connector{con}
+, m_connections{}
 {
 
     m_connector->subscibe([this](bool new_val){

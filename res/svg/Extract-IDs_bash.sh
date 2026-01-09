@@ -1,18 +1,24 @@
 #!/bin/bash
-# Input- und Output-Dateien
+# -------------------------------------------------------
+# Author: Arthur Damböck
+# 2025/2026
+# -------------------------------------------------------
+
+# input/output files
 INPUT_FILE="./frames_architecture.svg"
 OUTPUT_FILE="./frames_architecture_ids.txt"
 OUTPUT_CONSTANTS="./architecture_ids.h"
 
+# extract all IDs from SVG file, filter unwanted ones, and get unique IDs
 IDS=$( grep -E "id=.*" frames_architecture.svg | \
       grep -Ev "(path.*|.*[[:digit:]]?-[[:digit:]]|g[[:digit:]]+.*|linearG.*|swatch.*|stop.*|.*namedview.*|.*showgrid.*|.*[[:digit:]]{3}.*|.*layer.*|.*defs[[:digit:]].*|.*grid[[:digit:]].*)" \
       | sed -E 's/.*id="([^"]+)".*/\1/' \
       | sort -u
 )
 
-
+# store id-file
 echo $IDS | sed -e "s/[[:space:]]/ \n/g" > $OUTPUT_FILE
-
+# generate C-header file with #defines (constants)
 (
 echo "// Auto-generated ID header"
 echo "#ifndef ARCHITECTURE_IDS_H"

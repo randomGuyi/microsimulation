@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef COMPONENTS_FACTORY_H
 #define COMPONENTS_FACTORY_H
 

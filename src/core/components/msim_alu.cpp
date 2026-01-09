@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #include "msim_alu.h"
 
 using namespace core::components;
@@ -9,6 +14,7 @@ msim_alu::msim_alu(std::string const & id, std::string const & label)
 , m_y_value{0}
 , m_result{0}
 , m_constant_value{0}
+, m_flags{0}
 {}
 
 void msim_alu::set_operation(uint8_t operation) {
@@ -100,7 +106,7 @@ uint8_t msim_alu::get_flags() const {
     if (m_result == 0 ) return 0b00001000;
     if (m_result > 0 ) return 0b00000100;
     return 0b00000010; // < 0
-    // todo: implement logic for 16 bit max
+    // TODO : implement logic for 16 bit max
 }
 
 

@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_COMPONENTS_MANAGER_H
 #define MSIM_COMPONENTS_MANAGER_H
 

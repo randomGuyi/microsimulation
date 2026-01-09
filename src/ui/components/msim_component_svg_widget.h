@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_COMPONENT_SVG_WIDGET_H
 #define MSIM_COMPONENT_SVG_WIDGET_H
 

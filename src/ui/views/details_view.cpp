@@ -1,8 +1,7 @@
-//
-// Created by Arthur on 15.11.25.
-//
-
-// You may need to build the project (run Qt uic code generator) to get "ui_details_view.h" resolved
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 
 #include "details_view.h"
 #include "ui_details_view.h"

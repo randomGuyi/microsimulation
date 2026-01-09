@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef SIMULATOR_CONTROLLER_H
 #define SIMULATOR_CONTROLLER_H
 

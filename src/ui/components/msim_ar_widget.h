@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_AR_WIDGET_H
 #define MSIM_AR_WIDGET_H
 
@@ -16,12 +20,12 @@ namespace gui::components {
                        QString const & element_id,
                        QWidget * parent = nullptr);
 
-        virtual void update_display() override;
+        void update_display() override;
 
-        virtual void show_tooltip() override;
-        virtual void hide_tooltip() override;
+        void show_tooltip() override;
+        void hide_tooltip() override;
     protected:
-        core::components::msim_ar * m_ar;
+        core::components::msim_ar * m_ar{};
 
 
     };

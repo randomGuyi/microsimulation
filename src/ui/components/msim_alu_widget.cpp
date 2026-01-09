@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_alu_widget.h"
 
 #include <QLabel>
@@ -37,7 +41,6 @@ msim_alu_widget::msim_alu_widget(core::components::msim_alu * alu,
 
     /* translate all rects to widget-local coordinates */
 
-
     op_disp_rect.translate(- op_disp_rect.topLeft() + QPointF{op_disp_rect.x() - elem_bounds.x() + 14.0, 27});
 
     lu_label_rect.translate(- lu_label_rect.topLeft() + QPointF{lu_label_rect.x() - elem_bounds.x() + 14.0, 9.45});
@@ -69,19 +72,19 @@ msim_alu_widget::msim_alu_widget(core::components::msim_alu * alu,
     }
 
 
-    auto makeDisplay = [&](QRectF dispRect, QRectF nameRect,
-                           QString name, HighlightLabel &out)
+    auto makeDisplay = [&](const QRectF &dispRect, const QRectF &nameRect,
+                           const QString &name, HighlightLabel &out)
     {
         auto *bg = new QLabel(this);
         bg->setGeometry(dispRect.toRect());
         bg->setStyleSheet("color: black; background: transparent;");
 
-        int val_h = int(bg->height() * 0.70);
+        int val_h = static_cast<int>(bg->height() * 0.70);
 
         /* highlight background */
         auto *hl = new QLabel(bg);
-        int insetX = int(bg->width()  * 0.06);
-        int insetY = int(val_h * 0.16);
+        int insetX = static_cast<int>(bg->width() * 0.06);
+        int insetY = static_cast<int>(val_h * 0.16);
 
         hl->setGeometry(
             insetX,
@@ -111,7 +114,7 @@ msim_alu_widget::msim_alu_widget(core::components::msim_alu * alu,
 
         QFont labelFont;
         labelFont.setPointSize(4);
-        /* name label unverändert */
+
         auto *nameLbl = new QLabel(this);
         nameLbl->setFont(labelFont);
         nameLbl->setGeometry(nameRect.toRect());
@@ -125,7 +128,6 @@ msim_alu_widget::msim_alu_widget(core::components::msim_alu * alu,
     makeDisplay(mux_disp_rect, mux_label_rect, QStringLiteral("MUX"), m_mux_label);   /* mux selection / result */
 
     /* setup ALU subscription */
-
     m_alu->subscibe([this](std::pair<core::components::mux_selection, int> new_result){
         QMetaObject::invokeMethod(this, [this, new_result]{
             on_core_value_changed(new_result);
@@ -171,7 +173,7 @@ void msim_alu_widget::on_core_value_changed(std::pair<core::components::mux_sele
 
 }
 
-QString msim_alu_widget::getOperation() {
+QString msim_alu_widget::getOperation() const {
     switch (m_alu->get_operation()) {
         case Z_Z:            return "Z";
         case Z_X:           return "X";

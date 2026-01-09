@@ -1,9 +1,7 @@
-//
-// Created by Arthur on 15.11.25.
-//
-
-// You may need to build the project (run Qt uic code generator) to get "ui_editor.h" resolved
-
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "microcodelexer.h"
 #include "ui_editor.h"
 
@@ -25,7 +23,6 @@ editor::editor(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Use this widget itself, not a temporary one
     QVBoxLayout * layout = new QVBoxLayout(this);
     /* editor menue */
     QFrame *topBar = new QFrame(this);
@@ -42,9 +39,8 @@ editor::editor(QWidget *parent)
     m_reset_btn->setFixedHeight(28);
     m_reset_btn->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
-    // push following widgets to the right
     topLayout->addStretch();
-    // place compile and reset next to each other on the right
+    /* place compile and reset next to each other on the right */
     topLayout->addWidget(m_compile_btn);
     topLayout->addWidget(m_reset_btn);
     topLayout->setSpacing(8);

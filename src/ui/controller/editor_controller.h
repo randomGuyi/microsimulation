@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef EDITOR_CONTROLLER_H
 #define EDITOR_CONTROLLER_H
 
@@ -29,10 +33,7 @@ namespace gui::views {
         core::parser::msim_parser * m_parser;
         bool m_on_rom_subscribed;
         QString m_text;
-        //components_manager * m_components_manager;
-
         void update_markers(const std::vector<core::parser::parser_error> & errors);
-
     };
 }
 #endif // EDITOR_CONTROLLER_H

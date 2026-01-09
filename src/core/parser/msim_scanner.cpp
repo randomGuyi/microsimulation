@@ -12,13 +12,12 @@
 #endif
 using namespace core::parser;
 msim_scanner::msim_scanner(const std::string & source, bool ignore_comments)
-    : m_pos{0}			   // position in current stream
+    : m_pos{0}			   /* position in current stream */
     , m_source{}
-    , m_normalized_line{1} // actual line in editor
-    , m_normalized_col{1}  // actual column in editor
-    , m_normalize_offset{0}// actual char position in editor
+    , m_normalized_line{1} /*  actual line in editor */
+    , m_normalized_col{1}  /*  actual column in editor */
+    , m_normalize_offset{0}/*  actual char position in editor */
     , m_ignore_comments{ignore_comments}
-    , m_last_error{""}
 {
     std::transform(
         source.begin(),
@@ -30,7 +29,7 @@ msim_scanner::msim_scanner(const std::string & source, bool ignore_comments)
 
 }
 
-int msim_scanner::get_curr_line(){
+int msim_scanner::get_curr_line() const {
     return m_normalized_line;
 }
 
@@ -41,7 +40,6 @@ std::string msim_scanner::normalize_new_lines(const std::string & src){
     for(size_t i = 0; i < src.size(); ++i){
         char c = src[i];
         m_normalized_col ++;
-
         /* normalize new line */
         if(c == '\r'){
             if((i + 1) < src.size() && src[i + 1] == '\n'){
@@ -52,12 +50,10 @@ std::string msim_scanner::normalize_new_lines(const std::string & src){
 
             ++m_normalized_line;
             m_normalized_col = 0;
-
         }else{
             result.push_back(c);
         }
     }
-
     return result;
 }
 
@@ -67,14 +63,7 @@ token msim_scanner::get_next_token(){
         skip_comment();
         skip_blanks(); //  for blanks after comment
     }
-
-
     if(is_at_end()){
-
-        #ifdef DEBUG_SCANNER
-            std::cout << " the scanner is at the end of the stream " << std::endl;
-        #endif
-
         return make_token(token_type::EOF_SY, "", m_pos, m_normalized_line, m_normalized_col);
     }
     return scan_token();
@@ -218,7 +207,6 @@ void msim_scanner::skip_blanks(){
             advance();
             continue;
         }
-
         if(c == ' '   ||
            c == '\t'  ||
            c == '\x01'||
@@ -242,12 +230,6 @@ token msim_scanner::make_token(token_type tkt, std::string const & val , size_t 
     t.line = start_line;
     t.column = start_col;
     t.abs_pos = start_pos + m_normalize_offset;
-
-    #ifdef DEBUG_SCANNER
-        std::cout << "make token: " << val
-                  << " at " << start_line << ":" << start_col << " abs=" << t.abs_pos << std::endl;
-    #endif
-
     return t;
 
 }
@@ -289,7 +271,7 @@ char msim_scanner::advance(){
     return EOS;
 }
 
-bool msim_scanner::is_at_end(){
+bool msim_scanner::is_at_end() const {
     return m_pos >= m_source.size();
 }
 
@@ -401,9 +383,6 @@ token msim_scanner::scan_token(){
                    " at [line/col] ["          +
                    std::to_string(m_normalized_line) + "/"
                    + std::to_string(m_normalized_col);
-#ifdef DEBUG_SCANNER
-    std::cout << m_last_error << std::endl;
-#endif
     advance();
     return make_token(token_type::UNKNOWN, "", start, start_line, start_col);
 }

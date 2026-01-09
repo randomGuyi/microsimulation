@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_ram.h"
 using namespace core::components;
 msim_ram::msim_ram(std::string const & id, std::string const & label)

@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #ifndef MSIM_ALU_H
 #define MSIM_ALU_H
 
@@ -9,12 +14,12 @@
      enum class mux_selection : uint8_t {
          AU_RESULT = 0,
          LU_RESULT = 1,
-         CONSTANT  = 2 /* constant value, i know it's cheating */
+         CONSTANT  = 2 /* constant value, I know it's cheating */
      };
 
 
-     class msim_alu : public msim_component
-         ,  public msim_observable_component<std::pair<mux_selection, int>>{
+     class msim_alu final : public msim_component
+                            ,  public msim_observable_component<std::pair<mux_selection, int>>{
 
      public:
          msim_alu(std::string const & id, std::string const & label);

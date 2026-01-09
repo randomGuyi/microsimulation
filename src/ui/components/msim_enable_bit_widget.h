@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_ENABLE_BIT_WIDGET_H
 #define MSIM_ENABLE_BIT_WIDGET_H
 

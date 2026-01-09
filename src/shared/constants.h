@@ -1,7 +1,7 @@
-//
-// Created by Arthur on 15.11.25.
-//
-
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MICROSIMULATION_CONSTANTS_H
 #define MICROSIMULATION_CONSTANTS_H
 

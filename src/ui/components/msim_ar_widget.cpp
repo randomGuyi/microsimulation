@@ -1,4 +1,7 @@
-
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_ar_widget.h"
 using namespace gui::components;
 msim_ar_widget::msim_ar_widget(core::components::msim_ar * ar,

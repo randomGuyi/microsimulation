@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #ifndef MSIM_BUS_H
 #define MSIM_BUS_H
 
@@ -5,7 +10,7 @@
 #include "core/components/msim_component.h"
 
 namespace core::components {
-    class msim_bus : public msim_component{
+    class msim_bus final : public msim_component{
     public:
         msim_bus(std::string const & id, std::string const & label);
         void set_value(int value);

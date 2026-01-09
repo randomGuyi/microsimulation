@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #ifndef MSIM_CPU_H
 #define MSIM_CPU_H
 
@@ -58,7 +63,6 @@ namespace core::sim{
         msim_cpu(msim_cpu const & other) = delete;
         msim_cpu& operator=(msim_cpu const & other) = delete;
 
-
         void clear_errors();
         void component_error(std::string const & msg);
 
@@ -68,17 +72,11 @@ namespace core::sim{
         void set_decode_instructions( const inst_word * wrd);
         void set_execute_instructions( const inst_word * wrd);
 
-        //  void execute_cycle();
         void execute_phase(components::clock_phase const & phase);
-
-
         void load_instruction();
         void read_from_ram();
-
-        void trasfer_data_to_buses();
-
+        void transfer_data_to_buses();
         void transfer_data_to_registers();
-
         void fetch();
 
         std::pair<bool, int> execute_alu();
@@ -95,8 +93,6 @@ namespace core::sim{
         std::map<std::string, std::unique_ptr<components::msim_enable_bit>> m_enable_bits;
         inst_word const * m_curr_word;
         std::vector<cpu_error> m_errors;
-
-
     };
 }
 #endif // MSIM_CPU_H

@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_INSTRUCTION_LINE_H
 #define MSIM_INSTRUCTION_LINE_H
 
@@ -11,7 +15,7 @@ namespace core::components {
     {
 
     public:
-        msim_instruction_line & get_instance(){
+        static msim_instruction_line & get_instance(){
             static msim_instruction_line instance{};
             return instance;
         }

@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_LINE_H
 #define MSIM_LINE_H
 
@@ -9,9 +13,7 @@ namespace core::components {
     public:
 
         msim_line(std::string const & id, std::string const & label);
-        void reset() override {
-            // lines might not have any state to reset
-        }
+        void reset() override { /* they got no state */ }
     };
 }
 #endif // MSIM_LINE_H

@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_rom.h"
 
 #define RESIZE_SIZE 16
@@ -90,7 +94,6 @@ std::vector<std::unique_ptr<core::inst_word>> const & msim_rom::get_all_instruct
 
 int msim_rom::get_current_line() const{
     return m_index;
-
 }
 
 bool msim_rom::is_at_first_instruction() const {

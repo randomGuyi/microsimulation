@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #include "msim_bus.h"
 using namespace core::components;
 msim_bus::msim_bus(std::string const & id, std::string const & label)

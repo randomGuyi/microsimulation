@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_REGISTER_H
 #define MSIM_REGISTER_H
 
@@ -16,8 +20,6 @@ namespace core::components {
             m_value = 0;
             notify(m_value);
         }
-
-
     private:
         int m_value;
     };

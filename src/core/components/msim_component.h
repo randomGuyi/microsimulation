@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_COMPONENT_H
 #define MSIM_COMPONENT_H
 
@@ -9,8 +13,8 @@ namespace core::components {
         msim_component(std::string const & id, std::string const & label);
         virtual ~msim_component() = default;
         virtual void reset() = 0;
-        virtual std::string id() const;
-        virtual std::string label() const;
+        [[nodiscard]] virtual std::string id() const;
+        [[nodiscard]] virtual std::string label() const;
 
     protected:
         std::string m_id;

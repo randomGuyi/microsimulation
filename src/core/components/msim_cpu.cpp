@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_ar.h"
 #include "msim_cpu.h"
 #include "msim_ram.h"
@@ -15,51 +19,27 @@
 using namespace core::components;
 using namespace core::sim;
 
-#define DEBUG_CPU
-#define DEBUG(msg) \
-std::cout << "CPU: " << msg << std::endl
-
-
 msim_cpu::msim_cpu()
     : m_curr_word{nullptr}
 {}
 
+/* ################################## ERROR HANDLING  ##################################*/
 bool msim_cpu::has_errors() const{
     return ! m_errors.empty();
 }
-/* errors */
 void msim_cpu::clear_errors(){
     m_errors.clear();
 }
 
-void msim_cpu::reset_all() {
-    for (auto & [id, comp] : m_components) {
-        comp->reset();
-    }
-    for (auto & [id, conn] : m_connectors) {
-        conn->reset();
-    }
-    for (auto & [id, bit] : m_enable_bits) {
-        bit->reset();
-    }
-    m_curr_word = nullptr;
-    m_errors.clear();
-    auto rom = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
-    int segment = rom ? rom->get_current_line() : 0;
-
-    notify({ cpu_event_type::RESET_COMPLETED,  segment});
-}
-
-
 void msim_cpu::component_error(std::string const & msg){
-    auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
+    const auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
     if(!car) {
         m_errors.push_back({0, "[cpu component error] CAR is missing"});
         notify({cpu_event_type::ERROR_OCCURRED, 0});
         return;
     }
     m_errors.push_back({car->getValue() / 4, "[cpu component error] " + msg});
-    auto rom = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
+    const auto * rom = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
     int segment = rom ? rom->get_current_line() : 0;
     notify({cpu_event_type::ERROR_OCCURRED, segment});
 }
@@ -67,9 +47,30 @@ void msim_cpu::component_error(std::string const & msg){
 std::vector<cpu_error> const & msim_cpu::get_errors() const{
     return m_errors;
 }
+/* ################################## RESET  ##################################*/
+void msim_cpu::reset_all() {
+    for (auto & [id, comp] : m_components) {
+        std::cout << "id" << id << std::endl;
+        comp->reset();
+    }
+    for (auto & [id, conn] : m_connectors) {
+        std::cout << "id" << id << std::endl;
+        conn->reset();
+    }
+    for (auto & [id, bit] : m_enable_bits) {
+        std::cout << "id" << id << std::endl;
+        bit->reset();
+    }
+    m_curr_word = nullptr;
+    m_errors.clear();
+    auto const rom = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
+    int segment = rom ? rom->get_current_line() : 0;
+
+    notify({ cpu_event_type::RESET_COMPLETED,  segment});
+}
+
 
 /* ################################## CLOCK CONTROL  ##################################*/
-
 void msim_cpu::execute_phase(clock_phase const & phase){
 
     switch(phase){
@@ -96,63 +97,37 @@ void msim_cpu::on_clock_changed(clock_event const & event){
     msim_clock * clock = dynamic_cast<msim_clock *>(m_components.at(ID_COMP_CLOCK).get());
     switch(event){
         case clock_event::NEXT_CYCLE: {
-     //       execute_cycle();
+            // TODO: implement execute cycle
             break;
         }
         case clock_event::PREV_CYCLE: {
-            if(m_curr_word == nullptr){
-                #ifdef DEBUG_CPU
-                    DEBUG("TODO: implement error label !" );
-                #endif
-                return;
-            }
-        //    undo();
-//            execute_cycle();
-            std::cout << "shit, cycle called " << std::endl;
+            if(m_curr_word == nullptr)return;
             break;
+            // TODO: implement previous cycle
         }
         case clock_event::NEXT_PHASE: {
-            clock_phase curr_phase = clock->get_current_phase();
             execute_phase(clock->get_current_phase());
             break;
         }
         case clock_event::PREV_PHASE: {
-            if(m_curr_word == nullptr){
-            #ifdef DEBUG_CPU
-                DEBUG("TODO: implement error label !" );
-            #endif
-                return;
-            }
-          //  undo_phase();
-           // execute_phase(clock->get_current_phase());
+            if(m_curr_word == nullptr)return;
+            // TODO: implement next phase
             break;
         }
-        case clock_event::MANUAL_MODE: {
-            #ifdef DEBUG_CPU
-                DEBUG("TODO: implement performace relevent features in manual mode (eg. reshow tooltips...)!" );
-            #endif
-            break;
-        }
-        case clock_event::AUTO_MODE: {
-        #ifdef DEBUG_CPU
-            DEBUG("TODO: implement performace relevent features in auto mode (eg. hide tooltips...)!" );
-        #endif
-            break;
-        }
-        case clock_event::START: {
-            break;
-        }
-        case clock_event::STOP: {
+        case clock_event::MANUAL_MODE:
+        case clock_event::AUTO_MODE:
+        case clock_event::START:
+        case clock_event::STOP:
+            // TODO: implement performace relevent features in manual mode (eg. show tooltips...)
             break;
         }
     }
-}
 
 /* ################################## PHASES  ##################################*/
 
 void msim_cpu::load_instruction(){
     /* [car] -> cdr */
-    auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
+    const auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
     if(!car) {
         component_error("CAR is missing");
         return;
@@ -164,7 +139,7 @@ void msim_cpu::load_instruction(){
         return;
     }
 
-    msim_rom * rom_inst = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
+    auto rom_inst = dynamic_cast<msim_rom *>(find_component(ID_COMP_ROM));
     if(! rom_inst){
         component_error("ROM is missing");
         return;
@@ -181,9 +156,8 @@ void msim_cpu::load_instruction(){
     notify({cpu_event_type::NEXT_INSTRUCTION_LOADED, rom_inst->get_current_line()});
 
     /* set value in CDR, so the next to set are the bits */
-    cdr->setValue(m_curr_word->get_raw_word());
+    cdr->setValue(static_cast<int>(m_curr_word->get_raw_word()));
 
-    /* todo: reset previous cycle */
     set_fetch_instructions(m_curr_word);
     set_decode_instructions(m_curr_word);
     set_execute_instructions(m_curr_word);
@@ -214,7 +188,7 @@ void msim_cpu::read_from_ram(){
     mdr->setValue(ram->get_val_at(mar->getValue()));
 }
 
-void msim_cpu::trasfer_data_to_buses() {
+void msim_cpu::transfer_data_to_buses() {
 
     auto transfer_if = [this] (std::string const & connector_id,std::string const & bus_id,
                                int value,                  bool enable) {
@@ -311,7 +285,6 @@ void msim_cpu::transfer_data_to_registers() {
         register_x->setValue(xbus->get_value());
     }
 
-
     /* y-bus to Register y */
     auto * ybus = dynamic_cast<msim_bus *>(find_component(ID_COMP_YBUS));
     auto * register_y = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERY));
@@ -348,7 +321,7 @@ void msim_cpu::fetch(){
     }
 
     read_from_ram();
-    trasfer_data_to_buses();
+    transfer_data_to_buses();
     transfer_data_to_registers();
 }
 
@@ -459,13 +432,13 @@ void msim_cpu::decode(){
         flags_register->setValue(alu->get_flags());
     };
 
-
     /* ar logic */
     auto * ar = dynamic_cast<msim_ar *>(find_component(ID_COMP_AR));
     if (! ar) {
         component_error("AR is missing");
         return;
     }
+
     auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
     if (! car) {
         component_error("CAR is missing");
@@ -620,7 +593,6 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
     set_bit_if(ID_ENBIT0_YBUS_REGISTERA, (y_sel & 0b00000010) > 0);
     set_bit_if(ID_ENBIT1_YBUS_REGISTERA, (y_sel & 0b00000100) > 0 );
 
-
     /* set mdr to y bus */
     set_bit_if(ID_ENBIT_REGISTERMDR_YBUS, word->get_mdr_y());
     set_bit_if(ID_ENBIT_REGISTERMDR_COP, word->get_mdr_cop());
@@ -688,7 +660,6 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
              break;
          }
     }
-
 
     /* update cn bits */
      set_bit_if(ID_CNBIT0_AR, (cn >> 0) & 0x1);
@@ -778,4 +749,3 @@ msim_enable_bit * msim_cpu::get_enable_bit(std::string const & id){
     auto it = m_enable_bits.find(id);
     return it == m_enable_bits.end() ? nullptr : it->second.get();
 }
-

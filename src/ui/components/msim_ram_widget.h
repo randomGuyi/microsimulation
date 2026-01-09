@@ -1,3 +1,9 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
+
 #ifndef MSIM_RAM_WIDGET_H
 #define MSIM_RAM_WIDGET_H
 

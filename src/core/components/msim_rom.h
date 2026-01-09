@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_ROM_H
 #define MSIM_ROM_H
 
@@ -11,7 +15,6 @@
 
 namespace core::components {
     class msim_rom : public msim_component
-                                    /* instructions, current index */
         ,  public msim_observable_component<int>{
     public:
         msim_rom(std::string const & id, std::string const & label);
@@ -38,16 +41,10 @@ namespace core::components {
             m_size =0 ;
             notify(m_index);
         }
-
-
-
     private:
-
         std::vector<std::unique_ptr<inst_word> > m_instructions;
         int m_index;
         int m_size;
-
-
     };
 }
 #endif // MSIM_ROM_H

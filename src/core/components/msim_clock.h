@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_CLOCK_H
 #define MSIM_CLOCK_H
 
@@ -30,36 +34,26 @@ namespace core::components {
         EXECUTE = 2
     };
 
-    class msim_clock : public msim_component,
-                       public msim_observable_component<clock_event>{
+    class msim_clock final : public msim_component,
+                             public msim_observable_component<clock_event>{
     public:
         msim_clock(std::string const & id, std::string const & label);
         void set_command(clock_event event);
 
         clock_phase get_current_phase() const;
 
-        bool is_auto_mode();
-        bool is_manual_mode();
-        bool is_stop();
+        bool is_auto_mode() const;
+        bool is_manual_mode() const;
+        bool is_stop() const;
 
-        bool is_running();
+        bool is_running() const;
 
         void set_frequency(int frequency);
-        ~msim_clock();
+        ~msim_clock() override;
 
-        void reset() override {
-            m_auto_mode = false;
-            m_stop = true;
-            m_running = false;
-            m_frequency = 1;
-            m_phase_index = clock_phase::FETCH;
-            notify(clock_event::STOP);
-        }
+        void reset() override ;
 
     private:
-        bool m_auto_mode;
-        bool m_stop;
-        bool m_running;
         int m_frequency; /* cycles per secound */
         clock_phase m_phase_index; /* 0 = fetch, 1= decode, 2= execute */
 
@@ -77,6 +71,9 @@ namespace core::components {
 
         std::thread m_worker;
         std::atomic<bool> m_stop_flag;
+        std::atomic<bool> m_auto_mode;
+        std::atomic<bool> m_stop;
+        std::atomic<bool> m_running;
 
     };
 }

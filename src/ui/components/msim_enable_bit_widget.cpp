@@ -1,6 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_enable_bit_widget.h"
-
-
 using namespace gui::components;
 msim_enable_bit_widget::msim_enable_bit_widget(core::components::msim_enable_bit * bit,
                                                shared::svg_loader * loader,

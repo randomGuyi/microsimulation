@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #ifndef MSIM_BIT_H
 #define MSIM_BIT_H
 
@@ -11,7 +16,7 @@
      {
      public:
          msim_bit(std::string const & id, std::string const & label, bool value = false);
-         bool value() const;
+         [[nodiscard]] bool value() const;
          void set_value(bool val) ;
          void reset() override {
              set_value(false);

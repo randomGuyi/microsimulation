@@ -1,6 +1,7 @@
-//
-// Created by Arthur on 19.11.25.
-//
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 
 #include "msim_decoder_widget.h"
 
@@ -21,14 +22,14 @@ msim_decoder_widget::msim_decoder_widget(
     setSharedRenderer(m_renderer);
     setElementId(m_element_id);
 
-    // position the line correctly from SVG
+    /* position the line correctly from SVG */
     setPos(m_renderer->boundsOnElement(m_element_id).topLeft());
 
-    // purely visual → don’t block events
+    /* purely visual → don’t block events */
     setAcceptedMouseButtons(Qt::NoButton);
     setAcceptHoverEvents(false);
 
-    // draw behind everything
+    /* draw behind everything ?? */
    // setZValue(-1);
 }
 

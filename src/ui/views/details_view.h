@@ -1,6 +1,7 @@
-//
-// Created by Arthur on 15.11.25.
-//
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 
 #ifndef MICROSIMULATION_DETAILS_VIEW_H
 #define MICROSIMULATION_DETAILS_VIEW_H

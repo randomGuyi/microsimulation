@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #ifndef COMPONENTS_PICKER_CONTROLLER_H
 #define COMPONENTS_PICKER_CONTROLLER_H
 

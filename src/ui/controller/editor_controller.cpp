@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "editor_controller.h"
 
 #include <QRegularExpression>
@@ -16,7 +20,7 @@ editor_controller::editor_controller(QsciScintilla * editor, QObject * parent)
 
     m_editor->markerDefine(QsciScintilla::Rectangle, 1); // define marker id 1
     m_editor->setMarkerBackgroundColor(QColor("#FFF59D"), 1); // light yellow
-    m_editor->setMarkerForegroundColor(QColor("#000000"), 1); // optional text color for marker
+    m_editor->setMarkerForegroundColor(QColor("#000000"), 1);
 
     core::sim::msim_cpu::get_instance().subscibe([this](std::pair<core::sim::cpu_event_type, int> event){
             QMetaObject::invokeMethod(this, [this, event]{

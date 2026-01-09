@@ -1,8 +1,9 @@
-//
-// Created by Arthur on 15.11.25.
-//
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 
-// You may need to build the project (run Qt uic code generator) to get "ui_snippet_picker.h" resolved
+
 
 #include "snippet_picker.h"
 

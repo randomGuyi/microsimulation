@@ -1,6 +1,7 @@
-//
-// Created by Arthur on 19.11.25.
-//
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 
 #ifndef MICROSIMULATION_MSIM_DECODER_WIDGET_H
 #define MICROSIMULATION_MSIM_DECODER_WIDGET_H

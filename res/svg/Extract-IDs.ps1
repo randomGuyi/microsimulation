@@ -1,3 +1,8 @@
+# -------------------------------------------------------
+# Author: Arthur Damböck
+# 2025/2026
+# -------------------------------------------------------
+
 # define input and output files
 $InputFile  = ".\frames_architecture.svg"
 $OutputFile = ".\frames_architecture_ids.txt"

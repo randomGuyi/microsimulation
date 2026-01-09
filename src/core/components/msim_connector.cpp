@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #include "msim_connector.h"
 
 #include "msim_observable_component.h"
@@ -8,7 +13,7 @@ msim_connector::msim_connector(std::string const & id, std::string const & label
     , m_enabled{false}
 {}
 
-bool msim_connector::is_enabled(){
+bool msim_connector::is_enabled() const {
     return m_enabled;
 }
 

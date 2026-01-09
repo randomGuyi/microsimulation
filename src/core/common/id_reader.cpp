@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #include "id_reader.h"
 #include "../../shared/constants.h"
 #include <QFile>
@@ -26,15 +31,14 @@ id_reader::id_reader()
 
 /* filter the description of the id (last .*_.*_XXXX) */;
 QString id_reader::last_id_to_label_name (QString const & id, int uc_cnt){
-    QStringList parts = id.split('_', Qt::SkipEmptyParts);
-    int start = std::max(0ll, (long long)(parts.size() - uc_cnt));
+    const QStringList parts = id.split('_', Qt::SkipEmptyParts);
+    const long long start = std::max(0ll, (long long)(parts.size() - uc_cnt));
     QString value = parts.mid(start).join(' ');
 
-    bool is_number = ! value.isEmpty() &&
+    const bool is_number = ! value.isEmpty() &&
                      std::find_if(value.begin(), value.end(),
                                                       [](QChar c){
-                            return !c.isDigit();})
-                                             == value.end();
+                            return !c.isDigit();}) == value.end();
 
     return  is_number ?   value : value.toUpper();
 }
@@ -52,7 +56,7 @@ QStringList id_reader::get_results_for(std::string const& regex_) {
     }
 
     QStringList results{};
-    std::regex rgx{regex_};
+    const std::regex rgx{regex_};
 
     for (QString& e : m_lines) {
         if (std::regex_match(e.toStdString(), rgx)) {
@@ -65,6 +69,6 @@ QStringList id_reader::get_results_for(std::string const& regex_) {
 }
 
 QStringList id_reader::get_results_for(std::string const& regex_a, std::string const& regex_b) {
-    std::string rgx{"((" + regex_a + ").*(" + regex_b + ")|(" + regex_b + ").*(" + regex_a + "))"};
+    const std::string rgx{"((" + regex_a + ").*(" + regex_b + ")|(" + regex_b + ").*(" + regex_a + "))"};
     return get_results_for(rgx);
 }

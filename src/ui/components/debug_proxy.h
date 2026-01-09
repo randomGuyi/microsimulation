@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #ifndef DEBUG_PROXY_H
 #define DEBUG_PROXY_H
 
@@ -10,11 +15,11 @@ public:
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override {
-        // Call base class to paint child widget
+        /* Call base class to paint child widget */
         QGraphicsProxyWidget::paint(painter, option, widget);
 
-        // Overlay debug color
-        painter->setBrush(QColor(255, 0, 0, 50));   // semi-transparent red
+        /* coloring and dashed border */
+        painter->setBrush(QColor(255, 0, 0, 50));
         painter->setPen(Qt::DashLine);
         painter->drawRect(boundingRect());
     }

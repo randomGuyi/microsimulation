@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_CONNECTOR_WIDGET_H
 #define MSIM_CONNECTOR_WIDGET_H
 
@@ -17,12 +21,8 @@ namespace gui::components {
                                        QWidget * parent = nullptr);
 
         void on_core_value_changed(bool value);
-
-
         void add_line(msim_line_widget * line);
-
         void update_display() override;
-
         void show_tooltip() override;
         void hide_tooltip() override;
     protected:

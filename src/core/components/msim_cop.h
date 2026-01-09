@@ -1,10 +1,15 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #ifndef MSIM_COP_H
 #define MSIM_COP_H
 
 
 #include "msim_register.h"
 namespace core::components {
-    class msim_cop : public msim_register{
+    class msim_cop final : public msim_register{
     public:
         msim_cop(std::string const & id, std::string const & label);
 

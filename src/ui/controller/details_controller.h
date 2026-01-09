@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef DETAILS_CONTROLLER_H
 #define DETAILS_CONTROLLER_H
 

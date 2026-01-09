@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_parser.h"
 
 #include <iostream>
@@ -64,7 +68,7 @@ void msim_parser::segment(int & line, inst_word & iw){
         }
     }
 
-    // Pflicht: line number
+    // line number
     if(m_lookahead.type == token_type::NUMBER_SY){
         number(line);
         if(seg_set && !check_segment(seg, line)) {
@@ -76,7 +80,7 @@ void msim_parser::segment(int & line, inst_word & iw){
         return;
     }
 
-    // Pflicht: ;
+    //  ;
     if(m_lookahead.type == token_type::SEMICOLON_SY){
         next_token();
     } else if (m_lookahead.type == token_type::EOF_SY){
@@ -186,7 +190,6 @@ void msim_parser::ram_read_op(bool & read){
                 break;
             }
         case token_type::WAIT_SY:
-            // case token_type::WARTEN_SY:
             {
                 read = false;
                 next_token();
@@ -194,7 +197,6 @@ void msim_parser::ram_read_op(bool & read){
             }
         default: {
                 syntax_error("read instruction after 'RAM:'");
-                return;
             }
         }
 };
@@ -391,8 +393,6 @@ void msim_parser::decode_cmd_list(inst_word &wrd){
             semantic_error(wrd.err_msg());
         }
     }
-
-
 };
 
 
@@ -640,7 +640,6 @@ void msim_parser::exec_sec(inst_word &wrd){
     {
         exec_list(wrd);
     }
-
 };
 
 void msim_parser::exec_list (inst_word & word){
@@ -727,7 +726,7 @@ void msim_parser::next_token(){
 std::vector<parser_error> msim_parser::get_errors(){
     return m_errors;
 }
-token msim_parser::peek_next_token(){
+token msim_parser::peek_next_token() const {
     if(m_scanner == nullptr){
         throw std::runtime_error("scanner in parser not set");
     }
@@ -788,7 +787,6 @@ void msim_parser::binary_number(uint8_t & digit){
             semantic_error("invalid binary number (exactly 4 bits)");
             return;
         }
-
         for(int i = 0; i < 4; ++i){
             /*  mask = Z + - Of */
             char c = m_lookahead.value[i];

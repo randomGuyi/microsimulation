@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_COMPONENT_VIEW_H
 #define MSIM_COMPONENT_VIEW_H
 
@@ -19,9 +23,6 @@ namespace gui::components {
 
         virtual QString id() const = 0;
         virtual QString label() const = 0;
-
-        //    virtual QGraphicsItem * graphics_item() = 0;
-
     };
 }
 #endif // MSIM_COMPONENT_VIEW_H

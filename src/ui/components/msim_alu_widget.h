@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #ifndef MSIM_ALU_WIDGET_H
 #define MSIM_ALU_WIDGET_H
 
@@ -20,7 +24,7 @@ namespace gui::components {
 
         void on_core_value_changed(std::pair<core::components::mux_selection, int> new_result);
 
-        QString getOperation();
+        QString getOperation() const;
 
         void update_display() override;
 

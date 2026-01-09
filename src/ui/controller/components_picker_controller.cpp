@@ -1,3 +1,8 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
 #include "components_picker_controller.h"
 #include "core/common/id_reader.h"
 #include "../../shared/constants.h"
@@ -13,7 +18,6 @@ QVector<component_info> components_picker_controller::get_all_components() const
     result.append(get_components());
     return result;
 }
-
 
 QVector<component_info> components_picker_controller::get_registers() const{
 

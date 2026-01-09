@@ -1,8 +1,8 @@
-//
-// Created by Arthur on 15.11.25.
-//
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 
-// You may need to build the project (run Qt uic code generator) to get "ui_component_picker.h" resolved
 
 #include "component_picker.h"
 #include "ui_component_picker.h"

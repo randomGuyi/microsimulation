@@ -1,22 +1,29 @@
-// id_reader.h
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
+
+
 #ifndef ID_READER_H
 #define ID_READER_H
 
 #include <string>
 #include <QStringList>
+
 namespace shared {
-    /* Singelton !! */
     class id_reader {
     public:
-
+        /* singleton instance */
         static id_reader& get_instance() {
             static id_reader instance;
             return instance;
         }
         QStringList get_results_for(std::string const & regex_);
         QStringList get_results_for(std::string const & regex_a, std::string const & regex_b);
-        QString last_id_to_label_name (QString const & id, int uc_count = 1);
-        QStringList get_postfix_components_for_id(QString const & id);
+
+        static QString last_id_to_label_name (QString const & id, int uc_count = 1);
+
+        static QStringList get_postfix_components_for_id(QString const & id);
 
 
     private:

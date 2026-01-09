@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_register_widget.h"
 #include "ui/styles.h"
 
@@ -93,17 +97,17 @@ void msim_register_widget::hide_tooltip() {
     QToolTip::hideText();
 }
 
-QString msim_register_widget::to_ascii(int val) const{
+QString msim_register_widget::to_ascii(int val) {
     if(val >= 32 && val <+ 126){
         return QChar{val};
     }
     return ".";
 }
 
-QString msim_register_widget::to_hex(int val) const{
+QString msim_register_widget::to_hex(int val) {
     return QString("0x%1").arg(val, 2, 16, QChar('0'));
 }
 
-QString msim_register_widget::to_bin(int val) const{
+QString msim_register_widget::to_bin(int val) {
     return QString("0x%1").arg(val, 8, 2, QChar('0'));
 }

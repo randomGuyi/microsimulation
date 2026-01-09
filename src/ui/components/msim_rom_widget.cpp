@@ -1,3 +1,7 @@
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 #include "msim_rom_widget.h"
 
 #include "shared/architecture_ids.h"
@@ -148,7 +152,7 @@ void msim_rom_widget::on_core_value_changed(int line_number) {
     for (int i = 0; i < rows; ++i) {
         int idx = start + i;
         auto &hl_pair = m_instruction_lines[i];
-        QLabel *highlight = hl_pair.bg; // note: stored "bg" is actually the highlight QLabel
+        QLabel *highlight = hl_pair.bg;
         QLabel *text = hl_pair.text;
 
         if (idx >= 0 && idx < N) {

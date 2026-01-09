@@ -23,9 +23,11 @@ namespace gui::components {
     private:
         core::components::msim_register * m_register;
 
-        QString to_ascii(int val) const;
-        QString to_hex(int val) const;
-        QString to_bin(int val) const;
+        static QString to_ascii(int val);
+
+        static QString to_hex(int val);
+
+        static QString to_bin(int val);
 
 
         QLabel * m_label_widget;

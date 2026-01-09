@@ -16,6 +16,10 @@ details_tabs::details_tabs(QWidget *parent)
 
     connect(this, &QTabWidget::tabCloseRequested, this, [this](int index) {
         QWidget *w = widget(index);
+        // if the closed widget is our cached RAM text view, clear the pointer to avoid a dangling pointer
+        if (w == m_ram_text_view) {
+            m_ram_text_view = nullptr;
+        }
         removeTab(index);
         delete w;
         w = nullptr;
@@ -24,8 +28,9 @@ details_tabs::details_tabs(QWidget *parent)
 /* returns -1 if no tabs are found */
 int details_tabs::tab_index_for_label(std::string const &lbl)
 {
+    const QString qlbl = QString::fromStdString(lbl);
     for (int i = 0; i < count(); ++i) {
-        if (tabText(i) == COMPILER_TAB_LABEL) {
+        if (tabText(i) == qlbl) {
             return i;
         }
     }

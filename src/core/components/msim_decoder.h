@@ -1,13 +1,14 @@
-//
-// Created by Arthur on 19.11.25.
-//
+/* ------------------------------------------- */
+/* Author: Arthur Damböck                      */
+/* Date: 2025/2026                             */
+/* ------------------------------------------- */
 
 #ifndef MICROSIMULATION_MSIM_DECODER_H
 #define MICROSIMULATION_MSIM_DECODER_H
 #include "msim_component.h"
 
 namespace core::components {
-    class msim_decoder : public msim_component{
+    class msim_decoder final : public msim_component{
     public:
         msim_decoder(std::string const & id, std::string const & label);
         void reset() override{}
