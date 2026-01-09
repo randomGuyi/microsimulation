@@ -9,7 +9,6 @@
 
 #include "msim_component_view.h"
 #include "core/components/msim_decoder.h"
-#include "core/components/msim_line.h"
 #include "shared/svg_loader.h"
 
 namespace gui::components {

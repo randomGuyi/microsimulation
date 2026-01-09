@@ -7,7 +7,6 @@
 
 #include "ui/drag_and_drop/drop_target.h"
 #include <QGraphicsProxyWidget>
-#include <QString>
 
 namespace gui::components {
     class msim_component_view{

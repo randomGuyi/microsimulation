@@ -5,8 +5,8 @@
 
 #ifndef MICROSIMULATION_DECODER_FACTORY_H
 #define MICROSIMULATION_DECODER_FACTORY_H
-#include <QtCore/qstring.h>
 
+#include <QtCore/qstring.h>
 #include "core/components/msim_decoder.h"
 #include "ui/components/msim_decoder_widget.h"
 #include "ui/components/msim_line_widget.h"
