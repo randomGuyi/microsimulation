@@ -11,6 +11,8 @@
 #include "../../core/parser/msim_parser.h"
 #include "core/components/msim_cpu.h"
 using namespace gui::views;
+using namespace std::ranges::views;
+
 editor_controller::editor_controller(QsciScintilla * editor, QObject * parent)
 : QObject{parent}
 , m_editor{editor}

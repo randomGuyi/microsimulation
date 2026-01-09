@@ -22,7 +22,6 @@ void msim_parser::set_rom_inst(components::msim_rom * inst){
 void msim_parser::set_scanner_inst(msim_scanner * inst){
     m_scanner = inst;
     m_errors.clear();
-    std::cout << " rename set_scanner to reset parser !!!" << std::endl;
 }
 
 bool msim_parser::has_error() const {

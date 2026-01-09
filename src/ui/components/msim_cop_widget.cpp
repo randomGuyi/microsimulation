@@ -15,9 +15,7 @@ msim_cop_widget::msim_cop_widget(core::components::msim_cop * cop,
 m_cop{cop}{
 
     /* tooltip */
-    QFont tooltip_font{};
-    tooltip_font.setPointSize(14);
-    QToolTip::setFont(tooltip_font);
+    setStyleSheet("QToolTip {font-size: 14pt; }");
 }
 
 void msim_cop_widget::update_display(){

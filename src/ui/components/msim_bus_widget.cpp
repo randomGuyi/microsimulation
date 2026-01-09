@@ -15,9 +15,7 @@ msim_bus_widget::msim_bus_widget(core::components::msim_bus * bus,
 :msim_component_svg_widget{loader, element_id, bus, parent}
 , m_bus{bus}{
     /* tooltip */
-    QFont tooltip_font{};
-    tooltip_font.setPointSize(14);
-    QToolTip::setFont(tooltip_font);
+    setStyleSheet("QToolTip {font-size: 14pt; }");
 }
 
 void msim_bus_widget::update_display(){

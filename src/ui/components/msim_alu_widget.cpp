@@ -135,9 +135,7 @@ msim_alu_widget::msim_alu_widget(core::components::msim_alu * alu,
     }) ;
 
     /* tooltip */
-    QFont tooltip_font{};
-    tooltip_font.setPointSize(14);
-    QToolTip::setFont(tooltip_font);
+    setStyleSheet("QToolTip {font-size: 14pt; }");
 
 }
 

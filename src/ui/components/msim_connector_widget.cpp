@@ -24,9 +24,7 @@ msim_connector_widget::msim_connector_widget(core::components::msim_connector * 
         });
     }) ;
     /* tooltip */
-    QFont tooltip_font{};
-    tooltip_font.setPointSize(14);
-    QToolTip::setFont(tooltip_font);
+    setStyleSheet("QToolTip {font-size: 14pt; }");
 }
 
 void msim_connector_widget::on_core_value_changed(bool value) {
