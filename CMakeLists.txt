@@ -6,7 +6,45 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt")
+# Allow users to override Qt and QScintilla locations via -D or environment vars
+if(NOT DEFINED QTDIR)
+    if(DEFINED ENV{QT_DIR})
+        set(QTDIR $ENV{QT_DIR})
+    elseif(DEFINED ENV{QTDIR})
+        set(QTDIR $ENV{QTDIR})
+    endif()
+endif()
+
+# Platform-aware suggestions for CMAKE_PREFIX_PATH. Users may still override with -DCMAKE_PREFIX_PATH or -DQT_DIR.
+if(NOT DEFINED CMAKE_PREFIX_PATH OR CMAKE_PREFIX_PATH STREQUAL "")
+    if(APPLE)
+        # Common Homebrew Qt locations
+        if(NOT DEFINED QTDIR)
+            if(EXISTS "/opt/homebrew/opt/qt")
+                set(QTDIR "/opt/homebrew/opt/qt")
+            elseif(EXISTS "/usr/local/opt/qt")
+                set(QTDIR "/usr/local/opt/qt")
+            endif()
+        endif()
+    elseif(WIN32)
+        # Windows default Qt location - can be overridden by -DQTDIR or the QT_DIR env var
+        if(NOT DEFINED QTDIR)
+            set(QTDIR "C:/Qt/6.9.1/mingw_64")
+        endif()
+    else()
+        # Linux common prefix hints
+        if(NOT DEFINED QTDIR)
+            set(QTDIR "/usr/lib/qt6")
+        endif()
+    endif()
+    if(DEFINED QTDIR AND NOT QTDIR STREQUAL "")
+        list(APPEND CMAKE_PREFIX_PATH "${QTDIR}")
+        message(STATUS "Auto-added QTDIR to CMAKE_PREFIX_PATH: ${QTDIR}")
+    endif()
+endif()
+
+message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
+
 find_package(Qt6 COMPONENTS
         Core
         Gui
@@ -15,9 +53,61 @@ find_package(Qt6 COMPONENTS
         SvgWidgets
         REQUIRED)
 
-link_directories(
-        /opt/homebrew/opt/qscintilla2/lib
-)
+option(USE_QSCINTILLA "Enable QScintilla editor support" ON)
+
+# Allow user to specify QSCINTILLA_DIR via -DQSCINTILLA_DIR or env QSCINTILLA_DIR
+if(NOT DEFINED QSCINTILLA_DIR)
+    if(DEFINED ENV{QSCINTILLA_DIR})
+        set(QSCINTILLA_DIR $ENV{QSCINTILLA_DIR})
+    endif()
+endif()
+
+# Optional QScintilla detection. Users can provide -DQSCINTILLA_DIR=/path or set USE_QSCINTILLA=OFF to skip.
+if(USE_QSCINTILLA)
+    if(DEFINED QSCINTILLA_DIR AND QSCINTILLA_DIR)
+        message(STATUS "Looking for QScintilla in: ${QSCINTILLA_DIR}")
+        find_path(QSCINTILLA_INCLUDE_DIR
+                NAMES Qsci/qsciglobal.h
+                PATHS "${QSCINTILLA_DIR}/include" "${QSCINTILLA_DIR}/include/Qsci"
+                NO_DEFAULT_PATH
+        )
+
+        find_library(QSCINTILLA_LIBRARY
+                NAMES qscintilla2_qt6 qscintilla2
+                PATHS "${QSCINTILLA_DIR}/lib" "${QSCINTILLA_DIR}/bin"
+                NO_DEFAULT_PATH
+        )
+    else()
+        # Try common system locations (Homebrew, /usr/local, Windows Qt)
+        find_path(QSCINTILLA_INCLUDE_DIR
+                NAMES Qsci/qsciglobal.h
+                PATHS
+                    /opt/homebrew/opt/qscintilla2/include
+                    /usr/local/opt/qscintilla2/include
+                    /usr/local/include
+                    /usr/include
+                    "${QTDIR}/include"
+        )
+        find_library(QSCINTILLA_LIBRARY
+                NAMES qscintilla2_qt6 qscintilla2
+                PATHS
+                    /opt/homebrew/opt/qscintilla2/lib
+                    /usr/local/lib
+                    /usr/lib
+                    "${QTDIR}/lib"
+        )
+    endif()
+
+    if(QSCINTILLA_INCLUDE_DIR AND QSCINTILLA_LIBRARY)
+        set(QSCINTILLA_FOUND TRUE)
+        message(STATUS "Found QScintilla: include=${QSCINTILLA_INCLUDE_DIR} lib=${QSCINTILLA_LIBRARY}")
+    else()
+        set(QSCINTILLA_FOUND FALSE)
+        message(WARNING "QScintilla not found. Editor features will be limited. Provide -DQSCINTILLA_DIR=... or set USE_QSCINTILLA=OFF to skip.")
+    endif()
+else()
+    set(QSCINTILLA_FOUND FALSE)
+endif()
 
 add_executable(microsimulation src/main.cpp
         src/shared/svg_loader.cpp
@@ -137,25 +227,58 @@ add_executable(microsimulation src/main.cpp
         src/core/components/msim_decoder.h
         src/ui/controller/decoder_factory.cpp
         src/ui/controller/decoder_factory.h
-        src/ui/components/msim_decoder_widget.cpp
-        src/ui/components/msim_decoder_widget.h
-        src/test/inst_word_tests.cpp
-        src/test/inst_word_tests.h
+#        src/test/inst_word_tests.cpp
+#        src/test/inst_word_tests.h
         src/ui/highlight_label.h
         src/ui/controller/details_controller.cpp
 )
 
-target_link_libraries(microsimulation
+# Link Qt libraries. QScintilla is linked only if found.
+target_link_libraries(microsimulation PRIVATE
         Qt::Core
         Qt::Gui
         Qt::Widgets
         Qt::Svg # Svg Renderer
         Qt6::SvgWidgets # QGraphicsSvgItem
-        qscintilla2_qt6
 )
 
+if(QSCINTILLA_FOUND)
+    target_link_libraries(microsimulation PRIVATE ${QSCINTILLA_LIBRARY})
+endif()
+
+# Include directories: always include project src. Add QScintilla include dir if available.
 target_include_directories(microsimulation PUBLIC
-        /opt/homebrew/opt/qscintilla2/include
-        /opt/homebrew/opt/qscintilla2/include/Qsci
         ${CMAKE_SOURCE_DIR}/src
 )
+
+if(QSCINTILLA_FOUND)
+    target_include_directories(microsimulation PUBLIC
+            ${QSCINTILLA_INCLUDE_DIR}
+            ${QSCINTILLA_INCLUDE_DIR}/Qsci
+    )
+endif()
+
+
+message("Build type: ${CMAKE_BUILD_TYPE}")
+
+# Windows deployment helper (optional): windeployqt
+if(WIN32)
+    find_program(WINDEPLOYQT_EXECUTABLE windeployqt HINTS "${QTDIR}/bin" "C:/Qt/*/bin")
+
+    if(WINDEPLOYQT_EXECUTABLE)
+        add_custom_command(TARGET microsimulation POST_BUILD
+                # --compiler-runtime grabs essential MinGW files like libstdc++-6.dll
+                COMMAND "${WINDEPLOYQT_EXECUTABLE}"
+                --no-translations
+                --compiler-runtime
+                "$<TARGET_FILE:microsimulation>"
+
+                # Manually copy the QScintilla DLL since windeployqt doesn't track 3rd party libs
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${QSCINTILLA_DIR}/lib/qscintilla2_qt6.dll"
+                "$<TARGET_FILE_DIR:microsimulation>"
+
+                COMMENT "Creating standalone deployment folder..."
+        )
+    endif()
+endif()

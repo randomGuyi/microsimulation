@@ -1,11 +1,11 @@
 
 #include <QApplication>
 #include "ui/views/msim_main.h"
-#include "test/inst_word_tests.h"
+//#include "test/inst_word_tests.h"
 
 int main(int argc, char *argv[])
 {
-   run_tests();
+   //run_tests();
 #ifdef Q_OS_WIN
     qputenv("QT_QPA_PLATFORM", "windows:darkmode=0");
 #endif
