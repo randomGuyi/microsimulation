@@ -54,7 +54,8 @@ void msim_cpu::reset_all() {
 void msim_cpu::component_error(std::string const & msg){
     auto * car = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERCAR));
     if(!car) {
-        m_errors.push_back({1, "[cpu component error] CAR is missing"});
+        m_errors.push_back({0, "[cpu component error] CAR is missing"});
+        notify({cpu_event_type::ERROR_OCCURRED, 0});
         return;
     }
     m_errors.push_back({car->getValue() / 4, "[cpu component error] " + msg});

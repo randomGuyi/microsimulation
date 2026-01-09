@@ -37,7 +37,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="component_picker" name="components_tab">
            <attribute name="title">
@@ -80,13 +80,18 @@
               <property name="orientation">
                <enum>Qt::Orientation::Horizontal</enum>
               </property>
-              <widget class="editor" name="editor_frame">
+              <widget class="QFrame" name="editor_frame">
                <property name="frameShape">
                 <enum>QFrame::Shape::StyledPanel</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Shadow::Raised</enum>
                </property>
+               <layout class="QHBoxLayout" name="horizontalLayout">
+                <item>
+                 <widget class="editor" name="widget" native="true"/>
+                </item>
+               </layout>
               </widget>
               <widget class="QFrame" name="details_frame">
                <property name="frameShape">
@@ -118,12 +123,6 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>editor</class>
-   <extends>QFrame</extends>
-   <header>ui/editor/editor.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>simulator_area</class>
    <extends>QWidget</extends>
    <header>ui/views/simulator_area.h</header>
@@ -132,7 +131,13 @@
   <customwidget>
    <class>snippet_picker</class>
    <extends>QWidget</extends>
-   <header location="global">snippet_picker.h</header>
+   <header location="global">ui/views/snippet_picker.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>editor</class>
+   <extends>QWidget</extends>
+   <header location="global">ui/editor/editor.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -18,6 +18,7 @@ details_tabs::details_tabs(QWidget *parent)
         QWidget *w = widget(index);
         removeTab(index);
         delete w;
+        w = nullptr;
     });
 }
 /* returns -1 if no tabs are found */

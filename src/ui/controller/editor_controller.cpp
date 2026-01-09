@@ -81,9 +81,10 @@ void editor_controller::on_cpu_changed(std::pair<core::sim::cpu_event_type, int>
         }
         case core::sim::cpu_event_type::ERROR_OCCURRED: {
             for (auto &err: core::sim::msim_cpu::get_instance().get_errors()) {
-                visualLine = line_to_editor_line(event.second);
-                m_editor->markerAdd(visualLine -1, 1);
-                m_editor->annotate(visualLine - 1, QString::fromStdString(err.message), 1);
+                visualLine = line_to_editor_line(event.second) - 1;
+                visualLine  = visualLine < 0 ? 0  :  visualLine;
+                m_editor->markerAdd(visualLine, 1);
+                m_editor->annotate(visualLine , QString::fromStdString(err.message), 1);
             }
            break;
         }
