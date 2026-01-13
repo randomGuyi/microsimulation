@@ -209,30 +209,36 @@ void msim_cpu::transfer_data_to_buses() {
     auto * xbus = dynamic_cast<msim_bus *>(find_component(ID_COMP_XBUS));
     if(! xbus) return;
 
-    if (! transfer_if(ID_PCB_REGISTER0_XBUS, ID_COMP_XBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER0))->getValue(),
-                m_curr_word->get_x_selection() == REGISTER_0)) {
-        component_error("X BUS is missing");
-
+    if (const auto * reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER0))) {
+        if (!transfer_if(ID_PCB_REGISTER0_XBUS, ID_COMP_XBUS,
+                         reg->getValue(),
+                         m_curr_word->get_x_selection() == REGISTER_0)) {
+            component_error("X BUS is missing");
+        }
     }
 
-    if (! transfer_if(ID_PCB_REGISTER1_XBUS, ID_COMP_XBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER1))->getValue(),
-                m_curr_word->get_x_selection() == REGISTER_1)) {
-        component_error("X BUS is missing");
+    if (const auto * reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER1))) {
+        if (! transfer_if(ID_PCB_REGISTER1_XBUS, ID_COMP_XBUS,
+                    reg->getValue(),
+                    m_curr_word->get_x_selection() == REGISTER_1)) {
+            component_error("X BUS is missing");
+                    }
     }
 
-    if ( ! transfer_if(ID_PCB_REGISTER2_XBUS, ID_COMP_XBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER2))->getValue(),
-                m_curr_word->get_x_selection() == REGISTER_2)) {
-        component_error("X BUS is missing");
+    if (const auto * reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER2))) {
+        if ( ! transfer_if(ID_PCB_REGISTER2_XBUS, ID_COMP_XBUS,
+            reg->getValue(),
+                    m_curr_word->get_x_selection() == REGISTER_2)) {
+            component_error("X BUS is missing");
+                    }
     }
 
-    if (! transfer_if(ID_PCB_REGISTER3_XBUS, ID_COMP_XBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER3))->getValue(),
-                m_curr_word->get_x_selection() == REGISTER_3)) {
-
-        component_error("X BUS is missing");
+    if (const auto *reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER3))) {
+        if (!transfer_if(ID_PCB_REGISTER3_XBUS, ID_COMP_XBUS,
+                         reg->getValue(),
+                         m_curr_word->get_x_selection() == REGISTER_3)) {
+            component_error("X BUS is missing");
+        }
     }
 
 
@@ -240,34 +246,44 @@ void msim_cpu::transfer_data_to_buses() {
     auto * ybus = dynamic_cast<msim_bus *>(find_component(ID_COMP_YBUS));
     if(! ybus) return;
 
-    if (! transfer_if(ID_PCB_REGISTER0_YBUS, ID_COMP_YBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER0))->getValue(),
-                m_curr_word->get_y_selection() == REGISTER_0)) {
-        component_error("Y BUS is missing");
+    if (const auto * reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER0))) {
+        if (! transfer_if(ID_PCB_REGISTER0_YBUS, ID_COMP_YBUS,
+            reg->getValue(),
+                    m_curr_word->get_y_selection() == REGISTER_0)) {
+            component_error("Y BUS is missing");
+                    }
     }
 
-    if (! transfer_if(ID_PCB_REGISTER1_YBUS, ID_COMP_YBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER1))->getValue(),
-                m_curr_word->get_y_selection() == REGISTER_1)) {
-        component_error("Y BUS is missing");
-    };
-
-    if (! transfer_if(ID_PCB_REGISTER2_YBUS, ID_COMP_YBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER2))->getValue(),
-                m_curr_word->get_y_selection() == REGISTER_2)) {
-        component_error("Y BUS is missing");
+    if (const auto * reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER1))) {
+        if (! transfer_if(ID_PCB_REGISTER1_YBUS, ID_COMP_YBUS,
+            reg->getValue(),
+                    m_curr_word->get_y_selection() == REGISTER_1)) {
+            component_error("Y BUS is missing");
+                    };
     }
 
-    if (! transfer_if(ID_PCB_REGISTER3_YBUS, ID_COMP_YBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER3))->getValue(),
-                m_curr_word->get_y_selection() == REGISTER_3)) {
-        component_error("Y BUS is missing");
+    if (const auto * reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER2))) {
+        if (! transfer_if(ID_PCB_REGISTER2_YBUS, ID_COMP_YBUS,
+            reg->getValue(),
+                    m_curr_word->get_y_selection() == REGISTER_2)) {
+            component_error("Y BUS is missing");
+                    }
     }
 
-    if (! transfer_if(ID_PCB_REGISTERMDR_YBUS, ID_COMP_YBUS,
-                dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERMDR))->getValue(),
-                m_curr_word->get_mdr_y())) {
-        component_error("Y BUS is missing");
+    if (const auto * reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTER3))) {
+        if (! transfer_if(ID_PCB_REGISTER3_YBUS, ID_COMP_YBUS,
+            reg->getValue(),
+                    m_curr_word->get_y_selection() == REGISTER_3)) {
+            component_error("Y BUS is missing");
+                    }
+    }
+
+    if (const auto *reg = dynamic_cast<msim_register *>(find_component(ID_COMP_REGISTERMDR))) {
+        if (!transfer_if(ID_PCB_REGISTERMDR_YBUS, ID_COMP_YBUS,
+                         reg->getValue(),
+                         m_curr_word->get_mdr_y())) {
+            component_error("Y BUS is missing");
+        }
     }
 }
 
@@ -606,23 +622,30 @@ void msim_cpu::set_fetch_instructions( const inst_word * word){
 
     auto set_bit_if = [this]( std::string const & bit_id, bool set){
         if(! set){
-            return false;
+            return true; // works
         }
         msim_bit * en_bit = get_enable_bit(bit_id);
-        if(! en_bit){ return false; }
+        if(! en_bit) {
+            return false;
+            // was requested, but bit is missing
+        }
 
         en_bit->set_value(true);
         return true;
     };
 
      /* update operation bits */
-     set_bit_if(ID_ENBIT0_REGISTEROP, ((operation >> 0) & 0x1));
+     if (! set_bit_if(ID_ENBIT0_REGISTEROP, ((operation >> 0) & 0x1))) {
+         component_error("OP REGISTER bit is missing");
+     };
      set_bit_if(ID_ENBIT1_REGISTEROP, ((operation >> 1) & 0x1));
      set_bit_if(ID_ENBIT2_REGISTEROP, ((operation >> 2) & 0x1));
      set_bit_if(ID_ENBIT3_REGISTEROP, ((operation >> 3) & 0x1));
 
      /* update mask bits */
-     set_bit_if(ID_MASKBIT0_AR, (mask & 0b00000001) > 0);
+     if (! set_bit_if(ID_MASKBIT0_AR, (mask & 0b00000001) > 0)) {
+         component_error("AR is missing");
+     };
      set_bit_if(ID_MASKBIT1_AR, (mask & 0b00000010) > 0);
      set_bit_if(ID_MASKBIT2_AR, (mask & 0b00000100) > 0);
      set_bit_if(ID_MASKBIT3_AR, (mask & 0b00001000) > 0);
