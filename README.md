@@ -105,5 +105,5 @@ Common feedback highlighted:
 + Suggestions mainly concerned UI scaling and visual emphasis
 
 #### Author
-Developed as part of a project in the context of computer architecture education.
+Developed as part of a project in the context of software engineering education.
 
