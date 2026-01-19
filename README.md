@@ -1,7 +1,7 @@
-# MIKROSIMULATION
+# MICROSIMULATION
 
 ### Overview
-MIKROSIMULATION is an educational software tool designed to support the learning and 
+MICROSIMULATION is an educational software tool designed to support the learning and 
 understanding of basic CPU architectures and microcode execution. The application allows 
 students to construct a simplified processor architecture, write and execute microcode 
 instructions, and observe internal data flows and state changes in a visual and interactive 
@@ -71,7 +71,7 @@ Basic knowledge of CPU architecture is beneficial.
    + Compare results
 
 ### Educational Purpose
-MIKROSIMULATION was developed as a didactic tool, not as a cycle-accurate hardware simulator.
+MICROSIMULATION was developed as a didactic tool, not as a cycle-accurate hardware simulator.
 Its primary goals are:
  + Supporting conceptual understanding of CPU internals
  + Visualizing control flow and data paths
