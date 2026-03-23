@@ -11,6 +11,8 @@
 #include <core/components/msim_clock.h>
 #include <QLabel>
 #include <QSlider>
+#include <QVBoxLayout>
+#include <QPropertyAnimation>
 
 namespace gui::components {
     enum class state{
@@ -49,6 +51,10 @@ namespace gui::components {
 
         core::components::msim_clock * m_clock;
 
+        /* Layout for manual and auto mode */
+        QFrame * m_manual_box;
+        QFrame * m_auto_box;
+
         /* switch manual and auto mode */
         QPushButton * m_manual_btn;
         QPushButton * m_auto_btn;
@@ -58,6 +64,7 @@ namespace gui::components {
 
         /* automatic controls */
         QPushButton * m_auto_start_stop_btn;
+        QPropertyAnimation * m_auto_start_stop_anim;
         QSlider * m_auto_freq_slider;
 
         /* automatic lables */
@@ -65,10 +72,18 @@ namespace gui::components {
 
         /* manual controls */
         QPushButton * m_man_next_phase_btn;
+        QPropertyAnimation * m_man_next_phase_anim;
         QPushButton * m_man_prev_phase_btn;
+        QPropertyAnimation * m_man_prev_phase_anim;
 
         QPushButton * m_man_next_cycle_btn;
+        QPropertyAnimation * m_man_next_cycle_anim;
         QPushButton * m_man_prev_cycle_btn;
+        QPropertyAnimation * m_man_prev_cycle_anim;
+
+      private:
+        void apply_btn_animation(QPushButton * btn, QPropertyAnimation * anim);
+        QPropertyAnimation * setup_animation(QPushButton * btn);
     };
 }
 #endif // MSIM_CLOCK_WIDGET_H

@@ -1,0 +1,15 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "macos",
+      "generator": "Unix Makefiles",
+      "binaryDir": "build",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "/opt/homebrew/opt/qt",
+        "QSCINTILLA_INCLUDE_DIR": "/opt/homebrew/opt/qscintilla2/include;/opt/homebrew/opt/qscintilla2/include/Qsci",
+        "QSCINTILLA_LIBRARY": "/opt/homebrew/opt/qscintilla2/lib/libqscintilla2_qt6.dylib"
+      }
+    }
+  ]
+}

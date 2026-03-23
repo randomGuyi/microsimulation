@@ -7,6 +7,7 @@
 #ifndef MICROSIMULATION_MSIM_MAIN_H
 #define MICROSIMULATION_MSIM_MAIN_H
 
+#include "ui/components/msim_clock_widget.h"
 #include <QMainWindow> // <--- Use QMainWindow
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +26,9 @@ namespace gui::views {
 
     private:
         Ui::msim_main *ui;
+        bool m_clock_placed {false};
+    public slots:
+        void on_clock_placed( gui::components::msim_clock_widget * widget);
     };
 }
 #endif

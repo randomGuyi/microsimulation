@@ -117,7 +117,7 @@ namespace fac {
         const auto comp_it = m_placed_components.find(comp_id);
         if (comp_it == m_placed_components.end()) {
             auto [comp, comp_widget] =
-                    components_factory::create(comp_id, label, m_loader);
+                    components_factory::instance().create(comp_id, label, m_loader);
 
             m_placed_components[comp_id] = {comp, comp_widget};
         }

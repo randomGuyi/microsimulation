@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_microsimulation_FILE /Users/arthur/CLionProjects/microsimulation/build/microsimulation)
+set(__QT_DEPLOY_TARGET_microsimulation_TYPE EXECUTABLE)

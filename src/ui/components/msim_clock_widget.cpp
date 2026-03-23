@@ -11,7 +11,6 @@
 #include <QGroupBox>
 #include <QPropertyAnimation>
 #include <QTimer>
-#include <QVBoxLayout>
 #include <QEvent>
 #include <QLabel>
 #include <QMouseEvent>
@@ -73,13 +72,13 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
     main_vbox->addLayout(mode_hbox);
 
     /* ########################   Auto-mode controls  ######################## */
-    auto *auto_box = new QFrame(ctrl_panel);
-    auto_box->setContentsMargins(0, 0, 0, 0);
+    auto *m_auto_box = new QFrame(ctrl_panel);
+    m_auto_box->setContentsMargins(0, 0, 0, 0);
 
-    auto_box->setFrameShape(QFrame::StyledPanel);
+    m_auto_box->setFrameShape(QFrame::StyledPanel);
 
-    auto_box->setVisible(false); /* initially hidden */
-    auto *auto_vbox = new QVBoxLayout(auto_box);
+    m_auto_box->setVisible(false); /* initially hidden */
+    auto *auto_vbox = new QVBoxLayout(m_auto_box);
     auto_vbox->setSpacing(1);
     auto_vbox->setContentsMargins(1,1,1,20);
 
@@ -99,15 +98,15 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
 
     auto_vbox->addWidget(m_auto_freq_label);
     auto_vbox->addWidget(m_auto_freq_slider);
-    main_vbox->addWidget(auto_box);
+    main_vbox->addWidget(m_auto_box);
 
     /* ########################   Manual-mode controls  ######################## */
-    auto *manual_box = new QFrame(ctrl_panel);
-    manual_box->setContentsMargins(0, 0, 0, 0);
+    m_manual_box = new QFrame(ctrl_panel);
+    m_manual_box->setContentsMargins(0, 0, 0, 0);
 
-    manual_box->setVisible(true);       /* initially shown */
+    m_manual_box->setVisible(true);       /* initially shown */
 
-    auto *manual_vbox = new QVBoxLayout(manual_box);
+    auto * manual_vbox = new QVBoxLayout(m_manual_box);
     manual_vbox->setSpacing(1);
     manual_vbox->setContentsMargins(1,1, 1, 1);
 
@@ -165,17 +164,13 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
 
     manual_vbox->addWidget(cycle_group);
 
-    main_vbox->addWidget(manual_box);
+    main_vbox->addWidget(m_manual_box);
 
     /* ########################## Mode-switching logic ########################## */
     connect(m_manual_btn, &QPushButton::clicked, this, [=, this] {
-        manual_box->setVisible(true);
-        auto_box->setVisible(false);
         set_manual_mode();
     });
     connect(m_auto_btn, &QPushButton::clicked, this, [=, this] {
-        manual_box->setVisible(false);
-        auto_box->setVisible(true);
         set_auto_mode();
     });
 
@@ -183,104 +178,115 @@ msim_clock_widget::msim_clock_widget(core::components::msim_clock * clock,
     /* ########################## phase control logic ########################## */
     /* fade effects for all control buttons */
     /* auto creates variables of type lamda btw */
-    auto setup_animation = [](QPushButton * btn) {
-        auto *anim = new QPropertyAnimation(btn, "windowOpacity");
-        anim->setDuration(500);
-        anim->setStartValue(1.0);
-        anim->setEndValue(0.0);
-        anim->setEasingCurve(QEasingCurve::OutQuad);
-        return anim;
-    };
 
     /* automatic effects */
-    QPropertyAnimation * auto_start_stop_anim = setup_animation(m_auto_start_stop_btn);
+    QPropertyAnimation * m_auto_start_stop_anim = setup_animation(m_auto_start_stop_btn);
     /* manual animations */
-    QPropertyAnimation * man_next_phase_anim = setup_animation(m_man_next_phase_btn);
-    QPropertyAnimation * man_prev_phase_anim = setup_animation(m_man_prev_phase_btn);
-    QPropertyAnimation * man_next_cycle_anim = setup_animation(m_man_next_cycle_btn);
-    QPropertyAnimation * man_prev_cycle_anim = setup_animation(m_man_prev_cycle_btn);
+    QPropertyAnimation * m_man_next_phase_anim = setup_animation(m_man_next_phase_btn);
+    QPropertyAnimation * m_man_prev_phase_anim = setup_animation(m_man_prev_phase_btn);
+    QPropertyAnimation * m_man_next_cycle_anim = setup_animation(m_man_next_cycle_btn);
+    QPropertyAnimation * m_man_prev_cycle_anim = setup_animation(m_man_prev_cycle_btn);
 
-  auto apply_btn_animation_fn = [=](QPushButton * btn,  QPropertyAnimation * anim){
-        btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_DISABLE_STYLE);
-
-        anim->stop();
-        anim->start();
-
-        QTimer::singleShot(500, [=](){
-            btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_ENABLE_STYLE);
-        });
-    };
 
     connect(m_man_next_phase_btn, &QPushButton::clicked, this, [=, this]{
-        apply_btn_animation_fn(m_man_next_phase_btn,  man_next_phase_anim);
         next_phase();
     });
     connect(m_man_prev_phase_btn, &QPushButton::clicked, this, [=, this]{
-        apply_btn_animation_fn(m_man_prev_phase_btn,  man_prev_phase_anim);
         prev_phase();
     });
     connect(m_man_next_cycle_btn, &QPushButton::clicked, this, [=, this]{
-        apply_btn_animation_fn(m_man_next_cycle_btn,  man_next_cycle_anim);
         next_cycle();
     });
     connect(m_man_prev_cycle_btn, &QPushButton::clicked, this, [=, this]{
-        apply_btn_animation_fn(m_man_prev_cycle_btn, man_prev_cycle_anim);
         prev_cycle();
     });
     connect(m_auto_start_stop_btn, &QPushButton::clicked, this, [=, this]{
-        apply_btn_animation_fn(m_auto_start_stop_btn, auto_start_stop_anim);
-        if (m_auto_start_stop_btn->text() == "Start") {
-            m_auto_start_stop_btn->setText("Stop");
-        } else {
-            m_auto_start_stop_btn->setText("Start");
-        }
         start_stop();
     });
 
     connect(m_auto_freq_slider, &QSlider::valueChanged, this, [=, this](int value){
-        m_auto_freq_label->setText(QString{"Freq: %1 Hz"}.arg(value));
         adjust_frequency(value);
     });
 }
 
+QPropertyAnimation * msim_clock_widget::setup_animation(QPushButton * btn){
+  auto *anim = new QPropertyAnimation(btn, "windowOpacity");
+  anim->setDuration(500);
+  anim->setStartValue(1.0);
+  anim->setEndValue(0.0);
+  anim->setEasingCurve(QEasingCurve::OutQuad);
+  return anim;
+}
+
+void msim_clock_widget::apply_btn_animation(QPushButton * btn, QPropertyAnimation * anim){
+  btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_DISABLE_STYLE);
+
+  anim->stop();
+  anim->start();
+
+  QTimer::singleShot(500, [=](){
+    btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_ENABLE_STYLE);
+  });
+}
+
 void msim_clock_widget::prev_phase(){
+    apply_btn_animation(m_man_prev_phase_btn,  m_man_prev_phase_anim);
     m_clock->set_command(core::components::clock_event::PREV_PHASE);
 }
 
 void msim_clock_widget::next_phase(){
+    apply_btn_animation(m_man_next_phase_btn,  m_man_next_phase_anim);
     m_clock->set_command(core::components::clock_event::NEXT_PHASE);
 }
 
 void msim_clock_widget::prev_cycle(){
+    apply_btn_animation(m_man_prev_cycle_btn, m_man_prev_cycle_anim);
     m_clock->set_command(core::components::clock_event::PREV_CYCLE);
 }
 
 void msim_clock_widget::next_cycle(){
+    apply_btn_animation(m_man_next_cycle_btn,  m_man_next_cycle_anim);
     m_clock->set_command(core::components::clock_event::NEXT_CYCLE);
 }
 
 void msim_clock_widget::set_manual_mode(){
+
+    m_manual_box->setVisible(true);
+    m_auto_box->setVisible(false);
+
     m_auto_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_DISABLE_STYLE);
     m_manual_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_ENABLE_STYLE);
     m_clock->set_command(core::components::clock_event::MANUAL_MODE);
 }
 
 void msim_clock_widget::set_auto_mode(){
+    m_manual_box->setVisible(false);
+    m_auto_box->setVisible(true);
+
     m_clock->set_command(core::components::clock_event::AUTO_MODE);
     m_manual_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_DISABLE_STYLE);
     m_auto_btn->setStyleSheet(CLOCK_BTN_MANUAL_AUTO_ENABLE_STYLE);
 }
 
 void msim_clock_widget::start_stop(){
-    if(m_clock->is_running()){
-        m_clock->set_command(core::components::clock_event::STOP);
-    }else{
-        m_clock->set_command(core::components::clock_event::START);
-    }
+  apply_btn_animation(m_auto_start_stop_btn, m_auto_start_stop_anim);
+
+  if (m_auto_start_stop_btn->text() == "Start") {
+    m_auto_start_stop_btn->setText("Stop");
+  } else {
+    m_auto_start_stop_btn->setText("Start");
+  }
+
+  if(m_clock->is_running()){
+    m_clock->set_command(core::components::clock_event::STOP);
+  }else{
+    m_clock->set_command(core::components::clock_event::START);
+  }
 }
 
 
 void msim_clock_widget::adjust_frequency(int value){
+    m_auto_freq_label->setText(QString{"Freq: %1 Hz"}.arg(value));
     m_clock->set_frequency(value);
 }
 

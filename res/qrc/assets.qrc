@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>../svg/frames_architecture.svg</file>
         <file>../svg/frames_architecture_ids.txt</file>
+        <file>amoled_style.qss</file>
     </qresource>
 </RCC>

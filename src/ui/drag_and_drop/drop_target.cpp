@@ -40,7 +40,8 @@ drop_target::drop_target(const QString & element_id)
 
 void drop_target::dragEnterEvent (QGraphicsSceneDragDropEvent * event) {
      if (event->mimeData()->hasFormat(CUSTOM_ID_DATA_STR)) {
-        QString dropped_id = QString::fromUtf8(event->mimeData()->data(CUSTOM_ID_DATA_STR));
+        QString dropped_id = 
+              QString::fromUtf8(event->mimeData()->data(CUSTOM_ID_DATA_STR));
          dropped_id.remove("comp_");
 
          if(dropped_id == clean_element_id()){

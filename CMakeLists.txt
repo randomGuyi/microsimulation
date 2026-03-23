@@ -6,6 +6,9 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+set(QSCINTILLA_INCLUDE_DIR "/opt/homebrew/include")
+set(QSCINTILLA_LIBRARY "/opt/homebrew/lib/libqscintilla2_qt6.dylib")
+
 message(QSCINTILLA_INCLUDE_DIR=${QSCINTILLA_INCLUDE_DIR})
 message(QSCINTILLA_LIBRARY=${QSCINTILLA_LIBRARY})
 find_package(Qt6 COMPONENTS
