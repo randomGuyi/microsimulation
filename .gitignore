@@ -29,6 +29,9 @@ object_script.*.Debug
 *.qbs.user.*
 # CMake build artifacts and temporary files
 /cmake-build-*
+build/**
+*build*
+build/
 CMakeCache.txt
 CMakeFiles/
 CTestTestfile.cmake
